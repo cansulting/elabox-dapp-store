@@ -1,0 +1,12 @@
+.box-g {
+  background: rgba(99, 99, 99, 0.945);
+  width: 60px;
+  height: 60px;
+  display: block;
+  border-radius: 20px;
+  border-width: 0ch;
+  padding: 0%;
+}
+.dark {
+  background: #000;
+}
