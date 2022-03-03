@@ -26,14 +26,14 @@ func NewPackageInfo() PackageInfo {
 }
 
 // add informations
-func (instance PackageInfo) AddInfo(installed data.PackageConfig, storeCacheItem *PackageListingCache, detailed bool) {
-	instance.Id = installed.PackageId
-	instance.Name = installed.Name
-	instance.CurrentBuild = int(installed.Build)
-	if detailed {
-		instance.Details.Description = installed.Description
+func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheItem *PackageListingCache, detailed bool) {
+	if installed != nil {
+		instance.CurrentBuild = int(installed.Build)
 	}
 	if storeCacheItem != nil {
+		instance.Id = storeCacheItem.Id
+		instance.Name = storeCacheItem.Name
+		instance.Details.Description = storeCacheItem.Description
 		instance.LatestBuild = storeCacheItem.Build
 		instance.Icon = storeCacheItem.Icon
 		if detailed {
@@ -42,5 +42,13 @@ func (instance PackageInfo) AddInfo(installed data.PackageConfig, storeCacheItem
 				instance.Details.Updates = storeCacheItem.Updates
 			}
 		}
+	}
+
+	if instance.CurrentBuild == 0 {
+		instance.Status = "uninstalled"
+	} else if instance.CurrentBuild < instance.LatestBuild {
+		instance.Status = "outdated"
+	} else {
+		instance.Status = "installed"
 	}
 }

@@ -1,8 +1,32 @@
 package store
 
-import "store/backend/data"
+import (
+	"errors"
+	"os"
+	"store/backend/data"
+	"store/backend/global"
+	"time"
+
+	"github.com/cansulting/elabox-system-tools/foundation/perm"
+)
 
 var pkgsCache *[]data.PackageListingCache
+
+// initialize this service
+func Init() error {
+	if err := os.MkdirAll(global.CacheDir, perm.PUBLIC_WRITE); err != nil {
+		return errors.New("unable to create cache directory " + global.CacheDir)
+	}
+	// will be called every hour
+	go func() {
+		for {
+			RetrieveItems()
+			// sleep for a while
+			time.Sleep(time.Second * 60)
+		}
+	}()
+	return nil
+}
 
 // retrieve all cached apps
 func GetItems() (*[]data.PackageListingCache, error) {
@@ -32,6 +56,20 @@ func GetItem(pkid string) (*data.PackageListingCache, error) {
 }
 
 // request via http to retrieve apps
-func RetrieveItems() {
-
+func RetrieveItems() error {
+	println("retrieve store listing")
+	testRetrievedData := []data.PackageListingCache{
+		{
+			Id:   "ela.mainchain",
+			Name: "test 1",
+			Icon: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+		},
+		{
+			Id:   "ela.eid",
+			Name: "test 2",
+			Icon: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+		},
+	}
+	// tmp: save the data retrieved data to cache file
+	return saveCache(testRetrievedData, global.StoreCache)
 }

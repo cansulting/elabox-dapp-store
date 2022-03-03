@@ -6,6 +6,8 @@ import (
 	"os"
 	"store/backend/data"
 	"store/backend/global"
+
+	"github.com/cansulting/elabox-system-tools/foundation/perm"
 )
 
 // function that retreives all cached apps
@@ -19,10 +21,27 @@ func retrieveCache() (*[]data.PackageListingCache, error) {
 		return nil, errors.New("unable to read cache file " + global.StoreCache)
 	}
 
-	var cache *[]data.PackageListingCache
-	err = json.Unmarshal(contents, cache)
+	var cache []data.PackageListingCache
+	err = json.Unmarshal(contents, &cache)
 	if err != nil {
 		return nil, errors.New("unable to unmarshal cache file " + global.StoreCache)
 	}
-	return cache, nil
+	return &cache, nil
+}
+
+// function that saves cache to file
+func saveCache(data interface{}, path string) error {
+	if err := os.MkdirAll(global.CacheDir, perm.PUBLIC_WRITE); err != nil {
+		return errors.New("unable to create cache directory " + global.CacheDir)
+	}
+	// marshal data to json
+	contents, err := json.Marshal(data)
+	if err != nil {
+		return errors.New("unable to marshal cache file")
+	}
+	// save to file
+	if err := os.WriteFile(path, contents, perm.PUBLIC_WRITE); err != nil {
+		return errors.New("unable to save cache file. inner: " + err.Error())
+	}
+	return nil
 }

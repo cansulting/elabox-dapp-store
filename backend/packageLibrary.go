@@ -15,16 +15,16 @@ func RetrieveAllApps() ([]data.PackageInfo, error) {
 	if err != nil {
 		return nil, errors.New("unable to retrieve all installed packages. inner: " + err.Error())
 	}
-	var previews []data.PackageInfo = make([]data.PackageInfo, len(*storeItems))
+	var previews = make([]data.PackageInfo, 0, len(*storeItems))
 	var tmpPreview data.PackageInfo
-	// step: iterate on package status
+	// step: iterate on packages
 	for _, pkg := range *storeItems {
 		installed, err := app.RetrievePackage(pkg.Id)
 		if err != nil {
 			return nil, errors.New("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
 		}
 		tmpPreview = data.PackageInfo{}
-		tmpPreview.AddInfo(*installed, &pkg, false)
+		tmpPreview.AddInfo(installed, &pkg, false)
 		previews = append(previews, tmpPreview)
 	}
 	return previews, nil
@@ -42,7 +42,7 @@ func RetrieveApp(pkgId string) (*data.PackageInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	pkgInfo.AddInfo(*pkg, storeCacheItem, true)
+	pkgInfo.AddInfo(pkg, storeCacheItem, true)
 	return &pkgInfo, nil
 }
 
