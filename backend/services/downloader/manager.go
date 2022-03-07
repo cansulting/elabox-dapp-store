@@ -8,8 +8,8 @@ func AddDownload(id string, url string) *Task {
 		url: url,
 	}
 	downloadTasks[id] = task
-	task.onStateChanged = onTaskStateChanged
-	task.onError = onTaskError
+	// task.onStateChanged = onTaskStateChanged
+	// task.onError = onTaskError
 	task.Start()
 	return task
 }
@@ -22,10 +22,10 @@ func RemoveDownload(id string) {
 	delete(downloadTasks, id)
 }
 
-func onTaskStateChanged(task *Task) {
-	// do something
-}
+// func onTaskStateChanged(task *Task) {
+// 	// do something
+// }
 
-func onTaskError(task *Task) {
-	// do something
-}
+// func onTaskError(task *Task) {
+// 	// do something
+// }

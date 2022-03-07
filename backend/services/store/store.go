@@ -28,7 +28,7 @@ func Init() error {
 	return nil
 }
 
-// retrieve all cached apps
+// retrieve all items from cache
 func GetItems() (*[]data.PackageListingCache, error) {
 	if pkgsCache == nil {
 		tmp, err := retrieveCache()
@@ -41,7 +41,7 @@ func GetItems() (*[]data.PackageListingCache, error) {
 	return pkgsCache, nil
 }
 
-// retrieve cache item based from package id
+// retrieve from cache item based from package id
 func GetItem(pkid string) (*data.PackageListingCache, error) {
 	items, err := GetItems()
 	if err != nil {

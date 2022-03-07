@@ -25,6 +25,10 @@ func RetrieveAllApps() ([]data.PackageInfo, error) {
 		}
 		tmpPreview = data.PackageInfo{}
 		tmpPreview.AddInfo(installed, &pkg, false)
+
+		// check if currently in download
+		
+
 		previews = append(previews, tmpPreview)
 	}
 	return previews, nil
