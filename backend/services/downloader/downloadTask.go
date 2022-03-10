@@ -1,5 +1,12 @@
 package downloader
 
+import (
+	"fmt"
+	"io"
+	"net/http"
+	"os"
+)
+
 // struct that handles the download task
 type Task struct {
 	id                string
@@ -39,8 +46,43 @@ func (task *Task) GetError() int16 {
 func (task *Task) Start() {
 	task.status = 1
 	task.errorCode = 0
-	// download file via http
-	// save to file
+	d := task.Download(task.path, task.url)
+	if d != nil {
+		panic(d)
+	}
+	fmt.Println("File Successfully Downloaded from", task.url)
+
+}
+
+// download file via http
+// save to file
+
+func (task *Task) Download(path string, url string) (err error) {
+
+	// Get the data
+	resp, err := http.Get(url)
+	if err != nil {
+		return err
+
+	}
+	defer resp.Body.Close()
+
+	// Create the file
+	out, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	// Check server response
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("bad status: %s", resp.Status)
+	}
+
+	// Write the body to file
+	_, err = io.Copy(out, resp.Body)
+	return err
+
 }
 
 func (task *Task) Stop() {
