@@ -1,16 +1,18 @@
 package main
 
 import (
-	"store/backend/services/store"
-	"time"
+	"store/backend/global"
+
+	"github.com/cansulting/elabox-system-tools/foundation/app"
 )
 
 func main() {
-	if err := store.Init(); err != nil {
+
+	con, err := app.NewController(nil, &StoreService{})
+	if err != nil {
 		panic(err)
 	}
-	// keep running
-	for {
-		time.Sleep(time.Second * 3)
-	}
+	global.RPC = con.RPC
+	global.AppController = con
+	app.RunApp(con)
 }

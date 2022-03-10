@@ -1,4 +1,4 @@
-package store
+package store_lister
 
 func retrieveStoreListing() error {
 	if err := RetrieveItems(); err != nil {

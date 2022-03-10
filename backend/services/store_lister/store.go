@@ -1,4 +1,4 @@
-package store
+package store_lister
 
 import (
 	"errors"
@@ -10,7 +10,7 @@ import (
 	"github.com/cansulting/elabox-system-tools/foundation/perm"
 )
 
-var pkgsCache *[]data.PackageListingCache
+var pkgsCache *[]data.PackageListingCache = nil
 
 // initialize this service
 func Init() error {
@@ -72,4 +72,9 @@ func RetrieveItems() error {
 	}
 	// tmp: save the data retrieved data to cache file
 	return saveCache(testRetrievedData, global.StoreCache)
+}
+
+// function that retrieves package download information
+func RetrieveDownloadLink(pkgId string) (string, error) {
+	return "", nil
 }

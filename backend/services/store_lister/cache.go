@@ -1,4 +1,4 @@
-package store
+package store_lister
 
 import (
 	"encoding/json"
