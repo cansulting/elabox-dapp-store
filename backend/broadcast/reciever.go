@@ -5,14 +5,16 @@ import (
 	"store/backend/services/installer"
 
 	"github.com/cansulting/elabox-system-tools/foundation/event/data"
+	"github.com/cansulting/elabox-system-tools/foundation/event/protocol"
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
 )
 
 var lastInstallingPkg *installer.Task
 
+// register broadcast recievers
 func registerRecievers() error {
 	// register for
-	if err := global.AppController.RPC.OnRecieveFromPackage(
+	if err := global.AppController.RPC.OnRecievedFromPackage(
 		global.InstallerId,
 		global.INSTALLER_PROGRESS,
 		onRecievedInstallerProgress); err != nil {
@@ -22,7 +24,7 @@ func registerRecievers() error {
 }
 
 // callback from installer when it's progress changed
-func onRecievedInstallerProgress(action data.Action) string {
+func onRecievedInstallerProgress(client protocol.ClientInterface, action data.Action) string {
 	// step: parse data
 	dataAc, err := action.DataToMap()
 	if err != nil {

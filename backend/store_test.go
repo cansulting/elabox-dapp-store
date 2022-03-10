@@ -7,6 +7,7 @@ import (
 	"store/backend/services/store_lister"
 	"strconv"
 	"testing"
+	"time"
 
 	"github.com/cansulting/elabox-system-tools/foundation/app/rpc"
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
@@ -67,4 +68,5 @@ func Test_InstallPackage(t *testing.T) {
 		t.Error("unable to install package. inner: " + err.Error())
 		return
 	}
+	time.Sleep(time.Second * 3)
 }
