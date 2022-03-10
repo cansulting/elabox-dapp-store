@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"store/backend/global"
+	"store/backend/services/downloader"
 	"store/backend/services/installer"
 	"store/backend/services/store_lister"
 	"strconv"
@@ -65,6 +66,18 @@ func Test_InstallPackage(t *testing.T) {
 	path += TEST_PKG_PATH
 	if err := task.StartFromFile(path); err != nil {
 		t.Error("unable to install package. inner: " + err.Error())
+		return
+	}
+}
+
+// test for downloading app
+func Test_DownloadPackage(t *testing.T) {
+	logger.Init("ela.store.test")
+	url := "https://storage.googleapis.com/elabox-staging/packages/6.box"
+	savePath := "./sample.box"
+	task := downloader.NewTask("sample", url, savePath)
+	if err := task.Start(); err != nil {
+		t.Error("unable to download package. inner: " + err.Error())
 		return
 	}
 }

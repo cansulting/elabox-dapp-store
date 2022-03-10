@@ -20,6 +20,16 @@ type Task struct {
 	OnError           func(task *Task) // callback event when recieved error
 }
 
+// contructor of download task
+func NewTask(id string, url string, path string) *Task {
+	return &Task{
+		id:     id,
+		url:    url,
+		path:   path,
+		status: 0,
+	}
+}
+
 func (task *Task) GetUrl() string {
 	return task.url
 }
@@ -43,27 +53,24 @@ func (task *Task) GetError() int16 {
 }
 
 // function that starts the download task
-func (task *Task) Start() {
+func (task *Task) Start() error {
 	task.status = 1
 	task.errorCode = 0
-	d := task.Download(task.path, task.url)
-	if d != nil {
-		panic(d)
+	err := task.Download(task.path, task.url)
+	if err != nil {
+		return err
 	}
 	fmt.Println("File Successfully Downloaded from", task.url)
-
+	return nil
 }
 
 // download file via http
 // save to file
-
 func (task *Task) Download(path string, url string) (err error) {
-
 	// Get the data
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
-
 	}
 	defer resp.Body.Close()
 
@@ -78,11 +85,9 @@ func (task *Task) Download(path string, url string) (err error) {
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("bad status: %s", resp.Status)
 	}
-
 	// Write the body to file
 	_, err = io.Copy(out, resp.Body)
 	return err
-
 }
 
 func (task *Task) Stop() {
