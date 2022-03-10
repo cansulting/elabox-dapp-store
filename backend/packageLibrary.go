@@ -3,7 +3,8 @@ package main
 import (
 	"errors"
 	"store/backend/data"
-	"store/backend/services/store"
+	"store/backend/services/installer"
+	"store/backend/services/store_lister"
 
 	"github.com/cansulting/elabox-system-tools/registry/app"
 )
@@ -11,7 +12,7 @@ import (
 // retrieve all apps
 func RetrieveAllApps() ([]data.PackageInfo, error) {
 	// step: retrieve all apps from registry
-	storeItems, err := store.GetItems()
+	storeItems, err := store_lister.GetItems()
 	if err != nil {
 		return nil, errors.New("unable to retrieve all installed packages. inner: " + err.Error())
 	}
@@ -27,7 +28,6 @@ func RetrieveAllApps() ([]data.PackageInfo, error) {
 		tmpPreview.AddInfo(installed, &pkg, false)
 
 		// check if currently in download
-		
 
 		previews = append(previews, tmpPreview)
 	}
@@ -40,16 +40,32 @@ func RetrieveApp(pkgId string) (*data.PackageInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	var pkgInfo = data.PackageInfo{}
-
-	storeCacheItem, err := store.GetItem(pkgId)
+	storeCacheItem, err := store_lister.GetItem(pkgId)
 	if err != nil {
 		return nil, err
 	}
+	if storeCacheItem == nil {
+		return nil, nil
+	}
+	var pkgInfo = data.PackageInfo{}
 	pkgInfo.AddInfo(pkg, storeCacheItem, true)
 	return &pkgInfo, nil
 }
 
-func InstallApp(pkgId string) {
+// use to download and install app
+func DownloadInstallApp(pkgId string) error {
+	link, err := store_lister.RetrieveDownloadLink(pkgId)
+	if err != nil {
+		return err
+	}
+	installer.CreateTask(pkgId, link)
+	return nil
+}
+
+func UninstallApp(pkgId string) {
+
+}
+
+func StopApp(pkgId string) {
 
 }
