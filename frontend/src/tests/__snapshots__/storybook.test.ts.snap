@@ -147,6 +147,305 @@ exports[`Storyshots Elabox/components/AppButton Success 1`] = `
 </button>
 `;
 
+exports[`Storyshots Elabox/components/AppIcon Download Error 1`] = `
+<div
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "border": "3px solid black",
+        "borderRadius": "20px",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="images/glide.png"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={50}
+      className="progress-bar progress-bar-animated bg-danger progress-bar-striped"
+      role="progressbar"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Download Success 1`] = `
+<div
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "border": "3px solid black",
+        "borderRadius": "20px",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="images/glide.png"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={100}
+      className="progress-bar bg-success"
+      role="progressbar"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Downloadable 1`] = `
+<div
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "border": "3px solid black",
+        "borderRadius": "20px",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="images/glide.png"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+    <svg
+      fill="none"
+      height={20}
+      stroke="blue"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      style={
+        Object {
+          "bottom": 10,
+          "cursor": "pointer",
+          "position": "absolute",
+          "right": 10,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={20}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+      />
+      <polyline
+        points="7 10 12 15 17 10"
+      />
+      <line
+        x1="12"
+        x2="12"
+        y1="15"
+        y2="3"
+      />
+    </svg>
+  </div>
+  <h3>
+    Glide
+  </h3>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Downloading 1`] = `
+<div
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "border": "3px solid black",
+        "borderRadius": "20px",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="images/glide.png"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={50}
+      className="progress-bar progress-bar-animated bg-primary progress-bar-striped"
+      role="progressbar"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon With Label 1`] = `
+<div
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "border": "3px solid black",
+        "borderRadius": "20px",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="images/glide.png"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <h3>
+    Glide
+  </h3>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Without Label 1`] = `
+<div
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "border": "3px solid black",
+        "borderRadius": "20px",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="images/glide.png"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Example/Button Large 1`] = `
 <button
   className="storybook-button storybook-button--large storybook-button--secondary"
