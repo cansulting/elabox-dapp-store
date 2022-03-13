@@ -80,15 +80,3 @@ Processing.args = {
     disabled: true,
     isProcessing: true,
 }
-// export const Disabled = (props: AppButtonProps) => (
-//     <AppButton {...props}>Primary</AppButton>
-// )
-// export const Update = (props: AppButtonProps) => (
-//     <AppButton {...props}>Primary</AppButton>
-// )
-// export const Downloading = (props: AppButtonProps) => (
-//     <AppButton {...props}>Primary</AppButton>
-// )
-// export const Installing = (props: AppButtonProps) => (
-//     <AppButton {...props}>Primary</AppButton>
-// )

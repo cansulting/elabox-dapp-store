@@ -14,8 +14,8 @@
         "test": "react-scripts test",
         "build": "webpack",
         "type-check": "tsc --noEmit",
-        "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public"
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook"
     },
     "bugs": {
         "url": "https://github.com/rajjeet/react-playbook/issues"
