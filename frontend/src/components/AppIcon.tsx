@@ -59,7 +59,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     value={props.percent}
                     color={progressColor}
                     animated={
-                        props.downloadStatus !== 'completed' ? true : false
+                        props.downloadStatus === 'downloading' ? true : false
                     }
                 />
             )}
