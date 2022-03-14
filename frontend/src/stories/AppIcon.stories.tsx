@@ -17,6 +17,7 @@ WithLabel.args = {
     percent: 0,
     iconOnly: false,
     isDownloadable: false,
+    className:""
 }
 export const WithoutLabel = Template.bind({})
 WithoutLabel.args = {

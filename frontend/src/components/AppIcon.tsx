@@ -2,6 +2,7 @@ import React from 'react'
 import * as Icon from 'react-feather'
 import { Progress } from 'reactstrap'
 export interface AppIconProps {
+    className?: string
     label: string
     iconImg: string
     width: string
@@ -20,6 +21,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
     }
     return (
         <div
+            className={props.className}
             style={{
                 width: props.width,
                 height: props.height,
