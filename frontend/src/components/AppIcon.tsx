@@ -63,7 +63,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     }
                 />
             )}
-            {!props.iconOnly && !props.downloadStatus && <h3>{props.label}</h3>}
+            {!props.iconOnly && !props.downloadStatus && <h4>{props.label}</h4>}
         </div>
     )
 }
