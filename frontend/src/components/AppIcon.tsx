@@ -6,10 +6,10 @@ export interface AppIconProps {
     iconImg: string
     width: string
     height: string
-    percent: number
-    iconOnly: boolean
-    isDownloadable: boolean
-    downloadStatus: 'error' | 'completed' | 'downloading'
+    percent?: number
+    iconOnly?: boolean
+    isDownloadable?: boolean
+    downloadStatus?: 'error' | 'completed' | 'downloading'
 }
 export const AppIcon = (props: AppIconProps): JSX.Element => {
     let progressColor = 'primary'
