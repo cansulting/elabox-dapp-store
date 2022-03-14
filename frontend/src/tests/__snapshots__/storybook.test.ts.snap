@@ -5,7 +5,6 @@ exports[`Storyshots Elabox/components/AppButton Active 1`] = `
   aria-label={null}
   className="btn btn-primary btn-lg active"
   disabled={false}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
@@ -18,7 +17,6 @@ exports[`Storyshots Elabox/components/AppButton Block 1`] = `
   aria-label={null}
   className="btn btn-primary btn-lg btn-block"
   disabled={false}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
@@ -31,7 +29,6 @@ exports[`Storyshots Elabox/components/AppButton Close 1`] = `
   aria-label="Close"
   className="close btn-lg"
   disabled={false}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
@@ -44,7 +41,6 @@ exports[`Storyshots Elabox/components/AppButton Danger 1`] = `
   aria-label={null}
   className="btn btn-danger btn-lg"
   disabled={false}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
@@ -57,7 +53,6 @@ exports[`Storyshots Elabox/components/AppButton Disabled 1`] = `
   aria-label={null}
   className="btn btn-primary btn-lg disabled"
   disabled={true}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
@@ -70,7 +65,6 @@ exports[`Storyshots Elabox/components/AppButton Info 1`] = `
   aria-label={null}
   className="btn btn-info btn-lg"
   disabled={false}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
@@ -83,7 +77,6 @@ exports[`Storyshots Elabox/components/AppButton Outline 1`] = `
   aria-label={null}
   className="btn btn-outline-primary btn-lg"
   disabled={false}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
@@ -96,7 +89,6 @@ exports[`Storyshots Elabox/components/AppButton Primary 1`] = `
   aria-label={null}
   className="btn btn-primary btn-lg"
   disabled={false}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
@@ -126,7 +118,6 @@ exports[`Storyshots Elabox/components/AppButton Secondary 1`] = `
   aria-label={null}
   className="btn btn-secondary btn-lg"
   disabled={false}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
@@ -139,12 +130,1118 @@ exports[`Storyshots Elabox/components/AppButton Success 1`] = `
   aria-label={null}
   className="btn btn-success btn-lg"
   disabled={false}
-  hi={true}
   isProcessing={false}
   onClick={[Function]}
 >
   Success
 </button>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Complete Downloading App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-1 row-cols-md-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={100}
+            className="progress-bar bg-success"
+            role="progressbar"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Downloadable App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-1 row-cols-md-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+          <svg
+            fill="none"
+            height={20}
+            stroke="blue"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            style={
+              Object {
+                "bottom": 10,
+                "cursor": "pointer",
+                "position": "absolute",
+                "right": 10,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={20}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+            />
+            <polyline
+              points="7 10 12 15 17 10"
+            />
+            <line
+              x1="12"
+              x2="12"
+              y1="15"
+              y2="3"
+            />
+          </svg>
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Downloading App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-1 row-cols-md-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={50}
+            className="progress-bar progress-bar-animated bg-primary progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "50%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Error Downloading App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-1 row-cols-md-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={70}
+            className="progress-bar bg-danger"
+            role="progressbar"
+            style={
+              Object {
+                "width": "70%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Initial 1`] = `
+<div
+  className="container-xs"
+  style={
+    Object {
+      "textAlign": "center",
+      "width": "80%",
+    }
+  }
+>
+  <div
+    className="row row-cols-1 row-cols-md-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Primary 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-1 row-cols-md-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h3>
+          Glide
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Storyshots Elabox/components/AppIcon Download Error 1`] = `
