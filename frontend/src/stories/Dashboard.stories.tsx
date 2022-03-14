@@ -1,6 +1,5 @@
 import React from 'react'
 import { AppDashboard, AppDashboardProps } from '../components/AppDashboard'
-import { AppIcon, AppIconProps } from '../components/AppIcon'
 import { ComponentMeta } from '@storybook/react'
 
 export default {
