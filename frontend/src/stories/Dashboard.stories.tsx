@@ -77,7 +77,7 @@ DownloadableApp.args = {
             width: '100%',
             iconImg: 'images/glide.png',
             label: 'Glide',
-            isDownloadable: true,
+            isInstallable: true,
         },
     ],
 }
