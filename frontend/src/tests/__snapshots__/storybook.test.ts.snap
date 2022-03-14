@@ -147,7 +147,7 @@ exports[`Storyshots Elabox/components/AppDashboard Complete Downloading App 1`] 
   }
 >
   <div
-    className="row row-cols-12 row-cols-md-3"
+    className="row row-cols-1 row-cols-md-1 row-cols-lg-3"
   >
     <div
       className="col"
@@ -294,7 +294,7 @@ exports[`Storyshots Elabox/components/AppDashboard Downloadable App 1`] = `
   }
 >
   <div
-    className="row row-cols-12 row-cols-md-3"
+    className="row row-cols-1 row-cols-md-1 row-cols-lg-3"
   >
     <div
       className="col"
@@ -407,38 +407,6 @@ exports[`Storyshots Elabox/components/AppDashboard Downloadable App 1`] = `
               }
             }
           />
-          <svg
-            fill="none"
-            height={20}
-            stroke="blue"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            style={
-              Object {
-                "bottom": 10,
-                "cursor": "pointer",
-                "position": "absolute",
-                "right": 10,
-              }
-            }
-            viewBox="0 0 24 24"
-            width={20}
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-            />
-            <polyline
-              points="7 10 12 15 17 10"
-            />
-            <line
-              x1="12"
-              x2="12"
-              y1="15"
-              y2="3"
-            />
-          </svg>
         </div>
         <h4>
           Glide
@@ -459,7 +427,7 @@ exports[`Storyshots Elabox/components/AppDashboard Downloading App 1`] = `
   }
 >
   <div
-    className="row row-cols-12 row-cols-md-3"
+    className="row row-cols-1 row-cols-md-1 row-cols-lg-3"
   >
     <div
       className="col"
@@ -606,7 +574,7 @@ exports[`Storyshots Elabox/components/AppDashboard Error Downloading App 1`] = `
   }
 >
   <div
-    className="row row-cols-12 row-cols-md-3"
+    className="row row-cols-1 row-cols-md-1 row-cols-lg-3"
   >
     <div
       className="col"
@@ -753,7 +721,7 @@ exports[`Storyshots Elabox/components/AppDashboard Primary 1`] = `
   }
 >
   <div
-    className="row row-cols-12 row-cols-md-3"
+    className="row row-cols-1 row-cols-md-1 row-cols-lg-3"
   >
     <div
       className="col"
@@ -989,112 +957,6 @@ exports[`Storyshots Elabox/components/AppDashboard Primary 1`] = `
         </h4>
       </div>
     </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Elabox/components/AppIcon Download Error 1`] = `
-<div
-  className=""
-  style={
-    Object {
-      "height": "200px",
-      "textAlign": "center",
-      "width": "200px",
-    }
-  }
->
-  <div
-    style={
-      Object {
-        "border": "3px solid black",
-        "borderRadius": "20px",
-        "marginBottom": "10px",
-        "padding": "20px",
-        "position": "relative",
-      }
-    }
-  >
-    <img
-      alt="Glide"
-      src="images/glide.png"
-      style={
-        Object {
-          "height": "100%",
-          "width": "100%",
-        }
-      }
-    />
-  </div>
-  <div
-    className="progress"
-    style={Object {}}
-  >
-    <div
-      aria-valuemax={100}
-      aria-valuemin={0}
-      aria-valuenow={50}
-      className="progress-bar bg-danger"
-      role="progressbar"
-      style={
-        Object {
-          "width": "50%",
-        }
-      }
-    />
-  </div>
-</div>
-`;
-
-exports[`Storyshots Elabox/components/AppIcon Download Success 1`] = `
-<div
-  className=""
-  style={
-    Object {
-      "height": "200px",
-      "textAlign": "center",
-      "width": "200px",
-    }
-  }
->
-  <div
-    style={
-      Object {
-        "border": "3px solid black",
-        "borderRadius": "20px",
-        "marginBottom": "10px",
-        "padding": "20px",
-        "position": "relative",
-      }
-    }
-  >
-    <img
-      alt="Glide"
-      src="images/glide.png"
-      style={
-        Object {
-          "height": "100%",
-          "width": "100%",
-        }
-      }
-    />
-  </div>
-  <div
-    className="progress"
-    style={Object {}}
-  >
-    <div
-      aria-valuemax={100}
-      aria-valuemin={0}
-      aria-valuenow={100}
-      className="progress-bar bg-success"
-      role="progressbar"
-      style={
-        Object {
-          "width": "100%",
-        }
-      }
-    />
   </div>
 </div>
 `;
@@ -1223,6 +1085,165 @@ exports[`Storyshots Elabox/components/AppIcon Downloading 1`] = `
 </div>
 `;
 
+exports[`Storyshots Elabox/components/AppIcon Installing 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "border": "3px solid black",
+        "borderRadius": "20px",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="images/glide.png"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={50}
+      className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+      role="progressbar"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Process Error 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "border": "3px solid black",
+        "borderRadius": "20px",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="images/glide.png"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={50}
+      className="progress-bar bg-danger"
+      role="progressbar"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Process Success 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "border": "3px solid black",
+        "borderRadius": "20px",
+        "marginBottom": "10px",
+        "padding": "20px",
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="images/glide.png"
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={100}
+      className="progress-bar bg-success"
+      role="progressbar"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Elabox/components/AppIcon With Label 1`] = `
 <div
   className=""
@@ -1298,28 +1319,116 @@ exports[`Storyshots Elabox/components/AppIcon Without Label 1`] = `
 </div>
 `;
 
-exports[`Storyshots Elabox/components/AppInfo Primary 1`] = `
+exports[`Storyshots Elabox/components/AppInfo Downloading 1`] = `
 <div
-  className="container-xs"
+  className="container-md"
   style={
     Object {
       "height": "100vh",
+      "padding": 10,
     }
   }
 >
   <div
-    className="row row-cols-md-2"
+    className="row row-cols-lg-2"
   >
     <div
-      className="text-center text-md-start d-sm-flex flex-sm-column align-items-center col-12 col-md-2"
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
       <div
-        className="p-2"
         style={
           Object {
-            "height": "200px",
+            "height": "130px",
             "textAlign": "center",
-            "width": "200px",
+            "width": "130px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={30}
+            className="progress-bar progress-bar-animated bg-primary progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "30%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="text-center text-lg-start mt-4 col-12 col-lg-10"
+    >
+      <h4>
+        Glide
+      </h4>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Installable 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <div
+        style={
+          Object {
+            "height": "130px",
+            "textAlign": "center",
+            "width": "130px",
           }
         }
       >
@@ -1348,15 +1457,449 @@ exports[`Storyshots Elabox/components/AppInfo Primary 1`] = `
       </div>
     </div>
     <div
-      className="text-center text-md-start col-12 col-md-10"
+      className="text-center text-lg-start mt-4 col-12 col-lg-10"
+    >
+      <h4>
+        Glide
+      </h4>
+      <button
+        aria-label={null}
+        className="btn btn-primary btn-sm"
+        onClick={[Function]}
+      >
+        Install
+      </button>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Installation Error 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <div
+        style={
+          Object {
+            "height": "130px",
+            "textAlign": "center",
+            "width": "130px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={90}
+            className="progress-bar bg-danger"
+            role="progressbar"
+            style={
+              Object {
+                "width": "90%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="text-center text-lg-start mt-4 col-12 col-lg-10"
     >
       <h4>
         Glide
       </h4>
     </div>
   </div>
-  <p>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-  </p>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Installation Success 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <div
+        style={
+          Object {
+            "height": "130px",
+            "textAlign": "center",
+            "width": "130px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={100}
+            className="progress-bar bg-success"
+            role="progressbar"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="text-center text-lg-start mt-4 col-12 col-lg-10"
+    >
+      <h4>
+        Glide
+      </h4>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Installing 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <div
+        style={
+          Object {
+            "height": "130px",
+            "textAlign": "center",
+            "width": "130px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={90}
+            className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "90%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="text-center text-lg-start mt-4 col-12 col-lg-10"
+    >
+      <h4>
+        Glide
+      </h4>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Primary 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <div
+        style={
+          Object {
+            "height": "130px",
+            "textAlign": "center",
+            "width": "130px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="text-center text-lg-start mt-4 col-12 col-lg-10"
+    >
+      <h4>
+        Glide
+      </h4>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo With Stats 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <div
+        style={
+          Object {
+            "height": "130px",
+            "textAlign": "center",
+            "width": "130px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="text-center text-lg-start mt-4 col-12 col-lg-10"
+    >
+      <h4>
+        Glide
+      </h4>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <canvas
+        height={70}
+        role="img"
+        width={300}
+      />
+    </div>
+  </div>
 </div>
 `;
