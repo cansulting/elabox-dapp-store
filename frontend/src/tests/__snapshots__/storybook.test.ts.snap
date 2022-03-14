@@ -147,7 +147,7 @@ exports[`Storyshots Elabox/components/AppDashboard Complete Downloading App 1`] 
   }
 >
   <div
-    className="row row-cols-1 row-cols-md-3"
+    className="row row-cols-12 row-cols-md-3"
   >
     <div
       className="col"
@@ -294,7 +294,7 @@ exports[`Storyshots Elabox/components/AppDashboard Downloadable App 1`] = `
   }
 >
   <div
-    className="row row-cols-1 row-cols-md-3"
+    className="row row-cols-12 row-cols-md-3"
   >
     <div
       className="col"
@@ -459,7 +459,7 @@ exports[`Storyshots Elabox/components/AppDashboard Downloading App 1`] = `
   }
 >
   <div
-    className="row row-cols-1 row-cols-md-3"
+    className="row row-cols-12 row-cols-md-3"
   >
     <div
       className="col"
@@ -606,7 +606,7 @@ exports[`Storyshots Elabox/components/AppDashboard Error Downloading App 1`] = `
   }
 >
   <div
-    className="row row-cols-1 row-cols-md-3"
+    className="row row-cols-12 row-cols-md-3"
   >
     <div
       className="col"
@@ -753,7 +753,7 @@ exports[`Storyshots Elabox/components/AppDashboard Primary 1`] = `
   }
 >
   <div
-    className="row row-cols-1 row-cols-md-3"
+    className="row row-cols-12 row-cols-md-3"
   >
     <div
       className="col"
@@ -995,6 +995,7 @@ exports[`Storyshots Elabox/components/AppDashboard Primary 1`] = `
 
 exports[`Storyshots Elabox/components/AppIcon Download Error 1`] = `
 <div
+  className=""
   style={
     Object {
       "height": "200px",
@@ -1047,6 +1048,7 @@ exports[`Storyshots Elabox/components/AppIcon Download Error 1`] = `
 
 exports[`Storyshots Elabox/components/AppIcon Download Success 1`] = `
 <div
+  className=""
   style={
     Object {
       "height": "200px",
@@ -1099,6 +1101,7 @@ exports[`Storyshots Elabox/components/AppIcon Download Success 1`] = `
 
 exports[`Storyshots Elabox/components/AppIcon Downloadable 1`] = `
 <div
+  className=""
   style={
     Object {
       "height": "200px",
@@ -1169,6 +1172,7 @@ exports[`Storyshots Elabox/components/AppIcon Downloadable 1`] = `
 
 exports[`Storyshots Elabox/components/AppIcon Downloading 1`] = `
 <div
+  className=""
   style={
     Object {
       "height": "200px",
@@ -1221,6 +1225,7 @@ exports[`Storyshots Elabox/components/AppIcon Downloading 1`] = `
 
 exports[`Storyshots Elabox/components/AppIcon With Label 1`] = `
 <div
+  className=""
   style={
     Object {
       "height": "200px",
@@ -1259,6 +1264,7 @@ exports[`Storyshots Elabox/components/AppIcon With Label 1`] = `
 
 exports[`Storyshots Elabox/components/AppIcon Without Label 1`] = `
 <div
+  className=""
   style={
     Object {
       "height": "200px",
@@ -1289,5 +1295,68 @@ exports[`Storyshots Elabox/components/AppIcon Without Label 1`] = `
       }
     />
   </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Primary 1`] = `
+<div
+  className="container-xs"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="row row-cols-md-2"
+  >
+    <div
+      className="text-center text-md-start d-sm-flex flex-sm-column align-items-center col-12 col-md-2"
+    >
+      <div
+        className="p-2"
+        style={
+          Object {
+            "height": "200px",
+            "textAlign": "center",
+            "width": "200px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "border": "3px solid black",
+              "borderRadius": "20px",
+              "marginBottom": "10px",
+              "padding": "20px",
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="images/glide.png"
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="text-center text-md-start col-12 col-md-10"
+    >
+      <h4>
+        Glide
+      </h4>
+    </div>
+  </div>
+  <p>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
 </div>
 `;
