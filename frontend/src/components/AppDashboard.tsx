@@ -9,7 +9,7 @@ export interface AppDashboardProps {
 export const AppDashboard = (props: AppDashboardProps): JSX.Element => {
     return (
         <Container style={props.style} fluid="md">
-            <Row xs="12" md="3">
+            <Row xs="1" md="1" lg="3">
                 {props.apps.map((appInfo) => {
                     return (
                         <Col>

@@ -1,14 +1,18 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { AppIcon, AppIconProps } from './AppIcon'
+import { AppButton } from './AppButton'
+import { AppLineGraph } from './AppLineGraph'
 interface Info {
     id: number
     label: string
     iconImg: string
     description: string
-    isDownloadble: boolean
+    isInstallable: boolean
     percent?: 0
-    downloadStatus?: 'error' | 'completed' | 'downloading'
+    stats?: [any]
+    footer?: object
+    processStatus?: 'error' | 'completed' | 'downloading' | 'installing'
 }
 export interface AppInfoProps {
     info: Info
@@ -16,33 +20,47 @@ export interface AppInfoProps {
     onInstall: Function
     onUninstall: Function
 }
-
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const AppIconDetails: AppIconProps = {
         label: props.info.label,
         iconOnly: true,
         iconImg: props.info.iconImg,
-        width: '200px',
-        height: '200px',
+        width: '130px',
+        height: '130px',
         percent: props.info.percent,
-        isDownloadable: props.info.isDownloadble,
-        downloadStatus: props.info.downloadStatus,
+        processStatus: props.info.processStatus,
     }
     return (
-        <Container style={props.style} fluid="xs">
-            <Row md="2">
+        <Container style={props.style} fluid="md">
+            <Row lg="2">
                 <Col
-                    className="text-center text-md-start d-sm-flex flex-sm-column align-items-center"
+                    className="text-center text-lg-start d-flex flex-column align-items-center"
                     xs="12"
-                    md="2"
+                    lg="2"
                 >
-                    <AppIcon {...AppIconDetails} className="p-2" />
+                    <AppIcon {...AppIconDetails} />
                 </Col>
-                <Col xs="12" md="10" className="text-center text-md-start">
+                <Col xs="12" lg="10" className="text-center text-lg-start mt-4">
                     <h4>{props.info.label}</h4>
+                    {props.info.isInstallable && (
+                        <AppButton color="primary" size="sm">
+                            Install
+                        </AppButton>
+                    )}
                 </Col>
             </Row>
-            <p>{props.info.description}</p>
+            <Row className="mt-4">
+                <Col>
+                    <p>{props.info.description}</p>
+                </Col>
+            </Row>
+            {props.info.stats?.length > 0 && (
+                <Row className="mt-4">
+                    <Col>
+                        <AppLineGraph stats={props.info.stats} />
+                    </Col>
+                </Row>
+            )}
         </Container>
     )
 }

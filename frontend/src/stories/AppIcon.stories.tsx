@@ -16,8 +16,8 @@ WithLabel.args = {
     height: '200px',
     percent: 0,
     iconOnly: false,
-    isDownloadable: false,
-    className:""
+    isInstallable: false,
+    className: '',
 }
 export const WithoutLabel = Template.bind({})
 WithoutLabel.args = {
@@ -27,24 +27,30 @@ WithoutLabel.args = {
 export const Downloadable = Template.bind({})
 Downloadable.args = {
     ...WithLabel.args,
-    isDownloadable: true,
+    isInstallable: true,
 }
 export const Downloading = Template.bind({})
 Downloading.args = {
     ...WithLabel.args,
     percent: 50,
-    downloadStatus: 'downloading',
+    processStatus: 'downloading',
 }
-export const DownloadError = Template.bind({})
-DownloadError.args = {
+export const Installing = Template.bind({})
+Installing.args = {
     ...WithLabel.args,
     percent: 50,
-    downloadStatus: 'error',
+    processStatus: 'installing',
 }
-export const DownloadSuccess = Template.bind({})
-DownloadSuccess.args = {
+export const ProcessError = Template.bind({})
+ProcessError.args = {
+    ...WithLabel.args,
+    percent: 50,
+    processStatus: 'error',
+}
+export const ProcessSuccess = Template.bind({})
+ProcessSuccess.args = {
     ...WithLabel.args,
     isDownloading: true,
     percent: 100,
-    downloadStatus: 'completed',
+    processStatus: 'completed',
 }

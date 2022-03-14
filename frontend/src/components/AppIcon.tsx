@@ -9,14 +9,16 @@ export interface AppIconProps {
     height: string
     percent?: number
     iconOnly?: boolean
-    isDownloadable?: boolean
-    downloadStatus?: 'error' | 'completed' | 'downloading'
+    isInstallable?: boolean
+    processStatus?: 'error' | 'completed' | 'downloading' | 'installing'
 }
 export const AppIcon = (props: AppIconProps): JSX.Element => {
     let progressColor = 'primary'
-    if (props.downloadStatus === 'error') {
+    if (props.processStatus === 'error') {
         progressColor = 'danger'
-    } else if (props.downloadStatus === 'completed') {
+    } else if (props.processStatus === 'installing') {
+        progressColor = 'info'
+    } else if (props.processStatus === 'completed') {
         progressColor = 'success'
     }
     return (
@@ -42,7 +44,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     alt={props.label}
                     style={{ width: '100%', height: '100%' }}
                 />
-                {props.isDownloadable && (
+                {props.isInstallable && (
                     <Icon.Download
                         style={{
                             position: 'absolute',
@@ -56,16 +58,19 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     />
                 )}
             </div>
-            {props.downloadStatus && (
+            {props.processStatus?.length > 0 && (
                 <Progress
                     value={props.percent}
                     color={progressColor}
                     animated={
-                        props.downloadStatus === 'downloading' ? true : false
+                        props.processStatus === 'downloading' ||
+                        props.processStatus === 'installing'
+                            ? true
+                            : false
                     }
                 />
             )}
-            {!props.iconOnly && !props.downloadStatus && <h4>{props.label}</h4>}
+            {!props.iconOnly && !props.processStatus && <h4>{props.label}</h4>}
         </div>
     )
 }
