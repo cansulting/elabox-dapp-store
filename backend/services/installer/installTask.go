@@ -3,6 +3,7 @@
 package installer
 
 import (
+	"store/backend/broadcast"
 	"store/backend/global"
 	"store/backend/services/downloader"
 	"strconv"
@@ -63,12 +64,14 @@ func (instance *Task) download(restart bool) {
 	if instance.downloadTask == nil {
 		instance.downloadTask = downloader.AddDownload(instance.Id, instance.Url)
 		instance.downloadTask.OnStateChanged = instance.onDownloadStateChanged
+		instance.downloadTask.OnProgressChanged = instance.onDownloadProgressChanged
 	} else {
 		if restart {
 			instance.downloadTask.Reset()
 		}
 	}
-	instance.downloadTask.Start()
+
+	go instance.downloadTask.Start()
 }
 
 // callback when download task state changed
@@ -78,6 +81,13 @@ func (instance *Task) onDownloadStateChanged(task *downloader.Task) {
 		instance.setStatus(global.Downloaded)
 	case downloader.Error:
 		instance.onError(task.GetError(), "download error")
+	}
+}
+
+// callback when download task progress changed
+func (instance *Task) onDownloadProgressChanged(task *downloader.Task) {
+	if err := broadcast.PublishDownloadProgress(50, instance.Id); err != nil {
+		logger.GetInstance().Error().Err(err).Caller().Msg("publish download progress failed")
 	}
 }
 

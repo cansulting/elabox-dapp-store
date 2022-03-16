@@ -13,6 +13,7 @@ type PackageListingCache struct {
 	Icon  string `json:"icon"` // Package icon
 	Build int    `json:"build"`
 	// extra details
+	Version        string `json:"version"`
 	Description    string `json:"description"`
 	Updates        string `json:"updates"`
 	ProjectRepo    string `json:"projectRepo"`

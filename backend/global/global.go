@@ -19,5 +19,12 @@ var RPC *rpc.RPCHandler
 const INSTALLER_PROGRESS = "ela.installer.broadcast.PROGRESS"
 
 // store actions
+const DOWNLOAD_PROGRESS = "ela.store.broadcast.DOWNLOAD_PROGRESS"
 const RETRIEVE_PACKAGES = "ela.store.actions.RETRIEVE_PACKAGES"
 const RETRIEVE_PACKAGE = "ela.store.actions.RETRIEVE_PACKAGE"
+const INSTALL_PACKAGE = "ela.store.actions.INSTALL_PACKAGE"
+const UNINSTALL_PACKAGE = "ela.store.actions.UNINSTALL_PACKAGE"
+
+// endpoints
+const PACKAGES_ENDPOINT = STORE_HOST + "/api/v1/items"
+const DOWNLOAD_ENDPOINT = STORE_HOST + "/api/v1/dl"

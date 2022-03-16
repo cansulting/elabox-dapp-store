@@ -1,10 +1,14 @@
 package downloader
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"strconv"
+
+	"github.com/cansulting/elabox-system-tools/foundation/logger"
 )
 
 // struct that handles the download task
@@ -12,6 +16,8 @@ type Task struct {
 	id                string
 	url               string           // url to download
 	path              string           // path to save the file
+	downloaded        int64            // downloaded size
+	total             int64            // total size
 	progress          int16            // the current progress of download. 100 mean fully downloaded
 	status            Status           // the current status of download. 0 mean idle, 1 mean downloading, 2 mean paused, 3 mean stopped
 	errorCode         int16            // the error code of download. 0 mean no error, 1 mean network error, 2 mean file error
@@ -23,10 +29,11 @@ type Task struct {
 // contructor of download task
 func NewTask(id string, url string, path string) *Task {
 	return &Task{
-		id:     id,
-		url:    url,
-		path:   path,
-		status: 0,
+		id:                id,
+		url:               url,
+		path:              path,
+		status:            0,
+		OnProgressChanged: func(task *Task) {},
 	}
 }
 
@@ -54,13 +61,18 @@ func (task *Task) GetError() int16 {
 
 // function that starts the download task
 func (task *Task) Start() error {
+	if task.status == 1 {
+		logger.GetInstance().Warn().Msg(task.id + " is already downloading")
+		return nil
+	}
+
 	task.status = 1
 	task.errorCode = 0
 	err := task.Download(task.path, task.url)
 	if err != nil {
 		return err
 	}
-	fmt.Println("File Successfully Downloaded from", task.url)
+	logger.GetInstance().Debug().Msg("File Successfully Downloaded from " + task.url)
 	return nil
 }
 
@@ -74,6 +86,11 @@ func (task *Task) Download(path string, url string) (err error) {
 	}
 	defer resp.Body.Close()
 
+	task.total, err = strconv.ParseInt(resp.Header.Get("Content-Length"), 10, 64)
+	if err != nil || task.total == 0 {
+		return errors.New("failed to get content length")
+	}
+
 	// Create the file
 	out, err := os.Create(path)
 	if err != nil {
@@ -86,7 +103,7 @@ func (task *Task) Download(path string, url string) (err error) {
 		return fmt.Errorf("bad status: %s", resp.Status)
 	}
 	// Write the body to file
-	_, err = io.Copy(out, resp.Body)
+	_, err = io.Copy(out, io.TeeReader(resp.Body, task))
 	return err
 }
 
@@ -97,4 +114,14 @@ func (task *Task) Stop() {
 func (task *Task) Reset() {
 	task.Stop()
 	// clear cache file here
+}
+
+// callback when writing the download file
+func (task *Task) Write(p []byte) (n int, err error) {
+	l := len(p)
+	task.downloaded += int64(l)
+	task.progress = int16((float32(task.downloaded) / float32(task.total)) * 100)
+	println("progress:", task.progress)
+	task.OnProgressChanged(task)
+	return n, nil
 }

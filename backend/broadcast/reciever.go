@@ -4,14 +4,11 @@ package broadcast
 
 import (
 	"store/backend/global"
-	"store/backend/services/installer"
 
 	"github.com/cansulting/elabox-system-tools/foundation/event/data"
 	"github.com/cansulting/elabox-system-tools/foundation/event/protocol"
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
 )
-
-var lastInstallingPkg *installer.Task
 
 // register broadcast recievers
 func registerRecievers() error {
@@ -43,16 +40,6 @@ func onRecievedInstallerProgress(client protocol.ClientInterface, action data.Ac
 		logger.GetInstance().Error().Caller().Msg("failed to parse progress")
 		return ""
 	}
-	// step: check if the package is the same as the last installing package
-	if lastInstallingPkg == nil || currentPackage != lastInstallingPkg.Id {
-		task := installer.GetTask(currentPackage)
-		if task == nil {
-			logger.GetInstance().Error().Msg("installer task not found for " + currentPackage)
-			return ""
-		}
-		lastInstallingPkg = task
-	}
-	// step: update package progress
-	lastInstallingPkg.SetInstallProgress(int16(progress))
+	OnInstallerProgress(currentPackage, progress)
 	return ""
 }
