@@ -1,3 +1,5 @@
+// callback when recieved broadcast actions
+
 package broadcast
 
 import (

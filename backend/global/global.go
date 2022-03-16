@@ -17,3 +17,7 @@ var RPC *rpc.RPCHandler
 
 // installer actions
 const INSTALLER_PROGRESS = "ela.installer.broadcast.PROGRESS"
+
+// store actions
+const RETRIEVE_PACKAGES = "ela.store.actions.RETRIEVE_PACKAGES"
+const RETRIEVE_PACKAGE = "ela.store.actions.RETRIEVE_PACKAGE"
