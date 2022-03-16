@@ -1,0 +1,79 @@
+{
+  "name": "store-test",
+  "version": "0.0.0",
+  "description": "Search and install dApps.",
+  "keywords": [
+    "react"
+  ],
+  "author": "Jhoemar Pagap <jhoemar.pagao@gmail.com>",
+  "homepage": "https://elabox.com",
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "start2": "react-scripts start",
+    "build": "webpack",
+    "type-check": "tsc --noEmit",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "bugs": {
+    "url": "https://github.com/rajjeet/react-playbook/issues"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "assert": "^2.0.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "5.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-interactions": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/builder-webpack5": "^6.4.19",
+    "@storybook/manager-webpack5": "^6.4.19",
+    "@storybook/node-logger": "^6.4.19",
+    "@storybook/preset-create-react-app": "^4.0.1",
+    "@storybook/react": "^6.4.19",
+    "@storybook/testing-library": "^0.0.9",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "~8.2.0",
+    "typescript": "^4.5.5",
+    "webpack": "5",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "resolutions": {
+    "webpack": "5"
+  }
+}
