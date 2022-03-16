@@ -72,6 +72,7 @@ func RetrieveItems() error {
 	}
 
 	// step: read response
+	defer res.Body.Close()
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil || res.StatusCode != http.StatusOK {
 		if err == nil {
@@ -106,6 +107,7 @@ func RetrieveDownloadLink(pkgId string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	defer req.Body.Close()
 
 	if req.Response.StatusCode != http.StatusOK {
 		return "", errors.New("unable to retrieve download link for package " + pkgId)
