@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Icon from 'react-feather'
 import { Progress } from 'reactstrap'
+import { ProgressColor } from '../utils/colors'
 export interface AppIconProps {
     className?: string
     label: string
@@ -10,17 +11,15 @@ export interface AppIconProps {
     percent?: number
     iconOnly?: boolean
     isInstallable?: boolean
-    processStatus?: 'error' | 'completed' | 'downloading' | 'installing'
+    processStatus?:
+        | 'error'
+        | 'completed'
+        | 'downloading'
+        | 'installing'
+        | 'syncing'
 }
 export const AppIcon = (props: AppIconProps): JSX.Element => {
-    let progressColor = 'primary'
-    if (props.processStatus === 'error') {
-        progressColor = 'danger'
-    } else if (props.processStatus === 'installing') {
-        progressColor = 'info'
-    } else if (props.processStatus === 'completed') {
-        progressColor = 'success'
-    }
+    const progressColor = ProgressColor(props.processStatus)
     return (
         <div
             className={props.className}
@@ -57,7 +56,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     />
                 )}
             </div>
-            {props.processStatus?.length > 0 && (
+            {!props.iconOnly && props.processStatus?.length > 0 && (
                 <Progress
                     value={props.percent}
                     color={progressColor}

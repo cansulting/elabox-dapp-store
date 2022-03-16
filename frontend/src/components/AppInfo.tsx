@@ -1,18 +1,25 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Progress } from 'reactstrap'
 import { AppIcon, AppIconProps } from './AppIcon'
 import { AppButton } from './AppButton'
 import { AppLineGraph } from './AppLineGraph'
+import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
 interface Info {
     id: number
     label: string
     iconImg: string
     description: string
     isInstallable: boolean
+    isUpdatable: boolean
     percent?: 0
     stats?: [any]
     footer?: object
-    processStatus?: 'error' | 'completed' | 'downloading' | 'installing'
+    processStatus?:
+        | 'error'
+        | 'completed'
+        | 'downloading'
+        | 'installing'
+        | 'syncing'
 }
 export interface AppInfoProps {
     info: Info
@@ -21,6 +28,7 @@ export interface AppInfoProps {
     onUninstall: Function
 }
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
+    const progressColor = ProgressColor(props.info.processStatus)
     const AppIconDetails: AppIconProps = {
         label: props.info.label,
         iconOnly: true,
@@ -40,12 +48,41 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                 >
                     <AppIcon {...AppIconDetails} />
                 </Col>
-                <Col xs="12" lg="10" className="text-center text-lg-start mt-4">
+                <Col
+                    className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3"
+                    style={{ gap: 5 }}
+                    xs="12"
+                    lg="10"
+                >
                     <h4>{props.info.label}</h4>
                     {props.info.isInstallable && (
-                        <AppButton color="primary" size="sm">
+                        <AppButton color="primary" size="sm" outline>
                             Install
                         </AppButton>
+                    )}
+                    {props.info.processStatus?.length > 0 && (
+                        <div style={{ width: '100%' }}>
+                            {props.info.processStatus === 'syncing' && (
+                                <p>
+                                    {UppercaseFirstLetter(
+                                        props.info.processStatus
+                                    )}
+                                </p>
+                            )}
+                            <Progress
+                                style={{ width: '30%' }}
+                                value={props.info.percent}
+                                color={progressColor}
+                                animated={
+                                    props.info.processStatus ===
+                                        'downloading' ||
+                                    props.info.processStatus === 'syncing' ||
+                                    props.info.processStatus === 'installing'
+                                        ? true
+                                        : false
+                                }
+                            />
+                        </div>
                     )}
                 </Col>
             </Row>
