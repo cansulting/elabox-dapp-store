@@ -18,37 +18,43 @@ Primary.args = {
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
     ],
@@ -63,19 +69,22 @@ DownloadableApp.args = {
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
             isInstallable: true,
         },
@@ -90,19 +99,22 @@ DownloadingApp.args = {
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
             processStatus: 'downloading',
             percent: 50,
@@ -118,19 +130,22 @@ ErrorDownloadingApp.args = {
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
             processStatus: 'error',
             percent: 70,
@@ -146,19 +161,22 @@ CompleteDownloadingApp.args = {
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
         },
         {
             height: '100%',
             width: '100%',
-            iconImg: 'images/glide.png',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
             label: 'Glide',
             processStatus: 'completed',
             percent: 100,

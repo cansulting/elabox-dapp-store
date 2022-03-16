@@ -33,16 +33,13 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
             <div
                 style={{
                     position: 'relative',
-                    border: '3px solid black',
-                    borderRadius: '20px',
-                    padding: '20px',
-                    marginBottom: '10px',
+                    marginBottom: 10,
                 }}
             >
                 <img
                     src={props.iconImg}
                     alt={props.label}
-                    style={{ width: '100%', height: '100%' }}
+                    style={{ width: '100%', height: '100%', borderRadius: 10 }}
                 />
                 {props.isInstallable && (
                     <Icon.Download
@@ -50,6 +47,8 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                             position: 'absolute',
                             bottom: 10,
                             right: 10,
+                            background: 'lightgrey',
+                            padding: 5,
                             cursor: 'pointer',
                         }}
                         color="blue"
