@@ -405,6 +405,7 @@ exports[`Storyshots Elabox/components/AppDashboard Downloadable App 1`] = `
             style={
               Object {
                 "background": "lightgrey",
+                "borderRadius": "50%",
                 "bottom": 10,
                 "cursor": "pointer",
                 "padding": 5,
@@ -999,6 +1000,7 @@ exports[`Storyshots Elabox/components/AppIcon Downloadable 1`] = `
       style={
         Object {
           "background": "lightgrey",
+          "borderRadius": "50%",
           "bottom": 10,
           "cursor": "pointer",
           "padding": 5,
