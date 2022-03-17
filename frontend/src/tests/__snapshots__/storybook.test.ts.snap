@@ -1370,6 +1370,9 @@ exports[`Storyshots Elabox/components/AppInfo Downloading 1`] = `
           }
         }
       >
+        <p>
+          Downloading
+        </p>
         <div
           className="progress"
           style={
@@ -1554,6 +1557,9 @@ exports[`Storyshots Elabox/components/AppInfo Installation Error 1`] = `
           }
         }
       >
+        <p>
+          Error
+        </p>
         <div
           className="progress"
           style={
@@ -1657,6 +1663,9 @@ exports[`Storyshots Elabox/components/AppInfo Installation Success 1`] = `
           }
         }
       >
+        <p>
+          Completed
+        </p>
         <div
           className="progress"
           style={
@@ -1760,6 +1769,9 @@ exports[`Storyshots Elabox/components/AppInfo Installing 1`] = `
           }
         }
       >
+        <p>
+          Installing
+        </p>
         <div
           className="progress"
           style={
