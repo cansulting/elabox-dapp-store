@@ -46,6 +46,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                             position: 'absolute',
                             bottom: 10,
                             right: 10,
+                            borderRadius: "50%",
                             background: 'lightgrey',
                             padding: 5,
                             cursor: 'pointer',
