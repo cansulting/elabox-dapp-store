@@ -62,13 +62,11 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     )}
                     {props.info.processStatus?.length > 0 && (
                         <div style={{ width: '100%' }}>
-                            {props.info.processStatus === 'syncing' && (
-                                <p>
-                                    {UppercaseFirstLetter(
-                                        props.info.processStatus
-                                    )}
-                                </p>
-                            )}
+                            <p>
+                                {UppercaseFirstLetter(
+                                    props.info.processStatus
+                                )}
+                            </p>
                             <Progress
                                 style={{ width: '30%' }}
                                 value={props.info.percent}
