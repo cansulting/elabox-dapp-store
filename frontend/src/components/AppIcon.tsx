@@ -11,6 +11,7 @@ export interface AppIconProps {
     percent?: number
     iconOnly?: boolean
     isInstallable?: boolean
+    notification?: number
     processStatus?:
         | 'error'
         | 'completed'
@@ -40,18 +41,36 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     alt={props.label}
                     style={{ width: '100%', height: '100%', borderRadius: 10 }}
                 />
+                {props.notification > 0 && (
+                    <Icon.Bell
+                        style={{
+                            position: 'absolute',
+                            top: 10,
+                            right: 10,
+                            border: '1px solid lightgrey',
+                            borderRadius: '50%',
+                            background: 'red',
+                            padding: 5,
+                            cursor: 'pointer',
+                        }}
+                        color="white"
+                        height={20}
+                        width={20}
+                    />
+                )}
                 {props.isInstallable && (
                     <Icon.Download
                         style={{
                             position: 'absolute',
                             bottom: 10,
                             right: 10,
-                            borderRadius: "50%",
-                            background: 'lightgrey',
+                            border: '1px solid lightgrey',
+                            borderRadius: '50%',
+                            background: 'blue',
                             padding: 5,
                             cursor: 'pointer',
                         }}
-                        color="blue"
+                        color="white"
                         height={20}
                         width={20}
                     />

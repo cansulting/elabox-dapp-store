@@ -11,7 +11,8 @@ const Template = (props: AppIconProps): JSX.Element => <AppIcon {...props} />
 export const WithLabel = Template.bind({})
 WithLabel.args = {
     label: 'Glide',
-    iconImg: 'images/glide.png',
+    iconImg:
+        'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
     width: '200px',
     height: '200px',
     percent: 0,
@@ -34,6 +35,11 @@ Downloading.args = {
     ...WithLabel.args,
     percent: 50,
     processStatus: 'downloading',
+}
+export const Notification = Template.bind({})
+Notification.args = {
+    ...WithLabel.args,
+    notification: 10,
 }
 export const Installing = Template.bind({})
 Installing.args = {

@@ -63,9 +63,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     {props.info.processStatus?.length > 0 && (
                         <div style={{ width: '100%' }}>
                             <p>
-                                {UppercaseFirstLetter(
-                                    props.info.processStatus
-                                )}
+                                {UppercaseFirstLetter(props.info.processStatus)}
                             </p>
                             <Progress
                                 style={{ width: '30%' }}
