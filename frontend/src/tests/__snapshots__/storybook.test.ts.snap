@@ -398,13 +398,14 @@ exports[`Storyshots Elabox/components/AppDashboard Downloadable App 1`] = `
           <svg
             fill="none"
             height={20}
-            stroke="blue"
+            stroke="white"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
             style={
               Object {
-                "background": "lightgrey",
+                "background": "blue",
+                "border": "1px solid lightgrey",
                 "borderRadius": "50%",
                 "bottom": 10,
                 "cursor": "pointer",
@@ -981,7 +982,7 @@ exports[`Storyshots Elabox/components/AppIcon Downloadable 1`] = `
   >
     <img
       alt="Glide"
-      src="images/glide.png"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
       style={
         Object {
           "borderRadius": 10,
@@ -993,13 +994,14 @@ exports[`Storyshots Elabox/components/AppIcon Downloadable 1`] = `
     <svg
       fill="none"
       height={20}
-      stroke="blue"
+      stroke="white"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="2"
       style={
         Object {
-          "background": "lightgrey",
+          "background": "blue",
+          "border": "1px solid lightgrey",
           "borderRadius": "50%",
           "bottom": 10,
           "cursor": "pointer",
@@ -1053,7 +1055,7 @@ exports[`Storyshots Elabox/components/AppIcon Downloading 1`] = `
   >
     <img
       alt="Glide"
-      src="images/glide.png"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
       style={
         Object {
           "borderRadius": 10,
@@ -1104,7 +1106,7 @@ exports[`Storyshots Elabox/components/AppIcon Installing 1`] = `
   >
     <img
       alt="Glide"
-      src="images/glide.png"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
       style={
         Object {
           "borderRadius": 10,
@@ -1134,6 +1136,73 @@ exports[`Storyshots Elabox/components/AppIcon Installing 1`] = `
 </div>
 `;
 
+exports[`Storyshots Elabox/components/AppIcon Notification 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+    <svg
+      fill="none"
+      height={20}
+      stroke="white"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      style={
+        Object {
+          "background": "red",
+          "border": "1px solid lightgrey",
+          "borderRadius": "50%",
+          "cursor": "pointer",
+          "padding": 5,
+          "position": "absolute",
+          "right": 10,
+          "top": 10,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={20}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+      />
+      <path
+        d="M13.73 21a2 2 0 0 1-3.46 0"
+      />
+    </svg>
+  </div>
+  <h4>
+    Glide
+  </h4>
+</div>
+`;
+
 exports[`Storyshots Elabox/components/AppIcon Process Error 1`] = `
 <div
   className=""
@@ -1155,7 +1224,7 @@ exports[`Storyshots Elabox/components/AppIcon Process Error 1`] = `
   >
     <img
       alt="Glide"
-      src="images/glide.png"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
       style={
         Object {
           "borderRadius": 10,
@@ -1206,7 +1275,7 @@ exports[`Storyshots Elabox/components/AppIcon Process Success 1`] = `
   >
     <img
       alt="Glide"
-      src="images/glide.png"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
       style={
         Object {
           "borderRadius": 10,
@@ -1257,7 +1326,7 @@ exports[`Storyshots Elabox/components/AppIcon With Label 1`] = `
   >
     <img
       alt="Glide"
-      src="images/glide.png"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
       style={
         Object {
           "borderRadius": 10,
@@ -1294,7 +1363,7 @@ exports[`Storyshots Elabox/components/AppIcon Without Label 1`] = `
   >
     <img
       alt="Glide"
-      src="images/glide.png"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
       style={
         Object {
           "borderRadius": 10,
