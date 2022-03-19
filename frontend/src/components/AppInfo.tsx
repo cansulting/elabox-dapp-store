@@ -9,8 +9,9 @@ interface Info {
     label: string
     iconImg: string
     description: string
-    isInstallable: boolean
-    isUpdatable: boolean
+    isInstallable?: boolean
+    isUpdatable?: boolean
+    isLaunchable?: boolean
     percent?: 0
     stats?: [any]
     footer?: object
@@ -55,6 +56,24 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     lg="10"
                 >
                     <h4>{props.info.label}</h4>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            gap: 5,
+                        }}
+                    >
+                        {props.info.isUpdatable && (
+                            <AppButton color="primary" size="sm" outline>
+                                Update
+                            </AppButton>
+                        )}
+                        {props.info.isLaunchable && (
+                            <AppButton color="primary" size="sm">
+                                Launch
+                            </AppButton>
+                        )}
+                    </div>
                     {props.info.isInstallable && (
                         <AppButton color="primary" size="sm" outline>
                             Install
