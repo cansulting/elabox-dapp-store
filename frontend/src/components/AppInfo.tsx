@@ -1,9 +1,16 @@
 import React from 'react'
 import * as Icon from 'react-feather'
-import { Container, Row, Col, Progress } from 'reactstrap'
+import {
+    Container,
+    Row,
+    Col,
+    Progress,
+    UncontrolledPopover,
+    PopoverBody,
+} from 'reactstrap'
 import { AppIcon, AppIconProps } from './AppIcon'
 import { AppButton } from './AppButton'
-import { AppInfoSetting } from './AppInfoSetting'
+import { AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
 import { AppLineGraph } from './AppLineGraph'
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
 interface Info {
@@ -13,22 +20,44 @@ interface Info {
     isInstallable?: boolean
     isUpdatable?: boolean
     isLaunchable?: boolean
+    isService: boolean
     percent?: 0
     stats?: [any]
     body: JSX.Element
-    footer?: object
+    footer?: JSX.Element
     processStatus?:
         | 'error'
         | 'completed'
         | 'downloading'
         | 'installing'
+        | 'uninstalling'
         | 'syncing'
 }
 export interface AppInfoProps {
     info: Info
     style: object
-    onInstall: Function
-    onUninstall: Function
+    onInstall: () => void
+    onUninstall: () => void
+    onUpdate: () => void
+    onLaunch: () => void
+    onResync: () => void
+    onDisable: () => void
+    onRestart: () => void
+    onBack: () => void
+}
+const SettingPopover = (props: AppInfoSettingProps) => {
+    return (
+        <UncontrolledPopover
+            placement="bottom"
+            target="settingPopover"
+            trigger="legacy"
+            offset="0, 10"
+        >
+            <PopoverBody>
+                <AppInfoSetting {...props} />
+            </PopoverBody>
+        </UncontrolledPopover>
+    )
 }
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const progressColor = ProgressColor(props.info.processStatus)
@@ -48,10 +77,28 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
+                    paddingBottom: 5,
                 }}
             >
-                <h3>APPS</h3>
-                <Icon.Settings />
+                <h3 style={{ cursor: 'pointer' }} onClick={props.onBack}>
+                    <Icon.ArrowLeftCircle style={{ marginRight: 5 }} />
+                    Apps
+                </h3>
+                <AppButton
+                    id="settingPopover"
+                    color="primary"
+                    size="sm"
+                    outline
+                >
+                    <Icon.Settings />
+                </AppButton>
+                <SettingPopover
+                    isService={props.info.isService}
+                    onUnInstall={props.onUninstall}
+                    onResync={props.onResync}
+                    onRestart={props.onRestart}
+                    onDisable={props.onDisable}
+                />
             </div>
             <Row lg="2">
                 <Col
@@ -76,12 +123,21 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         }}
                     >
                         {props.info.isUpdatable && (
-                            <AppButton color="primary" size="sm" outline>
+                            <AppButton
+                                color="primary"
+                                size="sm"
+                                outline
+                                onClick={props.onUpdate}
+                            >
                                 Update
                             </AppButton>
                         )}
                         {props.info.isLaunchable && (
-                            <AppButton color="primary" size="sm">
+                            <AppButton
+                                color="primary"
+                                size="sm"
+                                onClick={props.onLaunch}
+                            >
                                 Launch
                             </AppButton>
                         )}
@@ -104,6 +160,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                     props.info.processStatus ===
                                         'downloading' ||
                                     props.info.processStatus === 'syncing' ||
+                                    props.info.processStatus ===
+                                        'uninstalling' ||
                                     props.info.processStatus === 'installing'
                                         ? true
                                         : false

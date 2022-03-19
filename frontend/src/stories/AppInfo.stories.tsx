@@ -71,6 +71,16 @@ Installing.args = {
         processStatus: 'installing',
     },
 }
+export const UnInstalling = Template.bind({})
+
+UnInstalling.args = {
+    ...Primary.args,
+    info: {
+        ...Primary.args.info,
+        percent: 90,
+        processStatus: 'uninstalling',
+    },
+}
 
 export const Updatable = Template.bind({})
 
@@ -159,5 +169,6 @@ WithStats.args = {
             </>
         ),
         stats: Labels.map(() => Math.random()),
+        isService: true,
     },
 }

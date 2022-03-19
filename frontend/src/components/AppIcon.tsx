@@ -17,6 +17,7 @@ export interface AppIconProps {
         | 'completed'
         | 'downloading'
         | 'installing'
+        | 'uninstalling'
         | 'syncing'
 }
 export const AppIcon = (props: AppIconProps): JSX.Element => {
@@ -82,6 +83,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     color={progressColor}
                     animated={
                         props.processStatus === 'downloading' ||
+                        props.processStatus === 'uninstalling' ||
                         props.processStatus === 'installing'
                             ? true
                             : false

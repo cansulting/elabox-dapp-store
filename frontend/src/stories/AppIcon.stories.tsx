@@ -47,6 +47,12 @@ Installing.args = {
     percent: 50,
     processStatus: 'installing',
 }
+export const Uninstalling = Template.bind({})
+Uninstalling.args = {
+    ...WithLabel.args,
+    percent: 50,
+    processStatus: 'uninstalling',
+}
 export const ProcessError = Template.bind({})
 ProcessError.args = {
     ...WithLabel.args,

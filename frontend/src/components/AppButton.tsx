@@ -3,7 +3,8 @@ import React from 'react'
 import { Button, Spinner } from 'reactstrap'
 
 export interface AppButtonProps {
-    children: string
+    id?: string
+    children: string | JSX.Element
     color:
         | 'primary'
         | 'secondary'
@@ -23,29 +24,42 @@ export interface AppButtonProps {
     onClick?: Function
 }
 export const AppButton = (props: AppButtonProps): JSX.Element => {
-    if (props.isProcessing) {
+    if (props.id?.length > 0) {
         return (
             <Button
-                {...props}
-                onClick={(e) => {
-                    e.preventDefault()
-                    props.onClick()
-                }}
-            >
-                <Spinner children="" />
-            </Button>
-        )
-    } else {
-        return (
-            <Button
-                {...props}
-                onClick={(e) => {
-                    e.preventDefault()
-                    props.onClick()
-                }}
+                id={props.id}
+                color={props.color}
+                size={props.size}
+                type="button"
             >
                 {props.children}
             </Button>
         )
+    } else {
+        if (props.isProcessing) {
+            return (
+                <Button
+                    {...props}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        props.onClick()
+                    }}
+                >
+                    <Spinner children="" />
+                </Button>
+            )
+        } else {
+            return (
+                <Button
+                    {...props}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        props.onClick()
+                    }}
+                >
+                    {props.children}
+                </Button>
+            )
+        }
     }
 }

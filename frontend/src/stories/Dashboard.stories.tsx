@@ -121,6 +121,66 @@ DownloadingApp.args = {
         },
     ],
 }
+export const InstallingApp = Template.bind({})
+
+InstallingApp.args = {
+    ...Primary.args,
+    apps: [
+        {
+            height: '100%',
+            width: '100%',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            label: 'Glide',
+        },
+        {
+            height: '100%',
+            width: '100%',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            label: 'Glide',
+        },
+        {
+            height: '100%',
+            width: '100%',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            label: 'Glide',
+            processStatus: 'installing',
+            percent: 50,
+        },
+    ],
+}
+export const UninstallingApp = Template.bind({})
+
+UninstallingApp.args = {
+    ...Primary.args,
+    apps: [
+        {
+            height: '100%',
+            width: '100%',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            label: 'Glide',
+        },
+        {
+            height: '100%',
+            width: '100%',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            label: 'Glide',
+        },
+        {
+            height: '100%',
+            width: '100%',
+            iconImg:
+                'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            label: 'Glide',
+            processStatus: 'uninstalling',
+            percent: 50,
+        },
+    ],
+}
 
 export const ErrorDownloadingApp = Template.bind({})
 

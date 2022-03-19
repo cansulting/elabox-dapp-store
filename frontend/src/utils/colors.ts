@@ -2,7 +2,10 @@ export const ProgressColor = (processStatus: string): string => {
     let progressColor = 'primary'
     if (processStatus === 'error') {
         progressColor = 'danger'
-    } else if (processStatus === 'installing') {
+    } else if (
+        processStatus === 'installing' ||
+        processStatus === 'uninstalling'
+    ) {
         progressColor = 'info'
     } else if (processStatus === 'completed') {
         progressColor = 'success'

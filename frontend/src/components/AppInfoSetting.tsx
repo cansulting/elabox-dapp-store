@@ -18,18 +18,9 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                 gap: 5,
             }}
         >
-            <p
-                style={{ color: 'red', cursor: 'pointer' }}
-                onClick={(e) => {
-                    e.preventDefault()
-                    props.onUnInstall()
-                }}
-            >
-                Uninstall
-            </p>
-            {props.isService && (
+            {props.isService ? (
                 <>
-                    <p
+                    <span
                         style={{ color: 'red', cursor: 'pointer' }}
                         onClick={(e) => {
                             e.preventDefault()
@@ -37,8 +28,8 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                         }}
                     >
                         Resync
-                    </p>
-                    <p
+                    </span>
+                    <span
                         style={{ cursor: 'pointer' }}
                         onClick={(e) => {
                             e.preventDefault()
@@ -46,8 +37,8 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                         }}
                     >
                         Restart
-                    </p>
-                    <p
+                    </span>
+                    <span
                         style={{ cursor: 'pointer' }}
                         onClick={(e) => {
                             e.preventDefault()
@@ -55,8 +46,18 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                         }}
                     >
                         Disable
-                    </p>
+                    </span>
                 </>
+            ) : (
+                <span
+                    style={{ color: 'red', cursor: 'pointer' }}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        props.onUnInstall()
+                    }}
+                >
+                    Uninstall
+                </span>
             )}
         </div>
     )
