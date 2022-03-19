@@ -89,24 +89,29 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     <Icon.ArrowLeftCircle style={{ marginRight: 5 }} />
                     Apps
                 </h3>
-                <p
-                    style={{ cursor: 'pointer' }}
-                    className="text-primary"
-                    id="settingPopover"
-                    ref={settingPopoverRef}
-                >
-                    <Icon.Settings />
-                </p>
-                <SettingPopover
-                    popOverRef={settingPopoverRef}
-                    setting={{
-                        isService: props.info.isService,
-                        onUnInstall: props.onUninstall,
-                        onResync: props.onResync,
-                        onDisable: props.onDisable,
-                        onRestart: props.onRestart,
-                    }}
-                />
+                {!props.info.isInstallable &&
+                    !props.info.hasOwnProperty('processStatus') && (
+                        <>
+                            <p
+                                style={{ cursor: 'pointer' }}
+                                className="text-primary"
+                                id="settingPopover"
+                                ref={settingPopoverRef}
+                            >
+                                <Icon.Settings />
+                            </p>
+                            <SettingPopover
+                                popOverRef={settingPopoverRef}
+                                setting={{
+                                    isService: props.info.isService,
+                                    onUnInstall: props.onUninstall,
+                                    onResync: props.onResync,
+                                    onDisable: props.onDisable,
+                                    onRestart: props.onRestart,
+                                }}
+                            />
+                        </>
+                    )}
             </div>
             <Row lg="2">
                 <Col

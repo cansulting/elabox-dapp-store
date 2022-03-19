@@ -1,10 +1,10 @@
 import React from 'react'
 export interface AppInfoSettingProps {
     isService: boolean
-    onUnInstall: Function
-    onResync: Function
-    onDisable: Function
-    onRestart: Function
+    onUnInstall?: Function
+    onResync?: Function
+    onDisable?: Function
+    onRestart?: Function
 }
 
 export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {

@@ -25,43 +25,29 @@ export interface AppButtonProps {
     onClick?: Function
 }
 export const AppButton = (props: AppButtonProps): JSX.Element => {
-    if (props.id?.length > 0) {
+    if (props.isProcessing) {
         return (
             <Button
-                ref={props.ref}
-                id={props.id}
-                color={props.color}
-                size={props.size}
-                type="button"
+                {...props}
+                onClick={(e) => {
+                    e.preventDefault()
+                    props.onClick()
+                }}
+            >
+                <Spinner children="" />
+            </Button>
+        )
+    } else {
+        return (
+            <Button
+                {...props}
+                onClick={(e) => {
+                    e.preventDefault()
+                    props.onClick()
+                }}
             >
                 {props.children}
             </Button>
         )
-    } else {
-        if (props.isProcessing) {
-            return (
-                <Button
-                    {...props}
-                    onClick={(e) => {
-                        e.preventDefault()
-                        props.onClick()
-                    }}
-                >
-                    <Spinner children="" />
-                </Button>
-            )
-        } else {
-            return (
-                <Button
-                    {...props}
-                    onClick={(e) => {
-                        e.preventDefault()
-                        props.onClick()
-                    }}
-                >
-                    {props.children}
-                </Button>
-            )
-        }
     }
 }
