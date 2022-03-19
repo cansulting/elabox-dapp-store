@@ -8,12 +8,12 @@ interface Info {
     id: number
     label: string
     iconImg: string
-    description: string
     isInstallable?: boolean
     isUpdatable?: boolean
     isLaunchable?: boolean
     percent?: 0
     stats?: [any]
+    body: JSX.Element
     footer?: object
     processStatus?:
         | 'error'
@@ -102,16 +102,21 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                 </Col>
             </Row>
             <Row className="mt-4">
-                <Col>
-                    <p>{props.info.description}</p>
-                </Col>
+                <Col>{props.info.body}</Col>
             </Row>
             {props.info.stats?.length > 0 && (
-                <Row className="mt-4">
-                    <Col>
-                        <AppLineGraph stats={props.info.stats} />
-                    </Col>
-                </Row>
+                <>
+                    <Row className="mt-4">
+                        <Col>
+                            <AppLineGraph stats={props.info.stats} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Col>{props.info.footer}</Col>
+                        </Col>
+                    </Row>
+                </>
             )}
         </Container>
     )
