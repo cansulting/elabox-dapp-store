@@ -1819,7 +1819,7 @@ exports[`Storyshots Elabox/components/AppInfo Downloading 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -1839,6 +1839,7 @@ exports[`Storyshots Elabox/components/AppInfo Downloading 1`] = `
         }
       />
       <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
         style={
           Object {
             "width": "100%",
@@ -1985,7 +1986,7 @@ exports[`Storyshots Elabox/components/AppInfo Installable 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -2127,7 +2128,7 @@ exports[`Storyshots Elabox/components/AppInfo Installation Error 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -2147,6 +2148,7 @@ exports[`Storyshots Elabox/components/AppInfo Installation Error 1`] = `
         }
       />
       <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
         style={
           Object {
             "width": "100%",
@@ -2293,7 +2295,7 @@ exports[`Storyshots Elabox/components/AppInfo Installation Success 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -2313,6 +2315,7 @@ exports[`Storyshots Elabox/components/AppInfo Installation Success 1`] = `
         }
       />
       <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
         style={
           Object {
             "width": "100%",
@@ -2459,7 +2462,7 @@ exports[`Storyshots Elabox/components/AppInfo Installing 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -2479,6 +2482,7 @@ exports[`Storyshots Elabox/components/AppInfo Installing 1`] = `
         }
       />
       <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
         style={
           Object {
             "width": "100%",
@@ -2655,7 +2659,7 @@ exports[`Storyshots Elabox/components/AppInfo Launchable 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -2836,7 +2840,7 @@ exports[`Storyshots Elabox/components/AppInfo Primary 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -2970,7 +2974,7 @@ exports[`Storyshots Elabox/components/AppInfo Syncing 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -2990,6 +2994,7 @@ exports[`Storyshots Elabox/components/AppInfo Syncing 1`] = `
         }
       />
       <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
         style={
           Object {
             "width": "100%",
@@ -3136,7 +3141,7 @@ exports[`Storyshots Elabox/components/AppInfo Un Installing 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -3156,6 +3161,7 @@ exports[`Storyshots Elabox/components/AppInfo Un Installing 1`] = `
         }
       />
       <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
         style={
           Object {
             "width": "100%",
@@ -3332,7 +3338,7 @@ exports[`Storyshots Elabox/components/AppInfo Updatable 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
@@ -3516,7 +3522,7 @@ exports[`Storyshots Elabox/components/AppInfo With Stats 1`] = `
       </div>
     </div>
     <div
-      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
       style={
         Object {
           "gap": 5,
