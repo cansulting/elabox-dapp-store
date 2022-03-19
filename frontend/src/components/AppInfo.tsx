@@ -122,7 +122,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     <AppIcon {...AppIconDetails} />
                 </Col>
                 <Col
-                    className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3"
+                    className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3"
                     style={{ gap: 5 }}
                     xs="12"
                     lg="10"
@@ -161,7 +161,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         </AppButton>
                     )}
                     {props.info.processStatus?.length > 0 && (
-                        <div style={{ width: '100%' }}>
+                        <div
+                            className="d-flex flex-column align-items-center align-items-lg-start"
+                            style={{
+                                width: '100%',
+                            }}
+                        >
                             <p>
                                 {UppercaseFirstLetter(props.info.processStatus)}
                             </p>
