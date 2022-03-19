@@ -20,15 +20,32 @@ export interface AppButtonProps {
     close?: boolean
     disabled?: boolean
     isProcessing?: boolean
+    onClick?: Function
 }
 export const AppButton = (props: AppButtonProps): JSX.Element => {
     if (props.isProcessing) {
         return (
-            <Button {...props}>
+            <Button
+                {...props}
+                onClick={(e) => {
+                    e.preventDefault()
+                    props.onClick()
+                }}
+            >
                 <Spinner children="" />
             </Button>
         )
     } else {
-        return <Button {...props}>{props.children}</Button>
+        return (
+            <Button
+                {...props}
+                onClick={(e) => {
+                    e.preventDefault()
+                    props.onClick()
+                }}
+            >
+                {props.children}
+            </Button>
+        )
     }
 }

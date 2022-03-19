@@ -1,7 +1,9 @@
 import React from 'react'
+import * as Icon from 'react-feather'
 import { Container, Row, Col, Progress } from 'reactstrap'
 import { AppIcon, AppIconProps } from './AppIcon'
 import { AppButton } from './AppButton'
+import { AppInfoSetting } from './AppInfoSetting'
 import { AppLineGraph } from './AppLineGraph'
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
 interface Info {
@@ -41,6 +43,16 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     }
     return (
         <Container style={props.style} fluid="md">
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                }}
+            >
+                <h3>APPS</h3>
+                <Icon.Settings />
+            </div>
             <Row lg="2">
                 <Col
                     className="text-center text-lg-start d-flex flex-column align-items-center"
