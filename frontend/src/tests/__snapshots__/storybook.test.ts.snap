@@ -7,6 +7,7 @@ exports[`Storyshots Elabox/components/AppButton Active 1`] = `
   disabled={false}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Primary
 </button>
@@ -19,6 +20,7 @@ exports[`Storyshots Elabox/components/AppButton Block 1`] = `
   disabled={false}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Block
 </button>
@@ -31,6 +33,7 @@ exports[`Storyshots Elabox/components/AppButton Close 1`] = `
   disabled={false}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Primary
 </button>
@@ -43,6 +46,7 @@ exports[`Storyshots Elabox/components/AppButton Danger 1`] = `
   disabled={false}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Danger
 </button>
@@ -55,6 +59,7 @@ exports[`Storyshots Elabox/components/AppButton Disabled 1`] = `
   disabled={true}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Disabled
 </button>
@@ -67,6 +72,7 @@ exports[`Storyshots Elabox/components/AppButton Info 1`] = `
   disabled={false}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Info
 </button>
@@ -79,6 +85,7 @@ exports[`Storyshots Elabox/components/AppButton Outline 1`] = `
   disabled={false}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Primary
 </button>
@@ -91,6 +98,7 @@ exports[`Storyshots Elabox/components/AppButton Primary 1`] = `
   disabled={false}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Primary
 </button>
@@ -103,6 +111,7 @@ exports[`Storyshots Elabox/components/AppButton Processing 1`] = `
   disabled={true}
   isProcessing={true}
   onClick={[Function]}
+  type="button"
 >
   <div
     className="spinner-border"
@@ -120,6 +129,7 @@ exports[`Storyshots Elabox/components/AppButton Secondary 1`] = `
   disabled={false}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Secondary
 </button>
@@ -132,6 +142,7 @@ exports[`Storyshots Elabox/components/AppButton Success 1`] = `
   disabled={false}
   isProcessing={false}
   onClick={[Function]}
+  type="button"
 >
   Success
 </button>
@@ -723,6 +734,147 @@ exports[`Storyshots Elabox/components/AppDashboard Error Downloading App 1`] = `
 </div>
 `;
 
+exports[`Storyshots Elabox/components/AppDashboard Installing App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={50}
+            className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "50%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Elabox/components/AppDashboard Primary 1`] = `
 <div
   className="container-md"
@@ -955,6 +1107,147 @@ exports[`Storyshots Elabox/components/AppDashboard Primary 1`] = `
         <h4>
           Glide
         </h4>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Uninstalling App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={50}
+            className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "50%",
+              }
+            }
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1305,6 +1598,57 @@ exports[`Storyshots Elabox/components/AppIcon Process Success 1`] = `
 </div>
 `;
 
+exports[`Storyshots Elabox/components/AppIcon Uninstalling 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={50}
+      className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+      role="progressbar"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Elabox/components/AppIcon With Label 1`] = `
 <div
   className=""
@@ -1386,6 +1730,87 @@ exports[`Storyshots Elabox/components/AppInfo Downloading 1`] = `
     }
   }
 >
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
   <div
     className="row row-cols-lg-2"
   >
@@ -1502,6 +1927,87 @@ exports[`Storyshots Elabox/components/AppInfo Installable 1`] = `
   }
 >
   <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
+  <div
     className="row row-cols-lg-2"
   >
     <div
@@ -1562,6 +2068,7 @@ exports[`Storyshots Elabox/components/AppInfo Installable 1`] = `
         aria-label={null}
         className="btn btn-outline-primary btn-sm"
         onClick={[Function]}
+        type="button"
       >
         Install
       </button>
@@ -1591,6 +2098,87 @@ exports[`Storyshots Elabox/components/AppInfo Installation Error 1`] = `
     }
   }
 >
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
   <div
     className="row row-cols-lg-2"
   >
@@ -1707,6 +2295,87 @@ exports[`Storyshots Elabox/components/AppInfo Installation Success 1`] = `
   }
 >
   <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
+  <div
     className="row row-cols-lg-2"
   >
     <div
@@ -1821,6 +2490,87 @@ exports[`Storyshots Elabox/components/AppInfo Installing 1`] = `
     }
   }
 >
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
   <div
     className="row row-cols-lg-2"
   >
@@ -1937,6 +2687,87 @@ exports[`Storyshots Elabox/components/AppInfo Launchable 1`] = `
   }
 >
   <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
+  <div
     className="row row-cols-lg-2"
   >
     <div
@@ -1997,6 +2828,7 @@ exports[`Storyshots Elabox/components/AppInfo Launchable 1`] = `
           aria-label={null}
           className="btn btn-outline-primary btn-sm"
           onClick={[Function]}
+          type="button"
         >
           Update
         </button>
@@ -2004,6 +2836,7 @@ exports[`Storyshots Elabox/components/AppInfo Launchable 1`] = `
           aria-label={null}
           className="btn btn-primary btn-sm"
           onClick={[Function]}
+          type="button"
         >
           Launch
         </button>
@@ -2034,6 +2867,87 @@ exports[`Storyshots Elabox/components/AppInfo Primary 1`] = `
     }
   }
 >
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
   <div
     className="row row-cols-lg-2"
   >
@@ -2117,6 +3031,87 @@ exports[`Storyshots Elabox/components/AppInfo Syncing 1`] = `
     }
   }
 >
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
   <div
     className="row row-cols-lg-2"
   >
@@ -2222,6 +3217,202 @@ exports[`Storyshots Elabox/components/AppInfo Syncing 1`] = `
 </div>
 `;
 
+exports[`Storyshots Elabox/components/AppInfo Un Installing 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <div
+        style={
+          Object {
+            "height": "130px",
+            "textAlign": "center",
+            "width": "130px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="text-center d-flex flex-column align-items-center align-items-lg-start align-self-end text-lg-start mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <p>
+          Uninstalling
+        </p>
+        <div
+          className="progress"
+          style={
+            Object {
+              "width": "30%",
+            }
+          }
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={90}
+            className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "90%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Elabox/components/AppInfo Updatable 1`] = `
 <div
   className="container-md"
@@ -2232,6 +3423,87 @@ exports[`Storyshots Elabox/components/AppInfo Updatable 1`] = `
     }
   }
 >
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
   <div
     className="row row-cols-lg-2"
   >
@@ -2293,6 +3565,7 @@ exports[`Storyshots Elabox/components/AppInfo Updatable 1`] = `
           aria-label={null}
           className="btn btn-outline-primary btn-sm"
           onClick={[Function]}
+          type="button"
         >
           Update
         </button>
@@ -2334,6 +3607,87 @@ exports[`Storyshots Elabox/components/AppInfo With Stats 1`] = `
     }
   }
 >
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
   <div
     className="row row-cols-lg-2"
   >
@@ -2435,5 +3789,77 @@ exports[`Storyshots Elabox/components/AppInfo With Stats 1`] = `
       </div>
     </div>
   </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfoSetting Is Service 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": 5,
+      "width": "100%",
+    }
+  }
+>
+  <span
+    onClick={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "cursor": "pointer",
+      }
+    }
+  >
+    Resync
+  </span>
+  <span
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    Restart
+  </span>
+  <span
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    Disable
+  </span>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfoSetting Primary 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": 5,
+      "width": "100%",
+    }
+  }
+>
+  <span
+    onClick={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "cursor": "pointer",
+      }
+    }
+  >
+    Uninstall
+  </span>
 </div>
 `;

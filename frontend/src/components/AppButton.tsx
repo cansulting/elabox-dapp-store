@@ -4,6 +4,7 @@ import { Button, Spinner } from 'reactstrap'
 
 export interface AppButtonProps {
     id?: string
+    ref?: React.RefObject<any>
     children: string | JSX.Element
     color:
         | 'primary'
@@ -27,6 +28,7 @@ export const AppButton = (props: AppButtonProps): JSX.Element => {
     if (props.id?.length > 0) {
         return (
             <Button
+                ref={props.ref}
                 id={props.id}
                 color={props.color}
                 size={props.size}

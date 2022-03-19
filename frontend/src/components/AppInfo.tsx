@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import * as Icon from 'react-feather'
 import {
     Container,
@@ -45,21 +45,26 @@ export interface AppInfoProps {
     onRestart: () => void
     onBack: () => void
 }
-const SettingPopover = (props: AppInfoSettingProps) => {
+interface SettingPopOverRef {
+    popOverRef: React.RefObject<any>
+    setting: AppInfoSettingProps
+}
+const SettingPopover = (props: SettingPopOverRef) => {
     return (
         <UncontrolledPopover
+            target={props.popOverRef}
             placement="bottom"
-            target="settingPopover"
             trigger="legacy"
-            offset="0, 10"
+            offset="0, 8"
         >
             <PopoverBody>
-                <AppInfoSetting {...props} />
+                <AppInfoSetting {...props.setting} />
             </PopoverBody>
         </UncontrolledPopover>
     )
 }
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
+    const settingPopoverRef = useRef(null)
     const progressColor = ProgressColor(props.info.processStatus)
     const AppIconDetails: AppIconProps = {
         label: props.info.label,
@@ -84,20 +89,23 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     <Icon.ArrowLeftCircle style={{ marginRight: 5 }} />
                     Apps
                 </h3>
-                <AppButton
+                <p
+                    style={{ cursor: 'pointer' }}
+                    className="text-primary"
                     id="settingPopover"
-                    color="primary"
-                    size="sm"
-                    outline
+                    ref={settingPopoverRef}
                 >
                     <Icon.Settings />
-                </AppButton>
+                </p>
                 <SettingPopover
-                    isService={props.info.isService}
-                    onUnInstall={props.onUninstall}
-                    onResync={props.onResync}
-                    onRestart={props.onRestart}
-                    onDisable={props.onDisable}
+                    popOverRef={settingPopoverRef}
+                    setting={{
+                        isService: props.info.isService,
+                        onUnInstall: props.onUninstall,
+                        onResync: props.onResync,
+                        onDisable: props.onDisable,
+                        onRestart: props.onRestart,
+                    }}
                 />
             </div>
             <Row lg="2">
