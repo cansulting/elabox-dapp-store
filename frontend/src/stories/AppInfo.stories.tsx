@@ -17,6 +17,11 @@ Primary.args = {
         label: 'Glide',
         iconImg:
             'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+        package: {
+            id: '10001',
+            version: '1.0.0',
+            build: '1.0.1',
+        },
         body: (
             <>
                 <p>

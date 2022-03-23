@@ -13,6 +13,11 @@ import { AppButton } from './AppButton'
 import { AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
 import { AppLineGraph } from './AppLineGraph'
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
+interface PacakgeDetails {
+    id: string
+    version: string
+    build: string
+}
 interface Info {
     id: number
     label: string
@@ -25,6 +30,7 @@ interface Info {
     stats?: [any]
     body: JSX.Element
     footer?: JSX.Element
+    package: PacakgeDetails
     processStatus?:
         | 'error'
         | 'completed'
@@ -191,6 +197,19 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
             </Row>
             <Row className="mt-4">
                 <Col>{props.info.body}</Col>
+            </Row>
+            <Row className="mt-4">
+                <Col>
+                    <h4>Package details</h4>
+                    <p>
+                        <span>Package Id: {props.info.package.id}</span>
+                        <br />
+                        <span>Version: {props.info.package.version}</span>
+                        <br />
+                        <span>Build: {props.info.package.build}</span>
+                        <br />
+                    </p>
+                </Col>
             </Row>
             {props.info.stats?.length > 0 && (
                 <>
