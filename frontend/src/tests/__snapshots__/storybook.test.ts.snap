@@ -1884,6 +1884,34 @@ exports[`Storyshots Elabox/components/AppInfo Downloading 1`] = `
       </p>
     </div>
   </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
 </div>
 `;
 
@@ -2023,6 +2051,34 @@ exports[`Storyshots Elabox/components/AppInfo Installable 1`] = `
     >
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
       </p>
     </div>
   </div>
@@ -2193,6 +2249,34 @@ exports[`Storyshots Elabox/components/AppInfo Installation Error 1`] = `
       </p>
     </div>
   </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
 </div>
 `;
 
@@ -2360,6 +2444,34 @@ exports[`Storyshots Elabox/components/AppInfo Installation Success 1`] = `
       </p>
     </div>
   </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
 </div>
 `;
 
@@ -2524,6 +2636,34 @@ exports[`Storyshots Elabox/components/AppInfo Installing 1`] = `
     >
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
       </p>
     </div>
   </div>
@@ -2708,6 +2848,34 @@ exports[`Storyshots Elabox/components/AppInfo Launchable 1`] = `
       </p>
     </div>
   </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
 </div>
 `;
 
@@ -2869,6 +3037,34 @@ exports[`Storyshots Elabox/components/AppInfo Primary 1`] = `
     >
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
       </p>
     </div>
   </div>
@@ -3039,6 +3235,34 @@ exports[`Storyshots Elabox/components/AppInfo Syncing 1`] = `
       </p>
     </div>
   </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
 </div>
 `;
 
@@ -3203,6 +3427,34 @@ exports[`Storyshots Elabox/components/AppInfo Un Installing 1`] = `
     >
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
       </p>
     </div>
   </div>
@@ -3390,6 +3642,34 @@ exports[`Storyshots Elabox/components/AppInfo Updatable 1`] = `
       </ul>
     </div>
   </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
 </div>
 `;
 
@@ -3551,6 +3831,34 @@ exports[`Storyshots Elabox/components/AppInfo With Stats 1`] = `
     >
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
       </p>
     </div>
   </div>
