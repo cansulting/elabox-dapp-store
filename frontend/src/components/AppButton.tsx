@@ -1,43 +1,53 @@
-import React from 'react';
-import './appbutton.css';
-import { Badge, Image, Button }  from 'antd-mobile';
+import React from 'react'
 
-export interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
-  label?: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
-  children?:any;
+import { Button, Spinner } from 'reactstrap'
+
+export interface AppButtonProps {
+    id?: string
+    ref?: React.RefObject<any>
+    children: string | JSX.Element
+    color:
+        | 'primary'
+        | 'secondary'
+        | 'success'
+        | 'danger'
+        | 'warning'
+        | 'info'
+        | 'light'
+        | 'dark'
+    outline?: boolean
+    size: 'sm' | 'lg'
+    block?: boolean
+    active?: boolean
+    close?: boolean
+    disabled?: boolean
+    isProcessing?: boolean
+    onClick?: Function
 }
-
-/**
- * Primary UI component for user interaction
- */
-export const AppButton = ({
-  ...props
-}: ButtonProps) => {
-  
-  return (
-    <Badge content="sd">
-      <button className='box-g' onClick={_ => {}}>
-        <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYqHlvqVHOU13mP3tHH94KoX4cXTKbos0M8g&usqp=CAU' />
-      </button>
-    </Badge>  
-  );
-};
+export const AppButton = (props: AppButtonProps): JSX.Element => {
+    if (props.isProcessing) {
+        return (
+            <Button
+                {...props}
+                onClick={(e) => {
+                    e.preventDefault()
+                    props.onClick()
+                }}
+            >
+                <Spinner children="" />
+            </Button>
+        )
+    } else {
+        return (
+            <Button
+                {...props}
+                onClick={(e) => {
+                    e.preventDefault()
+                    props.onClick()
+                }}
+            >
+                {props.children}
+            </Button>
+        )
+    }
+}
