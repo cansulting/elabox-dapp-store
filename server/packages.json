@@ -1,0 +1,46 @@
+{
+    "ela.carrier": {
+        "name": "Carrier",
+        "id": "ela.carrier",
+        "description": "Carrier Node",
+        "icon" : "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+        "updates": "",
+        "build": 1,
+        "version": "0.3.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "ela.mainchain" : {
+        "name": "Mainchain",
+        "id": "ela.mainchain",
+        "description": "Mainchain Node",
+        "icon" : "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+        "updates": "",
+        "build": 1,
+        "version": "0.8.2",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "ela.eid": {
+        "name": "EID",
+        "id": "ela.eid",
+        "description": "EID Node",
+        "icon" : "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+        "updates": "",
+        "build": 2,
+        "version": "0.2.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "ela.glide": {
+        "name": "Glide",
+        "id": "ela.glide",
+        "description": "Glide",
+        "icon" : "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+        "updates": "",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    }
+}
