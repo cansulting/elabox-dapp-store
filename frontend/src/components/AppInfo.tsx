@@ -119,8 +119,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         src={props.info.iconImg}
                         alt={props.info.label}
                         style={{
-                            width: '100%',
-                            height: '100%',
+                            width: '130px',
+                            height: '130px',
                             borderRadius: 10,
                         }}
                     />
