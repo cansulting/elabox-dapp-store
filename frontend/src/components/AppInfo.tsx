@@ -17,7 +17,6 @@ import { PackageInfo, isUpdatable, isLaunchable } from '../data/packageInfo'
 export interface AppInfoProps {
     info: PackageInfo
     style?: object
-    body?: JSX.Element
     footer?: JSX.Element
     onInstall?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
@@ -186,7 +185,13 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                 </Col>
             </Row>
             <Row className="mt-4">
-                <Col>{props.body}</Col>
+                <Col>
+                    <p>{props.info.description}</p>
+                    {isUpdatable(props.info) && (<>
+                        <h4>What's New</h4>
+                        <p>{props.info.updates}</p>
+                    </>)}
+                </Col>
             </Row>
             <Row className="mt-4">
                 <Col>
