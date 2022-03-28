@@ -10,7 +10,8 @@
             "request": "launch",
             "mode": "debug",
             "cwd": "${workspaceFolder}/build/ela.store",
-            "program": "${workspaceFolder}/backend"
+            "program": "${workspaceFolder}/backend",
+            "buildFlags": "-tags=IDE"
         },
         {
             "name": "Launch Store Server",
