@@ -8,7 +8,6 @@ import {
     UncontrolledPopover,
     PopoverBody,
 } from 'reactstrap'
-import { AppIcon, AppIconProps } from './AppIcon'
 import { AppButton } from './AppButton'
 import { AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
 import { AppLineGraph } from './AppLineGraph'
@@ -72,15 +71,6 @@ const SettingPopover = (props: SettingPopOverRef) => {
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const settingPopoverRef = useRef(null)
     const progressColor = ProgressColor(props.info.processStatus)
-    const AppIconDetails: AppIconProps = {
-        label: props.info.label,
-        iconOnly: true,
-        iconImg: props.info.iconImg,
-        width: '130px',
-        height: '130px',
-        percent: props.info.percent,
-        processStatus: props.info.processStatus,
-    }
     return (
         <Container style={props.style} fluid="md">
             <div
@@ -125,7 +115,15 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     xs="12"
                     lg="2"
                 >
-                    <AppIcon {...AppIconDetails} />
+                    <img
+                        src={props.info.iconImg}
+                        alt={props.info.label}
+                        style={{
+                            width: '130px',
+                            height: '130px',
+                            borderRadius: 10,
+                        }}
+                    />
                 </Col>
                 <Col
                     className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3"

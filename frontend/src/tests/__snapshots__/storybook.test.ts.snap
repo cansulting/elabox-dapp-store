@@ -1787,36 +1787,17 @@ exports[`Storyshots Elabox/components/AppInfo Downloading 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -1982,36 +1963,17 @@ exports[`Storyshots Elabox/components/AppInfo Installable 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -2152,36 +2114,17 @@ exports[`Storyshots Elabox/components/AppInfo Installation Error 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -2347,36 +2290,17 @@ exports[`Storyshots Elabox/components/AppInfo Installation Success 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -2542,36 +2466,17 @@ exports[`Storyshots Elabox/components/AppInfo Installing 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -2767,36 +2672,17 @@ exports[`Storyshots Elabox/components/AppInfo Launchable 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -2976,36 +2862,17 @@ exports[`Storyshots Elabox/components/AppInfo Primary 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -3138,36 +3005,17 @@ exports[`Storyshots Elabox/components/AppInfo Syncing 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -3333,36 +3181,17 @@ exports[`Storyshots Elabox/components/AppInfo Un Installing 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -3558,36 +3387,17 @@ exports[`Storyshots Elabox/components/AppInfo Updatable 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
@@ -3770,36 +3580,17 @@ exports[`Storyshots Elabox/components/AppInfo With Stats 1`] = `
     <div
       className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
     >
-      <div
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
         style={
           Object {
+            "borderRadius": 10,
             "height": "130px",
-            "textAlign": "center",
             "width": "130px",
           }
         }
-      >
-        <div
-          style={
-            Object {
-              "marginBottom": 10,
-              "position": "relative",
-            }
-          }
-        >
-          <img
-            alt="Glide"
-            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
-            style={
-              Object {
-                "borderRadius": 10,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </div>
-      </div>
+      />
     </div>
     <div
       className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
