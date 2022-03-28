@@ -2,26 +2,31 @@ import React from 'react'
 import * as Icon from 'react-feather'
 import { Progress } from 'reactstrap'
 import { ProgressColor } from '../utils/colors'
+import { AppStatus } from "../utils/appStatus"
 export interface AppIconProps {
     className?: string
+    id:string
     label: string
     iconImg: string
-    width: string
-    height: string
+    width?: string
+    height?: string
     percent?: number
-    iconOnly?: boolean
-    isInstallable?: boolean
+    //iconOnly?: boolean
     notification?: number
-    processStatus?:
-        | 'error'
-        | 'completed'
-        | 'downloading'
-        | 'installing'
-        | 'uninstalling'
-        | 'syncing'
+    status: AppStatus
+    version?: string
+    build?: string
+    stats?: [any]
+    body?: JSX.Element
+    footer?: JSX.Element
+    isInstallable?: boolean
+    isUpdatable?: boolean
+    isLaunchable?: boolean
+    isService?: boolean
+    onClick?: (app: AppIconProps) => void
 }
 export const AppIcon = (props: AppIconProps): JSX.Element => {
-    const progressColor = ProgressColor(props.processStatus)
+    const progressColor = ProgressColor(props.status)
     return (
         <div
             className={props.className}
@@ -30,6 +35,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 height: props.height,
                 textAlign: 'center',
             }}
+            onClick={(ev) => props.onClick(props)}
         >
             <div
                 style={{
@@ -59,7 +65,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                         width={20}
                     />
                 )}
-                {props.isInstallable && (
+                {props.status === "uninstalled" && (
                     <Icon.Download
                         style={{
                             position: 'absolute',
@@ -77,20 +83,14 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     />
                 )}
             </div>
-            {!props.iconOnly && props.processStatus?.length > 0 && (
+            {props.percent > 0 && (
                 <Progress
+                    style={{height: "6px"}}
                     value={props.percent}
                     color={progressColor}
-                    animated={
-                        props.processStatus === 'downloading' ||
-                        props.processStatus === 'uninstalling' ||
-                        props.processStatus === 'installing'
-                            ? true
-                            : false
-                    }
                 />
             )}
-            {!props.iconOnly && !props.processStatus && <h4>{props.label}</h4>}
+            {(!props.percent || props.percent <= 0) && <h4>{props.label}</h4>}
         </div>
     )
 }

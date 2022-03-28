@@ -13,34 +13,9 @@ import { AppButton } from './AppButton'
 import { AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
 import { AppLineGraph } from './AppLineGraph'
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
-interface PacakgeDetails {
-    id: string
-    version: string
-    build: string
-}
-interface Info {
-    id: number
-    label: string
-    iconImg: string
-    isInstallable?: boolean
-    isUpdatable?: boolean
-    isLaunchable?: boolean
-    isService: boolean
-    percent?: 0
-    stats?: [any]
-    body: JSX.Element
-    footer?: JSX.Element
-    package: PacakgeDetails
-    processStatus?:
-        | 'error'
-        | 'completed'
-        | 'downloading'
-        | 'installing'
-        | 'uninstalling'
-        | 'syncing'
-}
+
 export interface AppInfoProps {
-    info: Info
+    info: AppIconProps
     style: object
     onInstall: () => void
     onUninstall: () => void
@@ -71,16 +46,7 @@ const SettingPopover = (props: SettingPopOverRef) => {
 }
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const settingPopoverRef = useRef(null)
-    const progressColor = ProgressColor(props.info.processStatus)
-    const AppIconDetails: AppIconProps = {
-        label: props.info.label,
-        iconOnly: true,
-        iconImg: props.info.iconImg,
-        width: '130px',
-        height: '130px',
-        percent: props.info.percent,
-        processStatus: props.info.processStatus,
-    }
+    const progressColor = ProgressColor(props.info.status)
     return (
         <Container style={props.style} fluid="md">
             <div
@@ -95,8 +61,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     <Icon.ArrowLeftCircle style={{ marginRight: 5 }} />
                     Apps
                 </h3>
-                {!props.info.isInstallable &&
-                    !props.info.hasOwnProperty('processStatus') && (
+                {props.info.status === "installed" && (
                         <>
                             <p
                                 style={{ cursor: 'pointer' }}
@@ -125,7 +90,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     xs="12"
                     lg="2"
                 >
-                    <AppIcon {...AppIconDetails} />
+                    <AppIcon {...props.info} />
                 </Col>
                 <Col
                     className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3"
@@ -161,12 +126,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             </AppButton>
                         )}
                     </div>
-                    {props.info.isInstallable && (
+                    {props.info.status === "uninstalled" && (
                         <AppButton color="primary" size="sm" outline>
                             Install
                         </AppButton>
                     )}
-                    {props.info.processStatus?.length > 0 && (
+                    {props.info.status?.length > 0 && (
                         <div
                             className="d-flex flex-column align-items-center align-items-lg-start"
                             style={{
@@ -174,19 +139,19 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             }}
                         >
                             <p>
-                                {UppercaseFirstLetter(props.info.processStatus)}
+                                {UppercaseFirstLetter(props.info.status)}
                             </p>
                             <Progress
                                 style={{ width: '30%' }}
                                 value={props.info.percent}
                                 color={progressColor}
                                 animated={
-                                    props.info.processStatus ===
+                                    props.info.status ===
                                         'downloading' ||
-                                    props.info.processStatus === 'syncing' ||
-                                    props.info.processStatus ===
+                                    props.info.status === 'syncing' ||
+                                    props.info.status ===
                                         'uninstalling' ||
-                                    props.info.processStatus === 'installing'
+                                    props.info.status === 'installing'
                                         ? true
                                         : false
                                 }
@@ -202,11 +167,11 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                 <Col>
                     <h4>Package details</h4>
                     <p>
-                        <span>Package Id: {props.info.package.id}</span>
+                        <span>Package Id: {props.info.id}</span>
                         <br />
-                        <span>Version: {props.info.package.version}</span>
+                        <span>Version: {props.info.version}</span>
                         <br />
-                        <span>Build: {props.info.package.build}</span>
+                        <span>Build: {props.info.build}</span>
                         <br />
                     </p>
                 </Col>

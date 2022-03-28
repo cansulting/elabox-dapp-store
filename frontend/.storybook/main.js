@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
     stories: [
         '../src/**/*.stories.mdx',
@@ -14,4 +16,12 @@ module.exports = {
     core: {
         builder: 'webpack5',
     },
+    webpackFinal: async (config, { configType }) => {
+        config.plugins.push(
+            new webpack.ProvidePlugin({
+                Buffer: ['buffer', 'Buffer'],
+            })
+        )
+        return config;
+    }
 }

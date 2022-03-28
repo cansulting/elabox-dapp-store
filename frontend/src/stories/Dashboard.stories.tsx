@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import { AppDashboard, AppDashboardProps } from '../components/AppDashboard'
 import { ComponentMeta } from '@storybook/react'
+import { AppIconProps } from "../components/AppIcon"
+import { retrieveAllListings } from '../actions/appLib'
 
 export default {
     title: 'Elabox/components/AppDashboard',
@@ -243,3 +245,24 @@ CompleteDownloadingApp.args = {
         },
     ],
 }
+
+const FetchRealdata = (props: any): JSX.Element => {
+    let defaultv = [] as AppIconProps[]
+    const [pkgs, setPkgs] = useState(defaultv)
+    useEffect( () => {
+        if (!pkgs || pkgs.length === 0){
+            retrieveAllListings()
+            .then( res => {
+                setPkgs(res)
+            })
+            .catch( err => console.log(err))
+        }
+    })
+    const onClick = (app: AppIconProps) => {
+        console.log("Selected " + app.id)
+    }
+    return  <AppDashboard apps={pkgs} onClick={onClick}/>
+}
+
+export const RealData = FetchRealdata.bind({})
+RealData.args = {}

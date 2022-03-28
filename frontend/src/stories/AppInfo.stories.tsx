@@ -39,8 +39,7 @@ Primary.args = {
             </>
         ),
         footer: <></>,
-        percent: 0,
-        isInstallable: false,
+        percent: 0
     },
     onInstall: () => {},
     onUninstall: () => {},

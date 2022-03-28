@@ -15,7 +15,7 @@ type PackageInfo struct {
 	Status       global.AppStatus `json:"status"`
 	Progress     float32          `json:"progress"`
 	Alerts       int              `json:"alerts"`
-	Details      PackageDetails   `json:"details"` // extra details
+	Details      *PackageDetails  `json:"details,omitempty"` // extra details
 }
 
 type PackageDetails struct {
@@ -24,7 +24,7 @@ type PackageDetails struct {
 }
 
 func NewPackageInfo() PackageInfo {
-	return PackageInfo{Details: PackageDetails{}}
+	return PackageInfo{Details: nil}
 }
 
 // add informations
@@ -35,11 +35,13 @@ func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheIt
 	if storeCacheItem != nil {
 		instance.Id = storeCacheItem.Id
 		instance.Name = storeCacheItem.Name
-		instance.Details.Description = storeCacheItem.Description
 		instance.LatestBuild = storeCacheItem.Build
 		instance.Icon = storeCacheItem.Icon
 		if detailed {
 			if loaded, _ := storeCacheItem.LoadDetails(); loaded {
+				if instance.Details == nil {
+					instance.Details = &PackageDetails{}
+				}
 				instance.Details.Description = storeCacheItem.Description
 				instance.Details.Updates = storeCacheItem.Updates
 			}

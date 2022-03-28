@@ -24,6 +24,7 @@ const RETRIEVE_PACKAGES = "ela.store.actions.RETRIEVE_PACKAGES"
 const RETRIEVE_PACKAGE = "ela.store.actions.RETRIEVE_PACKAGE"
 const INSTALL_PACKAGE = "ela.store.actions.INSTALL_PACKAGE"
 const UNINSTALL_PACKAGE = "ela.store.actions.UNINSTALL_PACKAGE"
+const UPDATE_AVAILABLE = "ela.store.broadcast.UPDATE_AVAILABLE"
 
 // endpoints
 const PACKAGES_ENDPOINT = STORE_HOST + "/api/v1/items"
