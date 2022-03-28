@@ -8,7 +8,6 @@ import {
     UncontrolledPopover,
     PopoverBody,
 } from 'reactstrap'
-import { AppIcon, AppIconProps } from './AppIcon'
 import { AppButton } from './AppButton'
 import { AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
 import { AppLineGraph } from './AppLineGraph'
@@ -90,7 +89,15 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     xs="12"
                     lg="2"
                 >
-                    <AppIcon {...props.info} />
+                    <img
+                        src={props.info.iconImg}
+                        alt={props.info.label}
+                        style={{
+                            width: '130px',
+                            height: '130px',
+                            borderRadius: 10,
+                        }}
+                    />
                 </Col>
                 <Col
                     className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3"
