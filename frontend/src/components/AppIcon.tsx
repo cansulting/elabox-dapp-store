@@ -2,31 +2,19 @@ import React from 'react'
 import * as Icon from 'react-feather'
 import { Progress } from 'reactstrap'
 import { ProgressColor } from '../utils/colors'
-import { AppStatus } from "../utils/appStatus"
+import { PackageInfo } from "../data/packageInfo"
+
 export interface AppIconProps {
     className?: string
-    id:string
-    label: string
-    iconImg: string
+    package: PackageInfo
     width?: string
     height?: string
-    percent?: number
-    //iconOnly?: boolean
-    notification?: number
-    status: AppStatus
-    version?: string
-    build?: string
-    stats?: [any]
-    body?: JSX.Element
-    footer?: JSX.Element
-    isInstallable?: boolean
-    isUpdatable?: boolean
-    isLaunchable?: boolean
-    isService?: boolean
-    onClick?: (app: AppIconProps) => void
+    //body?: JSX.Element
+    //footer?: JSX.Element
+    onClick?: (app: PackageInfo) => void
 }
 export const AppIcon = (props: AppIconProps): JSX.Element => {
-    const progressColor = ProgressColor(props.status)
+    const progressColor = ProgressColor(props.package.status)
     return (
         <div
             className={props.className}
@@ -35,7 +23,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 height: props.height,
                 textAlign: 'center',
             }}
-            onClick={(ev) => props.onClick(props)}
+            onClick={(ev) => props.onClick(props.package)}
         >
             <div
                 style={{
@@ -44,11 +32,11 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 }}
             >
                 <img
-                    src={props.iconImg}
-                    alt={props.label}
+                    src={props.package.icon}
+                    alt={props.package.name}
                     style={{ width: '100%', height: '100%', borderRadius: 10 }}
                 />
-                {props.notification > 0 && (
+                {props.package.notifications > 0 && (
                     <Icon.Bell
                         style={{
                             position: 'absolute',
@@ -65,7 +53,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                         width={20}
                     />
                 )}
-                {props.status === "uninstalled" && (
+                {props.package.status === "uninstalled" && (
                     <Icon.Download
                         style={{
                             position: 'absolute',
@@ -83,14 +71,14 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     />
                 )}
             </div>
-            {props.percent > 0 && (
+            {props.package.progress > 0 && (
                 <Progress
                     style={{height: "6px"}}
-                    value={props.percent}
+                    value={props.package.progress}
                     color={progressColor}
                 />
             )}
-            {(!props.percent || props.percent <= 0) && <h4>{props.label}</h4>}
+            {(!props.package.progress || props.package.progress <= 0) && <h4>{props.package.name}</h4>}
         </div>
     )
 }

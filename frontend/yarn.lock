@@ -4452,7 +4452,7 @@ base64-arraybuffer@0.1.4:
 
 base64-js@^1.3.1:
   version "1.5.1"
-  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
+  resolved "https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
 base@^0.11.1:
@@ -4643,7 +4643,7 @@ buffer-indexof@^1.0.0:
 
 buffer@^6.0.3:
   version "6.0.3"
-  resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.3.tgz#2ace578459cc8fbe2a70aaa8f52ee63b6a74c6c6"
+  resolved "https://registry.npmjs.org/buffer/-/buffer-6.0.3.tgz"
   integrity sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==
   dependencies:
     base64-js "^1.3.1"
@@ -6021,13 +6021,14 @@ ejs@^3.1.6:
   dependencies:
     jake "^10.6.1"
 
-elabox-foundation@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/elabox-foundation/-/elabox-foundation-1.1.0.tgz#eb8e5dcd971533682adcf9a0f0d8d65227d2d8ac"
-  integrity sha512-tiRZA5navvjk3KG6wJPmoueVeHVDlai/WHWgi9AXXA2suYsh9cB/+9Mbi1kwGjwFnwvoog173tLmhxwxkettHQ==
+elabox-foundation@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/elabox-foundation/-/elabox-foundation-1.1.3.tgz#27f41ada1b9e6109db6e1dcad0af6abf2254874f"
+  integrity sha512-pAQJKl3ejT4O7kcvfMU+OK3xqg3wvKnmNkfjlAl/6GUB52kbDW6Wp3JpwGg/haU1bAyCaFN27Wv/SKUhDZRVmA==
   dependencies:
     "@types/node" "^16.10.3"
     "@types/socket.io-client" "^3.0.0"
+    buffer "^6.0.3"
     socket.io-client "^2.4.0"
 
 electron-to-chromium@^1.4.71:
@@ -7816,7 +7817,7 @@ identity-obj-proxy@^3.0.0:
 
 ieee754@^1.2.1:
   version "1.2.1"
-  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
+  resolved "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
 ignore@^4.0.3, ignore@^4.0.6:

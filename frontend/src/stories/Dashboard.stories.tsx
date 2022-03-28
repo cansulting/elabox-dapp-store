@@ -3,6 +3,7 @@ import { AppDashboard, AppDashboardProps } from '../components/AppDashboard'
 import { ComponentMeta } from '@storybook/react'
 import { AppIconProps } from "../components/AppIcon"
 import { retrieveAllListings } from '../actions/appLib'
+import { PackageInfo } from '../data/packageInfo'
 
 export default {
     title: 'Elabox/components/AppDashboard',
@@ -247,7 +248,7 @@ CompleteDownloadingApp.args = {
 }
 
 const FetchRealdata = (props: any): JSX.Element => {
-    let defaultv = [] as AppIconProps[]
+    let defaultv = [] as PackageInfo[]
     const [pkgs, setPkgs] = useState(defaultv)
     useEffect( () => {
         if (!pkgs || pkgs.length === 0){
@@ -258,7 +259,7 @@ const FetchRealdata = (props: any): JSX.Element => {
             .catch( err => console.log(err))
         }
     })
-    const onClick = (app: AppIconProps) => {
+    const onClick = (app: PackageInfo) => {
         console.log("Selected " + app.id)
     }
     return  <AppDashboard apps={pkgs} onClick={onClick}/>

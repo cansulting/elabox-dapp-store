@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AppInfo, AppInfoProps } from '../components/AppInfo'
 
 import { ComponentMeta } from '@storybook/react'
+import { AppIconProps } from '../components/AppIcon'
+import { retrieveListing } from '../actions/appLib'
+import { useState } from '@storybook/addons'
 
 export default {
     title: 'Elabox/components/AppInfo',
@@ -14,32 +17,17 @@ export const Primary = Template.bind({})
 
 Primary.args = {
     info: {
-        label: 'Glide',
-        iconImg:
-            'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
-        package: {
-            id: '10001',
-            version: '1.0.0',
-            build: '1.0.1',
-        },
-        body: (
-            <>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-            </>
-        ),
-        footer: <></>,
-        percent: 0
+        "name": "Sample App",
+        "id": "ela.sample",
+        "description": "This is sample app",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "This is updates",
+        "currentBuild": 2,
+        "latestBuild": 3,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": "",
+        "status":"installed",
     },
     onInstall: () => {},
     onUninstall: () => {},
@@ -175,4 +163,26 @@ WithStats.args = {
         stats: Labels.map(() => Math.random()),
         isService: true,
     },
+}
+
+const Template2 = (props: AppInfoProps) : JSX.Element => {
+    const [currentPkg, setPkg] = useState(null)
+    useEffect( () =>{
+        retrieveListing("ela.sample")
+            .then( pkg => {
+                setPkg(pkg)
+            })
+    })
+    if (currentPkg === null ) return <></>
+    return <AppInfo info={currentPkg} />
+}
+
+export const RealData = Template2.bind({})
+
+RealData.args = {
+    ...Primary.args,
+    info: {
+        ...Primary.args.info,
+
+    }
 }

@@ -1,9 +1,13 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { AppIcon, AppIconProps } from './AppIcon'
+import { PackageInfo } from '../data/packageInfo'
+
 export interface AppDashboardProps {
-    apps: AppIconProps[],
-    onClick?: (app : AppIconProps) => void,
+    apps: PackageInfo[],
+    onClick?: (app : PackageInfo) => void,
+    iconWidth?: string
+    iconHeight?: string
     style?: object
 }
 
@@ -14,11 +18,14 @@ export const AppDashboard = (props: AppDashboardProps): JSX.Element => {
         <Container style={props.style} fluid="md">
             <Row xs="3">
                 {props.apps.map((appInfo) => {
-                    const onClick = props.onClick
-                    appInfo = {...appInfo, onClick }
                     return (
                         <Col>
-                            <AppIcon {...appInfo} />
+                            <AppIcon 
+                                package={appInfo} 
+                                onClick={props.onClick}
+                                width={props.iconWidth}
+                                height={props.iconHeight}
+                                />
                         </Col>
                     )
                 })}
