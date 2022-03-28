@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { AppInfo, AppInfoProps } from '../components/AppInfo'
 
 import { ComponentMeta } from '@storybook/react'
-import { AppIconProps } from '../components/AppIcon'
-import { retrieveListing } from '../actions/appLib'
+import { retrieveListing, installPackage } from '../actions/appLib'
 import { useState } from '@storybook/addons'
+import { PackageInfo } from '../data/packageInfo'
 
 export default {
     title: 'Elabox/components/AppInfo',
@@ -173,8 +173,13 @@ const Template2 = (props: AppInfoProps) : JSX.Element => {
                 setPkg(pkg)
             })
     })
+    const handleInstall = (pkg:PackageInfo) => {
+        installPackage(pkg.id)
+    }
     if (currentPkg === null ) return <></>
-    return <AppInfo info={currentPkg} />
+    return <AppInfo 
+        info={currentPkg} 
+        onInstall={handleInstall}/>
 }
 
 export const RealData = Template2.bind({})
