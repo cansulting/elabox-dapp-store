@@ -36,6 +36,9 @@ func startQueue() {
 
 // finish the current scheduled task and start the next one
 func finishCurrentSchedule() {
+	if currentSchedule == nil {
+		return
+	}
 	logger.GetInstance().Debug().Msg(currentSchedule.Id + " install finished")
 	currentSchedule = nil
 	startQueue()

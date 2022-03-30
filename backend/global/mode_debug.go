@@ -4,3 +4,4 @@
 package global
 
 const STORE_HOST = "http://localhost:4000"
+const ENV="debug"

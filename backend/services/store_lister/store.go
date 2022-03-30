@@ -11,7 +11,6 @@ import (
 	"store/backend/broadcast"
 	"store/backend/data"
 	"store/backend/global"
-	"strings"
 	"time"
 
 	"github.com/cansulting/elabox-system-tools/foundation/perm"
@@ -116,15 +115,15 @@ func RetrieveItems() error {
 func RetrieveDownloadLink(pkgId string) (string, error) {
 	form := url.Values{}
 	form.Add("packageId", pkgId)
-	req, err := http.NewRequest("POST", global.DOWNLOAD_ENDPOINT, strings.NewReader(form.Encode()))
+	req, err := http.PostForm(global.DOWNLOAD_ENDPOINT, form)
 	if err != nil {
 		return "", err
 	}
-	defer req.Body.Close()
 
-	if req.Response.StatusCode != http.StatusOK {
+	if req == nil || req.StatusCode != http.StatusOK {
 		return "", errors.New("unable to retrieve download link for package " + pkgId)
 	}
+	defer req.Body.Close()
 
 	// step: read response
 	body, err := ioutil.ReadAll(req.Body)

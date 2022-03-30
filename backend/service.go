@@ -3,16 +3,12 @@ package main
 import (
 	"store/backend/broadcast"
 	"store/backend/global"
-	"store/backend/services/installer"
 	"store/backend/services/store_lister"
 
 	"github.com/cansulting/elabox-system-tools/foundation/app/rpc"
 	"github.com/cansulting/elabox-system-tools/foundation/event/data"
 	"github.com/cansulting/elabox-system-tools/foundation/event/protocol"
-	"github.com/cansulting/elabox-system-tools/foundation/logger"
 )
-
-var lastInstallingPkg *installer.Task
 
 type StoreService struct {
 }
@@ -25,12 +21,11 @@ func (instance *StoreService) OnStart() error {
 		return err
 	}
 
-	broadcast.OnInstallerProgress = instance.OnInstallerProgress
-
 	// register service rpc
 	global.AppController.RPC.OnRecieved(global.RETRIEVE_PACKAGES, instance.rpc_retrievePackages)
 	global.AppController.RPC.OnRecieved(global.RETRIEVE_PACKAGE, instance.rpc_retrievePackage)
 	global.AppController.RPC.OnRecieved(global.INSTALL_PACKAGE, instance.rpc_installPackage)
+	global.AppController.RPC.OnRecieved(global.UNINSTALL_PACKAGE, instance.rpc_onuninstall)
 	return nil
 }
 
@@ -59,19 +54,12 @@ func (instance *StoreService) rpc_installPackage(client protocol.ClientInterface
 	return rpc.CreateSuccessResponse("started")
 }
 
-// callback from installer progress
-func (instance *StoreService) OnInstallerProgress(packageId string, progress float64) {
-	// step: check if the package is the same as the last installing package
-	if lastInstallingPkg == nil || packageId != lastInstallingPkg.Id {
-		task := installer.GetTask(packageId)
-		if task == nil {
-			logger.GetInstance().Error().Msg("installer task not found for " + packageId)
-			return
-		}
-		lastInstallingPkg = task
+func (instance *StoreService) rpc_onuninstall(client protocol.ClientInterface, action data.Action) string {
+	err := UninstallApp(action.PackageId)
+	if err != nil {
+		return rpc.CreateResponse(rpc.INVALID_CODE, err.Error())
 	}
-	// step: update package progress
-	lastInstallingPkg.SetInstallProgress(int16(progress))
+	return rpc.CreateSuccessResponse("started")
 }
 
 func (instance *StoreService) IsRunning() bool {

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import * as Icon from 'react-feather'
 import {
     Container,
@@ -48,6 +48,8 @@ const SettingPopover = (props: SettingPopOverRef) => {
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const settingPopoverRef = useRef(null)
     const progressColor = ProgressColor(props.info.status)
+    const info = props.info;
+    const progress = info.progress;
     const handleInstall = (evnt:any) => {
         if (props.onInstall) props.onInstall(props.info)
     }
@@ -74,7 +76,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     <Icon.ArrowLeftCircle style={{ marginRight: 5 }} />
                     Apps
                 </h3>
-                {props.info.status === "installed" && (
+                {info.status === "installed" && (
                         <>
                             <p
                                 style={{ cursor: 'pointer' }}
@@ -88,7 +90,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                 popOverRef={settingPopoverRef}
                                 setting={{
                                     isService: props.info.isService,
-                                    onUnInstall: props.onUninstall,
+                                    onUnInstall: handleUninstall,
                                     onResync: props.onResync,
                                     onDisable: props.onDisable,
                                     onRestart: props.onRestart,
@@ -119,7 +121,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     xs="12"
                     lg="10"
                 >
-                    <h4>{props.info.name}</h4>
+                    <h4>{info.name}</h4>
                     <div
                         style={{
                             display: 'flex',
@@ -127,7 +129,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             gap: 5,
                         }}
                     >
-                        {isUpdatable(props.info) && (
+                        { isUpdatable(props.info) && (
                             <AppButton
                                 color="primary"
                                 size="sm"
@@ -137,7 +139,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                 Update
                             </AppButton>
                         )}
-                        {isLaunchable(props.info) && (
+                        {info.status === "installed" && (
                             <AppButton
                                 color="primary"
                                 size="sm"
@@ -147,7 +149,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             </AppButton>
                         )}
                     </div>
-                    {props.info.status === "uninstalled" && (
+                    { info.status === "uninstalled" && (
                         <AppButton 
                             color="primary" 
                             size="sm" outline 
@@ -155,7 +157,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             Install
                         </AppButton>
                     )}
-                    {props.info.progress > 0 && (
+                    { progress > 0 && (
                         <div
                             className="d-flex flex-column align-items-center align-items-lg-start"
                             style={{
@@ -163,24 +165,27 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             }}
                         >
                             <p>
-                                {UppercaseFirstLetter(props.info.status)}
+                                {UppercaseFirstLetter(info.status)}
                             </p>
                             <Progress
                                 style={{ width: '30%' }}
-                                value={props.info.progress}
+                                value={progress}
                                 color={progressColor}
-                                animated={
-                                    props.info.status ===
-                                        'downloading' ||
-                                    props.info.status === 'syncing' ||
-                                    props.info.status ===
-                                        'uninstalling' ||
-                                    props.info.status === 'installing'
-                                        ? true
-                                        : false
-                                }
+                                animated={false}
                             />
                         </div>
+                    )}
+                    { info.status === "uninstalling" && (
+                        <div
+                            className="d-flex flex-column align-items-center align-items-lg-start"
+                            style={{
+                                width: '100%',
+                            }}
+                        >
+                            <p>
+                                {UppercaseFirstLetter(info.status)}
+                            </p>
+                    </div>
                     )}
                 </Col>
             </Row>
@@ -199,9 +204,9 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     <p>
                         <span>Package Id: {props.info.id}</span>
                         <br />
-                        <span>Version: {props.info.version}</span>
+                        <span>Version: {info.version}</span>
                         <br />
-                        <span>Build: {props.info.currentBuild}</span>
+                        <span>Build: {info.currentBuild}</span>
                         <br />
                     </p>
                 </Col>

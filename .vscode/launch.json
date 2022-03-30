@@ -19,7 +19,8 @@
             "request": "launch",
             "mode": "debug",
             //"cwd": "${workspaceFolder}/build/ela.store",
-            "program": "${workspaceFolder}/server"
+            "program": "${workspaceFolder}/server",
+            "buildFlags": "-tags=IDE"
         }
     ]
 }

@@ -9,9 +9,9 @@ import (
 	sdata "github.com/cansulting/elabox-system-tools/foundation/event/data"
 )
 
-func PublishDownloadProgress(progress uint, itemId string) error {
+func PublishInstallProgress(progress uint, itemId string) error {
 	val := `{"progress":` + strconv.Itoa(int(progress)) + `,"packageId":"` + itemId + `"}`
-	_, err := global.AppController.RPC.CallBroadcast(sdata.NewAction(global.DOWNLOAD_PROGRESS, global.PackageId, val))
+	_, err := global.AppController.RPC.CallBroadcast(sdata.NewAction(global.INSTALL_PROGRESS, global.PackageId, val))
 	return err
 }
 
@@ -27,5 +27,17 @@ func PublishNewUpdateAvailable(updates []*data.PackageListingCache) error {
 	}
 	jsonStr += "]"
 	_, err := global.AppController.RPC.CallBroadcast(sdata.NewAction(global.UPDATE_AVAILABLE, global.PackageId, jsonStr))
+	return err
+}
+
+func PublishError(code int, msg string) error {
+	val := `{"code":` + strconv.Itoa(code) + `,"error":"` + msg + `"}`
+	_, err := global.AppController.RPC.CallBroadcast(sdata.NewAction(global.BROADCAST_ERROR, global.PackageId, val))
+	return err
+}
+
+func PublishInstallState(pkid string, state global.AppStatus) error {
+	val := `{"packageId":"` + pkid + `","status":"` + string(state) + `"}`
+	_, err := global.AppController.RPC.CallBroadcast(sdata.NewAction(global.INSTALL_STATE, global.PackageId, val))
 	return err
 }

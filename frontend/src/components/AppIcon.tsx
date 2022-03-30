@@ -2,7 +2,7 @@ import React from 'react'
 import * as Icon from 'react-feather'
 import { Progress } from 'reactstrap'
 import { ProgressColor } from '../utils/colors'
-import { PackageInfo } from "../data/packageInfo"
+import { isUpdatable, PackageInfo } from "../data/packageInfo"
 
 export interface AppIconProps {
     className?: string
@@ -14,7 +14,10 @@ export interface AppIconProps {
     onClick?: (app: PackageInfo) => void
 }
 export const AppIcon = (props: AppIconProps): JSX.Element => {
-    const progressColor = ProgressColor(props.package.status)
+    const pkg = props.package
+    const status = pkg.status
+    const progressColor = ProgressColor(status)
+    //console.log("icon", pkg)
     return (
         <div
             className={props.className}
@@ -53,21 +56,21 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                         width={20}
                     />
                 )}
-                {props.package.status === "uninstalled" && (
+                { ((pkg.status === "uninstalled" && pkg.progress === 0) || 
+                (pkg.progress <= 0 && isUpdatable(pkg))) && (
                     <Icon.Download
                         style={{
                             position: 'absolute',
-                            bottom: 10,
-                            right: 10,
-                            border: '1px solid lightgrey',
+                            bottom: '3%',
+                            right: '3%',
                             borderRadius: '50%',
-                            background: 'blue',
-                            padding: 5,
+                            background: '#0081ff',
+                            padding: '3%',
                             cursor: 'pointer',
                         }}
                         color="white"
-                        height={20}
-                        width={20}
+                        height={"20%"}
+                        width={"20%"}
                     />
                 )}
             </div>

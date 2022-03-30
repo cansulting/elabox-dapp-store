@@ -17,6 +17,7 @@ export interface PackageInfo {
 }
 
 export function isUpdatable(pkg:PackageInfo) : boolean {
+	if (pkg.status !== "installed") return false
     return pkg.latestBuild > pkg.currentBuild
 }
 

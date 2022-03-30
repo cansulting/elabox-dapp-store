@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { AppIcon, AppIconProps } from './AppIcon'
 import { PackageInfo } from '../data/packageInfo'
+import AppIconCon from '../container/AppIconCon'
 
 export interface AppDashboardProps {
     apps: PackageInfo[],
@@ -19,8 +20,8 @@ export const AppDashboard = (props: AppDashboardProps): JSX.Element => {
             <Row xs="3">
                 {props.apps.map((appInfo) => {
                     return (
-                        <Col>
-                            <AppIcon 
+                        <Col key={appInfo.id + "-dash"}>
+                            <AppIconCon 
                                 package={appInfo} 
                                 onClick={props.onClick}
                                 width={props.iconWidth}

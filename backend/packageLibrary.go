@@ -58,12 +58,14 @@ func DownloadInstallApp(pkgId string) error {
 	if err != nil {
 		return err
 	}
-	installer.CreateTask(pkgId, link)
+	task := installer.CreateTask(pkgId, link)
+	task.Start()
 	return nil
 }
 
-func UninstallApp(pkgId string) {
-
+func UninstallApp(pkgId string) error {
+	task := installer.CreateTask(pkgId, "")
+	return task.Uninstall()
 }
 
 func StopApp(pkgId string) {
