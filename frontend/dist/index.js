@@ -14,9 +14,8 @@ exports.initialize = void 0;
 require("bootstrap/dist/css/bootstrap.min.css");
 var elabox_foundation_1 = require("elabox-foundation");
 var constants_1 = require("./actions/constants");
-__exportStar(require("./components/AppDashboard"), exports);
-__exportStar(require("./container/AppInfoCon"), exports);
-__exportStar(require("./container/AppIconCon"), exports);
+__exportStar(require("./components"), exports);
+__exportStar(require("./container"), exports);
 __exportStar(require("./data/packageInfo"), exports);
 var initialize = function (eventHandler) {
     if (!eventHandler)

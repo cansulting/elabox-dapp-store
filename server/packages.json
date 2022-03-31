@@ -48,8 +48,8 @@
         "id": "ela.sample",
         "description": "Glide",
         "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
-        "updates": "",
-        "build": 2,
+        "updates": "this is updates asdfsadfasdfsdfasdfasdfsdfsd",
+        "build": 1,
         "version": "0.1.0",
         "projectRepo": "",
         "projectWebsite": ""
