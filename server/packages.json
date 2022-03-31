@@ -32,8 +32,30 @@
         "projectRepo": "",
         "projectWebsite": ""
     },
+    "ela.esc": {
+        "name": "ESC",
+        "id": "ela.esc",
+        "description": "ESC Node",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "",
+        "build": 2,
+        "version": "0.1.4.3",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "ela.feeds": {
+        "name": "Feeds Node",
+        "id": "ela.feeds",
+        "description": "Feeds Node",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
     "glide": {
-        "name": "Glide",
+        "name": "Glide Finance",
         "id": "glide",
         "description": "Glide",
         "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
