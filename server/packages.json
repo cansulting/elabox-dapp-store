@@ -1,0 +1,57 @@
+{
+    "ela.carrier": {
+        "name": "Carrier",
+        "id": "ela.carrier",
+        "description": "Carrier Node",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "",
+        "build": 2,
+        "version": "0.4.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "ela.mainchain" : {
+        "name": "Mainchain",
+        "id": "ela.mainchain",
+        "description": "Mainchain Node",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "",
+        "build": 1,
+        "version": "0.8.2",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "ela.eid": {
+        "name": "EID",
+        "id": "ela.eid",
+        "description": "EID Node",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "",
+        "build": 2,
+        "version": "0.2.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "glide": {
+        "name": "Glide",
+        "id": "glide",
+        "description": "Glide",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "ela.sample": {
+        "name": "Sample App",
+        "id": "ela.sample",
+        "description": "Glide",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "this is updates asdfsadfasdfsdfasdfasdfsdfsd",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    }
+}

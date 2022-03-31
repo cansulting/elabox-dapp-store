@@ -2,3 +2,5 @@
 // +build STAGING
 
 package global
+
+const ENV = "staging"

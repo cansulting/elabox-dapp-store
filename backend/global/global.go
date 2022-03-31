@@ -17,13 +17,18 @@ var RPC *rpc.RPCHandler
 
 // installer actions
 const INSTALLER_PROGRESS = "ela.installer.broadcast.PROGRESS"
+const INSTALLER_STATE_CHANGE = "ela.installer.broadcast.STATE_CHANGED"
+const INSTALLER_ERROR = "ela.installer.broadcast.ERROR"
 
 // store actions
-const DOWNLOAD_PROGRESS = "ela.store.broadcast.DOWNLOAD_PROGRESS"
 const RETRIEVE_PACKAGES = "ela.store.actions.RETRIEVE_PACKAGES"
 const RETRIEVE_PACKAGE = "ela.store.actions.RETRIEVE_PACKAGE"
 const INSTALL_PACKAGE = "ela.store.actions.INSTALL_PACKAGE"
 const UNINSTALL_PACKAGE = "ela.store.actions.UNINSTALL_PACKAGE"
+const UPDATE_AVAILABLE = "ela.store.broadcast.UPDATE_AVAILABLE"
+const INSTALL_PROGRESS = "ela.store.broadcast.INSTALL_PROGRESS"
+const BROADCAST_ERROR = "ela.store.broadcast.ERROR"
+const INSTALL_STATE = "ela.store.broadcast.INSTALL_STATE"
 
 // endpoints
 const PACKAGES_ENDPOINT = STORE_HOST + "/api/v1/items"

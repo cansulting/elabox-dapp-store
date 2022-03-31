@@ -1,6 +1,16 @@
 import React from 'react'
+import { PackageInfo } from '../data/packageInfo'
+
+export interface AppInfoAction {
+    label: string
+    color?: string
+    onClick?: (pkg: PackageInfo) => void
+}
+
 export interface AppInfoSettingProps {
+    info: PackageInfo
     isService: boolean
+    customActions?: AppInfoAction[]                 // custom actions that will be added as menu
     onUnInstall?: Function
     onResync?: Function
     onDisable?: Function
@@ -59,6 +69,20 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                     Uninstall
                 </span>
             )}
+            { // render custom actions
+                props.customActions?.map( val => 
+                    <span
+                        style={{ color:val.color,  cursor: 'pointer' }}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (val.onClick)
+                                val.onClick(props.info);
+                        }}
+                    >
+                        {val.label}
+                    </span>
+                )
+            }
         </div>
     )
 }

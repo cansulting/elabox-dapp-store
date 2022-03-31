@@ -20,12 +20,12 @@ func RetrieveAllApps() ([]data.PackageInfo, error) {
 	var tmpPreview data.PackageInfo
 	// step: iterate on packages
 	for _, pkg := range *storeItems {
-		installed, err := app.RetrievePackage(pkg.Id)
+		installedInfo, err := app.RetrievePackage(pkg.Id)
 		if err != nil {
 			return nil, errors.New("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
 		}
 		tmpPreview = data.PackageInfo{}
-		tmpPreview.AddInfo(installed, &pkg, false)
+		tmpPreview.AddInfo(installedInfo, &pkg, false)
 
 		// check if currently in download
 
@@ -58,12 +58,14 @@ func DownloadInstallApp(pkgId string) error {
 	if err != nil {
 		return err
 	}
-	installer.CreateTask(pkgId, link)
+	task := installer.CreateTask(pkgId, link)
+	task.Start()
 	return nil
 }
 
-func UninstallApp(pkgId string) {
-
+func UninstallApp(pkgId string) error {
+	task := installer.CreateTask(pkgId, "")
+	return task.Uninstall()
 }
 
 func StopApp(pkgId string) {

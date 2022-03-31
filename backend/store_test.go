@@ -14,8 +14,8 @@ import (
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
 )
 
-const TEST_PKG_PATH = "/../build/test/ela.installer.box"
-const TEST_PKG = "ela.installer"
+const TEST_PKG_PATH = "/../build/ela.sample/ela.sample.box"
+const TEST_PKG = "ela.sample"
 
 func Test_RetrieveListing(t *testing.T) {
 	logger.Init("ela.store.test")

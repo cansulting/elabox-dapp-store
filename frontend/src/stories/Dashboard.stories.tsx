@@ -1,6 +1,8 @@
 import React from 'react'
 import { AppDashboard, AppDashboardProps } from '../components/AppDashboard'
 import { ComponentMeta } from '@storybook/react'
+import { PackageInfo } from '../data/packageInfo'
+import {AppDashboardCon} from '../container/AppDashboardCon'
 
 export default {
     title: 'Elabox/components/AppDashboard',
@@ -59,6 +61,8 @@ Primary.args = {
         },
     ],
     style: { width: '50%' },
+    iconWidth: "200px",
+    iconHeight: "200px"
 }
 
 export const DownloadableApp = Template.bind({})
@@ -242,4 +246,17 @@ CompleteDownloadingApp.args = {
             percent: 100,
         },
     ],
+}
+
+const FetchRealdata = (props: any): JSX.Element => {
+    const onClick = (app: PackageInfo) => {
+        console.log("Selected " + app.id)
+    }
+    return  <AppDashboardCon onClick={onClick} apps={[]}/>
+}
+
+export const RealData = FetchRealdata.bind({})
+RealData.args = {
+    ...Primary.args,
+    apps: null
 }

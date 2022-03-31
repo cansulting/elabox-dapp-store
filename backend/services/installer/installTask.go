@@ -34,12 +34,14 @@ func (instance *Task) setStatus(status global.AppStatus) {
 	}
 	logger.GetInstance().Debug().Msg(instance.Id + " status changed to " + string(status))
 	instance.Status = status
+	broadcast.PublishInstallState(instance.Id, status)
 	instance.OnStateChanged(instance)
 }
 
 // function that sets install progress
 func (instance *Task) SetInstallProgress(progress int16) {
 	instance.installProgress = progress
+	broadcast.PublishInstallProgress(uint(instance.GetOverallProgress()), instance.Id)
 }
 
 // function that returns the current download + install progress
@@ -71,7 +73,11 @@ func (instance *Task) download(restart bool) {
 		}
 	}
 
-	go instance.downloadTask.Start()
+	go func() {
+		if err := instance.downloadTask.Start(); err != nil {
+			instance.onError(global.DOWNLOAD_ERROR, err.Error())
+		}
+	}()
 }
 
 // callback when download task state changed
@@ -86,14 +92,19 @@ func (instance *Task) onDownloadStateChanged(task *downloader.Task) {
 
 // callback when download task progress changed
 func (instance *Task) onDownloadProgressChanged(task *downloader.Task) {
-	if err := broadcast.PublishDownloadProgress(50, instance.Id); err != nil {
+	if err := broadcast.PublishInstallProgress(uint(instance.GetOverallProgress()), instance.Id); err != nil {
 		logger.GetInstance().Error().Err(err).Caller().Msg("publish download progress failed")
 	}
 }
 
+// callback when install finished
+func (instance *Task) onInstalledFinished() {
+	instance.setStatus(global.Installed)
+}
+
 // callback when error found while installing
 func (instance *Task) onError(code int16, reason string) {
-	logger.GetInstance().Error().Str("code", strconv.Itoa(int(code))).Msg(reason)
+	logger.GetInstance().Error().Str("code", strconv.Itoa(int(code))).Caller().Msg(reason)
 	instance.OnErrCallback(code, reason)
 }
 
@@ -107,8 +118,24 @@ func (instance *Task) install(pkgPath string) error {
 	// call the package installer
 	action := data.NewAction(constants.ACTION_APP_INSTALL, "", pkgPath)
 	_, err := global.RPC.StartActivity(action)
+	//sres, _ := res.ToSimpleResponse()
+	//println(sres.Code, sres.Message)
 	if err != nil {
-		instance.onError(global.INSTALLER_PACKAGE_ERROR, err.Error())
+		instance.onError(global.INSTALLER_PACKAGE_ERROR, "install error. "+err.Error())
+		return err
+	}
+	return nil
+}
+
+// function that installs the package given the package path
+// @param pkgPath the path to the package. If empty, the download path will be used
+func (instance *Task) Uninstall() error {
+	// call the package installer
+	instance.setStatus(global.Uninstalling)
+	action := data.NewAction(constants.ACTION_APP_UNINSTALL, "", instance.Id)
+	_, err := global.RPC.StartActivity(action)
+	if err != nil {
+		instance.onError(global.INSTALLER_PACKAGE_ERROR, "uninstall error "+err.Error())
 		return err
 	}
 	return nil

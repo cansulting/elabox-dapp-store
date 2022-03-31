@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import * as Icon from 'react-feather'
 import {
     Container,
@@ -9,46 +9,26 @@ import {
     PopoverBody,
 } from 'reactstrap'
 import { AppButton } from './AppButton'
-import { AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
-import { AppLineGraph } from './AppLineGraph'
+import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
-interface PacakgeDetails {
-    id: string
-    version: string
-    build: string
-}
-interface Info {
-    id: number
-    label: string
-    iconImg: string
-    isInstallable?: boolean
-    isUpdatable?: boolean
-    isLaunchable?: boolean
-    isService: boolean
-    percent?: 0
-    stats?: [any]
-    body: JSX.Element
-    footer?: JSX.Element
-    package: PacakgeDetails
-    processStatus?:
-        | 'error'
-        | 'completed'
-        | 'downloading'
-        | 'installing'
-        | 'uninstalling'
-        | 'syncing'
-}
+import { PackageInfo, isUpdatable, isLaunchable } from '../data/packageInfo'
+
+
+
 export interface AppInfoProps {
-    info: Info
-    style: object
-    onInstall: () => void
-    onUninstall: () => void
-    onUpdate: () => void
-    onLaunch: () => void
-    onResync: () => void
-    onDisable: () => void
-    onRestart: () => void
-    onBack: () => void
+    info: PackageInfo
+    style?: object
+    footer?: JSX.Element
+    customActions?: AppInfoAction[]             // custom secondary actions for app info
+    onInstall?: (pkg:PackageInfo) => void
+    onUninstall?: (pkg:PackageInfo) => void
+    onUpdate?: (pkg:PackageInfo) => void
+    onLaunch?: (pkg:PackageInfo) => void
+    onResync?: () => void
+    onDisable?: () => void
+    onRestart?: () => void
+    onBack?: () => void
+    children?: any
 }
 interface SettingPopOverRef {
     popOverRef: React.RefObject<any>
@@ -70,7 +50,21 @@ const SettingPopover = (props: SettingPopOverRef) => {
 }
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const settingPopoverRef = useRef(null)
-    const progressColor = ProgressColor(props.info.processStatus)
+    const progressColor = ProgressColor(props.info.status)
+    const info = props.info;
+    const progress = info.progress;
+    const handleInstall = (evnt:any) => {
+        if (props.onInstall) props.onInstall(props.info)
+    }
+    const handleUninstall = (evnt:any) => {
+        if (props.onUninstall) props.onUninstall(props.info)
+    } 
+    const handleLaunch = (evnt:any) => {
+        if (props.onUninstall) props.onLaunch(props.info)
+    } 
+    const handleUpdate = (evnt:any) => {
+        if (props.onUninstall) props.onUpdate(props.info)
+    } 
     return (
         <Container style={props.style} fluid="md">
             <div
@@ -85,8 +79,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     <Icon.ArrowLeftCircle style={{ marginRight: 5 }} />
                     Apps
                 </h3>
-                {!props.info.isInstallable &&
-                    !props.info.hasOwnProperty('processStatus') && (
+                {info.status === "installed" && (
                         <>
                             <p
                                 style={{ cursor: 'pointer' }}
@@ -99,8 +92,10 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             <SettingPopover
                                 popOverRef={settingPopoverRef}
                                 setting={{
+                                    info:info,
+                                    customActions: props.customActions,
                                     isService: props.info.isService,
-                                    onUnInstall: props.onUninstall,
+                                    onUnInstall: handleUninstall,
                                     onResync: props.onResync,
                                     onDisable: props.onDisable,
                                     onRestart: props.onRestart,
@@ -116,8 +111,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     lg="2"
                 >
                     <img
-                        src={props.info.iconImg}
-                        alt={props.info.label}
+                        src={props.info.icon}
+                        alt={props.info.name}
                         style={{
                             width: '130px',
                             height: '130px',
@@ -131,7 +126,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     xs="12"
                     lg="10"
                 >
-                    <h4>{props.info.label}</h4>
+                    <h4>{info.name}</h4>
                     <div
                         style={{
                             display: 'flex',
@@ -139,32 +134,35 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             gap: 5,
                         }}
                     >
-                        {props.info.isUpdatable && (
+                        { isUpdatable(props.info) && (
                             <AppButton
                                 color="primary"
                                 size="sm"
                                 outline
-                                onClick={props.onUpdate}
+                                onClick={handleUpdate}
                             >
                                 Update
                             </AppButton>
                         )}
-                        {props.info.isLaunchable && (
+                        {info.status === "installed" && (
                             <AppButton
                                 color="primary"
                                 size="sm"
-                                onClick={props.onLaunch}
+                                onClick={handleLaunch}
                             >
                                 Launch
                             </AppButton>
                         )}
                     </div>
-                    {props.info.isInstallable && (
-                        <AppButton color="primary" size="sm" outline>
+                    { info.status === "uninstalled" && (
+                        <AppButton 
+                            color="primary" 
+                            size="sm" outline 
+                            onClick={handleInstall}>
                             Install
                         </AppButton>
                     )}
-                    {props.info.processStatus?.length > 0 && (
+                    { info.status !== "uninstalling" && progress > 0 && (
                         <div
                             className="d-flex flex-column align-items-center align-items-lg-start"
                             style={{
@@ -172,57 +170,53 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             }}
                         >
                             <p>
-                                {UppercaseFirstLetter(props.info.processStatus)}
+                                {UppercaseFirstLetter(info.status)}
                             </p>
                             <Progress
                                 style={{ width: '30%' }}
-                                value={props.info.percent}
+                                value={progress}
                                 color={progressColor}
-                                animated={
-                                    props.info.processStatus ===
-                                        'downloading' ||
-                                    props.info.processStatus === 'syncing' ||
-                                    props.info.processStatus ===
-                                        'uninstalling' ||
-                                    props.info.processStatus === 'installing'
-                                        ? true
-                                        : false
-                                }
+                                animated={false}
                             />
                         </div>
+                    )}
+                    { info.status === "uninstalling" && (
+                        <div
+                            className="d-flex flex-column align-items-center align-items-lg-start"
+                            style={{
+                                width: '100%',
+                            }}
+                        >
+                            <p>
+                                {UppercaseFirstLetter(info.status)}
+                            </p>
+                    </div>
                     )}
                 </Col>
             </Row>
             <Row className="mt-4">
-                <Col>{props.info.body}</Col>
+                <Col>
+                    <p>{props.info.description}</p>
+                    {isUpdatable(props.info) && (<>
+                        <h4>What's New</h4>
+                        <p>{props.info.updates}</p>
+                    </>)}
+                </Col>
             </Row>
             <Row className="mt-4">
                 <Col>
                     <h4>Package details</h4>
                     <p>
-                        <span>Package Id: {props.info.package.id}</span>
+                        <span>Package Id: {props.info.id}</span>
                         <br />
-                        <span>Version: {props.info.package.version}</span>
+                        <span>Version: {info.version}</span>
                         <br />
-                        <span>Build: {props.info.package.build}</span>
+                        <span>Build: {info.currentBuild}</span>
                         <br />
                     </p>
                 </Col>
             </Row>
-            {props.info.stats?.length > 0 && (
-                <>
-                    <Row className="mt-4">
-                        <Col>
-                            <AppLineGraph stats={props.info.stats} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Col>{props.info.footer}</Col>
-                        </Col>
-                    </Row>
-                </>
-            )}
+            {props.children}
         </Container>
     )
 }

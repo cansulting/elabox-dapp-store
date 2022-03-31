@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"store/backend/broadcast"
 	"store/backend/data"
 	"store/backend/global"
-	"strings"
 	"time"
 
 	"github.com/cansulting/elabox-system-tools/foundation/perm"
@@ -88,13 +88,25 @@ func RetrieveItems() error {
 	}
 
 	tmp := make([]data.PackageListingCache, len(tmpData))
-	pkgsCache = &tmp
 	i := 0
+	updates := make([]*data.PackageListingCache, 0)
 	for _, v := range tmpData {
 		tmp[i] = v
 		i++
+		if gitem, _ := GetItem(v.Id); gitem != nil {
+			if gitem.Build != v.Build {
+				updates = append(updates, gitem)
+			}
+		}
 	}
 
+	if len(updates) > 0 {
+		if err := broadcast.PublishNewUpdateAvailable(updates); err != nil {
+			log.Println("unable to broadcast new update available")
+		}
+	}
+
+	pkgsCache = &tmp
 	// tmp: save the data to cache file
 	return saveCache(pkgsCache, global.StoreCache)
 }
@@ -103,15 +115,15 @@ func RetrieveItems() error {
 func RetrieveDownloadLink(pkgId string) (string, error) {
 	form := url.Values{}
 	form.Add("packageId", pkgId)
-	req, err := http.NewRequest("POST", global.DOWNLOAD_ENDPOINT, strings.NewReader(form.Encode()))
+	req, err := http.PostForm(global.DOWNLOAD_ENDPOINT, form)
 	if err != nil {
 		return "", err
 	}
-	defer req.Body.Close()
 
-	if req.Response.StatusCode != http.StatusOK {
+	if req == nil || req.StatusCode != http.StatusOK {
 		return "", errors.New("unable to retrieve download link for package " + pkgId)
 	}
+	defer req.Body.Close()
 
 	// step: read response
 	body, err := ioutil.ReadAll(req.Body)

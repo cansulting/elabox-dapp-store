@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"store/backend/global"
 	"strconv"
 
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
@@ -27,11 +28,11 @@ type Task struct {
 }
 
 // contructor of download task
-func NewTask(id string, url string, path string) *Task {
+func NewTask(id string, url string, savePath string) *Task {
 	return &Task{
 		id:                id,
 		url:               url,
-		path:              path,
+		path:              savePath,
 		status:            0,
 		OnProgressChanged: func(task *Task) {},
 	}
@@ -66,25 +67,29 @@ func (task *Task) Start() error {
 		return nil
 	}
 
-	task.status = 1
+	task._onStateChanged(Downloading)
 	task.errorCode = 0
 	err := task.Download(task.path, task.url)
 	if err != nil {
+		task._onStateChanged(Error)
 		return err
 	}
-	logger.GetInstance().Debug().Msg("File Successfully Downloaded from " + task.url)
 	return nil
 }
 
 // download file via http
 // save to file
 func (task *Task) Download(path string, url string) (err error) {
+	task.downloaded = 0
 	// Get the data
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		return errors.New("http status code " + resp.Status)
+	}
 
 	task.total, err = strconv.ParseInt(resp.Header.Get("Content-Length"), 10, 64)
 	if err != nil || task.total == 0 {
@@ -104,7 +109,12 @@ func (task *Task) Download(path string, url string) (err error) {
 	}
 	// Write the body to file
 	_, err = io.Copy(out, io.TeeReader(resp.Body, task))
-	return err
+	if err != nil {
+		return err
+	}
+	//finish successfully
+	task._onStateChanged(Finished)
+	return nil
 }
 
 func (task *Task) Stop() {
@@ -116,12 +126,21 @@ func (task *Task) Reset() {
 	// clear cache file here
 }
 
+func (task *Task) _onStateChanged(status Status) {
+	task.status = status
+	if task.OnStateChanged != nil {
+		task.OnStateChanged(task)
+	}
+}
+
 // callback when writing the download file
 func (task *Task) Write(p []byte) (n int, err error) {
 	l := len(p)
 	task.downloaded += int64(l)
 	task.progress = int16((float32(task.downloaded) / float32(task.total)) * 100)
-	println("progress:", task.progress)
+	if global.ENV == "debug" {
+		println("progress:", task.progress)
+	}
 	task.OnProgressChanged(task)
 	return n, nil
 }

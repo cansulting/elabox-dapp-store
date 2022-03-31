@@ -3,3 +3,4 @@
 
 package global
 
+const ENV="release"
