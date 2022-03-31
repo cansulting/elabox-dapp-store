@@ -5,6 +5,8 @@ import { ComponentMeta } from '@storybook/react'
 import { retrieveListing } from '../actions/appLib'
 import { useState } from '@storybook/addons'
 import AppInfoCon from '../container/AppInfoCon'
+import { Col, Row } from 'reactstrap'
+import { AppLineGraph } from '../components/AppLineGraph'
 
 export default {
     title: 'Elabox/components/AppInfo',
@@ -39,8 +41,7 @@ Installable.args = {
     ...Primary.args,
     info: {
         ...Primary.args.info,
-        percent: 0,
-        isInstallable: true,
+        currentBuild: 0
     },
 }
 export const Downloading = Template.bind({})
@@ -49,8 +50,8 @@ Downloading.args = {
     ...Primary.args,
     info: {
         ...Primary.args.info,
-        percent: 30,
-        processStatus: 'downloading',
+        progress: 30,
+        status: 'downloading',
     },
 }
 export const Installing = Template.bind({})
@@ -59,8 +60,8 @@ Installing.args = {
     ...Primary.args,
     info: {
         ...Primary.args.info,
-        percent: 90,
-        processStatus: 'installing',
+        progress: 90,
+        status: 'installing',
     },
 }
 export const UnInstalling = Template.bind({})
@@ -69,8 +70,8 @@ UnInstalling.args = {
     ...Primary.args,
     info: {
         ...Primary.args.info,
-        percent: 90,
-        processStatus: 'uninstalling',
+        progress: 90,
+        status: 'uninstalling',
     },
 }
 
@@ -80,7 +81,8 @@ Updatable.args = {
     ...Primary.args,
     info: {
         ...Primary.args.info,
-        isUpdatable: true,
+        currentBuild: 1,
+        latestBuild:2
     },
 }
 export const Launchable = Template.bind({})
@@ -89,8 +91,9 @@ Launchable.args = {
     ...Primary.args,
     info: {
         ...Primary.args.info,
-        isUpdatable: true,
-        isLaunchable: true,
+        status: "installed",
+        currentBuild: 1,
+        latestBuild:1
     },
 }
 export const InstallationError = Template.bind({})
@@ -100,7 +103,7 @@ InstallationError.args = {
     info: {
         ...Primary.args.info,
         percent: 90,
-        processStatus: 'error',
+        status: 'error',
     },
 }
 
@@ -125,9 +128,28 @@ Syncing.args = {
     },
 }
 
+const TemplateStats = (props: AppInfoProps): JSX.Element => {
+    const stats = Labels.map(() => Math.random())
+    return ( <AppInfo {...props} >
+        {stats?.length > 0 && (
+            <>
+                <Row className="mt-4">
+                    <Col>
+                        <AppLineGraph stats={stats} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Col>{props.footer}</Col>
+                    </Col>
+                </Row>
+            </>
+        )}
+    </AppInfo>) 
+}
 const Labels = ['       ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '       ']
 
-export const WithStats = Template.bind({})
+export const WithStats = TemplateStats.bind({})
 
 WithStats.args = {
     ...Primary.args,
@@ -139,7 +161,6 @@ WithStats.args = {
                 <p>IP: 192.168.18.70</p>
             </>
         ),
-        stats: Labels.map(() => Math.random()),
         isService: true,
     },
 }

@@ -22,8 +22,8 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
         <div
             className={props.className}
             style={{
-                width: props.width,
-                height: props.height,
+                // width: props.width,
+                // height: props.height,
                 textAlign: 'center',
             }}
             onClick={(ev) => props.onClick(props.package)}
@@ -32,6 +32,8 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 style={{
                     position: 'relative',
                     marginBottom: 10,
+                    width: props.width,
+                    height: props.height
                 }}
             >
                 <img

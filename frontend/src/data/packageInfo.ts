@@ -13,7 +13,6 @@ export interface PackageInfo {
 	description? : string 
     updates? : string
     isService?: boolean
-    stats?: [any]
 }
 
 export function isUpdatable(pkg:PackageInfo) : boolean {

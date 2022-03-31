@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import { AppIcon, AppIconProps } from './AppIcon'
 import { PackageInfo } from '../data/packageInfo'
 import AppIconCon from '../container/AppIconCon'
 

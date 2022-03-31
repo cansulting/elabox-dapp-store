@@ -9,15 +9,17 @@ import {
     PopoverBody,
 } from 'reactstrap'
 import { AppButton } from './AppButton'
-import { AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
-import { AppLineGraph } from './AppLineGraph'
+import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable } from '../data/packageInfo'
+
+
 
 export interface AppInfoProps {
     info: PackageInfo
     style?: object
     footer?: JSX.Element
+    customActions?: AppInfoAction[]             // custom secondary actions for app info
     onInstall?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
@@ -26,6 +28,7 @@ export interface AppInfoProps {
     onDisable?: () => void
     onRestart?: () => void
     onBack?: () => void
+    children?: any
 }
 interface SettingPopOverRef {
     popOverRef: React.RefObject<any>
@@ -89,6 +92,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             <SettingPopover
                                 popOverRef={settingPopoverRef}
                                 setting={{
+                                    info:info,
+                                    customActions: props.customActions,
                                     isService: props.info.isService,
                                     onUnInstall: handleUninstall,
                                     onResync: props.onResync,
@@ -157,7 +162,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             Install
                         </AppButton>
                     )}
-                    { progress > 0 && (
+                    { info.status !== "uninstalling" && progress > 0 && (
                         <div
                             className="d-flex flex-column align-items-center align-items-lg-start"
                             style={{
@@ -211,20 +216,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     </p>
                 </Col>
             </Row>
-            {props.info.stats?.length > 0 && (
-                <>
-                    <Row className="mt-4">
-                        <Col>
-                            <AppLineGraph stats={props.info.stats} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Col>{props.footer}</Col>
-                        </Col>
-                    </Row>
-                </>
-            )}
+            {props.children}
         </Container>
     )
 }

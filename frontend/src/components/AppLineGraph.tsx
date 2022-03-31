@@ -35,7 +35,7 @@ const options = {
 }
 const Labels = ['       ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '       ']
 export interface AppLineGraph {
-    stats: [any]
+    stats: any[]
 }
 
 export const AppLineGraph = (props: AppLineGraph): JSX.Element => {

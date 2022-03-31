@@ -62,6 +62,8 @@ Primary.args = {
         },
     ],
     style: { width: '50%' },
+    iconWidth: "200px",
+    iconHeight: "200px"
 }
 
 export const DownloadableApp = Template.bind({})
@@ -266,4 +268,7 @@ const FetchRealdata = (props: any): JSX.Element => {
 }
 
 export const RealData = FetchRealdata.bind({})
-RealData.args = {}
+RealData.args = {
+    ...Primary.args,
+    apps: null
+}
