@@ -197,7 +197,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
             <Row className="mt-4">
                 <Col>
                     <p>{props.info.description}</p>
-                    {isUpdatable(props.info) && (<>
+                    {(info.status === "uninstalled" || isUpdatable(props.info)) && (<>
                         <h4>What's New</h4>
                         <p>{props.info.updates}</p>
                     </>)}
