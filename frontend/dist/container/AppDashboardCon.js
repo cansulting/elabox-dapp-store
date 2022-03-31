@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppDashboardCon = void 0;
 var react_1 = __importDefault(require("react"));
 var react_2 = require("react");
 var actions_1 = require("../actions");
@@ -33,4 +34,4 @@ var AppDashboardCon = function (props) {
     var params = __assign(__assign({}, props), { apps: pkgs });
     return react_1.default.createElement(components_1.AppDashboard, __assign({}, params));
 };
-exports.default = AppDashboardCon;
+exports.AppDashboardCon = AppDashboardCon;

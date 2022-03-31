@@ -17,7 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RealData = exports.CompleteDownloadingApp = exports.ErrorDownloadingApp = exports.UninstallingApp = exports.InstallingApp = exports.DownloadingApp = exports.DownloadableApp = exports.Primary = void 0;
 var react_1 = __importDefault(require("react"));
 var AppDashboard_1 = require("../components/AppDashboard");
-var AppDashboardCon_1 = __importDefault(require("../container/AppDashboardCon"));
+var AppDashboardCon_1 = require("../container/AppDashboardCon");
 exports.default = {
     title: 'Elabox/components/AppDashboard',
     component: AppDashboard_1.AppDashboard,
@@ -208,7 +208,7 @@ var FetchRealdata = function (props) {
     var onClick = function (app) {
         console.log("Selected " + app.id);
     };
-    return react_1.default.createElement(AppDashboardCon_1.default, { onClick: onClick, apps: [] });
+    return react_1.default.createElement(AppDashboardCon_1.AppDashboardCon, { onClick: onClick, apps: [] });
 };
 exports.RealData = FetchRealdata.bind({});
 exports.RealData.args = __assign(__assign({}, exports.Primary.args), { apps: null });

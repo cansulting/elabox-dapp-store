@@ -4,7 +4,7 @@ import { AppInfo, AppInfoProps } from '../components/AppInfo'
 import { ComponentMeta } from '@storybook/react'
 import { retrieveListing } from '../actions/appLib'
 import { useState } from '@storybook/addons'
-import AppInfoCon from '../container/AppInfoCon'
+import { AppInfoCon } from '../container/AppInfoCon'
 import { Col, Row } from 'reactstrap'
 import { AppLineGraph } from '../components/AppLineGraph'
 

@@ -5,7 +5,7 @@ import { installPackage, retrieveListing, uninstallPackage } from '../actions/ap
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
 
-const AppInfoCon = (props: AppInfoProps): JSX.Element => {
+export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const [info, setInfo] = useState(props.info)
     const [progress, setProgress] = useState(props.info.progress)
     
@@ -69,5 +69,3 @@ const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     return <AppInfo {...params}/>
 }
-
-export default AppInfoCon;

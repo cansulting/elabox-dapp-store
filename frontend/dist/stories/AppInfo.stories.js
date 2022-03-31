@@ -29,16 +29,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RealData = exports.WithStats = exports.Syncing = exports.InstallationSuccess = exports.InstallationError = exports.Launchable = exports.Updatable = exports.UnInstalling = exports.Installing = exports.Downloading = exports.Installable = exports.Primary = void 0;
 var react_1 = __importStar(require("react"));
 var AppInfo_1 = require("../components/AppInfo");
 var appLib_1 = require("../actions/appLib");
 var addons_1 = require("@storybook/addons");
-var AppInfoCon_1 = __importDefault(require("../container/AppInfoCon"));
+var AppInfoCon_1 = require("../container/AppInfoCon");
 var reactstrap_1 = require("reactstrap");
 var AppLineGraph_1 = require("../components/AppLineGraph");
 exports.default = {
@@ -110,7 +107,7 @@ var Template2 = function (props) {
     });
     if (currentPkg === null)
         return react_1.default.createElement(react_1.default.Fragment, null);
-    return react_1.default.createElement(AppInfoCon_1.default, { info: currentPkg });
+    return react_1.default.createElement(AppInfoCon_1.AppInfoCon, { info: currentPkg });
 };
 exports.RealData = Template2.bind({});
 exports.RealData.args = __assign(__assign({}, exports.Primary.args), { info: __assign({}, exports.Primary.args.info) });

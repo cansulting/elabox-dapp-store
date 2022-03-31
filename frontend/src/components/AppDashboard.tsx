@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { PackageInfo } from '../data/packageInfo'
-import AppIconCon from '../container/AppIconCon'
+import { AppIconCon } from '../container/AppIconCon'
 
 export interface AppDashboardProps {
     apps: PackageInfo[],

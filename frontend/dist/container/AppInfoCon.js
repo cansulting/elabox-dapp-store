@@ -30,6 +30,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppInfoCon = void 0;
 var react_1 = __importStar(require("react"));
 var AppInfo_1 = require("../components/AppInfo");
 var Listener = __importStar(require("../actions/broadcastListener"));
@@ -91,4 +92,4 @@ var AppInfoCon = function (props) {
     var params = __assign(__assign({}, props), { info: __assign(__assign({}, info), { progress: progress }), onInstall: handleInstall, onUninstall: handleUninstall, onUpdate: handleInstall, onLaunch: handleLaunch });
     return react_1.default.createElement(AppInfo_1.AppInfo, __assign({}, params));
 };
-exports.default = AppInfoCon;
+exports.AppInfoCon = AppInfoCon;

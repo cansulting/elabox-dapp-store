@@ -4,7 +4,7 @@ import { AppDashboardProps, PackageInfo } from ".."
 import { retrieveAllListings } from "../actions"
 import { AppDashboard } from "../components"
 
-const AppDashboardCon = (props: AppDashboardProps): JSX.Element => {
+export const AppDashboardCon = (props: AppDashboardProps): JSX.Element => {
     //let defaultv = [] as PackageInfo[]
     const [pkgs, setPkgs] = useState([])
     useEffect( () => {
@@ -19,5 +19,3 @@ const AppDashboardCon = (props: AppDashboardProps): JSX.Element => {
     const params = { ... props, apps: pkgs}
     return  <AppDashboard {...params}/>
 }
-
-export default AppDashboardCon

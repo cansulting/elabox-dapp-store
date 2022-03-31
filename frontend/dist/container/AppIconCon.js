@@ -30,6 +30,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppIconCon = void 0;
 var react_1 = __importStar(require("react"));
 var AppIcon_1 = require("../components/AppIcon");
 var Listener = __importStar(require("../actions/broadcastListener"));
@@ -72,4 +73,4 @@ var AppIconCon = function (props) {
     var params = __assign(__assign({}, props), { package: __assign(__assign({}, info), { progress: progress }) });
     return react_1.default.createElement(AppIcon_1.AppIcon, __assign({}, params));
 };
-exports.default = AppIconCon;
+exports.AppIconCon = AppIconCon;

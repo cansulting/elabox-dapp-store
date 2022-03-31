@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AppIcon, AppIconProps } from "../components/AppIcon";
 import * as Listener from "../actions/broadcastListener"
 
-const AppIconCon = (props: AppIconProps): JSX.Element => {
+export const AppIconCon = (props: AppIconProps): JSX.Element => {
     const [info, setInfo] = useState(props.package)
     const [progress, setProgress] = useState(props.package.progress)
     const handleProgress = (args:any) => {
@@ -45,5 +45,3 @@ const AppIconCon = (props: AppIconProps): JSX.Element => {
     }
     return <AppIcon {...params} />
 }
-
-export default AppIconCon;
