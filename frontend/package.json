@@ -14,7 +14,7 @@
     "start": "webpack-dev-server --open",
     "start2": "react-scripts start",
     "test": "mocha --timeout 10000 -r jsdom-global/register -r ts-node/register src/tests/**/*.test.ts",
-    "build": "webpack",
+    "build": "tsc",
     "type-check": "tsc --noEmit",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
