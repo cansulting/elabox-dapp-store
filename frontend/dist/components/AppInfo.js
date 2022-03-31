@@ -34,28 +34,35 @@ exports.AppInfo = void 0;
 var react_1 = __importStar(require("react"));
 var Icon = __importStar(require("react-feather"));
 var reactstrap_1 = require("reactstrap");
-var AppIcon_1 = require("./AppIcon");
 var AppButton_1 = require("./AppButton");
 var AppInfoSetting_1 = require("./AppInfoSetting");
-var AppLineGraph_1 = require("./AppLineGraph");
 var colors_1 = require("../utils/colors");
+var packageInfo_1 = require("../data/packageInfo");
 var SettingPopover = function (props) {
     return (react_1.default.createElement(reactstrap_1.UncontrolledPopover, { target: props.popOverRef, placement: "bottom", trigger: "legacy", offset: "0, 8" },
         react_1.default.createElement(reactstrap_1.PopoverBody, null,
             react_1.default.createElement(AppInfoSetting_1.AppInfoSetting, __assign({}, props.setting)))));
 };
 var AppInfo = function (props) {
-    var _a, _b;
     var settingPopoverRef = (0, react_1.useRef)(null);
-    var progressColor = (0, colors_1.ProgressColor)(props.info.processStatus);
-    var AppIconDetails = {
-        label: props.info.label,
-        iconOnly: true,
-        iconImg: props.info.iconImg,
-        width: '130px',
-        height: '130px',
-        percent: props.info.percent,
-        processStatus: props.info.processStatus,
+    var progressColor = (0, colors_1.ProgressColor)(props.info.status);
+    var info = props.info;
+    var progress = info.progress;
+    var handleInstall = function (evnt) {
+        if (props.onInstall)
+            props.onInstall(props.info);
+    };
+    var handleUninstall = function (evnt) {
+        if (props.onUninstall)
+            props.onUninstall(props.info);
+    };
+    var handleLaunch = function (evnt) {
+        if (props.onUninstall)
+            props.onLaunch(props.info);
+    };
+    var handleUpdate = function (evnt) {
+        if (props.onUninstall)
+            props.onUpdate(props.info);
     };
     return (react_1.default.createElement(reactstrap_1.Container, { style: props.style, fluid: "md" },
         react_1.default.createElement("div", { style: {
@@ -67,66 +74,66 @@ var AppInfo = function (props) {
             react_1.default.createElement("h3", { style: { cursor: 'pointer' }, onClick: props.onBack },
                 react_1.default.createElement(Icon.ArrowLeftCircle, { style: { marginRight: 5 } }),
                 "Apps"),
-            !props.info.isInstallable &&
-                !props.info.hasOwnProperty('processStatus') && (react_1.default.createElement(react_1.default.Fragment, null,
+            info.status === "installed" && (react_1.default.createElement(react_1.default.Fragment, null,
                 react_1.default.createElement("p", { style: { cursor: 'pointer' }, className: "text-primary", id: "settingPopover", ref: settingPopoverRef },
                     react_1.default.createElement(Icon.Settings, null)),
                 react_1.default.createElement(SettingPopover, { popOverRef: settingPopoverRef, setting: {
+                        info: info,
+                        customActions: props.customActions,
                         isService: props.info.isService,
-                        onUnInstall: props.onUninstall,
+                        onUnInstall: handleUninstall,
                         onResync: props.onResync,
                         onDisable: props.onDisable,
                         onRestart: props.onRestart,
                     } })))),
         react_1.default.createElement(reactstrap_1.Row, { lg: "2" },
             react_1.default.createElement(reactstrap_1.Col, { className: "text-center text-lg-start d-flex flex-column align-items-center", xs: "12", lg: "2" },
-                react_1.default.createElement(AppIcon_1.AppIcon, __assign({}, AppIconDetails))),
+                react_1.default.createElement("img", { src: props.info.icon, alt: props.info.name, style: {
+                        width: '130px',
+                        height: '130px',
+                        borderRadius: 10,
+                    } })),
             react_1.default.createElement(reactstrap_1.Col, { className: "d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3", style: { gap: 5 }, xs: "12", lg: "10" },
-                react_1.default.createElement("h4", null, props.info.label),
+                react_1.default.createElement("h4", null, info.name),
                 react_1.default.createElement("div", { style: {
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 5,
                     } },
-                    props.info.isUpdatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: props.onUpdate }, "Update")),
-                    props.info.isLaunchable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: props.onLaunch }, "Launch"))),
-                props.info.isInstallable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true }, "Install")),
-                ((_a = props.info.processStatus) === null || _a === void 0 ? void 0 : _a.length) > 0 && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
+                    (0, packageInfo_1.isUpdatable)(props.info) && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleUpdate }, "Update")),
+                    info.status === "installed" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
+                info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleInstall }, "Install")),
+                info.status !== "uninstalling" && progress > 0 && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },
-                    react_1.default.createElement("p", null, (0, colors_1.UppercaseFirstLetter)(props.info.processStatus)),
-                    react_1.default.createElement(reactstrap_1.Progress, { style: { width: '30%' }, value: props.info.percent, color: progressColor, animated: props.info.processStatus ===
-                            'downloading' ||
-                            props.info.processStatus === 'syncing' ||
-                            props.info.processStatus ===
-                                'uninstalling' ||
-                            props.info.processStatus === 'installing'
-                            ? true
-                            : false }))))),
+                    react_1.default.createElement("p", null, (0, colors_1.UppercaseFirstLetter)(info.status)),
+                    react_1.default.createElement(reactstrap_1.Progress, { style: { width: '30%' }, value: progress, color: progressColor, animated: false }))),
+                info.status === "uninstalling" && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
+                        width: '100%',
+                    } },
+                    react_1.default.createElement("p", null, (0, colors_1.UppercaseFirstLetter)(info.status)))))),
         react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
-            react_1.default.createElement(reactstrap_1.Col, null, props.info.body)),
+            react_1.default.createElement(reactstrap_1.Col, null,
+                react_1.default.createElement("p", null, props.info.description),
+                (0, packageInfo_1.isUpdatable)(props.info) && (react_1.default.createElement(react_1.default.Fragment, null,
+                    react_1.default.createElement("h4", null, "What's New"),
+                    react_1.default.createElement("p", null, props.info.updates))))),
         react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
             react_1.default.createElement(reactstrap_1.Col, null,
                 react_1.default.createElement("h4", null, "Package details"),
                 react_1.default.createElement("p", null,
                     react_1.default.createElement("span", null,
                         "Package Id: ",
-                        props.info.package.id),
+                        props.info.id),
                     react_1.default.createElement("br", null),
                     react_1.default.createElement("span", null,
                         "Version: ",
-                        props.info.package.version),
+                        info.version),
                     react_1.default.createElement("br", null),
                     react_1.default.createElement("span", null,
                         "Build: ",
-                        props.info.package.build),
+                        info.currentBuild),
                     react_1.default.createElement("br", null)))),
-        ((_b = props.info.stats) === null || _b === void 0 ? void 0 : _b.length) > 0 && (react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
-                react_1.default.createElement(reactstrap_1.Col, null,
-                    react_1.default.createElement(AppLineGraph_1.AppLineGraph, { stats: props.info.stats }))),
-            react_1.default.createElement(reactstrap_1.Row, null,
-                react_1.default.createElement(reactstrap_1.Col, null,
-                    react_1.default.createElement(reactstrap_1.Col, null, props.info.footer)))))));
+        props.children));
 };
 exports.AppInfo = AppInfo;

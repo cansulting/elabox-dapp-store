@@ -10,13 +10,30 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CompleteDownloadingApp = exports.ErrorDownloadingApp = exports.UninstallingApp = exports.InstallingApp = exports.DownloadingApp = exports.DownloadableApp = exports.Primary = void 0;
-var react_1 = __importDefault(require("react"));
+exports.RealData = exports.CompleteDownloadingApp = exports.ErrorDownloadingApp = exports.UninstallingApp = exports.InstallingApp = exports.DownloadingApp = exports.DownloadableApp = exports.Primary = void 0;
+var react_1 = __importStar(require("react"));
 var AppDashboard_1 = require("../components/AppDashboard");
+var appLib_1 = require("../actions/appLib");
 exports.default = {
     title: 'Elabox/components/AppDashboard',
     component: AppDashboard_1.AppDashboard,
@@ -63,6 +80,8 @@ exports.Primary.args = {
         },
     ],
     style: { width: '50%' },
+    iconWidth: "200px",
+    iconHeight: "200px"
 };
 exports.DownloadableApp = Template.bind({});
 exports.DownloadableApp.args = __assign(__assign({}, exports.Primary.args), { apps: [
@@ -201,3 +220,22 @@ exports.CompleteDownloadingApp.args = __assign(__assign({}, exports.Primary.args
             percent: 100,
         },
     ] });
+var FetchRealdata = function (props) {
+    var defaultv = [];
+    var _a = (0, react_1.useState)(defaultv), pkgs = _a[0], setPkgs = _a[1];
+    (0, react_1.useEffect)(function () {
+        if (!pkgs || pkgs.length === 0) {
+            (0, appLib_1.retrieveAllListings)()
+                .then(function (res) {
+                setPkgs(res);
+            })
+                .catch(function (err) { return console.log(err); });
+        }
+    });
+    var onClick = function (app) {
+        console.log("Selected " + app.id);
+    };
+    return react_1.default.createElement(AppDashboard_1.AppDashboard, { apps: pkgs, onClick: onClick });
+};
+exports.RealData = FetchRealdata.bind({});
+exports.RealData.args = __assign(__assign({}, exports.Primary.args), { apps: null });

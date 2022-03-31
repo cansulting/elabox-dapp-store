@@ -10,3 +10,4 @@ export declare const InstallingApp: any;
 export declare const UninstallingApp: any;
 export declare const ErrorDownloadingApp: any;
 export declare const CompleteDownloadingApp: any;
+export declare const RealData: any;

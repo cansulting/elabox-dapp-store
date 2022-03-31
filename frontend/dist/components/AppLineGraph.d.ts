@@ -1,4 +1,4 @@
 export interface AppLineGraph {
-    stats: [any];
+    stats: any[];
 }
 export declare const AppLineGraph: (props: AppLineGraph) => JSX.Element;

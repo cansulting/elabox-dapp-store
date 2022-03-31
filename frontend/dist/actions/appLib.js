@@ -36,18 +36,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.installPackage = exports.retrieveListing = exports.retrieveAllListings = void 0;
+exports.uninstallPackage = exports.installPackage = exports.retrieveListing = exports.retrieveAllListings = void 0;
 var constants_1 = require("./constants");
 function retrieveAllListings() {
     return __awaiter(this, void 0, void 0, function () {
-        var res;
+        var res, pkgs;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, constants_1.eventHandler.RPC(constants_1.PACKAGE_ID, constants_1.AC_RETRIEVE_PKGS)];
+                case 0:
+                    console.log("Retrieve all listing");
+                    return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_RETRIEVE_PKGS)];
                 case 1:
                     res = _a.sent();
-                    console.log(res);
-                    return [2 /*return*/];
+                    if (res.code !== 200)
+                        throw new Error(res.message);
+                    pkgs = JSON.parse(res.message);
+                    console.log(pkgs);
+                    return [2 /*return*/, pkgs];
             }
         });
     });
@@ -55,14 +60,17 @@ function retrieveAllListings() {
 exports.retrieveAllListings = retrieveAllListings;
 function retrieveListing(packageId) {
     return __awaiter(this, void 0, void 0, function () {
-        var res;
+        var res, pkg;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, constants_1.eventHandler.RPC(constants_1.PACKAGE_ID, constants_1.AC_RETRIEVE_PKG, { packageId: packageId })];
+                case 0: return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_RETRIEVE_PKG, packageId)];
                 case 1:
                     res = _a.sent();
-                    console.log(res);
-                    return [2 /*return*/];
+                    if (res.code !== 200)
+                        throw new Error(res.message);
+                    pkg = JSON.parse(res.message);
+                    console.log("retrieve listing", res);
+                    return [2 /*return*/, pkg];
             }
         });
     });
@@ -74,9 +82,11 @@ function installPackage(packageId) {
         var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, constants_1.eventHandler.RPC(constants_1.PACKAGE_ID, constants_1.AC_INSTALL_PKG, { packageId: packageId })];
+                case 0: return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_INSTALL_PKG, packageId)];
                 case 1:
                     res = _a.sent();
+                    if (res.code !== 200)
+                        throw new Error(res.message);
                     console.log(res);
                     return [2 /*return*/];
             }
@@ -84,3 +94,22 @@ function installPackage(packageId) {
     });
 }
 exports.installPackage = installPackage;
+function uninstallPackage(packageId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log("uninstalling");
+                    return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_UNINSTALL_PKG, packageId)];
+                case 1:
+                    res = _a.sent();
+                    if (res.code !== 200)
+                        throw new Error(res.message);
+                    console.log(res);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.uninstallPackage = uninstallPackage;

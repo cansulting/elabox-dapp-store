@@ -27,20 +27,25 @@ var react_1 = __importDefault(require("react"));
 var Icon = __importStar(require("react-feather"));
 var reactstrap_1 = require("reactstrap");
 var colors_1 = require("../utils/colors");
+var packageInfo_1 = require("../data/packageInfo");
 var AppIcon = function (props) {
-    var _a;
-    var progressColor = (0, colors_1.ProgressColor)(props.processStatus);
+    var pkg = props.package;
+    var status = pkg.status;
+    var progressColor = (0, colors_1.ProgressColor)(status);
+    //console.log("icon", pkg)
     return (react_1.default.createElement("div", { className: props.className, style: {
-            width: props.width,
-            height: props.height,
+            // width: props.width,
+            // height: props.height,
             textAlign: 'center',
-        } },
+        }, onClick: function (ev) { return props.onClick(props.package); } },
         react_1.default.createElement("div", { style: {
                 position: 'relative',
                 marginBottom: 10,
+                width: props.width,
+                height: props.height
             } },
-            react_1.default.createElement("img", { src: props.iconImg, alt: props.label, style: { width: '100%', height: '100%', borderRadius: 10 } }),
-            props.notification > 0 && (react_1.default.createElement(Icon.Bell, { style: {
+            react_1.default.createElement("img", { src: props.package.icon, alt: props.package.name, style: { width: '100%', height: '100%', borderRadius: 10 } }),
+            props.package.notifications > 0 && (react_1.default.createElement(Icon.Bell, { style: {
                     position: 'absolute',
                     top: 10,
                     right: 10,
@@ -50,21 +55,17 @@ var AppIcon = function (props) {
                     padding: 5,
                     cursor: 'pointer',
                 }, color: "white", height: 20, width: 20 })),
-            props.isInstallable && (react_1.default.createElement(Icon.Download, { style: {
+            ((pkg.status === "uninstalled" && pkg.progress === 0) ||
+                (pkg.progress <= 0 && (0, packageInfo_1.isUpdatable)(pkg))) && (react_1.default.createElement(Icon.Download, { style: {
                     position: 'absolute',
-                    bottom: 10,
-                    right: 10,
-                    border: '1px solid lightgrey',
+                    bottom: '3%',
+                    right: '3%',
                     borderRadius: '50%',
-                    background: 'blue',
-                    padding: 5,
+                    background: '#0081ff',
+                    padding: '3%',
                     cursor: 'pointer',
-                }, color: "white", height: 20, width: 20 }))),
-        !props.iconOnly && ((_a = props.processStatus) === null || _a === void 0 ? void 0 : _a.length) > 0 && (react_1.default.createElement(reactstrap_1.Progress, { value: props.percent, color: progressColor, animated: props.processStatus === 'downloading' ||
-                props.processStatus === 'uninstalling' ||
-                props.processStatus === 'installing'
-                ? true
-                : false })),
-        !props.iconOnly && !props.processStatus && react_1.default.createElement("h4", null, props.label)));
+                }, color: "white", height: "20%", width: "20%" }))),
+        props.package.progress > 0 && (react_1.default.createElement(reactstrap_1.Progress, { style: { height: "6px" }, value: props.package.progress, color: progressColor })),
+        (!props.package.progress || props.package.progress <= 0) && react_1.default.createElement("h4", null, props.package.name)));
 };
 exports.AppIcon = AppIcon;

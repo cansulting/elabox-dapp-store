@@ -1,35 +1,19 @@
 /// <reference types="react" />
-interface PacakgeDetails {
-    id: string;
-    version: string;
-    build: string;
-}
-interface Info {
-    id: number;
-    label: string;
-    iconImg: string;
-    isInstallable?: boolean;
-    isUpdatable?: boolean;
-    isLaunchable?: boolean;
-    isService: boolean;
-    percent?: 0;
-    stats?: [any];
-    body: JSX.Element;
-    footer?: JSX.Element;
-    package: PacakgeDetails;
-    processStatus?: 'error' | 'completed' | 'downloading' | 'installing' | 'uninstalling' | 'syncing';
-}
+import { AppInfoAction } from './AppInfoSetting';
+import { PackageInfo } from '../data/packageInfo';
 export interface AppInfoProps {
-    info: Info;
-    style: object;
-    onInstall: () => void;
-    onUninstall: () => void;
-    onUpdate: () => void;
-    onLaunch: () => void;
-    onResync: () => void;
-    onDisable: () => void;
-    onRestart: () => void;
-    onBack: () => void;
+    info: PackageInfo;
+    style?: object;
+    footer?: JSX.Element;
+    customActions?: AppInfoAction[];
+    onInstall?: (pkg: PackageInfo) => void;
+    onUninstall?: (pkg: PackageInfo) => void;
+    onUpdate?: (pkg: PackageInfo) => void;
+    onLaunch?: (pkg: PackageInfo) => void;
+    onResync?: () => void;
+    onDisable?: () => void;
+    onRestart?: () => void;
+    onBack?: () => void;
+    children?: any;
 }
 export declare const AppInfo: (props: AppInfoProps) => JSX.Element;
-export {};

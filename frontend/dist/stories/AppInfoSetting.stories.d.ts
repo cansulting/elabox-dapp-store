@@ -5,3 +5,4 @@ declare const _default: ComponentMeta<(props: AppInfoSettingProps) => JSX.Elemen
 export default _default;
 export declare const Primary: any;
 export declare const IsService: any;
+export declare const CustomActions: any;

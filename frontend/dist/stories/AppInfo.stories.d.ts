@@ -14,3 +14,4 @@ export declare const InstallationError: any;
 export declare const InstallationSuccess: any;
 export declare const Syncing: any;
 export declare const WithStats: any;
+export declare const RealData: any;

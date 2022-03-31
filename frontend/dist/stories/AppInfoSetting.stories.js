@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.IsService = exports.Primary = void 0;
+exports.CustomActions = exports.IsService = exports.Primary = void 0;
 var react_1 = __importDefault(require("react"));
 var AppInfoSetting_1 = require("../components/AppInfoSetting");
 exports.default = {
@@ -29,3 +29,8 @@ exports.Primary.args = {
 };
 exports.IsService = Template.bind({});
 exports.IsService.args = __assign(__assign({}, exports.Primary.args), { isService: true, onResync: function () { }, onDisable: function () { }, onRestart: function () { } });
+exports.CustomActions = Template.bind({});
+exports.CustomActions.args = __assign(__assign({}, exports.Primary.args), { customActions: [
+        { label: "Custom Action 1", color: "blue" },
+        { label: "Custom Action 2", onClick: function (_) { return console.log("click"); } }
+    ] });

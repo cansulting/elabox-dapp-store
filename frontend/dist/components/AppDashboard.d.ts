@@ -1,6 +1,9 @@
-import { AppIconProps } from './AppIcon';
+import { PackageInfo } from '../data/packageInfo';
 export interface AppDashboardProps {
-    apps: [AppIconProps];
-    style: object;
+    apps: PackageInfo[];
+    onClick?: (app: PackageInfo) => void;
+    iconWidth?: string;
+    iconHeight?: string;
+    style?: object;
 }
 export declare const AppDashboard: (props: AppDashboardProps) => JSX.Element;
