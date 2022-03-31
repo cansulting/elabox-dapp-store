@@ -1,7 +1,10 @@
 import { EboxEvent } from "elabox-foundation";
 
-const HOST = "192.168.118.25"//window.location.hostname 
-export const eventHandler = new EboxEvent("http://" + HOST);
+let _eventHandler : EboxEvent | null = null;
+
+const HOST = /*"192.168.118.25"//*/window.location.hostname 
+
+
 export const PACKAGE_ID = "ela.store";
 export const INSTALLER_ID = "ela.installer"
 
@@ -15,3 +18,14 @@ export const AC_UNINSTALL_PKG = "ela.store.actions.UNINSTALL_PACKAGE";
 export const INSTALLER_PROGRESS = PACKAGE_ID + ".broadcast.INSTALL_PROGRESS"
 export const INSTALLER_STATE_CHANGED = PACKAGE_ID + ".broadcast.INSTALL_STATE"
 export const INSTALLER_ERROR = PACKAGE_ID + ".broadcast.ERROR"
+
+export const setEventHandler = (eh: EboxEvent) => { 
+    _eventHandler = eh;
+}
+
+export const getEventHandler = () => {
+    if (!_eventHandler) {
+        _eventHandler = new EboxEvent("http://" + HOST)
+    }
+    return _eventHandler;
+}

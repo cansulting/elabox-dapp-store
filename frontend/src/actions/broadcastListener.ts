@@ -1,6 +1,6 @@
 
 import { 
-    eventHandler, 
+    getEventHandler, 
     INSTALLER_ID, 
     PACKAGE_ID,
     INSTALLER_ERROR,
@@ -23,20 +23,20 @@ export const init = () => {
     // eventHandler.subscribe(INSTALLER_ID, (res) => {
     //     console.log(INSTALLER_ID, res)
     // })
-    eventHandler.subscribe(PACKAGE_ID, res => {
+    getEventHandler().subscribe(PACKAGE_ID, res => {
         console.log(PACKAGE_ID, res)
     })
-    eventHandler.on(INSTALLER_STATE_CHANGED, (args) => {
+    getEventHandler().on(INSTALLER_STATE_CHANGED, (args) => {
         //console.log(INSTALLER_STATE_CHANGED, args)
         const data = JSON.parse(args.data)
         emitForPackage(data.packageId, "install_state_changed", data)
     })
-    eventHandler.on(INSTALLER_PROGRESS, (args) => {
+    getEventHandler().on(INSTALLER_PROGRESS, (args) => {
         //console.log(INSTALLER_PROGRESS, args)
         const data = JSON.parse(args.data)
         emitForPackage(data.packageId,"install_progress", data)
     })
-    eventHandler.on(INSTALLER_ERROR, args => {
+    getEventHandler().on(INSTALLER_ERROR, args => {
         console.log(INSTALLER_ERROR, args)
         const data = JSON.parse(args.data)
         emit("install_error", data)
