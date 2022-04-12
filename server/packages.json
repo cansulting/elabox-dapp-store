@@ -75,5 +75,16 @@
         "version": "0.1.0",
         "projectRepo": "",
         "projectWebsite": ""
+    },
+    "trinity.pasar": {
+        "name": "Pasar",
+        "id": "trinity.pasar",
+        "description": "Glide",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "this is trinity pasar",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
     }
 }
