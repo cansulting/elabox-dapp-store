@@ -49,6 +49,10 @@ func RetrieveApp(pkgId string) (*data.PackageInfo, error) {
 	}
 	var pkgInfo = data.PackageInfo{}
 	pkgInfo.AddInfo(pkg, storeCacheItem, true)
+	if task := installer.GetTask(pkgInfo.Id); task != nil {
+		pkgInfo.Status = task.Status
+	}
+
 	return &pkgInfo, nil
 }
 

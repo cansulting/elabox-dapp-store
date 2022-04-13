@@ -2,6 +2,7 @@ package data
 
 import (
 	"store/backend/global"
+	"strconv"
 
 	"github.com/cansulting/elabox-system-tools/foundation/app/data"
 )
@@ -18,12 +19,7 @@ type PackageInfo struct {
 	Description   string           `json:"description,omitempty"`
 	Updates       string           `json:"updates,omitempty"`
 	Version       string           `json:"version,omitempty"`
-}
-
-type PackageDetails struct {
-	Description string `json:"description"`
-	Updates     string `json:"updates"`
-	Version     string `json:"version"`
+	LaunchUrl     string           `json:"launchUrl,omitempty"`
 }
 
 func NewPackageInfo() PackageInfo {
@@ -34,6 +30,16 @@ func NewPackageInfo() PackageInfo {
 func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheItem *PackageListingCache, detailed bool) {
 	if installed != nil {
 		instance.CurrentBuild = int(installed.Build)
+		// resolve launch url
+		if detailed {
+			instance.LaunchUrl = "/" + installed.PackageId
+			if installed.ActivityGroup.CustomLink != "" {
+				instance.LaunchUrl = installed.ActivityGroup.CustomLink
+			}
+			if installed.ActivityGroup.CustomLink == "" && installed.ActivityGroup.CustomPort != 0 {
+				instance.LaunchUrl = ":" + strconv.Itoa(installed.ActivityGroup.CustomPort)
+			}
+		}
 	}
 	if storeCacheItem != nil {
 		instance.Id = storeCacheItem.Id
