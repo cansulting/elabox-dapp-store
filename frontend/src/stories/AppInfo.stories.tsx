@@ -169,7 +169,7 @@ const Template2 = (props: AppInfoProps) : JSX.Element => {
     const [currentPkg, setPkg] = useState(null)
     useEffect( () =>{
         if (currentPkg === null)
-            retrieveListing("ela.sample")
+            retrieveListing("trinity.pasar")
                 .then( pkg => {
                     console.log(pkg)
                     setPkg(pkg)

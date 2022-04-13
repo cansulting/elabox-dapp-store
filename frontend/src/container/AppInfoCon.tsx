@@ -11,7 +11,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     
     const handleLaunch = (pkg: PackageInfo) => {
         // open the package on new tab
-        const url = window.location.origin + "/" + pkg.id
+        const url = window.location.origin + pkg.launchUrl
         //console.log(url)
         window.open(url, "_blank")
     }
