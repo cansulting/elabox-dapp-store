@@ -58,8 +58,22 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                         width={20}
                     />
                 )}
-                { ((pkg.status === "uninstalled" && pkg.progress === 0) || 
-                (pkg.progress <= 0 && isUpdatable(pkg))) && (
+                {(pkg.progress <= 0 && isUpdatable(pkg)) && (<Icon.RefreshCw
+                        style={{
+                            position: 'absolute',
+                            bottom: '3%',
+                            right: '3%',
+                            borderRadius: '50%',
+                            background: '#0081ff',
+                            padding: '3%',
+                            cursor: 'pointer',
+                        }}
+                        color="white"
+                        height={"20%"}
+                        width={"20%"}
+                    />) }
+                { (pkg.status === "uninstalled" && pkg.progress === 0) &&
+                (
                     <Icon.Download
                         style={{
                             position: 'absolute',
