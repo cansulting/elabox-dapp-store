@@ -25,6 +25,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 // width: props.width,
                 // height: props.height,
                 textAlign: 'center',
+                cursor:'pointer'
             }}
             onClick={(ev) => props.onClick(props.package)}
         >
@@ -66,7 +67,6 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                             borderRadius: '50%',
                             background: '#0081ff',
                             padding: '3%',
-                            cursor: 'pointer',
                         }}
                         color="white"
                         height={"20%"}
@@ -82,7 +82,6 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                             borderRadius: '50%',
                             background: '#0081ff',
                             padding: '3%',
-                            cursor: 'pointer',
                         }}
                         color="white"
                         height={"20%"}
