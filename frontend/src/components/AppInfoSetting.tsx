@@ -58,7 +58,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                         Disable
                     </span>
                 </>
-            ) : (
+            ) : (props.info.category !== 'system' &&
                 <span
                     style={{ color: 'red', cursor: 'pointer' }}
                     onClick={(e) => {

@@ -1,5 +1,6 @@
 package data
 
+// type that represents a package from store server listing
 type PackageListingCache struct {
 	Id    string `json:"id"`   // Package ID
 	Name  string `json:"name"` // Package name
@@ -11,6 +12,7 @@ type PackageListingCache struct {
 	Updates        string `json:"updates"`
 	ProjectRepo    string `json:"projectRepo"`
 	ProjectWebsite string `json:"projectWebsite"`
+	Category       string `json:"category"`
 }
 
 // load details from cache file

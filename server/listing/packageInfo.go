@@ -10,4 +10,5 @@ type PackageInfo struct {
 	Updates        string `json:"updates"`
 	ProjectRepo    string `json:"projectRepo"`
 	ProjectWebsite string `json:"projectWebsite"`
+	Category       string `json:"category"` // If system then it is a system package and cannot be uninstalled
 }

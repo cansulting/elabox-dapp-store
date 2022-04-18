@@ -20,6 +20,8 @@ type PackageInfo struct {
 	Updates       string           `json:"updates,omitempty"`
 	Version       string           `json:"version,omitempty"`
 	LaunchUrl     string           `json:"launchUrl,omitempty"`
+	Category      string           `json:"category,omitempty"`
+	IsService     bool             `json:"isService"`
 }
 
 func NewPackageInfo() PackageInfo {
@@ -30,6 +32,7 @@ func NewPackageInfo() PackageInfo {
 func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheItem *PackageListingCache, detailed bool) {
 	if installed != nil {
 		instance.CurrentBuild = int(installed.Build)
+		instance.IsService = installed.ExportServices
 		// resolve launch url
 		if detailed {
 			instance.LaunchUrl = "/" + installed.PackageId
@@ -50,6 +53,7 @@ func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheIt
 			// if instance.Details == nil {
 			// 	instance.Details = &PackageDetails{}
 			// }
+			instance.Category = storeCacheItem.Category
 			instance.Description = storeCacheItem.Description
 			instance.Updates = storeCacheItem.Updates
 			instance.Version = storeCacheItem.Version
