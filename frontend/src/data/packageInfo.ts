@@ -14,7 +14,8 @@ export interface PackageInfo {
     updates? : string
     isService?: boolean
 	launchUrl?: string
-}
+	category?: 'system' | undefined | ''
+} 
 
 export function isUpdatable(pkg:PackageInfo) : boolean {
 	if (pkg.status !== "installed") return false

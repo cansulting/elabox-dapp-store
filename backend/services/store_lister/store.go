@@ -99,7 +99,7 @@ func RetrieveItems() error {
 			}
 		}
 	}
-
+	// we have updates
 	if len(updates) > 0 {
 		if err := broadcast.PublishNewUpdateAvailable(updates); err != nil {
 			log.Println("unable to broadcast new update available")
