@@ -1,0 +1,17 @@
+{
+    "name": "Ela System",
+    "description": "Ela System powered by Elastos. Node bug fixes and security updates.",
+    "packageId": "ela.system",
+    "build": 7,
+    "version": "0.5.0",
+    "program": "ela.system",
+    "programArgs": null,
+    "permissions": null,
+    "exportService": false,
+    "activities": null,
+    "actionListener": null,
+    "location": "system",
+    "nodejs": false,
+    "packagerVersion": "0.1.0",
+    "ext": null
+}
