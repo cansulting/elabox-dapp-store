@@ -8,20 +8,21 @@ import (
 )
 
 type PackageInfo struct {
-	Id            string           `json:"id"`   // Package ID
-	Name          string           `json:"name"` // Package name
-	Icon          string           `json:"icon"` // Package icon
-	CurrentBuild  int              `json:"currentBuild"`
-	LatestBuild   int              `json:"latestBuild"`
-	Status        global.AppStatus `json:"status"`
-	Progress      float32          `json:"progress"`
-	Notifications int              `json:"notifications"`
-	Description   string           `json:"description,omitempty"`
-	Updates       string           `json:"updates,omitempty"`
-	Version       string           `json:"version,omitempty"`
-	LaunchUrl     string           `json:"launchUrl,omitempty"`
-	Category      string           `json:"category,omitempty"`
-	IsService     bool             `json:"isService"`
+	Id               string           `json:"id"`   // Package ID
+	Name             string           `json:"name"` // Package name
+	Icon             string           `json:"icon"` // Package icon
+	CurrentBuild     int              `json:"currentBuild"`
+	LatestBuild      int              `json:"latestBuild"`
+	Status           global.AppStatus `json:"status"`
+	Progress         float32          `json:"progress"`
+	Notifications    int              `json:"notifications"`
+	Description      string           `json:"description,omitempty"`
+	Updates          string           `json:"updates,omitempty"`
+	Version          string           `json:"version,omitempty"`
+	LaunchUrl        string           `json:"launchUrl,omitempty"`
+	Category         string           `json:"category,omitempty"`
+	IsService        bool             `json:"isService"`
+	LatestMinRuntime string              `json:"latestMinRuntime,omitempty"` // the minimum runtime required to install this package
 }
 
 func NewPackageInfo() PackageInfo {
@@ -53,6 +54,7 @@ func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheIt
 			// if instance.Details == nil {
 			// 	instance.Details = &PackageDetails{}
 			// }
+			instance.LatestMinRuntime = storeCacheItem.MinRuntime
 			instance.Category = storeCacheItem.Category
 			instance.Description = storeCacheItem.Description
 			instance.Updates = storeCacheItem.Updates

@@ -13,6 +13,7 @@ type PackageListingCache struct {
 	ProjectRepo    string `json:"projectRepo"`
 	ProjectWebsite string `json:"projectWebsite"`
 	Category       string `json:"category"`
+	MinRuntime     string `json:"minRuntime"` // minimum runtime required to run this package, val <= 0 means it can run on any runtime
 }
 
 // load details from cache file

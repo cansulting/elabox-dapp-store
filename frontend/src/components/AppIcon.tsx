@@ -2,7 +2,7 @@ import React from 'react'
 import * as Icon from 'react-feather'
 import { Progress } from 'reactstrap'
 import { ProgressColor } from '../utils/colors'
-import { isUpdatable, PackageInfo } from "../data/packageInfo"
+import { isUpdatable, isUpdateCompat, PackageInfo } from "../data/packageInfo"
 
 export interface AppIconProps {
     className?: string
@@ -59,7 +59,8 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                         width={20}
                     />
                 )}
-                {(pkg.progress <= 0 && isUpdatable(pkg)) && (<Icon.RefreshCw
+                {(pkg.progress <= 0 && isUpdatable(pkg)) && isUpdateCompat(pkg) && 
+                    (<Icon.RefreshCw
                         style={{
                             position: 'absolute',
                             bottom: '3%',

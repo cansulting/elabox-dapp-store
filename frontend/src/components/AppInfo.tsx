@@ -11,8 +11,9 @@ import {
 import { AppButton } from './AppButton'
 import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
-import { PackageInfo, isUpdatable, isLaunchable } from '../data/packageInfo'
+import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../data/packageInfo'
 import { MessagePrompt } from '../data/messagePrompt'
+import { isCompatibleToSystem } from '../utils/system'
 
 
 
@@ -78,7 +79,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
         if (props.onUninstall) props.onLaunch(props.info)
     } 
     const handleUpdate = (evnt:any) => {
-        if (props.onUninstall) props.onUpdate(props.info)
+        if (props.onUninstall && isCompatibleToSystem(props.info.version)) props.onUpdate(props.info)
     } 
     return (
         <Container style={props.style} fluid="md">
@@ -158,8 +159,9 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             <AppButton
                                 color="primary"
                                 size="sm"
+                                active={isUpdateCompat(props.info)}
                                 outline
-                                onClick={handleUpdate}
+                                onClick={ handleUpdate}
                             >
                                 Update
                             </AppButton>

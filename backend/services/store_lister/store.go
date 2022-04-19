@@ -13,6 +13,7 @@ import (
 	"store/backend/global"
 	"time"
 
+	"github.com/cansulting/elabox-system-tools/foundation/logger"
 	"github.com/cansulting/elabox-system-tools/foundation/perm"
 )
 
@@ -27,7 +28,9 @@ func Init() error {
 	// will be called every hour
 	go func() {
 		for {
-			RetrieveItems()
+			if err := RetrieveItems(); err != nil {
+				logger.GetInstance().Error().Err(err).Msg("unable to retrieve store listing.")
+			}
 			// sleep for a while
 			time.Sleep(time.Second * 60)
 		}
