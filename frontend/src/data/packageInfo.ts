@@ -1,4 +1,5 @@
 import { AppStatus } from "../utils/appStatus"
+import { MessagePrompt } from "./messagePrompt"
 
 export interface PackageInfo {
     id :           string
@@ -14,6 +15,7 @@ export interface PackageInfo {
     updates? : string
     isService?: boolean
 	launchUrl?: string
+	notificationContents?: MessagePrompt[]
 	category?: 'system' | undefined | ''
 } 
 

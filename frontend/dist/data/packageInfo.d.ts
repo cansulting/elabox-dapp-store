@@ -1,4 +1,5 @@
 import { AppStatus } from "../utils/appStatus";
+import { MessagePrompt } from "./messagePrompt";
 export interface PackageInfo {
     id: string;
     name: string;
@@ -12,6 +13,9 @@ export interface PackageInfo {
     description?: string;
     updates?: string;
     isService?: boolean;
+    launchUrl?: string;
+    notificationContents?: MessagePrompt[];
+    category?: 'system' | undefined | '';
 }
 export declare function isUpdatable(pkg: PackageInfo): boolean;
 export declare function isLaunchable(pkg: PackageInfo): boolean;

@@ -75,7 +75,10 @@ exports.Updatable.args = __assign(__assign({}, exports.Primary.args), { info: __
 exports.Launchable = Template.bind({});
 exports.Launchable.args = __assign(__assign({}, exports.Primary.args), { info: __assign(__assign({}, exports.Primary.args.info), { status: "installed", currentBuild: 1, latestBuild: 1 }) });
 exports.InstallationError = Template.bind({});
-exports.InstallationError.args = __assign(__assign({}, exports.Primary.args), { info: __assign(__assign({}, exports.Primary.args.info), { percent: 90, status: 'error' }) });
+exports.InstallationError.args = __assign(__assign({}, exports.Primary.args), { info: __assign(__assign({}, exports.Primary.args.info), { percent: 90, status: 'error', notificationContents: [{
+                content: "This is a sample error",
+                type: "error"
+            }] }) });
 exports.InstallationSuccess = Template.bind({});
 exports.InstallationSuccess.args = __assign(__assign({}, exports.Primary.args), { info: __assign(__assign({}, exports.Primary.args.info), { percent: 100, processStatus: 'completed' }) });
 exports.Syncing = Template.bind({});
@@ -99,7 +102,7 @@ var Template2 = function (props) {
     var _a = (0, addons_1.useState)(null), currentPkg = _a[0], setPkg = _a[1];
     (0, react_1.useEffect)(function () {
         if (currentPkg === null)
-            (0, appLib_1.retrieveListing)("ela.sample")
+            (0, appLib_1.retrieveListing)("ela.carrier")
                 .then(function (pkg) {
                 console.log(pkg);
                 setPkg(pkg);

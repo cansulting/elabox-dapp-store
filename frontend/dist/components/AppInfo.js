@@ -38,6 +38,15 @@ var AppButton_1 = require("./AppButton");
 var AppInfoSetting_1 = require("./AppInfoSetting");
 var colors_1 = require("../utils/colors");
 var packageInfo_1 = require("../data/packageInfo");
+var Notifications = function (props) {
+    console.log(props);
+    return (react_1.default.createElement(react_1.default.Fragment, null, props.data.map(function (val) {
+        return (react_1.default.createElement(react_1.default.Fragment, null,
+            val.type === "error" && react_1.default.createElement("p", { style: { color: 'red' } }, val.content),
+            val.type === 'info' && react_1.default.createElement("p", { style: { color: 'green' } }, val.content),
+            val.type === 'warning' && react_1.default.createElement("p", { style: { color: 'gray' } }, val.content)));
+    })));
+};
 var SettingPopover = function (props) {
     return (react_1.default.createElement(reactstrap_1.UncontrolledPopover, { target: props.popOverRef, placement: "bottom", trigger: "legacy", offset: "0, 8" },
         react_1.default.createElement(reactstrap_1.PopoverBody, null,
@@ -95,6 +104,9 @@ var AppInfo = function (props) {
                     } })),
             react_1.default.createElement(reactstrap_1.Col, { className: "d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3", style: { gap: 5 }, xs: "12", lg: "10" },
                 react_1.default.createElement("h4", null, info.name),
+                info.notificationContents &&
+                    info.notificationContents.length > 0 &&
+                    react_1.default.createElement(Notifications, { data: info.notificationContents }),
                 react_1.default.createElement("div", { style: {
                         display: 'flex',
                         flexDirection: 'row',
@@ -115,7 +127,7 @@ var AppInfo = function (props) {
         react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
             react_1.default.createElement(reactstrap_1.Col, null,
                 react_1.default.createElement("p", null, props.info.description),
-                (0, packageInfo_1.isUpdatable)(props.info) && (react_1.default.createElement(react_1.default.Fragment, null,
+                (info.status === "uninstalled" || (0, packageInfo_1.isUpdatable)(props.info)) && (react_1.default.createElement(react_1.default.Fragment, null,
                     react_1.default.createElement("h4", null, "What's New"),
                     react_1.default.createElement("p", null, props.info.updates))))),
         react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },

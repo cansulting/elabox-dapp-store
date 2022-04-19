@@ -104,6 +104,10 @@ InstallationError.args = {
         ...Primary.args.info,
         percent: 90,
         status: 'error',
+        notificationContents: [{
+            content: "This is a sample error",
+            type: "error"
+        }]
     },
 }
 

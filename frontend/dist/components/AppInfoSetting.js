@@ -26,10 +26,11 @@ var AppInfoSetting = function (props) {
             react_1.default.createElement("span", { style: { cursor: 'pointer' }, onClick: function (e) {
                     e.preventDefault();
                     props.onDisable();
-                } }, "Disable"))) : (react_1.default.createElement("span", { style: { color: 'red', cursor: 'pointer' }, onClick: function (e) {
-                e.preventDefault();
-                props.onUnInstall();
-            } }, "Uninstall")), // render custom actions
+                } }, "Disable"))) : (props.info.category !== 'system' &&
+            react_1.default.createElement("span", { style: { color: 'red', cursor: 'pointer' }, onClick: function (e) {
+                    e.preventDefault();
+                    props.onUnInstall();
+                } }, "Uninstall")), // render custom actions
     (_a = props.customActions) === null || _a === void 0 ? void 0 :
         _a.map(function (val) {
             return react_1.default.createElement("span", { style: { color: val.color, cursor: 'pointer' }, onClick: function (e) {

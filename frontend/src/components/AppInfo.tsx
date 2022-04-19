@@ -12,6 +12,7 @@ import { AppButton } from './AppButton'
 import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable } from '../data/packageInfo'
+import { MessagePrompt } from '../data/messagePrompt'
 
 
 
@@ -33,6 +34,20 @@ export interface AppInfoProps {
 interface SettingPopOverRef {
     popOverRef: React.RefObject<any>
     setting: AppInfoSettingProps
+}
+const Notifications = (props: {data : MessagePrompt[]}) => {
+    console.log(props)
+    return (<>
+        {
+            props.data.map( (val:MessagePrompt) => {
+                return (<>
+                    { val.type === "error" && <p style={{color:'red'}}>{val.content}</p>}
+                    { val.type === 'info' && <p style={{color:'green'}}>{val.content}</p>}
+                    { val.type === 'warning' && <p style={{color:'gray'}}>{val.content}</p>}
+                </>)
+            })
+        }
+    </>)
 }
 const SettingPopover = (props: SettingPopOverRef) => {
     return (
@@ -127,6 +142,11 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     lg="10"
                 >
                     <h4>{info.name}</h4>
+                    { 
+                        info.notificationContents && 
+                        info.notificationContents.length > 0 && 
+                        <Notifications data={info.notificationContents}/> 
+                    }
                     <div
                         style={{
                             display: 'flex',
