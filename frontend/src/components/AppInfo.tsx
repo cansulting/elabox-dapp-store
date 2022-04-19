@@ -13,7 +13,6 @@ import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSet
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../data/packageInfo'
 import { MessagePrompt } from '../data/messagePrompt'
-import { isCompatibleToSystem } from '../utils/system'
 
 
 
@@ -69,6 +68,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const progressColor = ProgressColor(props.info.status)
     const info = props.info;
     const progress = info.progress;
+    const updatable = isUpdatable(props.info)
+    const sysCompatible = isUpdateCompat(props.info)
     const handleInstall = (evnt:any) => {
         if (props.onInstall) props.onInstall(props.info)
     }
@@ -79,8 +80,9 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
         if (props.onUninstall) props.onLaunch(props.info)
     } 
     const handleUpdate = (evnt:any) => {
-        if (props.onUninstall && isCompatibleToSystem(props.info.version)) props.onUpdate(props.info)
+        if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
+    
     return (
         <Container style={props.style} fluid="md">
             <div
@@ -148,6 +150,10 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         info.notificationContents.length > 0 && 
                         <Notifications data={info.notificationContents}/> 
                     }
+                    {
+                        updatable && !sysCompatible && 
+                            <p style={{color:'gray'}}>Requires latest system to update this package.</p>
+                    }
                     <div
                         style={{
                             display: 'flex',
@@ -155,11 +161,11 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             gap: 5,
                         }}
                     >
-                        { isUpdatable(props.info) && (
+                        { updatable && (
                             <AppButton
                                 color="primary"
                                 size="sm"
-                                active={isUpdateCompat(props.info)}
+                                active={sysCompatible}
                                 outline
                                 onClick={ handleUpdate}
                             >

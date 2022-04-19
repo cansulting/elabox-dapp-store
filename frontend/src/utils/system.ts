@@ -22,11 +22,11 @@ export const systemVersion = () : number[] => {
 export const isCompatibleToSystem = (version: string) : boolean => {
     if (!version || version === "" ) return true
     const converted = convertStringVerToValue(version)
-    const cver = systemVersion()
-    for (let i=0; i < cver.length; i ++) {
-        //console.log(converted[i] + " " + cver[i])
+    const sysver = systemVersion()
+    for (let i=0; i < sysver.length; i ++) {
+        //console.log(converted[i] + " " + sysver[i])
         // check if the system is outdated
-        if (cver[i] < converted[i] )
+        if (sysver[i] < converted[i] )
             return false
     }
     return true
