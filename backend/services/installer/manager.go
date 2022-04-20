@@ -55,7 +55,6 @@ func CreateTask(packge string, downloadLink string) *Task {
 	initialize()
 	task := GetTask(packge)
 	if task == nil {
-
 		task = &Task{
 			Id:        packge,
 			Url:       downloadLink,
@@ -104,6 +103,7 @@ func RemoveTask(packge string) {
 // @param code the error code
 // @param reason the error reason
 func onTaskError(task *Task, code int16, reason string) {
+	broadcast.PublishError(task.Id, int(code), reason)
 	// if failed in installing, then remove the task from schedule
 	if task.Status == global.Installing {
 		finishCurrentSchedule()

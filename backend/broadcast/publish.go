@@ -30,8 +30,8 @@ func PublishNewUpdateAvailable(updates []*data.PackageListingCache) error {
 	return err
 }
 
-func PublishError(code int, msg string) error {
-	val := `{"code":` + strconv.Itoa(code) + `,"error":"` + msg + `"}`
+func PublishError(pkid string, code int, msg string) error {
+	val := `{"code":` + strconv.Itoa(code) + `,"error":"` + msg + `", "packageId":"` + pkid + `"}`
 	_, err := global.AppController.RPC.CallBroadcast(sdata.NewAction(global.BROADCAST_ERROR, global.PackageId, val))
 	return err
 }
