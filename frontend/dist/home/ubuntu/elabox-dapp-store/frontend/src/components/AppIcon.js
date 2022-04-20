@@ -36,6 +36,10 @@ var AppIcon = function (props) {
     return (react_1.default.createElement("div", { className: props.className, style: {
             // width: props.width,
             // height: props.height,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
             textAlign: 'center',
             cursor: 'pointer'
         }, onClick: function (ev) { return props.onClick(props.package); } },
