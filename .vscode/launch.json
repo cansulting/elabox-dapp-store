@@ -18,7 +18,7 @@
             "type": "go",
             "request": "launch",
             "mode": "debug",
-            //"cwd": "${workspaceFolder}/build/ela.store",
+            "cwd": "${workspaceFolder}/build/server/debug",
             "program": "${workspaceFolder}/server",
             "buildFlags": "-tags=IDE"
         }
