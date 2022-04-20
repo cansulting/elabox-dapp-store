@@ -24,6 +24,10 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
             style={{
                 // width: props.width,
                 // height: props.height,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection:"column",
                 textAlign: 'center',
                 cursor:'pointer'
             }}
