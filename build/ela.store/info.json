@@ -5,12 +5,15 @@
 	"build": 1,
 	"version": "0.1.0",
 	"program": "ela.store",
+	"programArgs": null,
+	"activityGroup": {
+		"customLink": "",
+		"customPort": 0,
+		"activities": null
+	},
 	"permissions": [],
 	"exportService": true,
-	"activities": [],
-	"actionListener": [],
 	"location": "system",
 	"nodejs": false,
-	"packagerVersion": "0.1.0",
-	"ext": null
+	"packagerVersion": "0.1.0"
 }
