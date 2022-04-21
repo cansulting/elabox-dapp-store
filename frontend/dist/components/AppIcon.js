@@ -56,14 +56,15 @@ var AppIcon = function (props) {
                     padding: 5,
                     cursor: 'pointer',
                 }, color: "white", height: 20, width: 20 })),
-            (pkg.progress <= 0 && (0, packageInfo_1.isUpdatable)(pkg)) && (react_1.default.createElement(Icon.RefreshCw, { style: {
-                    position: 'absolute',
-                    bottom: '3%',
-                    right: '3%',
-                    borderRadius: '50%',
-                    background: '#0081ff',
-                    padding: '3%',
-                }, color: "white", height: "20%", width: "20%" })),
+            (pkg.progress <= 0 && (0, packageInfo_1.isUpdatable)(pkg)) && (0, packageInfo_1.isUpdateCompat)(pkg) &&
+                (react_1.default.createElement(Icon.RefreshCw, { style: {
+                        position: 'absolute',
+                        bottom: '3%',
+                        right: '3%',
+                        borderRadius: '50%',
+                        background: '#0081ff',
+                        padding: '3%',
+                    }, color: "white", height: "20%", width: "20%" })),
             (pkg.status === "uninstalled" && pkg.progress === 0) &&
                 (react_1.default.createElement(Icon.Download, { style: {
                         position: 'absolute',

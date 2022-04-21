@@ -1,13 +1,13 @@
 {
   "name": "elabox-dapp-store.lib",
-  "version": "0.1.11",
+  "version": "0.1.14",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "Search and install dApps.",
   "keywords": [
     "react"
   ],
-  "author": "Jhoemar Pagap <jhoemar.pagao@gmail.com>",
+  "author": "Jhoemar Pagao <jhoemar.pagao@gmail.com>",
   "homepage": "https://elabox.com",
   "license": "GPL-3.0",
   "scripts": {
