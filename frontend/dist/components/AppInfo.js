@@ -117,7 +117,7 @@ var AppInfo = function (props) {
                         gap: 5,
                     } },
                     updatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", active: sysCompatible, outline: true, onClick: handleUpdate }, "Update")),
-                    !info.isService && info.status === "installed" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
+                    (0, packageInfo_1.isLaunchable)(info) && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
                 info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleInstall }, "Install")),
                 info.status !== "uninstalling" && progress > 0 && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',

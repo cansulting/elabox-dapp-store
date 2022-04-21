@@ -19,6 +19,8 @@ function isUpdateCompat(pkg) {
 }
 exports.isUpdateCompat = isUpdateCompat;
 function isLaunchable(pkg) {
+    if (pkg.launchUrl && pkg.launchUrl !== "")
+        return true;
     return pkg.status === "installed";
 }
 exports.isLaunchable = isLaunchable;
