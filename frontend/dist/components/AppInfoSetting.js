@@ -14,23 +14,25 @@ var AppInfoSetting = function (props) {
             width: '100%',
             gap: 5,
         } },
-        props.isService ? (react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement("span", { style: { color: 'red', cursor: 'pointer' }, onClick: function (e) {
-                    e.preventDefault();
-                    props.onResync();
-                } }, "Resync"),
-            react_1.default.createElement("span", { style: { cursor: 'pointer' }, onClick: function (e) {
-                    e.preventDefault();
-                    props.onRestart();
-                } }, "Restart"),
-            react_1.default.createElement("span", { style: { cursor: 'pointer' }, onClick: function (e) {
-                    e.preventDefault();
-                    props.onDisable();
-                } }, "Disable"))) : (props.info.category !== 'system' &&
+        props.isService &&
+            react_1.default.createElement(react_1.default.Fragment, null,
+                react_1.default.createElement("span", { style: { color: 'red', cursor: 'pointer' }, onClick: function (e) {
+                        e.preventDefault();
+                        props.onResync();
+                    } }, "Resync"),
+                react_1.default.createElement("span", { style: { cursor: 'pointer' }, onClick: function (e) {
+                        e.preventDefault();
+                        props.onRestart();
+                    } }, "Restart"),
+                react_1.default.createElement("span", { style: { cursor: 'pointer' }, onClick: function (e) {
+                        e.preventDefault();
+                        props.onDisable();
+                    } }, "Disable")),
+        props.info.category !== 'system' &&
             react_1.default.createElement("span", { style: { color: 'red', cursor: 'pointer' }, onClick: function (e) {
                     e.preventDefault();
                     props.onUnInstall();
-                } }, "Uninstall")), // render custom actions
+                } }, "Uninstall"), // render custom actions
     (_a = props.customActions) === null || _a === void 0 ? void 0 :
         _a.map(function (val) {
             return react_1.default.createElement("span", { style: { color: val.color, cursor: 'pointer' }, onClick: function (e) {
