@@ -22,7 +22,7 @@ type PackageInfo struct {
 	LaunchUrl        string           `json:"launchUrl,omitempty"`
 	Category         string           `json:"category,omitempty"`
 	IsService        bool             `json:"isService"`
-	LatestMinRuntime string              `json:"latestMinRuntime,omitempty"` // the minimum runtime required to install this package
+	LatestMinRuntime string           `json:"latestMinRuntime,omitempty"` // the minimum runtime required to install this package
 }
 
 func NewPackageInfo() PackageInfo {
@@ -36,12 +36,17 @@ func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheIt
 		instance.IsService = installed.ExportServices
 		// resolve launch url
 		if detailed {
-			instance.LaunchUrl = "/" + installed.PackageId
-			if installed.ActivityGroup.CustomLink != "" {
-				instance.LaunchUrl = installed.ActivityGroup.CustomLink
-			}
-			if installed.ActivityGroup.CustomLink == "" && installed.ActivityGroup.CustomPort != 0 {
-				instance.LaunchUrl = ":" + strconv.Itoa(installed.ActivityGroup.CustomPort)
+			if !installed.ExportServices ||
+				installed.ActivityGroup.CustomLink != "" ||
+				installed.ActivityGroup.CustomPort != 0 {
+				instance.LaunchUrl = "/" + installed.PackageId
+				if installed.ActivityGroup.CustomLink != "" {
+					instance.LaunchUrl = installed.ActivityGroup.CustomLink
+				} else {
+					if installed.ActivityGroup.CustomPort != 0 {
+						instance.LaunchUrl = ":" + strconv.Itoa(installed.ActivityGroup.CustomPort)
+					}
+				}
 			}
 		}
 	}

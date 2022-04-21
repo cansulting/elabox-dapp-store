@@ -16,6 +16,8 @@ export interface PackageInfo {
     launchUrl?: string;
     notificationContents?: MessagePrompt[];
     category?: 'system' | undefined | '';
+    latestMinRuntime?: string;
 }
 export declare function isUpdatable(pkg: PackageInfo): boolean;
+export declare function isUpdateCompat(pkg: PackageInfo): boolean;
 export declare function isLaunchable(pkg: PackageInfo): boolean;

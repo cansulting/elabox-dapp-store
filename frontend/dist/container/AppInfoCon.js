@@ -41,8 +41,8 @@ var AppInfoCon = function (props) {
     var _b = (0, react_2.useState)(props.info.progress), progress = _b[0], setProgress = _b[1];
     var handleLaunch = function (pkg) {
         // open the package on new tab
-        var url = window.location.origin + pkg.launchUrl;
-        //console.log(url)
+        var url = window.location.protocol + "//" + window.location.hostname + pkg.launchUrl;
+        //console.log(window.location)
         window.open(url, "_blank");
     };
     var handleInstall = function (pkg) {
@@ -80,6 +80,9 @@ var AppInfoCon = function (props) {
     };
     (0, react_1.useEffect)(function () {
         console.log("init");
+        (0, appLib_1.retrieveListing)(props.info.id).then(function (pkg) {
+            setInfo(pkg);
+        });
         Listener.onPackage(props.info.id, "install_progress", handleProgress);
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged);
         // clean up listener

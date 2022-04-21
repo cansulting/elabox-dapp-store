@@ -5,7 +5,8 @@ import {
   AC_RETRIEVE_PKG,
   AC_RETRIEVE_PKGS,
   AC_INSTALL_PKG,
-  AC_UNINSTALL_PKG
+  AC_UNINSTALL_PKG,
+  AC_RETRIEVE_SYSTEM_VERSION
  } from "./constants";
 
 export async function retrieveAllListings() : Promise<PackageInfo[]>{
@@ -23,7 +24,7 @@ export async function retrieveListing(packageId: string) : Promise<PackageInfo> 
   if (res.code !== 200 )
     throw new Error(res.message)
   const pkg = JSON.parse(res.message) 
-  console.log("retrieve listing", res)
+  //console.log("retrieve listing", res)
   return pkg
 }
 
@@ -41,4 +42,11 @@ export async function uninstallPackage(packageId: string) {
   if (res.code !== 200)
     throw new Error(res.message)
   console.log(res)
+}
+
+export async function retrieveSystemVersion() : Promise<string> {
+  const res = await getEventHandler().sendRPC(PACKAGE_ID, AC_RETRIEVE_SYSTEM_VERSION,)
+  if (res.code !== 200)
+    throw new Error(res.message)
+  return res.message
 }

@@ -1,5 +1,5 @@
 import { AppStatus } from "../utils/appStatus"
-import { isCompatibleToSystem, systemVersion } from "../utils/system"
+import { isCompatibleToSystem } from "../utils/system"
 import { MessagePrompt } from "./messagePrompt"
 
 export interface PackageInfo {
@@ -35,5 +35,6 @@ export function isUpdateCompat(pkg:PackageInfo): boolean {
 }
 
 export function isLaunchable(pkg:PackageInfo) : boolean {
+	if (pkg.launchUrl && pkg.launchUrl !== "") return true
     return pkg.status === "installed"
 }

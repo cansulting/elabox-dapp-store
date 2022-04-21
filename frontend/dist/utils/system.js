@@ -1,14 +1,4 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -45,34 +35,52 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import React from 'react';
-import { within, userEvent } from '@storybook/testing-library';
-import { Page } from './Page';
-export default {
-    title: 'Example/Page',
-    component: Page,
-    parameters: {
-        // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-        layout: 'fullscreen',
-    },
-};
-var Template = function (args) { return React.createElement(Page, __assign({}, args)); };
-export var LoggedOut = Template.bind({});
-export var LoggedIn = Template.bind({});
-// More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-LoggedIn.play = function (arg) { return __awaiter(void 0, void 0, void 0, function () {
-    var canvas, loginButton;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isCompatibleToSystem = exports.systemVersion = void 0;
+var actions_1 = require("../actions");
+var constants_1 = require("../actions/constants");
+var currentVersion;
+(0, constants_1.getEventHandler)().waitUntilConnected(5000)
+    .then(function (_) { return __awaiter(void 0, void 0, void 0, function () {
+    var ver;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                canvas = within(arg.canvasElement);
-                return [4 /*yield*/, canvas.getByRole('button', { name: /Log in/i })];
+            case 0: return [4 /*yield*/, (0, actions_1.retrieveSystemVersion)()];
             case 1:
-                loginButton = _a.sent();
-                return [4 /*yield*/, userEvent.click(loginButton)];
-            case 2:
-                _a.sent();
+                ver = _a.sent();
+                currentVersion = convertStringVerToValue(ver);
                 return [2 /*return*/];
         }
     });
-}); };
+}); })
+    .catch(function (err) {
+    console.log("Failed retrieving version", err);
+});
+function convertStringVerToValue(version) {
+    var splits = version.split(".");
+    var res = [];
+    for (var _i = 0, splits_1 = splits; _i < splits_1.length; _i++) {
+        var splitv = splits_1[_i];
+        res.push(parseInt(splitv));
+    }
+    return res;
+}
+var systemVersion = function () {
+    return currentVersion;
+};
+exports.systemVersion = systemVersion;
+// use to check if the version is compatible to system version
+var isCompatibleToSystem = function (version) {
+    if (!version || version === "")
+        return true;
+    var converted = convertStringVerToValue(version);
+    var sysver = (0, exports.systemVersion)();
+    for (var i = 0; i < sysver.length; i++) {
+        //console.log(converted[i] + " " + sysver[i])
+        // check if the system is outdated
+        if (sysver[i] < converted[i])
+            return false;
+    }
+    return true;
+};
+exports.isCompatibleToSystem = isCompatibleToSystem;

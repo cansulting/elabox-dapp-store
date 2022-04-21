@@ -172,7 +172,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                 Update
                             </AppButton>
                         )}
-                        {info.status === "installed" && (
+                        { isLaunchable(info) && (
                             <AppButton
                                 color="primary"
                                 size="sm"

@@ -11,8 +11,8 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     
     const handleLaunch = (pkg: PackageInfo) => {
         // open the package on new tab
-        const url = window.location.origin + pkg.launchUrl
-        //console.log(url)
+        const url = window.location.protocol + "//" + window.location.hostname +  pkg.launchUrl
+        //console.log(window.location)
         window.open(url, "_blank")
     }
     const handleInstall = (pkg:PackageInfo) => {
@@ -50,6 +50,9 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     useEffect(() => {
         console.log("init")
+        retrieveListing(props.info.id).then( pkg => {
+            setInfo(pkg)
+        })
         Listener.onPackage(props.info.id, "install_progress", handleProgress)
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged)
         // clean up listener

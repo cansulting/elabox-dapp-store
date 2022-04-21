@@ -57,6 +57,8 @@ var AppInfo = function (props) {
     var progressColor = (0, colors_1.ProgressColor)(props.info.status);
     var info = props.info;
     var progress = info.progress;
+    var updatable = (0, packageInfo_1.isUpdatable)(props.info);
+    var sysCompatible = (0, packageInfo_1.isUpdateCompat)(props.info);
     var handleInstall = function (evnt) {
         if (props.onInstall)
             props.onInstall(props.info);
@@ -70,7 +72,7 @@ var AppInfo = function (props) {
             props.onLaunch(props.info);
     };
     var handleUpdate = function (evnt) {
-        if (props.onUninstall)
+        if (props.onUninstall && sysCompatible)
             props.onUpdate(props.info);
     };
     return (react_1.default.createElement(reactstrap_1.Container, { style: props.style, fluid: "md" },
@@ -107,13 +109,15 @@ var AppInfo = function (props) {
                 info.notificationContents &&
                     info.notificationContents.length > 0 &&
                     react_1.default.createElement(Notifications, { data: info.notificationContents }),
+                updatable && !sysCompatible &&
+                    react_1.default.createElement("p", { style: { color: 'gray' } }, "Requires latest system to update this package."),
                 react_1.default.createElement("div", { style: {
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 5,
                     } },
-                    (0, packageInfo_1.isUpdatable)(props.info) && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleUpdate }, "Update")),
-                    info.status === "installed" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
+                    updatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", active: sysCompatible, outline: true, onClick: handleUpdate }, "Update")),
+                    (0, packageInfo_1.isLaunchable)(info) && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
                 info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleInstall }, "Install")),
                 info.status !== "uninstalling" && progress > 0 && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',

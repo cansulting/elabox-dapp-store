@@ -28,7 +28,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                 gap: 5,
             }}
         >
-            {props.isService ? (
+            {props.isService && 
                 <>
                     <span
                         style={{ color: 'red', cursor: 'pointer' }}
@@ -58,7 +58,8 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                         Disable
                     </span>
                 </>
-            ) : (props.info.category !== 'system' &&
+            }
+            {props.info.category !== 'system' &&
                 <span
                     style={{ color: 'red', cursor: 'pointer' }}
                     onClick={(e) => {
@@ -68,7 +69,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                 >
                     Uninstall
                 </span>
-            )}
+            }
             { // render custom actions
                 props.customActions?.map( val => 
                     <span
