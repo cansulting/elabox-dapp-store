@@ -50,6 +50,9 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     useEffect(() => {
         console.log("init")
+        retrieveListing(props.info.id).then( pkg => {
+            setInfo(pkg)
+        })
         Listener.onPackage(props.info.id, "install_progress", handleProgress)
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged)
         // clean up listener

@@ -1,6 +1,16 @@
-import * as systeminfo from "/usr/ela/system/ela.system/info.json"
+import { retrieveSystemVersion } from "../actions"
+import { getEventHandler } from "../actions/constants"
 
 let currentVersion : number[]
+
+getEventHandler().waitUntilConnected(5000)
+    .then( async _ => {
+        const ver = await retrieveSystemVersion()
+        currentVersion = convertStringVerToValue( ver)
+    })
+    .catch( err => {
+        console.log("Failed retrieving version", err)
+    })
 
 function convertStringVerToValue(version:string): number[] {
     let splits = version.split(".")
@@ -12,9 +22,6 @@ function convertStringVerToValue(version:string): number[] {
 }
 
 export const systemVersion = () : number[] => {
-    if (!currentVersion) {
-        currentVersion = convertStringVerToValue( systeminfo.version)
-    }
     return currentVersion
 }
 

@@ -1,5 +1,5 @@
 import { AppStatus } from "../utils/appStatus"
-import { isCompatibleToSystem, systemVersion } from "../utils/system"
+import { isCompatibleToSystem } from "../utils/system"
 import { MessagePrompt } from "./messagePrompt"
 
 export interface PackageInfo {

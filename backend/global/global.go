@@ -29,7 +29,10 @@ const UPDATE_AVAILABLE = "ela.store.broadcast.UPDATE_AVAILABLE"
 const INSTALL_PROGRESS = "ela.store.broadcast.INSTALL_PROGRESS"
 const BROADCAST_ERROR = "ela.store.broadcast.ERROR"
 const INSTALL_STATE = "ela.store.broadcast.INSTALL_STATE"
+const RETRIEVE_SYS_VERSION = "ela.store.actions.RETRIEVE_SYSTEM_VERSION"
 
 // endpoints
 const PACKAGES_ENDPOINT = STORE_HOST + "/api/v1/items"
 const DOWNLOAD_ENDPOINT = STORE_HOST + "/api/v1/dl"
+
+const SYS_INFO_PATH = "/usr/ela/system/ela.system/info.json"

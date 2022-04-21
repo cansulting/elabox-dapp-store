@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uninstallPackage = exports.installPackage = exports.retrieveListing = exports.retrieveAllListings = void 0;
+exports.retrieveSystemVersion = exports.uninstallPackage = exports.installPackage = exports.retrieveListing = exports.retrieveAllListings = void 0;
 var constants_1 = require("./constants");
 function retrieveAllListings() {
     return __awaiter(this, void 0, void 0, function () {
@@ -69,7 +69,7 @@ function retrieveListing(packageId) {
                     if (res.code !== 200)
                         throw new Error(res.message);
                     pkg = JSON.parse(res.message);
-                    console.log("retrieve listing", res);
+                    //console.log("retrieve listing", res)
                     return [2 /*return*/, pkg];
             }
         });
@@ -113,3 +113,19 @@ function uninstallPackage(packageId) {
     });
 }
 exports.uninstallPackage = uninstallPackage;
+function retrieveSystemVersion() {
+    return __awaiter(this, void 0, void 0, function () {
+        var res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_RETRIEVE_SYSTEM_VERSION)];
+                case 1:
+                    res = _a.sent();
+                    if (res.code !== 200)
+                        throw new Error(res.message);
+                    return [2 /*return*/, res.message];
+            }
+        });
+    });
+}
+exports.retrieveSystemVersion = retrieveSystemVersion;

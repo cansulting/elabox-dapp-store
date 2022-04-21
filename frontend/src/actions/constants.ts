@@ -13,6 +13,7 @@ export const AC_RETRIEVE_PKGS = "ela.store.actions.RETRIEVE_PACKAGES";
 export const AC_RETRIEVE_PKG = "ela.store.actions.RETRIEVE_PACKAGE";
 export const AC_INSTALL_PKG = "ela.store.actions.INSTALL_PACKAGE";
 export const AC_UNINSTALL_PKG = "ela.store.actions.UNINSTALL_PACKAGE";
+export const AC_RETRIEVE_SYSTEM_VERSION = "ela.store.actions.RETRIEVE_SYSTEM_VERSION";
 
 // installer broadcasts
 export const INSTALLER_PROGRESS = PACKAGE_ID + ".broadcast.INSTALL_PROGRESS"
