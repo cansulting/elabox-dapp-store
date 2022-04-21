@@ -21,7 +21,7 @@ export const AppDashboard = (props: AppDashboardProps): JSX.Element => {
     if (props.apps === null) 
         return <></>
     return (
-        <div style={{...props.style,backgroundColor:"#1E1E26",color:"white"}} ref={parentDiv}>
+        <div style={props.style} ref={parentDiv}>
             <Container style={{width:"100%"}}>
                 <Row xs={columnPerRow}>
                     {props.apps.map((appInfo) => {
