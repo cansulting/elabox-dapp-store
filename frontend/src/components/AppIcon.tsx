@@ -7,8 +7,8 @@ import { isUpdatable, isUpdateCompat, PackageInfo } from "../data/packageInfo"
 export interface AppIconProps {
     className?: string
     package: PackageInfo
-    width?: string
-    height?: string
+    width?: number
+    height?: number
     //body?: JSX.Element
     //footer?: JSX.Element
     onClick?: (app: PackageInfo) => void

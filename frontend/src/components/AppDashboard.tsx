@@ -1,8 +1,8 @@
-import React from 'react'
+import React,{useRef,useEffect} from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { PackageInfo } from '../data/packageInfo'
 import { AppIconCon } from '../container/AppIconCon'
-
+import useResize from "../hooks/useResize"
 export interface AppDashboardProps {
     apps: PackageInfo[],
     onClick?: (app : PackageInfo) => void,
@@ -12,24 +12,32 @@ export interface AppDashboardProps {
 }
 
 export const AppDashboard = (props: AppDashboardProps): JSX.Element => {
+    const parentDiv = useRef<HTMLDivElement>(null);    
+    const iconWidth = parseInt(props.iconWidth);
+    const iconHeight = parseInt(props.iconHeight);
+    const {width : parentWidth} = useResize(parentDiv)
+    const iconWidthWithPadding = iconWidth + 40
+    const columnPerRow = Math.floor(parentWidth  / iconWidthWithPadding)
     if (props.apps === null) 
         return <></>
     return (
-        <Container style={props.style} fluid="md">
-            <Row xs="3">
-                {props.apps.map((appInfo) => {
-                    return (
-                        <Col key={appInfo.id + "-dash"}>
-                            <AppIconCon 
-                                package={appInfo} 
-                                onClick={props.onClick}
-                                width={props.iconWidth}
-                                height={props.iconHeight}
-                                />
-                        </Col>
-                    )
-                })}
-            </Row>
-        </Container>
+        <div style={{...props.style,backgroundColor:"#1E1E26",color:"white"}} ref={parentDiv}>
+            <Container style={{width:"100%"}}>
+                <Row xs={columnPerRow}>
+                    {props.apps.map((appInfo) => {
+                        return (
+                            <Col key={appInfo.id + "-dash"}>
+                                <AppIconCon 
+                                    package={appInfo} 
+                                    onClick={props.onClick}
+                                    width={iconWidth}
+                                    height={iconHeight}
+                                    />
+                            </Col>
+                        )
+                    })}
+                </Row>
+            </Container>
+        </div>
     )
 }
