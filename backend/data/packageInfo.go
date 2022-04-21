@@ -40,8 +40,12 @@ func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheIt
 				installed.ActivityGroup.CustomLink != "" ||
 				installed.ActivityGroup.CustomPort != 0 {
 				instance.LaunchUrl = "/" + installed.PackageId
-				if installed.ActivityGroup.CustomLink == "" && installed.ActivityGroup.CustomPort != 0 {
-					instance.LaunchUrl = ":" + strconv.Itoa(installed.ActivityGroup.CustomPort)
+				if installed.ActivityGroup.CustomLink != "" {
+					instance.LaunchUrl = installed.ActivityGroup.CustomLink
+				} else {
+					if installed.ActivityGroup.CustomPort != 0 {
+						instance.LaunchUrl = ":" + strconv.Itoa(installed.ActivityGroup.CustomPort)
+					}
 				}
 			}
 		}
