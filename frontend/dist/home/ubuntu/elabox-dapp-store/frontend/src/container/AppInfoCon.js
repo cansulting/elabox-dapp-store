@@ -41,8 +41,8 @@ var AppInfoCon = function (props) {
     var _b = (0, react_2.useState)(props.info.progress), progress = _b[0], setProgress = _b[1];
     var handleLaunch = function (pkg) {
         // open the package on new tab
-        var url = window.location.origin + pkg.launchUrl;
-        //console.log(url)
+        var url = window.location.protocol + "//" + window.location.hostname + pkg.launchUrl;
+        //console.log(window.location)
         window.open(url, "_blank");
     };
     var handleInstall = function (pkg) {
