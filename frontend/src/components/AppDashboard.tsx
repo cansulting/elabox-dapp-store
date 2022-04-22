@@ -14,28 +14,27 @@ export interface AppDashboardProps {
 export const AppDashboard = (props: AppDashboardProps): JSX.Element => {
     const parentDiv = useRef<HTMLDivElement>(null);    
     const {width : parentWidth} = useResize(parentDiv)
-    const iconWidthWithPadding = props.iconWidth + 38
+    const iconWidthWithPadding = props.iconWidth + 40
     const columnPerRow = Math.floor(parentWidth  / iconWidthWithPadding)
+    const columnWidth = Math.floor(parentWidth / columnPerRow)
     if (props.apps === null) 
         return <></>
     return (
         <div style={props.style} ref={parentDiv}>
-            <Container>
-                <Row xs={columnPerRow}>
-                    {props.apps.map((appInfo) => {
-                        return (
-                            <Col key={appInfo.id + "-dash"}>
-                                <AppIconCon 
-                                    package={appInfo} 
-                                    onClick={props.onClick}
-                                    width={props.iconWidth}
-                                    height={props.iconHeight}
-                                    />
-                            </Col>
-                        )
-                    })}
-                </Row>
-            </Container>
+            <Row className="gx-2" xs={columnPerRow}>
+                {props.apps.map((appInfo) => {
+                    return (
+                        <Col style={{width: columnWidth}} key={appInfo.id + "-dash"}>
+                            <AppIconCon 
+                                package={appInfo} 
+                                onClick={props.onClick}
+                                width={props.iconWidth}
+                                height={props.iconHeight}
+                                />
+                        </Col>
+                    )
+                })}
+            </Row>
         </div>
     )
 }
