@@ -34,7 +34,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 flexDirection:"column",
                 textAlign: 'center',
                 cursor: "pointer",
-                backgroundColor: "#004e98",
+                backgroundColor: "#272A3D",
                 opacity: onHover ? 0.8 : 1,
                 padding: 10,
                 borderRadius: 10,
