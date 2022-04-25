@@ -36,5 +36,5 @@ export function isUpdateCompat(pkg:PackageInfo): boolean {
 
 export function isLaunchable(pkg:PackageInfo) : boolean {
 	if (pkg.launchUrl && pkg.launchUrl !== "") return true
-    return pkg.status === "installed"
+    return pkg.status === "installed" && !pkg.isService
 }
