@@ -18,17 +18,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppIcon = void 0;
-var react_1 = __importDefault(require("react"));
+var react_1 = __importStar(require("react"));
 var Icon = __importStar(require("react-feather"));
 var reactstrap_1 = require("reactstrap");
 var colors_1 = require("../utils/colors");
 var packageInfo_1 = require("../data/packageInfo");
 var AppIcon = function (props) {
+    var _a = (0, react_1.useState)(false), onHover = _a[0], setOnHover = _a[1];
+    var handleOnHover = function (isHover) {
+        setOnHover(isHover);
+    };
     var pkg = props.package;
     var status = pkg.status;
     var progressColor = (0, colors_1.ProgressColor)(status);
@@ -41,15 +42,23 @@ var AppIcon = function (props) {
             alignItems: "center",
             flexDirection: "column",
             textAlign: 'center',
-            cursor: 'pointer'
-        }, onClick: function (ev) { return props.onClick(props.package); } },
+            cursor: "pointer",
+            backgroundColor: "#272A3D",
+            opacity: onHover ? 0.8 : 1,
+            padding: 10,
+            borderRadius: 10,
+            marginBottom: 10
+        }, onClick: function (ev) { return props.onClick(props.package); }, onMouseEnter: function () { return handleOnHover(true); }, onMouseLeave: function () { return handleOnHover(false); } },
         react_1.default.createElement("div", { style: {
                 position: 'relative',
                 marginBottom: 10,
                 width: props.width,
-                height: props.height
+                height: props.height,
             } },
-            react_1.default.createElement("img", { src: props.package.icon, alt: props.package.name, style: { width: '100%', height: '100%', borderRadius: 10 } }),
+            react_1.default.createElement("img", { src: props.package.icon, alt: props.package.name, style: {
+                    width: '100%', height: '100%',
+                    borderRadius: 10, padding: 10
+                } }),
             props.package.notifications > 0 && (react_1.default.createElement(Icon.Bell, { style: {
                     position: 'absolute',
                     top: 10,

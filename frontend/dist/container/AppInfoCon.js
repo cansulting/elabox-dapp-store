@@ -81,7 +81,7 @@ var AppInfoCon = function (props) {
     (0, react_1.useEffect)(function () {
         console.log("init");
         (0, appLib_1.retrieveListing)(props.info.id).then(function (pkg) {
-            setInfo(pkg);
+            setInfo(__assign(__assign({}, pkg), props.info));
         });
         Listener.onPackage(props.info.id, "install_progress", handleProgress);
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged);

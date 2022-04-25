@@ -36,7 +36,6 @@ interface SettingPopOverRef {
     setting: AppInfoSettingProps
 }
 const Notifications = (props: {data : MessagePrompt[]}) => {
-    console.log(props)
     return (<>
         {
             props.data.map( (val:MessagePrompt) => {
@@ -96,7 +95,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                 <h3 style={{ cursor: 'pointer' }} onClick={props.onBack}>
                     <p style={{display:'flex', alignItems: 'center'}}>
                         <Icon.ArrowLeftCircle style={{ marginRight: 5, color:'gray' }} />
-                        <span><h5 style={{color:'gray'}}>Apps</h5></span>
+                        <span><h5 style={{color:'#0d6efd'}}>Apps</h5></span>
                     </p>
                 </h3>
                 {info.status === "installed" && (
