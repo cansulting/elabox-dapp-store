@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import * as Icon from 'react-feather'
 import { Progress } from 'reactstrap'
 import { ProgressColor } from '../utils/colors'
@@ -7,13 +7,17 @@ import { isUpdatable, isUpdateCompat, PackageInfo } from "../data/packageInfo"
 export interface AppIconProps {
     className?: string
     package: PackageInfo
-    width?: string
-    height?: string
+    width?: number
+    height?: number
     //body?: JSX.Element
     //footer?: JSX.Element
     onClick?: (app: PackageInfo) => void
 }
 export const AppIcon = (props: AppIconProps): JSX.Element => {
+    const [onHover,setOnHover] = useState(false)
+    const handleOnHover = (isHover:boolean) =>{
+        setOnHover(isHover)
+    }
     const pkg = props.package
     const status = pkg.status
     const progressColor = ProgressColor(status)
@@ -24,23 +28,37 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
             style={{
                 // width: props.width,
                 // height: props.height,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection:"column",
                 textAlign: 'center',
-                cursor:'pointer'
+                cursor: "pointer",
+                backgroundColor: "#272A3D",
+                opacity: onHover ? 0.8 : 1,
+                padding: 10,
+                borderRadius: 10,
+                marginBottom: 10
             }}
             onClick={(ev) => props.onClick(props.package)}
+            onMouseEnter={()=>handleOnHover(true)}
+            onMouseLeave={()=>handleOnHover(false)}
         >
             <div
                 style={{
                     position: 'relative',
                     marginBottom: 10,
                     width: props.width,
-                    height: props.height
+                    height: props.height,
                 }}
             >
                 <img
                     src={props.package.icon}
                     alt={props.package.name}
-                    style={{ width: '100%', height: '100%', borderRadius: 10 }}
+                    style={{ 
+                        width: '100%', height: '100%', 
+                        borderRadius: 10,padding:10 
+                    }}
                 />
                 {props.package.notifications > 0 && (
                     <Icon.Bell
