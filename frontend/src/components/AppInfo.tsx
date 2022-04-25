@@ -94,8 +94,10 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                 }}
             >
                 <h3 style={{ cursor: 'pointer' }} onClick={props.onBack}>
-                    <Icon.ArrowLeftCircle style={{ marginRight: 5 }} />
-                    Apps
+                    <p style={{display:'flex', alignItems: 'center'}}>
+                        <Icon.ArrowLeftCircle style={{ marginRight: 5, color:'gray' }} />
+                        <span><h5 style={{color:'gray'}}>Apps</h5></span>
+                    </p>
                 </h3>
                 {info.status === "installed" && (
                         <>

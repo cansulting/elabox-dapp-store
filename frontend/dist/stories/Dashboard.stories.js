@@ -208,7 +208,8 @@ var FetchRealdata = function (props) {
     var onClick = function (app) {
         console.log("Selected " + app.id);
     };
-    return react_1.default.createElement(AppDashboardCon_1.AppDashboardCon, { onClick: onClick, apps: [] });
+    return react_1.default.createElement("div", { style: { width: "100%" } },
+        react_1.default.createElement(AppDashboardCon_1.AppDashboardCon, { iconWidth: "200", iconHeight: "200", onClick: onClick, apps: [] }));
 };
 exports.RealData = FetchRealdata.bind({});
 exports.RealData.args = __assign(__assign({}, exports.Primary.args), { apps: null });
