@@ -1,29 +1,29 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist",
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-    // Generate d.ts files
-    "declaration": true,
-    // This compiler run should
-    // only output d.ts files
-    "emitDeclarationOnly": false,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "typeRoots": [
-      "./node_modules/@types/"
+    "compilerOptions": {
+      "outDir": "./dist",
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "target": "es5",
+      "jsx": "react",
+      "allowJs": true,
+      // Generate d.ts files
+      "declaration": true,
+      // This compiler run should
+      // only output d.ts files
+      "emitDeclarationOnly": false,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "typeRoots": [
+        "./node_modules/@types/"
+      ]
+    },
+    "include": [
+      "src", "@types"
+    ],
+    "exclude": [
+        "dist",
+        "**/*.spec.ts"
     ]
-  },
-  "include": [
-    "src", "@types"
-  ],
-  "exclude": [
-      "dist",
-      "**/*.spec.ts"
-  ]
-}
+  }
