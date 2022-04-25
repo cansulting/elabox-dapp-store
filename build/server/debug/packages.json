@@ -80,9 +80,9 @@
     "trinity.pasar": {
         "name": "Pasar",
         "id": "trinity.pasar",
-        "description": "This is pasar",
+        "description": "Pasar is a truly decentralized Web3.0 Marketplace, Collectible Explorer, and Analytics Platform for NFTs created on the Elastos Smart Chain (ESC).",
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
-        "updates": "this is trinity pasar updates",
+        "updates": "- Pasar Explorer to track non-fungible token (NFT) provenance \n- Login with Decentralized Identifier (DID) \n- NFT minting \n- NFT Marketplace with fixed price",
         "build": 1,
         "version": "0.1.0",
         "projectRepo": "",
