@@ -24,7 +24,7 @@ export const AppDashboard = (props: AppDashboardProps): JSX.Element => {
             <Row className="gx-2" xs={columnPerRow}>
                 {props.apps.map((appInfo) => {
                     return (
-                        <Col style={{width: columnWidth}} key={appInfo.id + "-dash"}>
+                        <Col style={{width: columnWidth,maxWidth: columnWidth}} key={appInfo.id + "-dash"}>
                             <AppIconCon 
                                 package={appInfo} 
                                 onClick={props.onClick}
