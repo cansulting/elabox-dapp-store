@@ -252,7 +252,9 @@ const FetchRealdata = (props: any): JSX.Element => {
     const onClick = (app: PackageInfo) => {
         console.log("Selected " + app.id)
     }
-    return  <AppDashboardCon onClick={onClick} apps={[]}/>
+    return  <div style={{width:"100%",backgroundColor:"#1E1E26",color:"white",padding:20}}>
+        <AppDashboardCon iconWidth={130} iconHeight={130} onClick={onClick} apps={[]}/>        
+    </div>
 }
 
 export const RealData = FetchRealdata.bind({})
