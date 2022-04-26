@@ -36,7 +36,6 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 cursor: "pointer",
                 backgroundColor: "#272A3D",
                 opacity: onHover ? 0.8 : 1,
-                padding: 10,
                 borderRadius: 10,
                 marginBottom: 10
             }}
@@ -50,6 +49,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     marginBottom: 10,
                     width: props.width,
                     height: props.height,
+                    padding: 10
                 }}
             >
                 <img
@@ -57,7 +57,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     alt={props.package.name}
                     style={{ 
                         width: '100%', height: '100%', 
-                        borderRadius: 10,padding:10 
+                        borderRadius: 10
                     }}
                 />
                 {props.package.notifications > 0 && (
@@ -107,14 +107,15 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                         width={"20%"}
                     />
                 )}
-            </div>
-            {props.package.progress > 0 && (
+                {props.package.progress > 0 && (
                 <Progress
-                    style={{height: "6px"}}
+                    style={{height: "6px", margin: "10px 0"}}
                     value={props.package.progress}
                     color={progressColor}
                 />
             )}
+            </div>
+            
             {(!props.package.progress || props.package.progress <= 0) && <h4>{props.package.name}</h4>}
         </div>
     )

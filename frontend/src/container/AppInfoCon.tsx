@@ -1,7 +1,12 @@
 import React, { useEffect } from "react"
 import { AppInfoProps, AppInfo } from "../components/AppInfo"
 import * as Listener from "../actions/broadcastListener"
-import { installPackage, retrieveListing, uninstallPackage } from '../actions/appLib'
+import { 
+    installPackage, 
+    restart, 
+    resync, 
+    retrieveListing, 
+    uninstallPackage } from '../actions/appLib'
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
 
@@ -26,6 +31,12 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             setInfo(listing)
             setProgress(0)
         })
+    }
+    const handleResync = () => {
+        resync(info.id)
+    }
+    const handleRestart = () => {
+        restart(info.id)
     }
     const handleStateChanged = (args:any) => {
         //props.info.status = args.status
@@ -69,6 +80,8 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         onUninstall: handleUninstall,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,
+        onResync: handleResync,
+        onRestart: handleRestart,
     }
     return <AppInfo {...params}/>
 }
