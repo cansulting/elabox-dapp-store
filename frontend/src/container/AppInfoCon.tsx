@@ -1,7 +1,10 @@
 import React, { useEffect } from "react"
 import { AppInfoProps, AppInfo } from "../components/AppInfo"
 import * as Listener from "../actions/broadcastListener"
-import { installPackage, retrieveListing, uninstallPackage } from '../actions/appLib'
+import { 
+    installPackage,
+    retrieveListing, 
+    uninstallPackage } from '../actions/appLib'
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
 

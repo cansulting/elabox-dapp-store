@@ -6,6 +6,8 @@ export declare const AC_RETRIEVE_PKG = "ela.store.actions.RETRIEVE_PACKAGE";
 export declare const AC_INSTALL_PKG = "ela.store.actions.INSTALL_PACKAGE";
 export declare const AC_UNINSTALL_PKG = "ela.store.actions.UNINSTALL_PACKAGE";
 export declare const AC_RETRIEVE_SYSTEM_VERSION = "ela.store.actions.RETRIEVE_SYSTEM_VERSION";
+export declare const AC_RESTART = "ela.system.APP_RESTART";
+export declare const AC_RESYNC = "ela.system.APP_CLEAR_DATA";
 export declare const INSTALLER_PROGRESS: string;
 export declare const INSTALLER_STATE_CHANGED: string;
 export declare const INSTALLER_ERROR: string;

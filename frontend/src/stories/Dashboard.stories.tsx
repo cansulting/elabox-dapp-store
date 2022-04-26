@@ -3,6 +3,7 @@ import { AppDashboard, AppDashboardProps } from '../components/AppDashboard'
 import { ComponentMeta } from '@storybook/react'
 import { PackageInfo } from '../data/packageInfo'
 import {AppDashboardCon} from '../container/AppDashboardCon'
+import { AppInfoCon } from '../container/AppInfoCon'
 
 export default {
     title: 'Elabox/components/AppDashboard',
@@ -249,11 +250,17 @@ CompleteDownloadingApp.args = {
 }
 
 const FetchRealdata = (props: any): JSX.Element => {
+    const [activeApp, setActiveApp] = React.useState(null)
     const onClick = (app: PackageInfo) => {
         console.log("Selected " + app.id)
+        setActiveApp(app)
+    }
+    const onBack = () => {
+        setActiveApp(null)
     }
     return  <div style={{width:"100%",backgroundColor:"#1E1E26",color:"white",padding:20}}>
-        <AppDashboardCon iconWidth={130} iconHeight={130} onClick={onClick} apps={[]}/>        
+        {!activeApp && <AppDashboardCon iconWidth={130} iconHeight={130} onClick={onClick} apps={[]}/>}
+        {activeApp && <AppInfoCon info={activeApp} onBack={onBack}/>}        
     </div>
 }
 

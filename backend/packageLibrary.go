@@ -26,6 +26,9 @@ func RetrieveAllApps() ([]data.PackageInfo, error) {
 		}
 		tmpPreview = data.PackageInfo{}
 		tmpPreview.AddInfo(installedInfo, &pkg, false)
+		if task := installer.GetTask(tmpPreview.Id); task != nil {
+			tmpPreview.Status = task.Status
+		}
 
 		// check if currently in download
 

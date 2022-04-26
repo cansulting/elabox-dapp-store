@@ -39,7 +39,6 @@ var AppInfoSetting_1 = require("./AppInfoSetting");
 var colors_1 = require("../utils/colors");
 var packageInfo_1 = require("../data/packageInfo");
 var Notifications = function (props) {
-    console.log(props);
     return (react_1.default.createElement(react_1.default.Fragment, null, props.data.map(function (val) {
         return (react_1.default.createElement(react_1.default.Fragment, null,
             val.type === "error" && react_1.default.createElement("p", { style: { color: 'red' } }, val.content),
