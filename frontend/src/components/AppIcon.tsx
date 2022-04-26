@@ -109,7 +109,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 )}
                 {props.package.progress > 0 && (
                 <Progress
-                    style={{height: "6px", margin: "10px 0"}}
+                    style={{height: "6px", width: "100%", margin: "10px 0"}}
                     value={props.package.progress}
                     color={progressColor}
                 />
