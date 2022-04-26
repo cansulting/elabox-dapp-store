@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getEventHandler = exports.setEventHandler = exports.INSTALLER_ERROR = exports.INSTALLER_STATE_CHANGED = exports.INSTALLER_PROGRESS = exports.AC_RETRIEVE_SYSTEM_VERSION = exports.AC_UNINSTALL_PKG = exports.AC_INSTALL_PKG = exports.AC_RETRIEVE_PKG = exports.AC_RETRIEVE_PKGS = exports.INSTALLER_ID = exports.PACKAGE_ID = void 0;
+exports.getEventHandler = exports.setEventHandler = exports.INSTALLER_ERROR = exports.INSTALLER_STATE_CHANGED = exports.INSTALLER_PROGRESS = exports.AC_RESYNC = exports.AC_RESTART = exports.AC_RETRIEVE_SYSTEM_VERSION = exports.AC_UNINSTALL_PKG = exports.AC_INSTALL_PKG = exports.AC_RETRIEVE_PKG = exports.AC_RETRIEVE_PKGS = exports.INSTALLER_ID = exports.PACKAGE_ID = void 0;
 var elabox_foundation_1 = require("elabox-foundation");
 var _eventHandler = null;
 var HOST = /*"192.168.118.25"//*/ window.location.hostname;
@@ -12,6 +12,8 @@ exports.AC_RETRIEVE_PKG = "ela.store.actions.RETRIEVE_PACKAGE";
 exports.AC_INSTALL_PKG = "ela.store.actions.INSTALL_PACKAGE";
 exports.AC_UNINSTALL_PKG = "ela.store.actions.UNINSTALL_PACKAGE";
 exports.AC_RETRIEVE_SYSTEM_VERSION = "ela.store.actions.RETRIEVE_SYSTEM_VERSION";
+exports.AC_RESTART = "ela.system.APP_RESTART";
+exports.AC_RESYNC = "ela.system.APP_CLEAR_DATA";
 // installer broadcasts
 exports.INSTALLER_PROGRESS = exports.PACKAGE_ID + ".broadcast.INSTALL_PROGRESS";
 exports.INSTALLER_STATE_CHANGED = exports.PACKAGE_ID + ".broadcast.INSTALL_STATE";

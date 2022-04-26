@@ -18,6 +18,7 @@ exports.RealData = exports.CompleteDownloadingApp = exports.ErrorDownloadingApp 
 var react_1 = __importDefault(require("react"));
 var AppDashboard_1 = require("../components/AppDashboard");
 var AppDashboardCon_1 = require("../container/AppDashboardCon");
+var AppInfoCon_1 = require("../container/AppInfoCon");
 exports.default = {
     title: 'Elabox/components/AppDashboard',
     component: AppDashboard_1.AppDashboard,
@@ -205,11 +206,17 @@ exports.CompleteDownloadingApp.args = __assign(__assign({}, exports.Primary.args
         },
     ] });
 var FetchRealdata = function (props) {
+    var _a = react_1.default.useState(null), activeApp = _a[0], setActiveApp = _a[1];
     var onClick = function (app) {
         console.log("Selected " + app.id);
+        setActiveApp(app);
+    };
+    var onBack = function () {
+        setActiveApp(null);
     };
     return react_1.default.createElement("div", { style: { width: "100%", backgroundColor: "#1E1E26", color: "white", padding: 20 } },
-        react_1.default.createElement(AppDashboardCon_1.AppDashboardCon, { iconWidth: 130, iconHeight: 130, onClick: onClick, apps: [] }));
+        !activeApp && react_1.default.createElement(AppDashboardCon_1.AppDashboardCon, { iconWidth: 130, iconHeight: 130, onClick: onClick, apps: [] }),
+        activeApp && react_1.default.createElement(AppInfoCon_1.AppInfoCon, { info: activeApp, onBack: onBack }));
 };
 exports.RealData = FetchRealdata.bind({});
 exports.RealData.args = __assign(__assign({}, exports.Primary.args), { apps: null });
