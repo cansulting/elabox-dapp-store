@@ -6,7 +6,7 @@ arch=$(go env GOARCH)
 # values can interactive, debug, staging, production. 
 # in interactive - user lets to choose which mode he wants
 mode=interactive
-gobuild="go build"            
+gobuild="go build -tags DEBUG"            
 
 # FLAGS
 while getopts o:a:d: flag
