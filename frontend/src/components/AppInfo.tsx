@@ -147,7 +147,10 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                 >
                     <h4>{info.name}</h4>
                     { 
-                        info.status !== "uninstalled" && info.notificationContents && 
+                        (info.status === "installed" || 
+                        info.status === "error" || 
+                        info.status === "syncing") && 
+                        info.notificationContents && 
                         info.notificationContents.length > 0 && 
                         <Notifications data={info.notificationContents}/> 
                     }
