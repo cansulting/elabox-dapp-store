@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"sort"
 	"store/backend/data"
 	"store/backend/services/installer"
 	"store/backend/services/store_lister"
@@ -31,9 +32,13 @@ func RetrieveAllApps() ([]data.PackageInfo, error) {
 		}
 
 		// check if currently in download
-
 		previews = append(previews, tmpPreview)
 	}
+	// sort preview by name
+	sort.Slice(previews, func(i, j int) bool {
+		return previews[i].Name < previews[j].Name
+	})
+
 	return previews, nil
 }
 
