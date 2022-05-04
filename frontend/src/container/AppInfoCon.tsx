@@ -10,6 +10,7 @@ import { PackageInfo } from "../data/packageInfo"
 
 export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const [info, setInfo] = useState(props.info)
+    const [errorModalState,setErrorModalState] = useState({show:false,message:""})
     const [progress, setProgress] = useState(props.info.progress)
     
     const handleLaunch = (pkg: PackageInfo) => {
@@ -51,6 +52,13 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleProgress = (args:any) => {
         setProgress( args.progress)
     }
+    const handleError = (args:any) => {
+        console.log(args)
+        setErrorModalState({show: true, message: args.error})
+    }
+    const handleErrorModalClose = () =>{
+        setErrorModalState({show:false , message: ""})
+    }
     useEffect(() => {
         console.log("init")
         retrieveListing(props.info.id).then( pkg => {
@@ -58,16 +66,20 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         })
         Listener.onPackage(props.info.id, "install_progress", handleProgress)
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged)
+        Listener.onPackage(props.info.id,"install_error", handleError)        
         // clean up listener
         return function cleanup() {
             console.log("cleanup")
             Listener.offPackage(props.info.id, "install_progress", handleProgress)
             Listener.offPackage(props.info.id, "install_state_changed", handleProgress)
+            Listener.offPackage(props.info.id,"install_error", handleError)           
         }
     }, [props.info.id]);
     const params = {
         ...props, 
         info:{...info, progress: progress},
+        errorModalState: errorModalState,
+        onCloseErrorModal: handleErrorModalClose,
         onInstall: handleInstall,
         onUninstall: handleUninstall,
         onUpdate: handleInstall,
