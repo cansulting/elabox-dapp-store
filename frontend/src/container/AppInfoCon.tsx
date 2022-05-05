@@ -10,7 +10,6 @@ import { PackageInfo } from "../data/packageInfo"
 
 export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const [info, setInfo] = useState(props.info)
-    const [errorState,setErrorState] = useState({show:false,message:""})
     const [progress, setProgress] = useState(props.info.progress)
     
     const handleLaunch = (pkg: PackageInfo) => {
@@ -53,7 +52,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         setProgress( args.progress)
     }
     const handleError = (args:any) => {
-        setErrorState({show: true, message: args.error})
+        setInfo( {...info,notificationContents:[{type:"error",content:args.error}]})
     }
     useEffect(() => {
         console.log("init")
@@ -74,7 +73,6 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const params = {
         ...props, 
         info:{...info, progress: progress},
-        errorState: errorState,
         onInstall: handleInstall,
         onUninstall: handleUninstall,
         onUpdate: handleInstall,

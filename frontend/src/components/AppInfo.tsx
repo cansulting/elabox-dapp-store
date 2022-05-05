@@ -21,7 +21,6 @@ export interface AppInfoProps {
     style?: object
     footer?: JSX.Element
     customActions?: AppInfoAction[]             // custom secondary actions for app info
-    errorState?: {show:boolean,message:string}
     onInstall?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
@@ -147,10 +146,6 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     lg="10"
                 >
                     <h4>{info.name}</h4>
-                    {props.errorState.show && <p style={{color:"red"}}>
-                        {props.errorState.message}
-                    </p> }
-
                     { 
                         info.notificationContents && 
                         info.notificationContents.length > 0 && 
