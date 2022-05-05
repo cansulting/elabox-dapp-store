@@ -10,7 +10,6 @@ import {
 } from 'reactstrap'
 import { AppButton } from './AppButton'
 import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
-import { ErrorModal } from "./partial/ErrorModal"
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../data/packageInfo'
 import { MessagePrompt } from '../data/messagePrompt'
@@ -22,8 +21,7 @@ export interface AppInfoProps {
     style?: object
     footer?: JSX.Element
     customActions?: AppInfoAction[]             // custom secondary actions for app info
-    errorModalState?: {show:boolean,message:string}
-    onCloseErrorModal?: () => void
+    errorState?: {show:boolean,message:string}
     onInstall?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
@@ -87,9 +85,6 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     
     return (
         <Container style={props.style} fluid="md">
-            <ErrorModal 
-            show={props.errorModalState.show} message={props.errorModalState.message} 
-            onClose={props.onCloseErrorModal} />
             <div
                 style={{
                     display: 'flex',
@@ -152,6 +147,10 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     lg="10"
                 >
                     <h4>{info.name}</h4>
+                    {props.errorState.show && <p style={{color:"red"}}>
+                        {props.errorState.message}
+                    </p> }
+
                     { 
                         info.notificationContents && 
                         info.notificationContents.length > 0 && 
