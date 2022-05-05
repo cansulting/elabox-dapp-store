@@ -53,11 +53,11 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         setProgress( args.progress)
     }
     const handleError = (args:any) => {
-        console.log(args)
         setErrorModalState({show: true, message: args.error})
     }
     const handleErrorModalClose = () =>{
         setErrorModalState({show:false , message: ""})
+        handleRefresh()        
     }
     useEffect(() => {
         console.log("init")
