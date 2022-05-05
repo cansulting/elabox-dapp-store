@@ -14,7 +14,7 @@ export const ErrorModal = (props:ErrorModalProps) : JSX.Element => {
             Error Occured
         </ModalHeader>
         <ModalBody>
-            <p style={{color:"red"}}>
+            <p style={{color:"red",textAlign:"center",marginTop:10}}>
                 {props.message}
             </p>
         </ModalBody>
