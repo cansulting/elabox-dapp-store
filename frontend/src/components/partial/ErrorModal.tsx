@@ -14,14 +14,16 @@ export const ErrorModal = (props:ErrorModalProps) : JSX.Element => {
             Error Occured
         </ModalHeader>
         <ModalBody>
-            {props.message}
+            <p style={{color:"red"}}>
+                {props.message}
+            </p>
         </ModalBody>
         <ModalFooter>
             <Button
-            color="danger"
+            color="default"
             onClick={props.onClose}
             >
-                Ok
+                Close
             </Button>
         </ModalFooter>
     </Modal>
