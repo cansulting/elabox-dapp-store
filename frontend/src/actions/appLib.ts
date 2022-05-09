@@ -32,18 +32,11 @@ export async function retrieveListing(packageId: string) : Promise<PackageInfo> 
 
 // use to install package
 export async function installPackage(packageId: string) {
-  const res = await getEventHandler().sendRPC(PACKAGE_ID, AC_INSTALL_PKG, packageId)
-  if (res.code !== 200)
-    throw new Error(res.message)
-  console.log(res)
+  await getEventHandler().sendRPC(PACKAGE_ID, AC_INSTALL_PKG, packageId)
 }
 
 export async function uninstallPackage(packageId: string) {
-  console.log("uninstalling")
-  const res = await getEventHandler().sendRPC(PACKAGE_ID, AC_UNINSTALL_PKG, packageId)
-  if (res.code !== 200)
-    throw new Error(res.message)
-  console.log(res)
+  await getEventHandler().sendRPC(PACKAGE_ID, AC_UNINSTALL_PKG, packageId)
 }
 
 export async function retrieveSystemVersion() : Promise<string> {

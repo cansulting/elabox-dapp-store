@@ -19,21 +19,15 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         window.open(url, "_blank")
     }
     const handleInstall = (pkg:PackageInfo) => {
-        installPackage(pkg.id).catch(error=>{
-            handleError({error:error.message})
-        })
+        installPackage(pkg.id)
     }
     const handleUninstall = (pkg:PackageInfo) => {
-        uninstallPackage(pkg.id).catch(error=>{
-            handleError({error:error.message})
-        })
+        uninstallPackage(pkg.id)
     }
     const handleRefresh = () => {
         retrieveListing(info.id).then( listing => {
             setInfo(listing)
             setProgress(0)
-        }).catch(error=>{
-            handleError({error:error.message})
         })
     }
     const handleStateChanged = (args:any) => {
