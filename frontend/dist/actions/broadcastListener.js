@@ -31,7 +31,7 @@ var init = function () {
     (0, constants_1.getEventHandler)().on(constants_1.INSTALLER_ERROR, function (args) {
         console.log(constants_1.INSTALLER_ERROR, args);
         var data = JSON.parse(args.data);
-        (0, exports.emit)("install_error", data);
+        (0, exports.emitForPackage)(data.packageId, "install_error", data);
     });
 };
 exports.init = init;
