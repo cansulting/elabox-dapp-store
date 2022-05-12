@@ -79,15 +79,11 @@ exports.retrieveListing = retrieveListing;
 // use to install package
 function installPackage(packageId) {
     return __awaiter(this, void 0, void 0, function () {
-        var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_INSTALL_PKG, packageId)];
                 case 1:
-                    res = _a.sent();
-                    if (res.code !== 200)
-                        throw new Error(res.message);
-                    console.log(res);
+                    _a.sent();
                     return [2 /*return*/];
             }
         });
@@ -96,17 +92,11 @@ function installPackage(packageId) {
 exports.installPackage = installPackage;
 function uninstallPackage(packageId) {
     return __awaiter(this, void 0, void 0, function () {
-        var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    console.log("uninstalling");
-                    return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_UNINSTALL_PKG, packageId)];
+                case 0: return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_UNINSTALL_PKG, packageId)];
                 case 1:
-                    res = _a.sent();
-                    if (res.code !== 200)
-                        throw new Error(res.message);
-                    console.log(res);
+                    _a.sent();
                     return [2 /*return*/];
             }
         });

@@ -52,7 +52,12 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         setProgress( args.progress)
     }
     const handleError = (args:any) => {
-        setInfo( {...info,notificationContents:[{type:"error",content:args.error}]})
+        setInfo( {
+            ...info,
+            notificationContents:[{
+                type:"error",content: "CODE" + args.code + ": " + args.error
+            }]
+        })
     }
     useEffect(() => {
         console.log("init")
@@ -64,12 +69,13 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         Listener.onPackage(props.info.id,"install_error", handleError)        
         // clean up listener
         return function cleanup() {
-            console.log("cleanup")
+            //console.log("cleanup")
             Listener.offPackage(props.info.id, "install_progress", handleProgress)
             Listener.offPackage(props.info.id, "install_state_changed", handleProgress)
             Listener.offPackage(props.info.id,"install_error", handleError)           
         }
     }, [props.info.id]);
+    console.log(info)
     const params = {
         ...props, 
         info:{...info, progress: progress},

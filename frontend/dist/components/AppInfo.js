@@ -83,9 +83,9 @@ var AppInfo = function (props) {
             } },
             react_1.default.createElement("h3", { style: { cursor: 'pointer' }, onClick: props.onBack },
                 react_1.default.createElement("p", { style: { display: 'flex', alignItems: 'center' } },
-                    react_1.default.createElement(Icon.ArrowLeftCircle, { style: { marginRight: 5, color: 'gray' } }),
+                    react_1.default.createElement(Icon.ArrowLeftCircle, { style: { marginRight: 5, color: '#0d6efd' } }),
                     react_1.default.createElement("span", null,
-                        react_1.default.createElement("h5", { style: { color: '#0d6efd' } }, "Apps")))),
+                        react_1.default.createElement("h5", { style: { color: '#0d6efd', margin: 0 } }, "Apps")))),
             info.status === "installed" && (react_1.default.createElement(react_1.default.Fragment, null,
                 react_1.default.createElement("p", { style: { cursor: 'pointer' }, className: "text-primary", id: "settingPopover", ref: settingPopoverRef },
                     react_1.default.createElement(Icon.Settings, null)),
@@ -107,10 +107,7 @@ var AppInfo = function (props) {
                     } })),
             react_1.default.createElement(reactstrap_1.Col, { className: "d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3", style: { gap: 5 }, xs: "12", lg: "10" },
                 react_1.default.createElement("h4", null, info.name),
-                (info.status === "installed" ||
-                    info.status === "error" ||
-                    info.status === "syncing") &&
-                    info.notificationContents &&
+                info.notificationContents &&
                     info.notificationContents.length > 0 &&
                     react_1.default.createElement(Notifications, { data: info.notificationContents }),
                 updatable && !sysCompatible &&
@@ -134,10 +131,11 @@ var AppInfo = function (props) {
                     react_1.default.createElement("p", null, (0, colors_1.UppercaseFirstLetter)(info.status)))))),
         react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
             react_1.default.createElement(reactstrap_1.Col, null,
-                react_1.default.createElement("p", null, props.info.description),
-                (info.status === "uninstalled" || (0, packageInfo_1.isUpdatable)(props.info)) && (react_1.default.createElement(react_1.default.Fragment, null,
-                    react_1.default.createElement("h4", null, "What's New"),
-                    react_1.default.createElement("p", null, props.info.updates))))),
+                react_1.default.createElement("p", null, props.info.description))),
+        react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
+            react_1.default.createElement(reactstrap_1.Col, null,
+                react_1.default.createElement("h4", null, "What's New"),
+                react_1.default.createElement("p", null, props.info.updates))),
         react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
             react_1.default.createElement(reactstrap_1.Col, null,
                 react_1.default.createElement("h4", null, "Package details"),

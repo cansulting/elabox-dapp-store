@@ -2,7 +2,7 @@
     "ela.carrier": {
         "name": "Carrier",
         "id": "ela.carrier",
-        "description": "Carrier Node",
+        "description": "Your Elabox is an active element of the Carrier P2P network. By running an active Carrier node you strengthen the network and in turn this provides better security for the whole ecosystem.",
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/ela.carrier/listing/icon.png",
         "updates": "",
         "build": 1,
@@ -14,7 +14,7 @@
     "ela.mainchain" : {
         "name": "Mainchain",
         "id": "ela.mainchain",
-        "description": "Mainchain Node",
+        "description": "Your Elabox will be running a full ELA node. With your node you can: build, sign and send transactions with security and trust.",
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/ela.mainchain/listing/icon.png",
         "updates": "",
         "build": 1,
@@ -25,7 +25,7 @@
     "ela.eid": {
         "name": "EID",
         "id": "ela.eid",
-        "description": "EID Node",
+        "description": "Your Elabox will also be running a full Decentralized Identity (DID) node. This allows you to connect to the DID network and own your own data. With DIDs you can share only what you choose to share with any DApp.",
         "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
         "updates": "",
         "build": 2,
@@ -36,7 +36,7 @@
     "ela.esc": {
         "name": "ESC",
         "id": "ela.esc",
-        "description": "ESC Node",
+        "description": "The Smart Contract Chain (ESC) allows developers to code, deploy, and run their smart contracts on Ethereum Virtual Machines (EVMs). The sidechain also supports the execution of smart contracts written in Solidity.By utilizing DPoS Consensus, the Smart Contract Chain (ESC) acts as a high-performance, scalable smart contract execution solution.",
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/ela.esc/listing/icon.png",
         "updates": "",
         "build": 2,
@@ -47,7 +47,7 @@
     "ela.feeds": {
         "name": "Feeds Node",
         "id": "ela.feeds",
-        "description": "Feeds Node",
+        "description": "Feeds is a new, decentralized social platform where users remain in full control of the data they generate, and may also profit from it.",
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/ela.feeds/listing/icon.png",
         "updates": "",
         "build": 1,
@@ -58,7 +58,7 @@
     "glide": {
         "name": "Glide Finance",
         "id": "glide",
-        "description": "Glide",
+        "description": "Glide Finance is a Decentralized Exchange / Automated Market Maker, Yield Farming, and Staking platform running on the Elastos Smart Chain (ESC) that aims to accelerate adoption of the Elastos ecosystem by acting as a source of liquidity for users and the projects built on it.",
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/glide/listing/icon.png",
         "updates": "",
         "build": 1,

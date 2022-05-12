@@ -79,7 +79,9 @@ var AppInfoCon = function (props) {
         setProgress(args.progress);
     };
     var handleError = function (args) {
-        setInfo(__assign(__assign({}, info), { notificationContents: [{ type: "error", content: args.error }] }));
+        setInfo(__assign(__assign({}, info), { notificationContents: [{
+                    type: "error", content: "CODE" + args.code + ": " + args.error
+                }] }));
     };
     (0, react_1.useEffect)(function () {
         console.log("init");
@@ -91,12 +93,13 @@ var AppInfoCon = function (props) {
         Listener.onPackage(props.info.id, "install_error", handleError);
         // clean up listener
         return function cleanup() {
-            console.log("cleanup");
+            //console.log("cleanup")
             Listener.offPackage(props.info.id, "install_progress", handleProgress);
             Listener.offPackage(props.info.id, "install_state_changed", handleProgress);
             Listener.offPackage(props.info.id, "install_error", handleError);
         };
     }, [props.info.id]);
+    console.log(info);
     var params = __assign(__assign({}, props), { info: __assign(__assign({}, info), { progress: progress }), onInstall: handleInstall, onUninstall: handleUninstall, onUpdate: handleInstall, onLaunch: handleLaunch });
     return react_1.default.createElement(AppInfo_1.AppInfo, __assign({}, params));
 };
