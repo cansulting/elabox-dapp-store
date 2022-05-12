@@ -94,8 +94,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
             >
                 <h3 style={{ cursor: 'pointer' }} onClick={props.onBack}>
                     <p style={{display:'flex', alignItems: 'center'}}>
-                        <Icon.ArrowLeftCircle style={{ marginRight: 5, color:'gray' }} />
-                        <span><h5 style={{color:'#0d6efd'}}>Apps</h5></span>
+                        <Icon.ArrowLeftCircle style={{ marginRight: 5, color:'#0d6efd' }} />
+                        <span><h5 style={{color:'#0d6efd', margin: 0}}>Apps</h5></span>
                     </p>
                 </h3>
                 {info.status === "installed" && (
@@ -229,10 +229,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
             <Row className="mt-4">
                 <Col>
                     <p>{props.info.description}</p>
-                    {(info.status === "uninstalled" || isUpdatable(props.info)) && (<>
-                        <h4>What's New</h4>
-                        <p>{props.info.updates}</p>
-                    </>)}
+                </Col>
+            </Row>
+            <Row className="mt-4">
+                <Col>
+                    <h4>What's New</h4>
+                    <p>{props.info.updates}</p>
                 </Col>
             </Row>
             <Row className="mt-4">
