@@ -54,7 +54,6 @@ func (instance *StoreService) rpc_retrievePackage(client protocol.ClientInterfac
 func (instance *StoreService) rpc_installPackage(client protocol.ClientInterface, action data.Action) string {
 	err := DownloadInstallApp(action.PackageId)
 	if err != nil {
-		broadcast.PublishError(action.PackageId, global.STORE_SERVER_ERROR, "Store server is down.")
 		return rpc.CreateResponse(rpc.INVALID_CODE, err.Error())
 	}
 	return rpc.CreateSuccessResponse("started")
