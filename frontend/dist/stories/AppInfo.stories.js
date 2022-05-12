@@ -102,7 +102,7 @@ var Template2 = function (props) {
     var _a = (0, addons_1.useState)(null), currentPkg = _a[0], setPkg = _a[1];
     (0, react_1.useEffect)(function () {
         if (currentPkg === null)
-            (0, appLib_1.retrieveListing)("ela.carrier")
+            (0, appLib_1.retrieveListing)("trinity.pasar")
                 .then(function (pkg) {
                 console.log(pkg);
                 setPkg(pkg);

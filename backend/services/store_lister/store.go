@@ -120,6 +120,7 @@ func RetrieveDownloadLink(pkgId string) (string, error) {
 	form.Add("packageId", pkgId)
 	req, err := http.PostForm(global.DOWNLOAD_ENDPOINT, form)
 	if err != nil {
+		broadcast.PublishError(pkgId, global.STORE_SERVER_ERROR, "Unable to connect to store server. Please try again later.")
 		return "", err
 	}
 

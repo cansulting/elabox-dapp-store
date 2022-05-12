@@ -36,6 +36,8 @@ func PublishError(pkid string, code int, msg string) error {
 	return err
 }
 
+// publishes change state event for specific package
+// pkid: which package that was changed
 func PublishInstallState(pkid string, state global.AppStatus) error {
 	val := `{"packageId":"` + pkid + `","status":"` + string(state) + `"}`
 	_, err := global.AppController.RPC.CallBroadcast(sdata.NewAction(global.INSTALL_STATE, global.PackageId, val))

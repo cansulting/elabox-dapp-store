@@ -39,7 +39,7 @@ export const init = () => {
     getEventHandler().on(INSTALLER_ERROR, args => {
         console.log(INSTALLER_ERROR, args)
         const data = JSON.parse(args.data)
-        emit("install_error", data)
+        emitForPackage(data.packageId,"install_error", data)
     })
 }
 
