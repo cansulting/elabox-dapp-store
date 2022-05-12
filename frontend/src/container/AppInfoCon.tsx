@@ -26,7 +26,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     const handleRefresh = () => {
         retrieveListing(info.id).then( listing => {
-            setInfo(listing)
+            setInfo({...info,...listing})
             setProgress(0)
         })
     }

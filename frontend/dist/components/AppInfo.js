@@ -107,7 +107,10 @@ var AppInfo = function (props) {
                     } })),
             react_1.default.createElement(reactstrap_1.Col, { className: "d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3", style: { gap: 5 }, xs: "12", lg: "10" },
                 react_1.default.createElement("h4", null, info.name),
-                info.notificationContents &&
+                (info.status === "installed" ||
+                    info.status === "error" ||
+                    info.status === "syncing") &&
+                    info.notificationContents &&
                     info.notificationContents.length > 0 &&
                     react_1.default.createElement(Notifications, { data: info.notificationContents }),
                 updatable && !sysCompatible &&

@@ -53,7 +53,7 @@ var AppInfoCon = function (props) {
     };
     var handleRefresh = function () {
         (0, appLib_1.retrieveListing)(info.id).then(function (listing) {
-            setInfo(listing);
+            setInfo(__assign(__assign({}, info), listing));
             setProgress(0);
         });
     };

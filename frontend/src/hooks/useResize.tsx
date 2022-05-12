@@ -8,11 +8,11 @@ const useResize = (element: React.RefObject<HTMLDivElement>): ResizeHookReturn =
     const [width,setWidth] = useState(0)
     const [height,setHeight] = useState(0)
     useEffect(()=>{
-        setWidth(element?.current.offsetWidth)
-        setHeight(element?.current.offsetHeight)        
+        setWidth(element?.current?.offsetWidth)
+        setHeight(element?.current?.offsetHeight)        
         window.addEventListener("resize", () => {
-            setWidth(element?.current.offsetWidth)
-            setHeight(element?.current.offsetHeight)
+            setWidth(element?.current?.offsetWidth)
+            setHeight(element?.current?.offsetHeight)
         });
         return () => {
             window.removeEventListener("resize", () => {
