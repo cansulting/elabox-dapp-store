@@ -37,7 +37,8 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 backgroundColor: "#272A3D",
                 opacity: onHover ? 0.8 : 1,
                 borderRadius: 10,
-                marginBottom: 10
+                marginBottom: 10,
+                height: props.height + 50
             }}
             onClick={(ev) => props.onClick(props.package)}
             onMouseEnter={()=>handleOnHover(true)}
@@ -115,7 +116,6 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 />
             )}
             </div>
-            
             {(!props.package.progress || props.package.progress <= 0) && <h4>{props.package.name}</h4>}
         </div>
     )
