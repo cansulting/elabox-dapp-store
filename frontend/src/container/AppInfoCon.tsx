@@ -8,10 +8,19 @@ import {
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
 
+let currentInfo : any = null
+
 export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
-    const [info, setInfo] = useState(props.info)
+    if (currentInfo === null || currentInfo.id !== props.info.id)
+        currentInfo = props.info
+
+    const [info, setInfo] = useState(currentInfo)
     const [progress, setProgress] = useState(props.info.progress)
-    
+    const updateInfo = (pkg: PackageInfo) => {
+        setInfo(pkg)
+        currentInfo = pkg
+        //console.log("*******", pkg)
+    }
     const handleLaunch = (pkg: PackageInfo) => {
         // open the package on new tab
         const url = window.location.protocol + "//" + window.location.hostname +  pkg.launchUrl
@@ -26,7 +35,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     const handleRefresh = () => {
         retrieveListing(info.id).then( listing => {
-            setInfo({...info,...listing})
+            updateInfo({...info,...listing})
             setProgress(0)
         })
     }
@@ -46,13 +55,14 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
                 setProgress(0)
                 break;
         }
-        setInfo( {...info, status:args.status}) 
+        updateInfo( {...currentInfo, status:args.status}) 
+        //console.log(currentInfo)
     }
     const handleProgress = (args:any) => {
         setProgress( args.progress)
     }
     const handleError = (args:any) => {
-        setInfo( {
+        updateInfo( {
             ...info,
             notificationContents:[{
                 type:"error",content: "CODE" + args.code + ": " + args.error
@@ -62,7 +72,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     useEffect(() => {
         console.log("init")
         retrieveListing(props.info.id).then( pkg => {
-            setInfo({...pkg,...props.info})
+            updateInfo({...info,...pkg})
         })
         Listener.onPackage(props.info.id, "install_progress", handleProgress)
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged)
@@ -71,11 +81,10 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         return function cleanup() {
             //console.log("cleanup")
             Listener.offPackage(props.info.id, "install_progress", handleProgress)
-            Listener.offPackage(props.info.id, "install_state_changed", handleProgress)
+            Listener.offPackage(props.info.id, "install_state_changed", handleStateChanged)
             Listener.offPackage(props.info.id,"install_error", handleError)           
         }
     }, [props.info.id]);
-    console.log(info)
     const params = {
         ...props, 
         info:{...info, progress: progress},

@@ -121,7 +121,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                 }}
                             />
                         </>
-                    )}
+                    )
+                }
             </div>
             <Row lg="2">
                 <Col
