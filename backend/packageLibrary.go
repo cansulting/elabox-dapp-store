@@ -7,6 +7,7 @@ import (
 	"store/backend/services/installer"
 	"store/backend/services/store_lister"
 
+	"github.com/cansulting/elabox-system-tools/foundation/logger"
 	"github.com/cansulting/elabox-system-tools/registry/app"
 )
 
@@ -23,7 +24,7 @@ func RetrieveAllApps() ([]data.PackageInfo, error) {
 	for _, pkg := range *storeItems {
 		installedInfo, err := app.RetrievePackage(pkg.Id)
 		if err != nil {
-			return nil, errors.New("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
+			logger.GetInstance().Debug().Msg("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
 		}
 		tmpPreview = data.PackageInfo{}
 		tmpPreview.AddInfo(installedInfo, &pkg, false)
