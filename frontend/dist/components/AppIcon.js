@@ -46,7 +46,8 @@ var AppIcon = function (props) {
             backgroundColor: "#272A3D",
             opacity: onHover ? 0.8 : 1,
             borderRadius: 10,
-            marginBottom: 10
+            marginBottom: 10,
+            height: props.height + 50
         }, onClick: function (ev) { return props.onClick(props.package); }, onMouseEnter: function () { return handleOnHover(true); }, onMouseLeave: function () { return handleOnHover(false); } },
         react_1.default.createElement("div", { style: {
                 position: 'relative',

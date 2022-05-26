@@ -36,9 +36,17 @@ var AppInfo_1 = require("../components/AppInfo");
 var Listener = __importStar(require("../actions/broadcastListener"));
 var appLib_1 = require("../actions/appLib");
 var react_2 = require("react");
+var currentInfo = null;
 var AppInfoCon = function (props) {
-    var _a = (0, react_2.useState)(props.info), info = _a[0], setInfo = _a[1];
+    if (currentInfo === null || currentInfo.id !== props.info.id)
+        currentInfo = props.info;
+    var _a = (0, react_2.useState)(currentInfo), info = _a[0], setInfo = _a[1];
     var _b = (0, react_2.useState)(props.info.progress), progress = _b[0], setProgress = _b[1];
+    var updateInfo = function (pkg) {
+        setInfo(pkg);
+        currentInfo = pkg;
+        //console.log("*******", pkg)
+    };
     var handleLaunch = function (pkg) {
         // open the package on new tab
         var url = window.location.protocol + "//" + window.location.hostname + pkg.launchUrl;
@@ -53,7 +61,7 @@ var AppInfoCon = function (props) {
     };
     var handleRefresh = function () {
         (0, appLib_1.retrieveListing)(info.id).then(function (listing) {
-            setInfo(__assign(__assign({}, info), listing));
+            updateInfo(__assign(__assign({}, info), listing));
             setProgress(0);
         });
     };
@@ -73,20 +81,21 @@ var AppInfoCon = function (props) {
                 setProgress(0);
                 break;
         }
-        setInfo(__assign(__assign({}, info), { status: args.status }));
+        updateInfo(__assign(__assign({}, currentInfo), { status: args.status }));
+        //console.log(currentInfo)
     };
     var handleProgress = function (args) {
         setProgress(args.progress);
     };
     var handleError = function (args) {
-        setInfo(__assign(__assign({}, info), { notificationContents: [{
+        updateInfo(__assign(__assign({}, info), { notificationContents: [{
                     type: "error", content: "CODE" + args.code + ": " + args.error
                 }] }));
     };
     (0, react_1.useEffect)(function () {
         console.log("init");
         (0, appLib_1.retrieveListing)(props.info.id).then(function (pkg) {
-            setInfo(__assign(__assign({}, pkg), props.info));
+            updateInfo(__assign(__assign({}, info), pkg));
         });
         Listener.onPackage(props.info.id, "install_progress", handleProgress);
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged);
@@ -95,11 +104,10 @@ var AppInfoCon = function (props) {
         return function cleanup() {
             //console.log("cleanup")
             Listener.offPackage(props.info.id, "install_progress", handleProgress);
-            Listener.offPackage(props.info.id, "install_state_changed", handleProgress);
+            Listener.offPackage(props.info.id, "install_state_changed", handleStateChanged);
             Listener.offPackage(props.info.id, "install_error", handleError);
         };
     }, [props.info.id]);
-    console.log(info);
     var params = __assign(__assign({}, props), { info: __assign(__assign({}, info), { progress: progress }), onInstall: handleInstall, onUninstall: handleUninstall, onUpdate: handleInstall, onLaunch: handleLaunch });
     return react_1.default.createElement(AppInfo_1.AppInfo, __assign({}, params));
 };
