@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import * as Icon from 'react-feather'
 import {
     Container,
@@ -150,6 +150,9 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     { 
                         info.notificationContents && 
                         info.notificationContents.length > 0 && 
+                        (info.status === "error" ||
+                        info.status === "installed" ||
+                        info.status === "syncing") && 
                         <Notifications data={info.notificationContents}/> 
                     }
                     {
