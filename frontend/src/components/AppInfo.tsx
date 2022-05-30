@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import * as Icon from 'react-feather'
 import {
     Container,
