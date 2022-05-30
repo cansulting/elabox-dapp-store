@@ -150,9 +150,6 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     { 
                         info.notificationContents && 
                         info.notificationContents.length > 0 && 
-                        (info.status === "error" ||
-                        info.status === "installed" ||
-                        info.status === "syncing") && 
                         <Notifications data={info.notificationContents}/> 
                     }
                     {
