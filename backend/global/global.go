@@ -36,3 +36,6 @@ const PACKAGES_ENDPOINT = STORE_HOST + "/api/v1/items"
 const DOWNLOAD_ENDPOINT = STORE_HOST + "/api/v1/dl"
 
 const SYS_INFO_PATH = "/usr/ela/system/ela.system/info.json"
+
+// cache path for all package images
+const IMAGES_CACHE_PATH = "/_images"

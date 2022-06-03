@@ -108,7 +108,11 @@ func (task *Task) Download(path string, url string) (err error) {
 		return fmt.Errorf("bad status: %s", resp.Status)
 	}
 	// Write the body to file
-	_, err = io.Copy(out, io.TeeReader(resp.Body, task))
+	if task.OnProgressChanged != nil {
+		_, err = io.Copy(out, io.TeeReader(resp.Body, task))
+	} else {
+		_, err = io.Copy(out, resp.Body)
+	}
 	if err != nil {
 		return err
 	}
