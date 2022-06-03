@@ -18,16 +18,16 @@ func RetrieveAllApps() ([]data.PackageInfo, error) {
 	if err != nil {
 		return nil, errors.New("unable to retrieve all installed packages. inner: " + err.Error())
 	}
-	var previews = make([]data.PackageInfo, 0, len(*storeItems))
+	var previews = make([]data.PackageInfo, 0, len(storeItems))
 	var tmpPreview data.PackageInfo
 	// step: iterate on packages
-	for _, pkg := range *storeItems {
+	for _, pkg := range storeItems {
 		installedInfo, err := app.RetrievePackage(pkg.Id)
 		if err != nil {
 			logger.GetInstance().Debug().Msg("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
 		}
 		tmpPreview = data.PackageInfo{}
-		tmpPreview.AddInfo(installedInfo, &pkg, false)
+		tmpPreview.AddInfo(installedInfo, pkg, false)
 		if task := installer.GetTask(tmpPreview.Id); task != nil {
 			tmpPreview.Status = task.Status
 		}

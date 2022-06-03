@@ -8,17 +8,24 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"path"
 	"store/backend/broadcast"
 	"store/backend/data"
 	"store/backend/global"
+	"store/backend/services/downloader"
 	"time"
 
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
+	spath "github.com/cansulting/elabox-system-tools/foundation/path"
 	"github.com/cansulting/elabox-system-tools/foundation/perm"
+	"github.com/cansulting/elabox-system-tools/foundation/system"
 )
 
-var pkgsCache *[]data.PackageListingCache = nil
-var tmpData map[string]data.PackageListingCache = nil
+var pkgsCache []*data.PackageListingCache = nil
+var remoteData map[string]*data.PackageListingCache = nil
+var wwwImages = ""
+
+const PARENT_DIR = "ela.companion"
 
 // initialize this service
 func Init() error {
@@ -32,14 +39,14 @@ func Init() error {
 				logger.GetInstance().Error().Err(err).Msg("unable to retrieve store listing.")
 			}
 			// sleep for a while
-			time.Sleep(time.Second * 60)
+			time.Sleep(time.Second * global.RETRIEVE_LISTING_DELAY)
 		}
 	}()
 	return nil
 }
 
 // retrieve all items from cache
-func GetItems() (*[]data.PackageListingCache, error) {
+func GetItems() ([]*data.PackageListingCache, error) {
 	if pkgsCache == nil {
 		tmp, err := retrieveCache()
 		if err != nil {
@@ -57,15 +64,15 @@ func GetItem(pkid string) (*data.PackageListingCache, error) {
 	if err != nil {
 		return nil, err
 	}
-	for _, v := range *items {
+	for _, v := range items {
 		if v.Id == pkid {
-			return &v, nil
+			return v, nil
 		}
 	}
 	return nil, nil
 }
 
-// request via http to retrieve apps
+// request via http to retrieve apps. use to look new package updates
 func RetrieveItems() error {
 	log.Println("retrieving store listing")
 
@@ -85,33 +92,59 @@ func RetrieveItems() error {
 	}
 
 	// step: parse json response
-	err = json.Unmarshal(body, &tmpData)
+	err = json.Unmarshal(body, &remoteData)
 	if err != nil {
 		return errors.New("unable to unmarshal response body. inner: " + err.Error())
 	}
-
-	tmp := make([]data.PackageListingCache, len(tmpData))
-	i := 0
+	tmp := make([]*data.PackageListingCache, len(remoteData))
+	i := -1
 	updates := make([]*data.PackageListingCache, 0)
-	for _, v := range tmpData {
-		tmp[i] = v
+	for _, latestData := range remoteData {
 		i++
-		if gitem, _ := GetItem(v.Id); gitem != nil {
-			if gitem.Build != v.Build {
-				updates = append(updates, gitem)
+		// compare to olditem
+		localData, _ := GetItem(latestData.Id)
+		if localData != nil {
+			if localData.Build == latestData.Build {
+				tmp[i] = localData
+				continue
 			}
 		}
+		tmp[i] = latestData
+		updates = append(updates, latestData)
 	}
-	// we have updates
+	// step: we have updates
 	if len(updates) > 0 {
+		// cache package icons
+		// NOTE: skip for IDE since cache data wont be visible due to React debug exec behaviour
+		if !system.IDE {
+			if wwwImages == "" {
+				wwwImages = spath.GetSystemWWW() + "/" + PARENT_DIR + global.IMAGES_CACHE_PATH
+				if err := os.MkdirAll(wwwImages, 0666); err != nil {
+					logger.GetInstance().Error().Err(err).Msg("failed to create cache dir " + wwwImages)
+				}
+			}
+			for _, v := range updates {
+				ext := path.Ext(v.Icon)
+				dest := wwwImages + "/" + v.Id + "/icon" + ext
+				if err := downloader.AddCacheImage(
+					v.Id,
+					v.Icon,
+					dest,
+				); err != nil {
+					// update url
+					v.Icon = "/" + PARENT_DIR + global.IMAGES_CACHE_PATH + "/" + v.Id + "/icon" + ext
+				}
+			}
+		}
+		// broadcast
 		if err := broadcast.PublishNewUpdateAvailable(updates); err != nil {
 			log.Println("unable to broadcast new update available")
 		}
+		pkgsCache = tmp
+		// tmp: save the data to cache file
+		return saveCache(pkgsCache, global.StoreCache)
 	}
-
-	pkgsCache = &tmp
-	// tmp: save the data to cache file
-	return saveCache(pkgsCache, global.StoreCache)
+	return nil
 }
 
 // function that retrieves package download information
