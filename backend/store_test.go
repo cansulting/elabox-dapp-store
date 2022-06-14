@@ -20,7 +20,7 @@ const TEST_PKG = "ela.sample"
 func Test_RetrieveListing(t *testing.T) {
 	logger.Init("ela.store.test")
 	// step: retrieve store listing
-	if err := store_lister.RetrieveItems(); err != nil {
+	if err := store_lister.CheckUpdates(); err != nil {
 		t.Error("unable to retrieve store listing. inner: " + err.Error())
 	}
 }

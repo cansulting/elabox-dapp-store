@@ -49,7 +49,7 @@ var AppInfoCon = function (props) {
     };
     var handleLaunch = function (pkg) {
         // open the package on new tab
-        var url = window.location.protocol + "//" + window.location.hostname + pkg.launchUrl;
+        var url = "http://" + window.location.hostname + pkg.launchUrl;
         //console.log(window.location)
         window.open(url, "_blank");
     };

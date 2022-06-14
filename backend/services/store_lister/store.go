@@ -35,7 +35,7 @@ func Init() error {
 	// will be called every hour
 	go func() {
 		for {
-			if err := RetrieveItems(); err != nil {
+			if err := CheckUpdates(); err != nil {
 				logger.GetInstance().Error().Err(err).Msg("unable to retrieve store listing.")
 			}
 			// sleep for a while
@@ -73,7 +73,7 @@ func GetItem(pkid string) (*data.PackageListingCache, error) {
 }
 
 // request via http to retrieve apps. use to look new package updates
-func RetrieveItems() error {
+func CheckUpdates() error {
 	log.Println("retrieving store listing")
 
 	res, err := http.Get(global.PACKAGES_ENDPOINT)
