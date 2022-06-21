@@ -87,5 +87,16 @@
         "version": "0.1.0",
         "projectRepo": "",
         "projectWebsite": ""
+    },
+    "ipfs": {
+        "name": "IPFS",
+        "id": "ipfs",
+        "description": "The InterPlanetary File System is a protocol and peer-to-peer network for storing and sharing data in a distributed file system. IPFS uses content-addressing to uniquely identify each file in a global namespace connecting all computing devices.",
+        "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
+        "updates": "First release of IPFS for elabox.",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
     }
 }

@@ -8,17 +8,13 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"path"
 	"store/backend/broadcast"
 	"store/backend/data"
 	"store/backend/global"
-	"store/backend/services/downloader"
 	"time"
 
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
-	spath "github.com/cansulting/elabox-system-tools/foundation/path"
 	"github.com/cansulting/elabox-system-tools/foundation/perm"
-	"github.com/cansulting/elabox-system-tools/foundation/system"
 )
 
 var pkgsCache []*data.PackageListingCache = nil
@@ -116,6 +112,7 @@ func CheckUpdates() error {
 	if len(updates) > 0 {
 		// cache package icons
 		// NOTE: skip for IDE since cache data wont be visible due to React debug exec behaviour
+		/*  remove icon caching for now, got issue when cache icon removed unintentionally once the system was updated
 		if !system.IDE {
 			if wwwImages == "" {
 				wwwImages = spath.GetSystemWWW() + "/" + PARENT_DIR + global.IMAGES_CACHE_PATH
@@ -135,7 +132,7 @@ func CheckUpdates() error {
 					v.Icon = "/" + PARENT_DIR + global.IMAGES_CACHE_PATH + "/" + v.Id + "/icon" + ext
 				}
 			}
-		}
+		}*/
 		// broadcast
 		if err := broadcast.PublishNewUpdateAvailable(updates); err != nil {
 			log.Println("unable to broadcast new update available")
