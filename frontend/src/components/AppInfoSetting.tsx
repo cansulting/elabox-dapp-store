@@ -1,6 +1,6 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import { PackageInfo } from '../data/packageInfo'
-
+import { ConfirmationModal,ConfirmationModalProps } from './partials/Modals/Confirmation'
 export interface AppInfoAction {
     label: string
     color?: string
@@ -18,6 +18,19 @@ export interface AppInfoSettingProps {
 }
 
 export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
+    const [isOpenUninstallModal,setIsOpenUninstallModal] = useState(false)
+    const handleOnOpenUninstallModal = (e:React.MouseEvent) =>{
+        e.preventDefault()
+        setIsOpenUninstallModal(true)
+    }
+    const handleOnCloseUninstallModal = () =>{
+        setIsOpenUninstallModal(false)
+    }
+    const handleOnConfirmUninstall = (e:React.MouseEvent) =>{
+        e.preventDefault()
+        props.onUnInstall()        
+        setIsOpenUninstallModal(false)
+    }
     return (
         <div
             style={{
@@ -28,6 +41,12 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                 gap: 5,
             }}
         >
+            <ConfirmationModal 
+            title={`Uninstalling ${props.info.name}`}
+            body={`Are you sure you want to permanently remove ${props.info.name} including its data?`}
+            isOpen={isOpenUninstallModal} 
+            onClose={handleOnCloseUninstallModal} 
+            onConfirm={handleOnConfirmUninstall} />            
             {props.isService && 
                 <>
                     <span
@@ -62,10 +81,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
             {props.info.category !== 'system' &&
                 <span
                     style={{ color: 'red', cursor: 'pointer' }}
-                    onClick={(e) => {
-                        e.preventDefault()
-                        props.onUnInstall()
-                    }}
+                    onClick={handleOnOpenUninstallModal}
                 >
                     Uninstall
                 </span>
