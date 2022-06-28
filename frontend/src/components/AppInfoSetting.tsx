@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import * as Icon from 'react-feather'
 import Toggle from 'react-toggle'
 import { PackageInfo } from '../data/packageInfo'
@@ -17,20 +17,24 @@ export interface AppInfoSettingProps {
     onResync?: Function
     onDisable?: Function
     onRestart?: Function
-    onOff?: Function,
-    onOn?: Function
+    onOn?: () => Promise<string>
+    onOff?: () => Promise<string>
 }
 
 export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
-    const [isServiceOn,setIsServiceOn] = useState(false)
+    const [isServiceLoading,setIsServiceLoading] = useState(false)
     const handleServiceToggleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
-        const willServiceOn = e.target.checked
-        setIsServiceOn(willServiceOn)
-        if(willServiceOn) {
-            props.onOn()
+        const isServiceOn = e.target.checked
+        setIsServiceLoading(true)        
+        if(isServiceOn) {
+            props.onOn().then(()=>{
+                setIsServiceLoading(false)
+            })
             return
         }
-        props.onOff()
+        props.onOff().then(()=>{
+            setIsServiceLoading(false)
+        })
     }
     return (
         <div
@@ -43,10 +47,12 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
             }}
         >
             {props.info.status === "installed" && 
-            <Toggle checked={isServiceOn} icons={{
+            <Toggle checked={props.info.isRunning} icons={{
                 checked: <Icon.Power style={{display:"block",paddingBottom:3}} size={15} color="white"/>,
                 unchecked: <Icon.Circle style={{display:"block",paddingBottom:3}} size={15} color="white"/>
-            }} onChange={handleServiceToggleChange}/> }                        
+            }}
+            disabled={isServiceLoading}
+            onChange={handleServiceToggleChange}/> }                        
             {props.isService && 
                 <>
                     <span

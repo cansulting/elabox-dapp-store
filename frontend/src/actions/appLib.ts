@@ -10,7 +10,8 @@ import {
   AC_RESYNC,
   AC_RESTART,
   AC_OFF,
-  AC_ON
+  AC_ON,
+  AC_CHECK_STATUS
  } from "./constants";
 
 export async function retrieveAllListings() : Promise<PackageInfo[]>{
@@ -80,7 +81,15 @@ export async function off(packageId: string) : Promise<string> {
 export async function On(packageId: string) : Promise<string> {
   console.log("On...")
   const res = await getEventHandler().sendSystemRPC(AC_ON, packageId)
-  console.log(res)
+  if (res.code !== 200)
+    throw new Error(res.message)
+  return res.message
+}
+// check specific service/node status
+
+export async function OnCheckStatus(packageId: string) : Promise<string> {
+  console.log("Checking Status...")
+  const res = await getEventHandler().sendSystemRPC(AC_CHECK_STATUS, packageId)
   if (res.code !== 200)
     throw new Error(res.message)
   return res.message
