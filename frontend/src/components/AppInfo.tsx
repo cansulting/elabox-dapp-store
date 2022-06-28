@@ -25,6 +25,8 @@ export interface AppInfoProps {
     onUninstall?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
     onLaunch?: (pkg:PackageInfo) => void
+    onOff?: (pkg:PackageInfo) => void    
+    onOn?: (pkg:PackageInfo) => void    
     onResync?: () => void
     onDisable?: () => void
     onRestart?: () => void
@@ -81,7 +83,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const handleUpdate = (evnt:any) => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
-    
+    const handleOff = (evnt:any) => {
+        if (props.onOff) props.onOff(props.info)
+    }
+    const handleOn = (evnt:any) => {
+        if (props.onOn) props.onOn(props.info)
+    }
     return (
         <Container style={props.style} fluid="md">
             <div
@@ -118,6 +125,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                     onResync: props.onResync,
                                     onDisable: props.onDisable,
                                     onRestart: props.onRestart,
+                                    onOff: handleOff,
+                                    onOn: handleOn
                                 }}
                             />
                         </>

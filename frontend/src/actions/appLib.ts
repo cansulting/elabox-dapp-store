@@ -8,7 +8,9 @@ import {
   AC_UNINSTALL_PKG,
   AC_RETRIEVE_SYSTEM_VERSION,
   AC_RESYNC,
-  AC_RESTART
+  AC_RESTART,
+  AC_OFF,
+  AC_ON
  } from "./constants";
 
 export async function retrieveAllListings() : Promise<PackageInfo[]>{
@@ -59,6 +61,26 @@ export async function resync(packageId: string) : Promise<string> {
 export async function restart(packageId: string) : Promise<string> {
   console.log("restart...")
   const res = await getEventHandler().sendSystemRPC(AC_RESTART, packageId)
+  if (res.code !== 200)
+    throw new Error(res.message)
+  return res.message
+}
+
+// off specific service/node
+export async function off(packageId: string) : Promise<string> {
+  console.log("off...")
+  const res = await getEventHandler().sendSystemRPC(AC_OFF, packageId)
+  console.log(res)
+  if (res.code !== 200)
+    throw new Error(res.message)
+  return res.message
+}
+
+// on specific service/node
+export async function On(packageId: string) : Promise<string> {
+  console.log("On...")
+  const res = await getEventHandler().sendSystemRPC(AC_ON, packageId)
+  console.log(res)
   if (res.code !== 200)
     throw new Error(res.message)
   return res.message

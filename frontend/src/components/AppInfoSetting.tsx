@@ -1,4 +1,6 @@
-import React from 'react'
+import React,{useState} from 'react'
+import * as Icon from 'react-feather'
+import Toggle from 'react-toggle'
 import { PackageInfo } from '../data/packageInfo'
 
 export interface AppInfoAction {
@@ -15,9 +17,21 @@ export interface AppInfoSettingProps {
     onResync?: Function
     onDisable?: Function
     onRestart?: Function
+    onOff?: Function,
+    onOn?: Function
 }
 
 export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
+    const [isServiceOn,setIsServiceOn] = useState(false)
+    const handleServiceToggleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
+        const willServiceOn = e.target.checked
+        setIsServiceOn(willServiceOn)
+        if(willServiceOn) {
+            props.onOn()
+            return
+        }
+        props.onOff()
+    }
     return (
         <div
             style={{
@@ -28,6 +42,11 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                 gap: 5,
             }}
         >
+            {props.info.status === "installed" && 
+            <Toggle checked={isServiceOn} icons={{
+                checked: <Icon.Power style={{display:"block",paddingBottom:3}} size={15} color="white"/>,
+                unchecked: <Icon.Circle style={{display:"block",paddingBottom:3}} size={15} color="white"/>
+            }} onChange={handleServiceToggleChange}/> }                        
             {props.isService && 
                 <>
                     <span

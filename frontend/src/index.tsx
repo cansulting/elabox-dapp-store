@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import "react-toggle/style.css"
 import { EboxEvent } from 'elabox-foundation'
 import { setEventHandler } from './actions/constants'
 

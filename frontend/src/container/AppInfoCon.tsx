@@ -4,7 +4,10 @@ import * as Listener from "../actions/broadcastListener"
 import { 
     installPackage,
     retrieveListing, 
-    uninstallPackage } from '../actions/appLib'
+    uninstallPackage ,
+    off,
+    On
+} from '../actions/appLib'
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
 
@@ -39,6 +42,12 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             setProgress(0)
         })
     }
+    const handleOff = (pkg:PackageInfo) =>{
+        off(pkg.id)
+    }
+    const handleOn = (pkg:PackageInfo) =>{
+        On(pkg.id)
+    }    
     const handleStateChanged = (args:any) => {
         //props.info.status = args.status
         //console.log(info, args.status)
@@ -92,6 +101,8 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         onUninstall: handleUninstall,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,
+        onOff: handleOff,
+        onOn: handleOn
     }
     return <AppInfo {...params}/>
 }
