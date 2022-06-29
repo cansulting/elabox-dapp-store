@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import * as Icon from 'react-feather'
-import Toggle from 'react-toggle'
+import { Spinner } from 'reactstrap'
 import { PackageInfo } from '../data/packageInfo'
 
 export interface AppInfoAction {
@@ -23,16 +22,16 @@ export interface AppInfoSettingProps {
 
 export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
     const [isServiceLoading,setIsServiceLoading] = useState(false)
-    const handleServiceToggleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
-        const isServiceOn = e.target.checked
+    const handleServiceStatusChange = (e:React.MouseEvent<HTMLInputElement>) =>{
+        e.preventDefault()
         setIsServiceLoading(true)        
-        if(isServiceOn) {
-            props.onOn().then(()=>{
+        if(props.info.isRunning) {
+            props.onOff().then(()=>{
                 setIsServiceLoading(false)
             })
             return
         }
-        props.onOff().then(()=>{
+        props.onOn().then(()=>{
             setIsServiceLoading(false)
         })
     }
@@ -46,13 +45,16 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                 gap: 5,
             }}
         >
-            {props.info.status === "installed" && 
-            <Toggle checked={props.info.isRunning} icons={{
-                checked: <Icon.Power style={{display:"block",paddingBottom:3}} size={15} color="white"/>,
-                unchecked: <Icon.Circle style={{display:"block",paddingBottom:3}} size={15} color="white"/>
-            }}
-            disabled={isServiceLoading}
-            onChange={handleServiceToggleChange}/> }                        
+            {props.info.status === "installed" &&
+                <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={handleServiceStatusChange}
+                >
+                    {isServiceLoading && <Spinner children="" size="sm" />}
+                    {props.info.isRunning && !isServiceLoading && "On"}
+                    {!props.info.isRunning && !isServiceLoading && "Off"}
+                </span>
+            }                        
             {props.isService && 
                 <>
                     <span
