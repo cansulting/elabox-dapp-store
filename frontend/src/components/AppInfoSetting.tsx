@@ -45,16 +45,6 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                 gap: 5,
             }}
         >
-            {props.info.status === "installed" &&
-                <span
-                    style={{ cursor: 'pointer',color: `${props.info.isRunning ? "green":"red"}` }}
-                    onClick={handleServiceStatusChange}
-                >
-                    {isServiceLoading && <Spinner children="" size="sm" color="secondary" />}
-                    {props.info.isRunning && !isServiceLoading && "On"}
-                    {!props.info.isRunning && !isServiceLoading && "Off"}
-                </span>
-            }                        
             {props.isService && 
                 <>
                     <span
@@ -75,15 +65,16 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                     >
                         Restart
                     </span>
+                    {props.info.status === "installed" &&
                     <span
-                        style={{ cursor: 'pointer' }}
-                        onClick={(e) => {
-                            e.preventDefault()
-                            props.onDisable()
-                        }}
-                    >
-                        Disable
+                    style={{ cursor: 'pointer',color: `${props.info.isRunning ? "green":"red"}` }}
+                    onClick={handleServiceStatusChange}
+                >
+                        {isServiceLoading && <Spinner children="" size="sm" color="secondary" />}
+                        {props.info.isRunning && !isServiceLoading && "Enabled"}
+                        {!props.info.isRunning && !isServiceLoading && "Disabled"}
                     </span>
+                }                        
                 </>
             }
             {props.info.category !== 'system' &&
