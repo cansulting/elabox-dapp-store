@@ -1,0 +1,3760 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Elabox/components/AppButton Active 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-primary btn-lg active"
+  disabled={false}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Primary
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Block 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-primary btn-lg btn-block"
+  disabled={false}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Block
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Close 1`] = `
+<button
+  aria-label="Close"
+  className="close btn-lg"
+  disabled={false}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Primary
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Danger 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-danger btn-lg"
+  disabled={false}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Danger
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Disabled 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-primary btn-lg disabled"
+  disabled={true}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Disabled
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Info 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-info btn-lg"
+  disabled={false}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Info
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Outline 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-outline-primary btn-lg"
+  disabled={false}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Primary
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Primary 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-primary btn-lg"
+  disabled={false}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Primary
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Processing 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-primary btn-lg disabled"
+  disabled={true}
+  isProcessing={true}
+  onClick={[Function]}
+  type="button"
+>
+  <div
+    className="spinner-border"
+    role="status"
+  >
+    
+  </div>
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Secondary 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-secondary btn-lg"
+  disabled={false}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Secondary
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppButton Success 1`] = `
+<button
+  aria-label={null}
+  className="btn btn-success btn-lg"
+  disabled={false}
+  isProcessing={false}
+  onClick={[Function]}
+  type="button"
+>
+  Success
+</button>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Complete Downloading App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={100}
+            className="progress-bar bg-success"
+            role="progressbar"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Downloadable App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+          <svg
+            fill="none"
+            height={20}
+            stroke="white"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            style={
+              Object {
+                "background": "blue",
+                "border": "1px solid lightgrey",
+                "borderRadius": "50%",
+                "bottom": 10,
+                "cursor": "pointer",
+                "padding": 5,
+                "position": "absolute",
+                "right": 10,
+              }
+            }
+            viewBox="0 0 24 24"
+            width={20}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+            />
+            <polyline
+              points="7 10 12 15 17 10"
+            />
+            <line
+              x1="12"
+              x2="12"
+              y1="15"
+              y2="3"
+            />
+          </svg>
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Downloading App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={50}
+            className="progress-bar progress-bar-animated bg-primary progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "50%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Error Downloading App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={70}
+            className="progress-bar bg-danger"
+            role="progressbar"
+            style={
+              Object {
+                "width": "70%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Installing App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={50}
+            className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "50%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Primary 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppDashboard Uninstalling App 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "width": "50%",
+    }
+  }
+>
+  <div
+    className="row row-cols-3"
+  >
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <h4>
+          Glide
+        </h4>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "marginBottom": 10,
+              "position": "relative",
+            }
+          }
+        >
+          <img
+            alt="Glide"
+            src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+            style={
+              Object {
+                "borderRadius": 10,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+        <div
+          className="progress"
+          style={Object {}}
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={50}
+            className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "50%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Downloadable 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+    <svg
+      fill="none"
+      height={20}
+      stroke="white"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      style={
+        Object {
+          "background": "blue",
+          "border": "1px solid lightgrey",
+          "borderRadius": "50%",
+          "bottom": 10,
+          "cursor": "pointer",
+          "padding": 5,
+          "position": "absolute",
+          "right": 10,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={20}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+      />
+      <polyline
+        points="7 10 12 15 17 10"
+      />
+      <line
+        x1="12"
+        x2="12"
+        y1="15"
+        y2="3"
+      />
+    </svg>
+  </div>
+  <h4>
+    Glide
+  </h4>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Downloading 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={50}
+      className="progress-bar progress-bar-animated bg-primary progress-bar-striped"
+      role="progressbar"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Installing 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={50}
+      className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+      role="progressbar"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Notification 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+    <svg
+      fill="none"
+      height={20}
+      stroke="white"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      style={
+        Object {
+          "background": "red",
+          "border": "1px solid lightgrey",
+          "borderRadius": "50%",
+          "cursor": "pointer",
+          "padding": 5,
+          "position": "absolute",
+          "right": 10,
+          "top": 10,
+        }
+      }
+      viewBox="0 0 24 24"
+      width={20}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+      />
+      <path
+        d="M13.73 21a2 2 0 0 1-3.46 0"
+      />
+    </svg>
+  </div>
+  <h4>
+    Glide
+  </h4>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Process Error 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={50}
+      className="progress-bar bg-danger"
+      role="progressbar"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Process Success 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={100}
+      className="progress-bar bg-success"
+      role="progressbar"
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Uninstalling 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <div
+    className="progress"
+    style={Object {}}
+  >
+    <div
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={50}
+      className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+      role="progressbar"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon With Label 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+  <h4>
+    Glide
+  </h4>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppIcon Without Label 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "height": "200px",
+      "textAlign": "center",
+      "width": "200px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginBottom": 10,
+        "position": "relative",
+      }
+    }
+  >
+    <img
+      alt="Glide"
+      src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Downloading 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+      <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <p>
+          Downloading
+        </p>
+        <div
+          className="progress"
+          style={
+            Object {
+              "width": "30%",
+            }
+          }
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={30}
+            className="progress-bar progress-bar-animated bg-primary progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "30%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Installable 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+      <button
+        aria-label={null}
+        className="btn btn-outline-primary btn-sm"
+        onClick={[Function]}
+        type="button"
+      >
+        Install
+      </button>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Installation Error 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+      <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <p>
+          Error
+        </p>
+        <div
+          className="progress"
+          style={
+            Object {
+              "width": "30%",
+            }
+          }
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={90}
+            className="progress-bar bg-danger"
+            role="progressbar"
+            style={
+              Object {
+                "width": "90%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Installation Success 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+      <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <p>
+          Completed
+        </p>
+        <div
+          className="progress"
+          style={
+            Object {
+              "width": "30%",
+            }
+          }
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={100}
+            className="progress-bar bg-success"
+            role="progressbar"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Installing 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+      <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <p>
+          Installing
+        </p>
+        <div
+          className="progress"
+          style={
+            Object {
+              "width": "30%",
+            }
+          }
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={90}
+            className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "90%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Launchable 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      >
+        <button
+          aria-label={null}
+          className="btn btn-outline-primary btn-sm"
+          onClick={[Function]}
+          type="button"
+        >
+          Update
+        </button>
+        <button
+          aria-label={null}
+          className="btn btn-primary btn-sm"
+          onClick={[Function]}
+          type="button"
+        >
+          Launch
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Primary 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Syncing 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+      <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <p>
+          Syncing
+        </p>
+        <div
+          className="progress"
+          style={
+            Object {
+              "width": "30%",
+            }
+          }
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={20}
+            className="progress-bar progress-bar-animated bg-primary progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "20%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Un Installing 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+      <div
+        className="d-flex flex-column align-items-center align-items-lg-start"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <p>
+          Uninstalling
+        </p>
+        <div
+          className="progress"
+          style={
+            Object {
+              "width": "30%",
+            }
+          }
+        >
+          <div
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={90}
+            className="progress-bar progress-bar-animated bg-info progress-bar-striped"
+            role="progressbar"
+            style={
+              Object {
+                "width": "90%",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo Updatable 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      >
+        <button
+          aria-label={null}
+          className="btn btn-outline-primary btn-sm"
+          onClick={[Function]}
+          type="button"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+      <h4>
+        What's new
+      </h4>
+      <ul>
+        <li>
+          Lorem lorem
+        </li>
+        <li>
+          Lorem lorem
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfo With Stats 1`] = `
+<div
+  className="container-md"
+  style={
+    Object {
+      "height": "100vh",
+      "padding": 10,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "paddingBottom": 5,
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        style={
+          Object {
+            "marginRight": 5,
+          }
+        }
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <polyline
+          points="12 8 8 12 12 16"
+        />
+        <line
+          x1="16"
+          x2="8"
+          y1="12"
+          y2="12"
+        />
+      </svg>
+      Apps
+    </h3>
+    <p
+      className="text-primary"
+      id="settingPopover"
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
+    >
+      <svg
+        fill="none"
+        height={24}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={24}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="3"
+        />
+        <path
+          d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </svg>
+    </p>
+  </div>
+  <div
+    className="row row-cols-lg-2"
+  >
+    <div
+      className="text-center text-lg-start d-flex flex-column align-items-center col-12 col-lg-2"
+    >
+      <img
+        alt="Glide"
+        src="https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg"
+        style={
+          Object {
+            "borderRadius": 10,
+            "height": "130px",
+            "width": "130px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3 col-12 col-lg-10"
+      style={
+        Object {
+          "gap": 5,
+        }
+      }
+    >
+      <h4>
+        Glide
+      </h4>
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 5,
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Package details
+      </h4>
+      <p>
+        <span>
+          Package Id: 
+          10001
+        </span>
+        <br />
+        <span>
+          Version: 
+          1.0.0
+        </span>
+        <br />
+        <span>
+          Build: 
+          1.0.1
+        </span>
+        <br />
+      </p>
+    </div>
+  </div>
+  <div
+    className="mt-4 row"
+  >
+    <div
+      className="col"
+    >
+      <canvas
+        height={70}
+        role="img"
+        width={300}
+      />
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <div
+        className="col"
+      >
+        <h4>
+          Application Details
+        </h4>
+        <p>
+          IP: 192.168.18.70
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfoSetting Is Service 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": 5,
+      "width": "100%",
+    }
+  }
+>
+  <span
+    onClick={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "cursor": "pointer",
+      }
+    }
+  >
+    Resync
+  </span>
+  <span
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    Restart
+  </span>
+  <span
+    onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
+  >
+    Disable
+  </span>
+</div>
+`;
+
+exports[`Storyshots Elabox/components/AppInfoSetting Primary 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": 5,
+      "width": "100%",
+    }
+  }
+>
+  <span
+    onClick={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "cursor": "pointer",
+      }
+    }
+  >
+    Uninstall
+  </span>
+</div>
+`;

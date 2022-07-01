@@ -1,0 +1,24 @@
+[Unit]
+Description=!NAME!
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=10
+User=root
+KillMode=process
+StartLimitIntervalSec=60
+
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/log/dstore
+ExecStartPre=/bin/chown root:root /var/log/dstore
+ExecStartPre=/bin/chmod 755 /var/log/dstore
+ExecStartPre=/bin/chown -R root:root !PWD!
+StandardOutput=syslog
+StandardError=syslog
+WorkingDirectory=!PWD!
+ExecStart=/usr/bin/sudo !BIN!
+
+[Install]
+WantedBy=multi-user.target
