@@ -13,7 +13,7 @@ fi
 mv ./tmp_store ./dstore/!PROCESS
 wd=/home/dev/dstore/!PROCESS
 
-# reward installing
+# installing
 sed -i "s|\!NAME!|$processname|" /home/dev/dstore/$processname/dstore.service
 sed -i "s|\!PWD!|$wd|" /home/dev/dstore/$processname/dstore.service
 sed -i "s|\!BIN!|$wd/store_server|" /home/dev/dstore/$processname/dstore.service
