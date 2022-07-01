@@ -16,9 +16,9 @@
         "id": "ela.mainchain",
         "description": "Your Elabox will be running a full ELA node. With your node you can: build, sign and send transactions with security and trust.",
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/ela.mainchain/listing/icon.png",
-        "updates": "First release on Elabox",
-        "build": 1,
-        "version": "0.8.2",
+        "updates": "Version 0.8.3. update compatibility for test network data.  Resolved cross-chain and side chain over-dependence on DPoS nodes",
+        "build": 2,
+        "version": "0.8.3",
         "projectRepo": "",
         "projectWebsite": ""
     },
