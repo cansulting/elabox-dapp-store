@@ -4,7 +4,11 @@ import * as Listener from "../actions/broadcastListener"
 import { 
     installPackage,
     retrieveListing, 
-    uninstallPackage } from '../actions/appLib'
+    uninstallPackage ,
+    off,
+    On,
+    OnCheckStatus
+} from '../actions/appLib'
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
 
@@ -39,6 +43,32 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             setProgress(0)
         })
     }
+    const handleOff = (pkg:PackageInfo) => {
+        return new Promise<string>((resolve,_) => {
+            off(pkg.id).then(_ => {
+                handleCheckStatus(pkg)
+            }).finally(()=>{
+                resolve("service changed")
+            })            
+        })
+
+    }
+    const handleOn = (pkg:PackageInfo) => {
+        return new Promise<string>((resolve,_) => {
+            On(pkg.id).then(_ => {
+                handleCheckStatus(pkg)
+            }).finally(()=>{
+                resolve("service changed")
+            })
+        })
+
+    }    
+    const handleCheckStatus = (pkg: PackageInfo) =>{
+        OnCheckStatus(pkg.id).then(isRunning =>{
+            updateInfo({...info,isRunning: isRunning === "true"})
+        })
+
+    }
     const handleStateChanged = (args:any) => {
         //props.info.status = args.status
         //console.log(info, args.status)
@@ -72,7 +102,9 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     useEffect(() => {
         console.log("init")
         retrieveListing(props.info.id).then( pkg => {
-            updateInfo({...info,...pkg})
+            const updatedInfo = {...info,...pkg}
+            updateInfo(updatedInfo)
+            handleCheckStatus(updatedInfo)
         })
         Listener.onPackage(props.info.id, "install_progress", handleProgress)
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged)
@@ -92,6 +124,9 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         onUninstall: handleUninstall,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,
+        onOff: handleOff,
+        onOn: handleOn,
+        onCheckStatus: handleCheckStatus
     }
     return <AppInfo {...params}/>
 }

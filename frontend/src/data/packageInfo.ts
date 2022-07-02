@@ -14,6 +14,7 @@ export interface PackageInfo {
 	notifications?: number
 	description? : string 
     updates? : string
+	isRunning?: boolean
     isService?: boolean
 	launchUrl?: string
 	notificationContents?: MessagePrompt[]
