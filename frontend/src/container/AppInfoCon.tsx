@@ -85,12 +85,6 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             Listener.offPackage(props.info.id,"install_error", handleError)           
         }
     }, [props.info.id]);
-    useEffect(()=>{
-        retrieveListing(props.info.id).then( pkg => {
-            console.log(props.info)
-            updateInfo({...props.info,...pkg})
-        })        
-    },[props.info.notificationContents])
     const params = {
         ...props, 
         info:{...info, progress: progress},
