@@ -42,7 +42,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
             }}
         >
             <ConfirmationModal 
-            title={`Uninstalling ${props.info.name}`}
+            title={`Uninstall ${props.info.name}`}
             body={`Are you sure you want to permanently remove ${props.info.name} including its data?`}
             isOpen={isOpenUninstallModal} 
             onClose={handleOnCloseUninstallModal} 
