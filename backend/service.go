@@ -36,7 +36,12 @@ func (instance *StoreService) OnStart() error {
 
 // callback RPC
 func (instance *StoreService) rpc_retrievePackages(client protocol.ClientInterface, action data.Action) string {
-	apps, err := RetrieveAllApps()
+	dmap, _ := action.DataToMap()
+	includeBeta := false
+	if dmap["beta"] != nil && dmap["beta"].(bool) == true {
+		includeBeta = true
+	}
+	apps, err := RetrieveAllApps(includeBeta)
 	if err != nil {
 		return rpc.CreateResponse(rpc.INVALID_CODE, err.Error())
 	}

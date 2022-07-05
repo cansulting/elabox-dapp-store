@@ -4,6 +4,7 @@ import { ComponentMeta } from '@storybook/react'
 import { PackageInfo } from '../data/packageInfo'
 import {AppDashboardCon} from '../container/AppDashboardCon'
 import { AppInfoCon } from '../container/AppInfoCon'
+import { BrowserRouter } from 'react-router-dom'
 
 export default {
     title: 'Elabox/components/AppDashboard',
@@ -258,10 +259,12 @@ const FetchRealdata = (props: any): JSX.Element => {
     const onBack = () => {
         setActiveApp(null)
     }
-    return  <div style={{width:"100%",backgroundColor:"#1E1E26",color:"white",padding:20}}>
-        {!activeApp && <AppDashboardCon iconWidth={130} iconHeight={130} onClick={onClick} apps={[]}/>}
-        {activeApp && <AppInfoCon info={activeApp} onBack={onBack}/>}        
-    </div>
+    return  (<BrowserRouter >
+            <div style={{width:"100%",backgroundColor:"#1E1E26",color:"white",padding:20}}>
+                {!activeApp && <AppDashboardCon iconWidth={130} iconHeight={130} onClick={onClick} apps={[]}/>}
+                {activeApp && <AppInfoCon info={activeApp} onBack={onBack}/>}        
+            </div>
+        </BrowserRouter>)
 }
 
 export const RealData = FetchRealdata.bind({})

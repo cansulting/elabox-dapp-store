@@ -11,9 +11,9 @@ import {
   AC_RESTART
  } from "./constants";
 
-export async function retrieveAllListings() : Promise<PackageInfo[]>{
+export async function retrieveAllListings(beta = false) : Promise<PackageInfo[]>{
   console.log("Retrieve all listing")
-  const res = await getEventHandler().sendRPC(PACKAGE_ID, AC_RETRIEVE_PKGS)
+  const res = await getEventHandler().sendRPC(PACKAGE_ID, AC_RETRIEVE_PKGS, "", {beta:beta})
   if (res.code !== 200 )
     throw new Error(res.message)
   const pkgs = JSON.parse(res.message) 

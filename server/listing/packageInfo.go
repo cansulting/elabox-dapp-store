@@ -12,4 +12,5 @@ type PackageInfo struct {
 	ProjectWebsite string `json:"projectWebsite"`
 	Category       string `json:"category"`   // If system then it is a system package and cannot be uninstalled
 	MinRuntime     string `json:"minRuntime"` // minimum runtime required to run this package, val <= 0 means it can run on any runtime
+	Beta           bool   `json:"beta"`
 }

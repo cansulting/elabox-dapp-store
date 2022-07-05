@@ -9,6 +9,7 @@ export interface AppDashboardProps {
     iconWidth?: number
     iconHeight?: number
     style?: object
+    beta?:boolean 
 }
 
 export const AppDashboard = (props: AppDashboardProps): JSX.Element => {
