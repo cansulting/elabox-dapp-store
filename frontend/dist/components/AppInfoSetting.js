@@ -22,13 +22,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppInfoSetting = void 0;
 var react_1 = __importStar(require("react"));
 var Confirmation_1 = require("./partials/Modals/Confirmation");
 var AppInfoSetting = function (props) {
     var _a;
-    var _b = (0, react_1.useState)(false), isOpenUninstallModal = _b[0], setIsOpenUninstallModal = _b[1];
+    var _b = __read((0, react_1.useState)(false), 2), isOpenUninstallModal = _b[0], setIsOpenUninstallModal = _b[1];
     var handleOnOpenUninstallModal = function (e) {
         e.preventDefault();
         setIsOpenUninstallModal(true);

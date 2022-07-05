@@ -81,7 +81,6 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const handleUpdate = (evnt:any) => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
-    console.log("compat", sysCompatible)
     return (
         <Container style={props.style} fluid="md">
             <div

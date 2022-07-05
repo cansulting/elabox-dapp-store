@@ -1,16 +1,17 @@
 import React from "react"
 import { useEffect, useState } from "react"
-import { AppDashboardProps, PackageInfo } from ".."
+import { AppDashboardProps } from ".."
 import { retrieveAllListings } from "../actions"
 import { AppDashboard } from "../components"
-import { useSearchParams } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 
 export const AppDashboardCon = (props: AppDashboardProps): JSX.Element => {
-    const [searchParam, _]  = useSearchParams()
     const [pkgs, setPkgs] = useState([])
+    const { search } = useLocation()
     useEffect( () => {
         if (!pkgs || pkgs.length === 0){
-            const beta = searchParam.get("beta")
+            const urlS = new URLSearchParams(search)
+            const beta  = urlS.get("beta")
             let showBeta = false
             if (beta) {
                 showBeta = beta === 'true' || beta === '1'
@@ -22,7 +23,6 @@ export const AppDashboardCon = (props: AppDashboardProps): JSX.Element => {
             .catch( err => console.log(err))
         }
     })
-
     const params = { ... props, apps: pkgs}
     return  <AppDashboard {...params}/>
 }

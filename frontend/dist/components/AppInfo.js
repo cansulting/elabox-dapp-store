@@ -114,16 +114,16 @@ var AppInfo = function (props) {
                 info.notificationContents &&
                     info.notificationContents.length > 0 &&
                     react_1.default.createElement(Notifications, { data: info.notificationContents }),
-                updatable && !sysCompatible &&
-                    react_1.default.createElement("p", { style: { color: 'gray' } }, "Requires latest system to update this package."),
+                (updatable || info.status === "uninstalled") && !sysCompatible &&
+                    react_1.default.createElement("p", { style: { color: 'gray' } }, "Requires latest system to install this package."),
                 react_1.default.createElement("div", { style: {
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 5,
                     } },
-                    updatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", active: sysCompatible, outline: true, onClick: handleUpdate }, "Update")),
+                    sysCompatible && updatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", active: sysCompatible, outline: true, onClick: handleUpdate }, "Update")),
                     (0, packageInfo_1.isLaunchable)(info) && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
-                info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleInstall }, "Install")),
+                sysCompatible && info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleInstall }, "Install")),
                 info.status !== "uninstalling" && progress > 0 && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },

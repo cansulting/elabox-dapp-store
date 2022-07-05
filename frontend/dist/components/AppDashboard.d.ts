@@ -5,5 +5,6 @@ export interface AppDashboardProps {
     iconWidth?: number;
     iconHeight?: number;
     style?: object;
+    beta?: boolean;
 }
 export declare const AppDashboard: (props: AppDashboardProps) => JSX.Element;
