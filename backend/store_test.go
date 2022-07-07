@@ -28,7 +28,7 @@ func Test_RetrieveListing(t *testing.T) {
 // test for retrieving apps information and states
 func Test_RetrieveAppsState(t *testing.T) {
 	logger.Init("ela.store.test")
-	pkgs, err := RetrieveAllApps()
+	pkgs, err := RetrieveAllApps(true)
 	if err != nil {
 		t.Error("unable to retrieve all installed packages. inner: " + err.Error())
 		return
@@ -39,7 +39,7 @@ func Test_RetrieveAppsState(t *testing.T) {
 // test for retrieving specific app detailed information
 func Test_RetrieveAppDetail(t *testing.T) {
 	logger.Init("ela.store.test")
-	pkgs, err := RetrieveAllApps()
+	pkgs, err := RetrieveAllApps(true)
 	if err != nil {
 		t.Error("unable to retrieve all installed packages. inner: " + err.Error())
 		return

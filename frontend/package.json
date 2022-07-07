@@ -1,6 +1,6 @@
 {
   "name": "elabox-dapp-store.lib",
-  "version": "0.1.58",
+  "version": "0.1.63",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "Search and install dApps.",

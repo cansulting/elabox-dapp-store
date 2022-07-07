@@ -35,6 +35,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isCompatibleToSystem = exports.systemVersion = void 0;
 var actions_1 = require("../actions");
@@ -57,11 +68,21 @@ var currentVersion;
     console.log("Failed retrieving version", err);
 });
 function convertStringVerToValue(version) {
+    var e_1, _a;
     var splits = version.split(".");
     var res = [];
-    for (var _i = 0, splits_1 = splits; _i < splits_1.length; _i++) {
-        var splitv = splits_1[_i];
-        res.push(parseInt(splitv));
+    try {
+        for (var splits_1 = __values(splits), splits_1_1 = splits_1.next(); !splits_1_1.done; splits_1_1 = splits_1.next()) {
+            var splitv = splits_1_1.value;
+            res.push(parseInt(splitv));
+        }
+    }
+    catch (e_1_1) { e_1 = { error: e_1_1 }; }
+    finally {
+        try {
+            if (splits_1_1 && !splits_1_1.done && (_a = splits_1.return)) _a.call(splits_1);
+        }
+        finally { if (e_1) throw e_1.error; }
     }
     return res;
 }

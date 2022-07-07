@@ -82,7 +82,6 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const handleUpdate = (evnt:any) => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
-    
     return (
         <Container style={props.style} fluid="md">
             <div
@@ -154,8 +153,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         <Notifications data={info.notificationContents}/> 
                     }
                     {
-                        updatable && !sysCompatible && 
-                            <p style={{color:'gray'}}>Requires latest system to update this package.</p>
+                    (updatable || info.status === "uninstalled") && !sysCompatible && 
+                        <p style={{color:'gray'}}>Requires latest system to install this package.</p>
                     }
                     <div
                         style={{
@@ -164,7 +163,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             gap: 5,
                         }}
                     >
-                        { updatable && (
+                        { sysCompatible && updatable && (
                             <AppButton
                                 color="primary"
                                 size="sm"
@@ -185,7 +184,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             </AppButton>
                         )}
                     </div>
-                    { info.status === "uninstalled" && (
+                    { sysCompatible && info.status === "uninstalled" && (
                         <AppButton 
                             color="primary" 
                             size="sm" outline 

@@ -95,6 +95,8 @@
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/ipfs/listing/icon.png",
         "updates": "First release of IPFS for elabox.",
         "build": 1,
+        "beta": true,
+        "minRuntime": "0.6.8",
         "version": "0.1.0",
         "projectRepo": "",
         "projectWebsite": ""

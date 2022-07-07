@@ -10,6 +10,22 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -19,6 +35,7 @@ var react_1 = __importDefault(require("react"));
 var AppDashboard_1 = require("../components/AppDashboard");
 var AppDashboardCon_1 = require("../container/AppDashboardCon");
 var AppInfoCon_1 = require("../container/AppInfoCon");
+var react_router_dom_1 = require("react-router-dom");
 exports.default = {
     title: 'Elabox/components/AppDashboard',
     component: AppDashboard_1.AppDashboard,
@@ -206,7 +223,7 @@ exports.CompleteDownloadingApp.args = __assign(__assign({}, exports.Primary.args
         },
     ] });
 var FetchRealdata = function (props) {
-    var _a = react_1.default.useState(null), activeApp = _a[0], setActiveApp = _a[1];
+    var _a = __read(react_1.default.useState(null), 2), activeApp = _a[0], setActiveApp = _a[1];
     var onClick = function (app) {
         console.log("Selected " + app.id);
         setActiveApp(app);
@@ -214,9 +231,10 @@ var FetchRealdata = function (props) {
     var onBack = function () {
         setActiveApp(null);
     };
-    return react_1.default.createElement("div", { style: { width: "100%", backgroundColor: "#1E1E26", color: "white", padding: 20 } },
-        !activeApp && react_1.default.createElement(AppDashboardCon_1.AppDashboardCon, { iconWidth: 130, iconHeight: 130, onClick: onClick, apps: [] }),
-        activeApp && react_1.default.createElement(AppInfoCon_1.AppInfoCon, { info: activeApp, onBack: onBack }));
+    return (react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
+        react_1.default.createElement("div", { style: { width: "100%", backgroundColor: "#1E1E26", color: "white", padding: 20 } },
+            !activeApp && react_1.default.createElement(AppDashboardCon_1.AppDashboardCon, { iconWidth: 130, iconHeight: 130, onClick: onClick, apps: [] }),
+            activeApp && react_1.default.createElement(AppInfoCon_1.AppInfoCon, { info: activeApp, onBack: onBack }))));
 };
 exports.RealData = FetchRealdata.bind({});
 exports.RealData.args = __assign(__assign({}, exports.Primary.args), { apps: null });

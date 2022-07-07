@@ -12,7 +12,11 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -29,6 +33,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppInfoCon = void 0;
 var react_1 = __importStar(require("react"));
@@ -40,8 +60,8 @@ var currentInfo = null;
 var AppInfoCon = function (props) {
     if (currentInfo === null || currentInfo.id !== props.info.id)
         currentInfo = props.info;
-    var _a = (0, react_2.useState)(currentInfo), info = _a[0], setInfo = _a[1];
-    var _b = (0, react_2.useState)(props.info.progress), progress = _b[0], setProgress = _b[1];
+    var _a = __read((0, react_2.useState)(currentInfo), 2), info = _a[0], setInfo = _a[1];
+    var _b = __read((0, react_2.useState)(props.info.progress), 2), progress = _b[0], setProgress = _b[1];
     var updateInfo = function (pkg) {
         setInfo(pkg);
         currentInfo = pkg;
