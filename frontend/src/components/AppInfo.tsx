@@ -24,7 +24,8 @@ export interface AppInfoProps {
     onInstall?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
-    onLaunch?: (pkg:PackageInfo) => void
+    onLaunch?: (pkg:PackageInfo) => void,
+    onAppStateChanged ?: (pkg:PackageInfo) => void,
     onResync?: () => void
     onDisable?: () => void
     onRestart?: () => void

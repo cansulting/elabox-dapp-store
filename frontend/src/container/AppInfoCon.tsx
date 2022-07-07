@@ -55,6 +55,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
                 setProgress(0)
                 break;
         }
+        props.onAppStateChanged({...info,status: args.status})
         updateInfo( {...currentInfo, status:args.status}) 
         //console.log(currentInfo)
     }
@@ -72,7 +73,9 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     useEffect(() => {
         console.log("init")
         retrieveListing(props.info.id).then( pkg => {
-            updateInfo({...info,...pkg})
+            const updatedInfo = {...info,...pkg}
+            updateInfo(updatedInfo)
+            props.onAppStateChanged(updatedInfo)
         })
         Listener.onPackage(props.info.id, "install_progress", handleProgress)
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged)
