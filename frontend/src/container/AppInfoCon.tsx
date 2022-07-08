@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import toast from "react-hot-toast"
 import { AppInfoProps, AppInfo } from "../components/AppInfo"
 import * as Listener from "../actions/broadcastListener"
 import { 
@@ -33,10 +34,11 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleUninstall = (pkg:PackageInfo) => {
         uninstallPackage(pkg.id)
     }
-    const handleRefresh = () => {
+    const handleRefresh = (toastMessage: string) => {
         retrieveListing(info.id).then( listing => {
             updateInfo({...info,...listing})
             setProgress(0)
+            toast.success(toastMessage)            
         })
     }
     const handleStateChanged = (args:any) => {
@@ -49,8 +51,12 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             case "installing":
                 break;
             case "installed":
-                handleRefresh()
-                break;
+            case "uninstalled":
+            case "updated":
+            case "enabled":
+            case "disabled":
+                handleRefresh(`${info.name} is ${args.status}`)
+                break
             default:
                 setProgress(0)
                 break;

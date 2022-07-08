@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { Toaster } from 'react-hot-toast'
 import * as Icon from 'react-feather'
 import {
     Container,
@@ -83,6 +84,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     } 
     return (
         <Container style={props.style} fluid="md">
+            <Toaster containerStyle={{top:30}}/>
             <div
                 style={{
                     display: 'flex',
