@@ -100,5 +100,18 @@
         "version": "0.1.0",
         "projectRepo": "",
         "projectWebsite": ""
+    },
+    "trinity.hive": {
+        "name": "Hive Node",
+        "id": "trinity.hive",
+        "description": "A flexible, decentralized storage solution with swappable storage constructs that allow for private storage and public decentralized storage behind robust Swift/Java SDKs for mobile and JS SDKs for the web.",
+        "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
+        "updates": "First Release on Elabox",
+        "build": 1,
+        "beta": true,
+        "version": "2.3.6",
+        "projectRepo": "",
+        "projectWebsite": "", 
+        "dependencies": ["ipfs"]
     }
 }

@@ -13,6 +13,7 @@ import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSet
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../data/packageInfo'
 import { MessagePrompt } from '../data/messagePrompt'
+import { AppStatusToCaption } from '../utils/appStatus'
 
 
 
@@ -199,7 +200,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             }}
                         >
                             <p>
-                                {UppercaseFirstLetter(info.status)}
+                                {AppStatusToCaption(info.status)}
                             </p>
                             <Progress
                                 style={{ width: '30%' }}
@@ -209,7 +210,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             />
                         </div>
                     )}
-                    { info.status === "uninstalling" && (
+                    { (info.status === "uninstalling" || info.status === "wait_depends") && (
                         <div
                             className="d-flex flex-column align-items-center align-items-lg-start"
                             style={{
@@ -217,7 +218,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             }}
                         >
                             <p>
-                                {UppercaseFirstLetter(info.status)}
+                                {AppStatusToCaption(info.status)}
                             </p>
                     </div>
                     )}
