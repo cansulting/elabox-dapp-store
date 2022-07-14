@@ -37,9 +37,9 @@ func (instance *Task) IsInstalling() bool {
 
 // function that sets the current task status
 func (instance *Task) setStatus(status global.AppStatus) {
-	if instance.Status == status {
-		return
-	}
+	// if instance.Status == status {
+	// 	return
+	// }
 	logger.GetInstance().Debug().Msg(instance.Id + " status changed to " + string(status))
 	instance.Status = status
 	broadcast.PublishInstallState(instance.Id, status)
@@ -81,7 +81,9 @@ func (instance *Task) download(restart bool) {
 		}
 	}
 	if err := instance.downloadTask.Start(); err != nil {
-		instance.onError(global.DOWNLOAD_ERROR, err.Error())
+		if err.Error() != "context canceled" {
+			instance.onError(global.DOWNLOAD_ERROR, err.Error())
+		}
 	}
 }
 
@@ -90,6 +92,8 @@ func (instance *Task) onDownloadStateChanged(task *downloader.Task) {
 	switch task.GetStatus() {
 	case downloader.Finished:
 		instance.setStatus(global.Downloaded)
+	case downloader.Stopped:
+		instance.setStatus(global.UnInstalled)
 	case downloader.Error:
 		instance.onError(task.GetError(), "download error")
 	}
@@ -167,6 +171,10 @@ func (instance *Task) Start() {
 // this skips the download and install the package right away given the package path
 func (instance *Task) StartFromFile(pkgPath string) error {
 	return instance.install(pkgPath)
+}
+func (instance *Task) onCancel() {
+	instance.installing = false
+	instance.downloadTask.Stop()
 }
 
 // callback when download task was removed from manager

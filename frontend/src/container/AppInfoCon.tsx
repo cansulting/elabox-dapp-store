@@ -3,7 +3,8 @@ import { AppInfoProps, AppInfo } from "../components/AppInfo"
 import * as Listener from "../actions/broadcastListener"
 import { 
     installPackage,
-    retrieveListing, 
+    retrieveListing,
+    cancelPackage, 
     uninstallPackage } from '../actions/appLib'
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
@@ -32,6 +33,9 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     const handleUninstall = (pkg:PackageInfo) => {
         uninstallPackage(pkg.id)
+    }
+    const handleCancel = (pkg:PackageInfo) => {
+        cancelPackage(pkg.id)
     }
     const handleRefresh = () => {
         retrieveListing(info.id).then( listing => {
@@ -90,6 +94,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         info:{...info, progress: progress},
         onInstall: handleInstall,
         onUninstall: handleUninstall,
+        onCancel: handleCancel,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,
     }
