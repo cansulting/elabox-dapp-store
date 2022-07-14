@@ -3,10 +3,12 @@
 package installer
 
 import (
+	"errors"
 	"store/backend/broadcast"
 	"store/backend/global"
 	"store/backend/services/downloader"
 	"strconv"
+	"time"
 
 	"github.com/cansulting/elabox-system-tools/foundation/constants"
 	"github.com/cansulting/elabox-system-tools/foundation/event/data"
@@ -25,6 +27,12 @@ type Task struct {
 	installProgress int16 // the install progress. download progress is not included
 	OnStateChanged  func(task *Task)
 	OnErrCallback   func(code int16, reason string)
+	Dependencies    []string
+	installing      bool
+}
+
+func (instance *Task) IsInstalling() bool {
+	return instance.installing
 }
 
 // function that sets the current task status
@@ -72,12 +80,9 @@ func (instance *Task) download(restart bool) {
 			instance.downloadTask.Reset()
 		}
 	}
-
-	go func() {
-		if err := instance.downloadTask.Start(); err != nil {
-			instance.onError(global.DOWNLOAD_ERROR, err.Error())
-		}
-	}()
+	if err := instance.downloadTask.Start(); err != nil {
+		instance.onError(global.DOWNLOAD_ERROR, err.Error())
+	}
 }
 
 // callback when download task state changed
@@ -99,12 +104,15 @@ func (instance *Task) onDownloadProgressChanged(task *downloader.Task) {
 
 // callback when install finished
 func (instance *Task) onInstalledFinished() {
+	instance.installing = false
 	instance.setStatus(global.Installed)
 }
 
 // callback when error found while installing
 func (instance *Task) onError(code int16, reason string) {
+	instance.installing = false
 	logger.GetInstance().Error().Str("code", strconv.Itoa(int(code))).Caller().Msg(reason)
+	instance.ErrorCode = code
 	instance.OnErrCallback(code, reason)
 }
 
@@ -141,8 +149,19 @@ func (instance *Task) Uninstall() error {
 	return nil
 }
 
+// function use to initiate install task
 func (instance *Task) Start() {
-	instance.download(false)
+	if instance.installing {
+		return
+	}
+	go func() {
+		instance.ErrorCode = 0
+		instance.installing = true
+		if err := instance.waitForDependencies(); err != nil {
+			return
+		}
+		instance.download(false)
+	}()
 }
 
 // this skips the download and install the package right away given the package path
@@ -153,4 +172,51 @@ func (instance *Task) StartFromFile(pkgPath string) error {
 // callback when download task was removed from manager
 func (instance *Task) onDestroy() {
 	logger.GetInstance().Debug().Msg(instance.Id + " was removed from installer manager")
+}
+
+func (instance *Task) waitForDependencies() error {
+	if len(instance.Dependencies) == 0 {
+		return nil
+	}
+	logger.GetInstance().Debug().Msg("start installing dependencies")
+	instance.setStatus(global.InstallDepends)
+	deps := instance.Dependencies
+	depTotal := len(deps)
+	depInstalled := 0
+	var currentDep *Task = nil
+	success := false
+	for {
+		if currentDep == nil {
+			var err error
+			currentDep, err = CreateInstallTask(deps[0], "")
+			if err != nil {
+				return err
+			}
+			if len(deps) > 1 {
+				deps = deps[1:]
+			}
+		} else {
+			if currentDep.ErrorCode != 0 {
+				break
+			}
+		}
+		if currentDep.Status == global.Installed {
+			depInstalled++
+			currentDep = nil
+		} else if !currentDep.IsInstalling() {
+			currentDep.Start()
+		}
+		// did we installed all dependencies?
+		if depInstalled == depTotal {
+			success = true
+			break
+		}
+		time.Sleep(time.Second)
+	}
+	if !success {
+		instance.onError(global.INSTALL_DEPENDENCY_ERROR, "failed installing "+currentDep.Id)
+		return errors.New("failed installing one of the dependencies")
+	}
+	logger.GetInstance().Debug().Msg("finished installing dependencies")
+	return nil
 }
