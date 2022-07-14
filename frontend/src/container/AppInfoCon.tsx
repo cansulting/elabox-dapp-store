@@ -33,6 +33,9 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleUninstall = (pkg:PackageInfo) => {
         uninstallPackage(pkg.id)
     }
+    const handleCancel = (pkg:PackageInfo) => {
+        alert("Cancelling?")
+    }
     const handleRefresh = () => {
         retrieveListing(info.id).then( listing => {
             updateInfo({...info,...listing})
@@ -90,6 +93,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         info:{...info, progress: progress},
         onInstall: handleInstall,
         onUninstall: handleUninstall,
+        onCancel: handleCancel,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,
     }
