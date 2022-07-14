@@ -3,7 +3,8 @@ import { AppInfoProps, AppInfo } from "../components/AppInfo"
 import * as Listener from "../actions/broadcastListener"
 import { 
     installPackage,
-    retrieveListing, 
+    retrieveListing,
+    cancelPackage, 
     uninstallPackage } from '../actions/appLib'
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
@@ -34,7 +35,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         uninstallPackage(pkg.id)
     }
     const handleCancel = (pkg:PackageInfo) => {
-        alert("Cancelling?")
+        cancelPackage(pkg.id)
     }
     const handleRefresh = () => {
         retrieveListing(info.id).then( listing => {

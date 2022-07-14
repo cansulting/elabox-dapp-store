@@ -10,4 +10,5 @@ const (
 	Installing     AppStatus = "installing"
 	Uninstalling   AppStatus = "uninstalling"
 	InstallDepends AppStatus = "wait_depends" // wait for dependencies to install
+	Cancelled      AppStatus = "cancelled"
 )

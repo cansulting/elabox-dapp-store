@@ -131,6 +131,14 @@ func RemoveTask(pkg string) {
 	task.onDestroy()
 	delete(tasklist, pkg)
 }
+func Cancel(pkg string) {
+	task := GetTask(pkg)
+	if task == nil {
+		return
+	}
+	task.Status = "uninstalled"
+	task.onCancel()
+}
 
 // callback when error found in task
 // @param code the error code

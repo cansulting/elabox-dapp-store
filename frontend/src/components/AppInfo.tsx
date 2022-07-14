@@ -219,6 +219,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             <AppButton 
                                 color="danger" 
                                 size="sm" 
+                                disabled={info.status !== "downloading"}
+                                outline
                                 onClick={handleCancel}>
                                 <Icon.X  color="white" size={14}/>
                             </AppButton>                                
