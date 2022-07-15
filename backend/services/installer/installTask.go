@@ -115,6 +115,7 @@ func (instance *Task) onError(code int16, reason string) {
 	instance.installing = false
 	logger.GetInstance().Error().Str("code", strconv.Itoa(int(code))).Caller().Msg(reason)
 	instance.ErrorCode = code
+	instance.SetInstallProgress(0)
 	instance.OnErrCallback(code, reason)
 }
 
