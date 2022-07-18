@@ -136,7 +136,7 @@ func Cancel(pkg string) {
 	if task == nil {
 		return
 	}
-	task.Status = "uninstalled"
+	task.Status = "cancelling"
 	task.onCancel()
 }
 

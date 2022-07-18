@@ -37,9 +37,9 @@ func (instance *Task) IsInstalling() bool {
 
 // function that sets the current task status
 func (instance *Task) setStatus(status global.AppStatus) {
-	// if instance.Status == status {
-	// 	return
-	// }
+	if instance.Status == status {
+		return
+	}
 	logger.GetInstance().Debug().Msg(instance.Id + " status changed to " + string(status))
 	instance.Status = status
 	broadcast.PublishInstallState(instance.Id, status)
