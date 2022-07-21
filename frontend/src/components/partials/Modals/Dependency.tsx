@@ -1,11 +1,12 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
 import { Modal,ModalHeader,ModalBody,ModalFooter } from 'reactstrap'
 import { AppButton } from '../../AppButton'
+import { PackageInfo } from '../../../data/packageInfo'
 
 export interface DependencyModalProps {
     title?: string
-    dependencies: Array<any>
+    dependencies: Array<PackageInfo>
     isOpen: boolean
     onClose: () => void
     onConfirm : (e:React.MouseEvent) => void
@@ -15,6 +16,9 @@ export interface DependencyModalProps {
         body?: object
         footer?: object
     }
+}
+interface DependecyBody {
+    dependencies: Array<PackageInfo>
 }
 const defaultProps:DependencyModalProps={
     title:"",
@@ -53,22 +57,7 @@ export const DependencyModal = (props:DependencyModalProps): JSX.Element =>{
     </ModalHeader>
     <ModalBody style={props.style.body}> 
         <h4>Install Dependencies?</h4>    
-        <div className='d-flex justify-content-center' style={{ gap:10,marginTop:"5vh" }}>
-            {props.dependencies.map(app => {
-                return <div>
-                        <img
-                            src={app.info.icon}
-                            alt={app.info.name}
-                            style={{
-                                width: '130px',
-                                height: '130px',
-                                borderRadius: 10,
-                            }}
-                        />    
-                        <p>{app.info.name}</p>
-                </div>
-            })}                    
-        </div>                        
+        <Body dependencies={props.dependencies}/>                
     </ModalBody>
     <ModalFooter style={props.style.footer}> 
       <AppButton
@@ -80,6 +69,26 @@ export const DependencyModal = (props:DependencyModalProps): JSX.Element =>{
       </AppButton>
     </ModalFooter>
   </Modal>
+}
+const Body = (props:DependecyBody): JSX.Element => {
+    return <>
+        <div className='d-flex justify-content-center' style={{ gap:10,marginTop:"5vh" }}>
+            {props.dependencies.map(info => {
+                return <div>
+                        <img
+                            src={info.icon}
+                            alt={info.name}
+                            style={{
+                                width: '130px',
+                                height: '130px',
+                                borderRadius: 10,
+                            }}
+                        />    
+                        <p>{info.name}</p>
+                </div>
+            })}                    
+        </div>            
+    </>
 }
 
 DependencyModal.defaultProps = defaultProps;

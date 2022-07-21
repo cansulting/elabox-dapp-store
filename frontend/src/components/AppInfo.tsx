@@ -86,7 +86,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
     const handleOnOpenDependencyModal = () =>{
-        setIsOpenDependencyModal(true)
+        if(props.info.dependencies.length>0){
+            setIsOpenDependencyModal(true)
+            return
+        }
+        setIsOpenDependencyModal(false) 
+        handleInstall()
     }
     const handleOnCloseDependencyModal = () =>{
         setIsOpenDependencyModal(false)
@@ -106,7 +111,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                 }}
             >
                 <DependencyModal 
-                dependencies={[props,props]}
+                dependencies={props.info.dependencies}
                 isOpen={isOpenDependencyModal} 
                 onClose={handleOnCloseDependencyModal} 
                 onConfirm={handleOnConfirmInstall}/>         
