@@ -3,6 +3,7 @@
 package installer
 
 import (
+	"context"
 	"errors"
 	"store/backend/broadcast"
 	"store/backend/global"
@@ -81,7 +82,7 @@ func (instance *Task) download(restart bool) {
 		}
 	}
 	if err := instance.downloadTask.Start(); err != nil {
-		if err.Error() != "context canceled" {
+		if !errors.Is(err, context.Canceled) {
 			instance.onError(global.DOWNLOAD_ERROR, err.Error())
 		}
 	}
