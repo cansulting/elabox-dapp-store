@@ -88,7 +88,7 @@ func UninstallApp(pkgId string) error {
 	task := installer.CreateUninstallTask(pkgId)
 	return task.Uninstall()
 }
-func Cancel(pkgId string) {
+func CancelInstall(pkgId string) {
 	installer.Cancel(pkgId)
 }
 
