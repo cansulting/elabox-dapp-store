@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef,useState } from 'react'
 import * as Icon from 'react-feather'
 import {
     Container,
@@ -9,8 +9,9 @@ import {
     PopoverBody,
 } from 'reactstrap'
 import { AppButton } from './AppButton'
+import { DependencyModal } from './partials/Modals/Dependency'
 import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
-import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
+import { ProgressColor } from '../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../data/packageInfo'
 import { MessagePrompt } from '../data/messagePrompt'
 import { AppStatusToCaption } from '../utils/appStatus'
@@ -65,13 +66,14 @@ const SettingPopover = (props: SettingPopOverRef) => {
     )
 }
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
+    const [isOpenDependencyModal,setIsOpenDependencyModal] = useState(false)
     const settingPopoverRef = useRef(null)
     const progressColor = ProgressColor(props.info.status)
     const info = props.info;
     const progress = info.progress;
     const updatable = isUpdatable(props.info)
     const sysCompatible = isUpdateCompat(props.info)
-    const handleInstall = (evnt:any) => {
+    const handleInstall = () => {
         if (props.onInstall) props.onInstall(props.info)
     }
     const handleUninstall = (evnt:any) => {
@@ -83,6 +85,16 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const handleUpdate = (evnt:any) => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
+    const handleOnOpenDependencyModal = () =>{
+        setIsOpenDependencyModal(true)
+    }
+    const handleOnCloseDependencyModal = () =>{
+        setIsOpenDependencyModal(false)
+    }
+    const handleOnConfirmInstall = () =>{
+        setIsOpenDependencyModal(false) 
+        handleInstall()
+    }    
     return (
         <Container style={props.style} fluid="md">
             <div
@@ -93,6 +105,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     paddingBottom: 5,
                 }}
             >
+                <DependencyModal 
+                dependencies={[props,props]}
+                isOpen={isOpenDependencyModal} 
+                onClose={handleOnCloseDependencyModal} 
+                onConfirm={handleOnConfirmInstall}/>         
+
                 <h3 style={{ cursor: 'pointer' }} onClick={props.onBack}>
                     <p style={{display:'flex', alignItems: 'center'}}>
                         <Icon.ArrowLeftCircle style={{ marginRight: 5, color:'#0d6efd' }} />
@@ -189,7 +207,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         <AppButton 
                             color="primary" 
                             size="sm" outline 
-                            onClick={handleInstall}>
+                            onClick={handleOnOpenDependencyModal}>
                             Install
                         </AppButton>
                     )}
