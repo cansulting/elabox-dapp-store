@@ -124,5 +124,17 @@
         "version": "0.1.0",
         "projectRepo": "",
         "projectWebsite": ""
+    },
+    "filebrowser": {
+        "name": "File Browser",
+        "id": "filebrowser",
+        "description": "Filebrowser provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit your files. It allows the creation of multiple users and each user can have its own directory. It can be used as a standalone app.",
+        "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
+        "updates": "First Release on Elabox",
+        "build": 1,
+        "beta": false,
+        "version": "2.22.4",
+        "projectRepo": "",
+        "projectWebsite": ""
     }
 }
