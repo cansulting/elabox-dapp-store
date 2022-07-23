@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 import { PackageInfo } from '../data/packageInfo'
-import { ConfirmationModal,ConfirmationModalProps } from './partials/Modals/Confirmation'
+import { ConfirmationModal } from './partials/Modals/Confirmation'
 export interface AppInfoAction {
     label: string
     color?: string
