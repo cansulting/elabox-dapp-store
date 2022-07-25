@@ -26,6 +26,9 @@ export interface AppInfoProps {
     onInstall?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
+    onOff?: (pkg:PackageInfo) => Promise<string>    
+    onOn?: (pkg:PackageInfo) => Promise<string>  
+    onCheckStatus?: (pkg:PackageInfo) => void
     onLaunch?: (pkg:PackageInfo) => void,
     onAppStateChanged ?: (pkg:PackageInfo) => void,
     onResync?: () => void
@@ -100,6 +103,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
         setIsOpenDependencyModal(false) 
         handleInstall()
     }    
+    const handleOff = () => {
+        return props.onOff(props.info)
+    }
+    const handleOn = () => {
+        return props.onOn(props.info)
+    }
     return (
         <Container style={props.style} fluid="md">
             <div
@@ -142,6 +151,9 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                     onResync: props.onResync,
                                     onDisable: props.onDisable,
                                     onRestart: props.onRestart,
+                                    onOff: handleOff,
+                                    onOn: handleOn,
+                                    
                                 }}
                             />
                         </>

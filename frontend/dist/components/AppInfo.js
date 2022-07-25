@@ -12,11 +12,7 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -42,6 +38,7 @@ var AppButton_1 = require("./AppButton");
 var AppInfoSetting_1 = require("./AppInfoSetting");
 var colors_1 = require("../utils/colors");
 var packageInfo_1 = require("../data/packageInfo");
+var appStatus_1 = require("../utils/appStatus");
 var Notifications = function (props) {
     return (react_1.default.createElement(react_1.default.Fragment, null, props.data.map(function (val) {
         return (react_1.default.createElement(react_1.default.Fragment, null,
@@ -127,12 +124,12 @@ var AppInfo = function (props) {
                 info.status !== "uninstalling" && progress > 0 && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },
-                    react_1.default.createElement("p", null, (0, colors_1.UppercaseFirstLetter)(info.status)),
+                    react_1.default.createElement("p", null, (0, appStatus_1.AppStatusToCaption)(info.status)),
                     react_1.default.createElement(reactstrap_1.Progress, { style: { width: '30%' }, value: progress, color: progressColor, animated: false }))),
-                info.status === "uninstalling" && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
+                (info.status === "uninstalling" || info.status === "wait_depends") && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },
-                    react_1.default.createElement("p", null, (0, colors_1.UppercaseFirstLetter)(info.status)))))),
+                    react_1.default.createElement("p", null, (0, appStatus_1.AppStatusToCaption)(info.status)))))),
         react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
             react_1.default.createElement(reactstrap_1.Col, null,
                 react_1.default.createElement("p", null, props.info.description))),
