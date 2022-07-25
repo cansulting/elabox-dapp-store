@@ -49,7 +49,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             setProgress(0)
         })
     }
-    const handleOff = (pkg:PackageInfo) => {
+    const handleDisable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             disablePackage(pkg.id).then(_ => {
                 handleCheckStatus(pkg)
@@ -59,7 +59,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         })
 
     }
-    const handleOn = (pkg:PackageInfo) => {
+    const handleEnable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             On(pkg.id).then(_ => {
                 handleCheckStatus(pkg)
@@ -131,8 +131,8 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         onCancel: handleCancel,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,
-        onOff: handleOff,
-        onOn: handleOn,
+        onOff: handleDisable,
+        onOn: handleEnable,
         onCheckStatus: handleCheckStatus
     }
     return <AppInfo {...params}/>
