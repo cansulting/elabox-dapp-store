@@ -3,7 +3,6 @@
 package installer
 
 import (
-	"context"
 	"errors"
 	"store/backend/broadcast"
 	"store/backend/global"
@@ -82,9 +81,8 @@ func (instance *Task) download(restart bool) {
 		}
 	}
 	if err := instance.downloadTask.Start(); err != nil {
-		if !errors.Is(err, context.Canceled) {
-			instance.onError(global.DOWNLOAD_ERROR, err.Error())
-		}
+		instance.onError(global.DOWNLOAD_ERROR, err.Error())
+		instance.setStatus(global.UnInstalled)
 	}
 }
 
@@ -97,6 +95,7 @@ func (instance *Task) onDownloadStateChanged(task *downloader.Task) {
 		instance.setStatus(global.UnInstalled)
 	case downloader.Error:
 		instance.onError(task.GetError(), "download error")
+		instance.setStatus(global.UnInstalled)
 	}
 }
 
@@ -118,6 +117,7 @@ func (instance *Task) onError(code int16, reason string) {
 	instance.installing = false
 	logger.GetInstance().Error().Str("code", strconv.Itoa(int(code))).Caller().Msg(reason)
 	instance.ErrorCode = code
+	instance.SetInstallProgress(0)
 	instance.OnErrCallback(code, reason)
 }
 
@@ -135,6 +135,7 @@ func (instance *Task) install(pkgPath string) error {
 	//println(sres.Code, sres.Message)
 	if err != nil {
 		instance.onError(global.INSTALLER_PACKAGE_ERROR, "install error. "+err.Error())
+		instance.setStatus(global.UnInstalled)
 		return err
 	}
 	return nil
@@ -149,6 +150,7 @@ func (instance *Task) Uninstall() error {
 	_, err := global.RPC.StartActivity(action)
 	if err != nil {
 		instance.onError(global.INSTALLER_PACKAGE_ERROR, "uninstall error "+err.Error())
+		instance.setStatus(global.Installed)
 		return err
 	}
 	return nil
@@ -224,6 +226,7 @@ func (instance *Task) waitForDependencies() error {
 	}
 	if !success {
 		instance.onError(global.INSTALL_DEPENDENCY_ERROR, "failed installing "+currentDep.Id)
+		instance.setStatus(global.UnInstalled)
 		return errors.New("failed installing one of the dependencies")
 	}
 	logger.GetInstance().Debug().Msg("finished installing dependencies")

@@ -78,13 +78,13 @@
         "projectWebsite": ""
     },
     "trinity.pasar": {
-        "name": "Pasar",
+        "name": "Pasar V2",
         "id": "trinity.pasar",
         "description": "Pasar is a truly decentralized Web3.0 Marketplace, Collectible Explorer, and Analytics Platform for NFTs created on the Elastos Smart Chain (ESC).",
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
         "updates": "- Pasar Explorer to track non-fungible token (NFT) provenance. Login with Decentralized Identifier (DID). NFT minting. NFT Marketplace with fixed price",
-        "build": 1,
-        "version": "0.1.0",
+        "build": 2,
+        "version": "2.0.0",
         "projectRepo": "",
         "projectWebsite": ""
     },
@@ -95,7 +95,6 @@
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/ipfs/listing/icon.png",
         "updates": "First release of IPFS for elabox.",
         "build": 1,
-        "beta": true,
         "minRuntime": "0.6.8",
         "version": "0.1.0",
         "projectRepo": "",
@@ -108,10 +107,34 @@
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
         "updates": "First Release on Elabox",
         "build": 1,
-        "beta": true,
         "version": "2.3.6",
+        "minRuntime": "0.6.8",
         "projectRepo": "",
         "projectWebsite": "", 
         "dependencies": ["ipfs"]
+    },
+    "elacity": {
+        "name": "Elacity",
+        "id": "elacity",
+        "description": "A flexible, decentralized storage solution with swappable storage constructs that allow for private storage and public decentralized storage behind robust Swift/Java SDKs for mobile and JS SDKs for the web.",
+        "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
+        "updates": "First Release on Elabox",
+        "build": 1,
+        "beta": false,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "filebrowser": {
+        "name": "File Browser",
+        "id": "filebrowser",
+        "description": "Filebrowser provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit your files. It allows the creation of multiple users and each user can have its own directory. It can be used as a standalone app.",
+        "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
+        "updates": "First Release on Elabox",
+        "build": 1,
+        "beta": false,
+        "version": "2.22.4",
+        "projectRepo": "",
+        "projectWebsite": ""
     }
 }
