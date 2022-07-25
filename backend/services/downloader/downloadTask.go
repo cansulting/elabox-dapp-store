@@ -74,7 +74,7 @@ func (task *Task) Start() error {
 	task.errorCode = 0
 	err := task.Download(task.path, task.url)
 	if err != nil {
-		if err.Error() != "context canceled" {
+		if !errors.Is(err, context.Canceled) {
 			task._onStateChanged(Error)
 		} else {
 			task._onStateChanged(Stopped)
