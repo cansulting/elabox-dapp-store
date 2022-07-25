@@ -6,6 +6,7 @@ import {
   AC_RETRIEVE_PKGS,
   AC_INSTALL_PKG,
   AC_UNINSTALL_PKG,
+  AC_CANCEL_PKG,
   AC_RETRIEVE_SYSTEM_VERSION,
   AC_RESYNC,
   AC_RESTART,
@@ -40,6 +41,9 @@ export async function installPackage(packageId: string) {
 
 export async function uninstallPackage(packageId: string) {
   await getEventHandler().sendRPC(PACKAGE_ID, AC_UNINSTALL_PKG, packageId)
+}
+export async function cancelPackage(packageId:string) {
+  await getEventHandler().sendRPC(PACKAGE_ID, AC_CANCEL_PKG, packageId)
 }
 
 export async function retrieveSystemVersion() : Promise<string> {

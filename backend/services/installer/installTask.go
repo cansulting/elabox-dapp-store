@@ -91,6 +91,8 @@ func (instance *Task) onDownloadStateChanged(task *downloader.Task) {
 	switch task.GetStatus() {
 	case downloader.Finished:
 		instance.setStatus(global.Downloaded)
+	case downloader.Stopped:
+		instance.setStatus(global.UnInstalled)
 	case downloader.Error:
 		instance.onError(task.GetError(), "download error")
 		instance.setStatus(global.UnInstalled)
@@ -172,6 +174,10 @@ func (instance *Task) Start() {
 // this skips the download and install the package right away given the package path
 func (instance *Task) StartFromFile(pkgPath string) error {
 	return instance.install(pkgPath)
+}
+func (instance *Task) onCancel() {
+	instance.installing = false
+	instance.downloadTask.Stop()
 }
 
 // callback when download task was removed from manager

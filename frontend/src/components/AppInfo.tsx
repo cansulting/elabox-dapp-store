@@ -10,7 +10,7 @@ import {
 } from 'reactstrap'
 import { AppButton } from './AppButton'
 import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
-import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
+import { ProgressColor } from '../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../data/packageInfo'
 import { MessagePrompt } from '../data/messagePrompt'
 import { AppStatusToCaption } from '../utils/appStatus'
@@ -23,6 +23,7 @@ export interface AppInfoProps {
     footer?: JSX.Element
     customActions?: AppInfoAction[]             // custom secondary actions for app info
     onInstall?: (pkg:PackageInfo) => void
+    onCancel?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
     onOff?: (pkg:PackageInfo) => Promise<string>    
@@ -83,6 +84,9 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const handleLaunch = (evnt:any) => {
         if (props.onUninstall) props.onLaunch(props.info)
     } 
+    const handleCancel = (evnt:any) => {
+        if(props.onCancel) props.onCancel(props.info)
+    }
     const handleUpdate = (evnt:any) => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
@@ -204,24 +208,37 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             onClick={handleInstall}>
                             Install
                         </AppButton>
-                    )}
+                    )}                  
                     { info.status !== "uninstalling" && progress > 0 && (
                         <div
-                            className="d-flex flex-column align-items-center align-items-lg-start"
-                            style={{
-                                width: '100%',
-                            }}
+                        className="d-flex flex-column align-items-center align-items-lg-start"
+                        style={{
+                            width: '100%',
+                        }}
+                    >
+                        <p>
+                            {AppStatusToCaption(info.status)}
+                        </p>
+                        <div 
+                            className="d-flex align-items-center justify-content-center align-items-lg-center" 
+                            style={{ width: '30%',gap:5 }}
                         >
-                            <p>
-                                {AppStatusToCaption(info.status)}
-                            </p>
                             <Progress
-                                style={{ width: '30%' }}
+                                style={{width:"100%"}}
                                 value={progress}
                                 color={progressColor}
                                 animated={false}
                             />
+                            <AppButton 
+                                color="danger" 
+                                size="sm" 
+                                disabled={info.status !== "downloading"}
+                                outline
+                                onClick={handleCancel}>
+                                <Icon.X  color="white" size={14}/>
+                            </AppButton>                                
                         </div>
+                    </div>  
                     )}
                     { (info.status === "uninstalling" || info.status === "wait_depends") && (
                         <div

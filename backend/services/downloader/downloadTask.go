@@ -1,6 +1,7 @@
 package downloader
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"io"
@@ -26,6 +27,9 @@ type Task struct {
 	OnProgressChanged func(task *Task) // callback event when progress was changed
 	OnError           func(task *Task) // callback event when recieved error
 }
+
+var cx context.Context
+var cancel context.CancelFunc
 
 // contructor of download task
 func NewTask(id string, url string, savePath string) *Task {
@@ -66,12 +70,15 @@ func (task *Task) Start() error {
 		logger.GetInstance().Warn().Msg(task.id + " is already downloading")
 		return nil
 	}
-
 	task._onStateChanged(Downloading)
 	task.errorCode = 0
 	err := task.Download(task.path, task.url)
 	if err != nil {
-		task._onStateChanged(Error)
+		if !errors.Is(err, context.Canceled) {
+			task._onStateChanged(Error)
+		} else {
+			task._onStateChanged(Stopped)
+		}
 		return err
 	}
 	return nil
@@ -80,9 +87,13 @@ func (task *Task) Start() error {
 // download file via http
 // save to file
 func (task *Task) Download(path string, url string) (err error) {
+	cx, cancel = context.WithCancel(context.Background())
 	task.downloaded = 0
 	// Get the data
-	resp, err := http.Get(url)
+	req, _ := http.NewRequest("GET", url, nil)
+	req = req.WithContext(cx)
+
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return err
 	}
@@ -123,6 +134,8 @@ func (task *Task) Download(path string, url string) (err error) {
 
 func (task *Task) Stop() {
 	task.status = 3
+	task.total = 0
+	cancel()
 }
 
 func (task *Task) Reset() {

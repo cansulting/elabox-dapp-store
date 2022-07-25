@@ -4,6 +4,7 @@ import * as Listener from "../actions/broadcastListener"
 import { 
     installPackage,
     retrieveListing, 
+    cancelPackage, 
     uninstallPackage ,
     disablePackage,
     On,
@@ -39,13 +40,16 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleUninstall = (pkg:PackageInfo) => {
         uninstallPackage(pkg.id)
     }
+    const handleCancel = (pkg:PackageInfo) => {
+        cancelPackage(pkg.id)
+    }
     const handleRefresh = () => {
         retrieveListing(info.id).then( listing => {
             updateInfo({...info,...listing})
             setProgress(0)
         })
     }
-    const handleOff = (pkg:PackageInfo) => {
+    const handleDisable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             disablePackage(pkg.id).then(_ => {
                 handleCheckStatus(pkg)
@@ -55,7 +59,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         })
 
     }
-    const handleOn = (pkg:PackageInfo) => {
+    const handleEnable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             On(pkg.id).then(_ => {
                 handleCheckStatus(pkg)
@@ -124,10 +128,11 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         info:{...info, progress: progress},
         onInstall: handleInstall,
         onUninstall: handleUninstall,
+        onCancel: handleCancel,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,
-        onOff: handleOff,
-        onOn: handleOn,
+        onOff: handleDisable,
+        onOn: handleEnable,
         onCheckStatus: handleCheckStatus
     }
     return <AppInfo {...params}/>
