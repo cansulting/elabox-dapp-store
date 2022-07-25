@@ -13,6 +13,7 @@ import (
 	"github.com/cansulting/elabox-system-tools/foundation/constants"
 	"github.com/cansulting/elabox-system-tools/foundation/event/data"
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
+	reg "github.com/cansulting/elabox-system-tools/registry/app"
 )
 
 const RATIO_VS_DOWNLOAD = 0.25 // the progress ratio of install status vs download status
@@ -192,24 +193,36 @@ func (instance *Task) waitForDependencies() error {
 	success := false
 	for {
 		if currentDep == nil {
-			var err error
-			currentDep, err = CreateInstallTask(deps[0], "")
+			// check if the package is installed or not
+			isreg, err := reg.IsPackageInstalled(deps[0])
 			if err != nil {
 				return err
 			}
-			if len(deps) > 1 {
-				deps = deps[1:]
+			// install it now
+			if !isreg {
+				currentDep, err = CreateInstallTask(deps[0], "")
+				if err != nil {
+					return err
+				}
+				if len(deps) > 1 {
+					deps = deps[1:]
+				}
+			} else {
+				// already installed. skip package
+				depInstalled++
 			}
 		} else {
 			if currentDep.ErrorCode != 0 {
 				break
 			}
 		}
-		if currentDep.Status == global.Installed {
-			depInstalled++
-			currentDep = nil
-		} else if !currentDep.IsInstalling() {
-			currentDep.Start()
+		if currentDep != nil {
+			if currentDep.Status == global.Installed {
+				depInstalled++
+				currentDep = nil
+			} else if !currentDep.IsInstalling() {
+				currentDep.Start()
+			}
 		}
 		// did we installed all dependencies?
 		if depInstalled == depTotal {

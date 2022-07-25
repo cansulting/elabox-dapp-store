@@ -65,7 +65,7 @@ export const DependencyModal = (props:DependencyModalProps): JSX.Element =>{
         size="sm"
         onClick={props.onConfirm}
       >
-       Install
+       Confirm
       </AppButton>
     </ModalFooter>
   </Modal>
