@@ -5,7 +5,7 @@ import {
     installPackage,
     retrieveListing, 
     uninstallPackage ,
-    off,
+    disablePackage,
     On,
     OnCheckStatus
 } from '../actions/appLib'
@@ -45,7 +45,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     const handleOff = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
-            off(pkg.id).then(_ => {
+            disablePackage(pkg.id).then(_ => {
                 handleCheckStatus(pkg)
             }).finally(()=>{
                 resolve("service changed")

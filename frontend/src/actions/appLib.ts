@@ -68,7 +68,7 @@ export async function restart(packageId: string) : Promise<string> {
 }
 
 // off specific service/node
-export async function off(packageId: string) : Promise<string> {
+export async function disablePackage(packageId: string) : Promise<string> {
   console.log("off...")
   const res = await getEventHandler().sendSystemRPC(AC_OFF, packageId)
   console.log(res)
