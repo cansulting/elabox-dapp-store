@@ -13,6 +13,7 @@ export interface PackageInfo {
     version?: string
 	notifications?: number
 	description? : string 
+	dependencies?: Array<any>
     updates? : string
 	isRunning?: boolean
     isService?: boolean

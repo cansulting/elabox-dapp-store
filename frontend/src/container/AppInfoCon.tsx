@@ -107,8 +107,18 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     useEffect(() => {
         console.log("init")
-        retrieveListing(props.info.id).then( pkg => {
+        retrieveListing(props.info.id).then(async pkg => {
             const updatedInfo = {...info,...pkg}
+            const updatedDepedencies: PackageInfo[] = []
+            if(updatedInfo.dependencies?.length > 0){
+                for( const pkgId of updatedInfo.dependencies){
+                    const app =  await retrieveListing(pkgId)
+                    if(app.status !=="installed" && app.status !=="uninstalling"){
+                     updatedDepedencies.push(app)               
+                    }
+                 }
+            }
+            updatedInfo.dependencies = updatedDepedencies
             updateInfo(updatedInfo)
             handleCheckStatus(updatedInfo)
         })
