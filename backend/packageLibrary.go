@@ -12,7 +12,8 @@ import (
 )
 
 // retrieve all apps
-func RetrieveAllApps() ([]data.PackageInfo, error) {
+// @beta is true if include all apps for testing and demo apps
+func RetrieveAllApps(beta bool) ([]data.PackageInfo, error) {
 	// step: retrieve all apps from registry
 	storeItems, err := store_lister.GetItems()
 	if err != nil {
@@ -22,6 +23,10 @@ func RetrieveAllApps() ([]data.PackageInfo, error) {
 	var tmpPreview data.PackageInfo
 	// step: iterate on packages
 	for _, pkg := range storeItems {
+		// skip if ignore beta app
+		if !beta && pkg.Beta {
+			continue
+		}
 		installedInfo, err := app.RetrievePackage(pkg.Id)
 		if err != nil {
 			logger.GetInstance().Debug().Msg("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
@@ -71,13 +76,16 @@ func DownloadInstallApp(pkgId string) error {
 	if err != nil {
 		return err
 	}
-	task := installer.CreateTask(pkgId, link)
+	task, err := installer.CreateInstallTask(pkgId, link)
+	if err != nil {
+		return err
+	}
 	task.Start()
 	return nil
 }
 
 func UninstallApp(pkgId string) error {
-	task := installer.CreateTask(pkgId, "")
+	task := installer.CreateUninstallTask(pkgId)
 	return task.Uninstall()
 }
 

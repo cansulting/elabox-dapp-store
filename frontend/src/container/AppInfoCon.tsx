@@ -23,6 +23,8 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const updateInfo = (pkg: PackageInfo) => {
         setInfo(pkg)
         currentInfo = pkg
+        if (props.onAppStateChanged)
+            props.onAppStateChanged(pkg)
         //console.log("*******", pkg)
     }
     const handleLaunch = (pkg: PackageInfo) => {

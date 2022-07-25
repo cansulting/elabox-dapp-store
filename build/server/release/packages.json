@@ -1,0 +1,80 @@
+{
+    "ela.carrier": {
+        "name": "Carrier",
+        "id": "ela.carrier",
+        "description": "Your Elabox is an active element of the Carrier P2P network. By running an active Carrier node you strengthen the network and in turn this provides better security for the whole ecosystem.",
+        "icon" : "https://storage.googleapis.com/elabox/store/apps/ela.carrier/listing/icon.png",
+        "updates": "First release on Elabox",
+        "build": 1,
+        "version": "0.4.0",
+        "projectRepo": "",
+        "projectWebsite": "",
+        "category": "system"
+    },
+    "ela.mainchain" : {
+        "name": "Mainchain",
+        "id": "ela.mainchain",
+        "description": "Your Elabox will be running a full ELA node. With your node you can: build, sign and send transactions with security and trust.",
+        "icon" : "https://storage.googleapis.com/elabox/store/apps/ela.mainchain/listing/icon.png",
+        "updates": "Version 0.8.3. updated compatibility for test network data.  Resolved cross-chain and side chain over-dependence on DPoS nodes",
+        "build": 2,
+        "version": "0.8.3",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "ela.esc": {
+        "name": "ESC",
+        "id": "ela.esc",
+        "description": "The Smart Contract Chain (ESC) allows developers to code, deploy, and run their smart contracts on Ethereum Virtual Machines (EVMs). The sidechain also supports the execution of smart contracts written in Solidity.By utilizing DPoS Consensus, the Smart Contract Chain (ESC) acts as a high-performance, scalable smart contract execution solution.",
+        "icon" : "https://storage.googleapis.com/elabox/store/apps/ela.esc/listing/icon.png",
+        "updates": "First release on Elabox",
+        "build": 2,
+        "version": "0.1.4.3",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "ela.feeds": {
+        "name": "Feeds Node",
+        "id": "ela.feeds",
+        "description": "Feeds is a new, decentralized social platform where users remain in full control of the data they generate, and may also profit from it.",
+        "icon" : "https://storage.googleapis.com/elabox/store/apps/ela.feeds/listing/icon.png",
+        "updates": "First release on Elabox",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "glide": {
+        "name": "Glide Finance",
+        "id": "glide",
+        "description": "Glide Finance is a Decentralized Exchange / Automated Market Maker, Yield Farming, and Staking platform running on the Elastos Smart Chain (ESC) that aims to accelerate adoption of the Elastos ecosystem by acting as a source of liquidity for users and the projects built on it.",
+        "icon" : "https://storage.googleapis.com/elabox/store/apps/glide/listing/icon.png",
+        "updates": "First release on Elabox",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "trinity.pasar": {
+        "name": "Pasar",
+        "id": "trinity.pasar",
+        "description": "Pasar is a truly decentralized Web3.0 Marketplace, Collectible Explorer, and Analytics Platform for NFTs created on the Elastos Smart Chain (ESC).",
+        "icon" : "https://storage.googleapis.com/elabox/store/apps/trinity.pasar/listing/red_ios%404x.png",
+        "updates": "- Pasar Explorer to track non-fungible token (NFT) provenance. Login with Decentralized Identifier (DID). NFT minting. NFT Marketplace with fixed price",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "elacity": {
+        "name": "Elacity",
+        "id": "elacity",
+        "description": "A flexible, decentralized storage solution with swappable storage constructs that allow for private storage and public decentralized storage behind robust Swift/Java SDKs for mobile and JS SDKs for the web.",
+        "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
+        "updates": "First Release on Elabox",
+        "build": 1,
+        "version": "0.1.0",
+        "projectRepo": "",
+        "projectWebsite": ""
+    }
+}

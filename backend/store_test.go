@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"store/backend/broadcast"
 	"store/backend/global"
 	"store/backend/services/downloader"
 	"store/backend/services/installer"
@@ -28,7 +29,7 @@ func Test_RetrieveListing(t *testing.T) {
 // test for retrieving apps information and states
 func Test_RetrieveAppsState(t *testing.T) {
 	logger.Init("ela.store.test")
-	pkgs, err := RetrieveAllApps()
+	pkgs, err := RetrieveAllApps(true)
 	if err != nil {
 		t.Error("unable to retrieve all installed packages. inner: " + err.Error())
 		return
@@ -39,7 +40,7 @@ func Test_RetrieveAppsState(t *testing.T) {
 // test for retrieving specific app detailed information
 func Test_RetrieveAppDetail(t *testing.T) {
 	logger.Init("ela.store.test")
-	pkgs, err := RetrieveAllApps()
+	pkgs, err := RetrieveAllApps(true)
 	if err != nil {
 		t.Error("unable to retrieve all installed packages. inner: " + err.Error())
 		return
@@ -56,7 +57,11 @@ func Test_RetrieveAppDetail(t *testing.T) {
 // install app test
 func Test_InstallPackage(t *testing.T) {
 	logger.Init("ela.store.test")
-	task := installer.CreateTask(TEST_PKG, "")
+	task, err := installer.CreateInstallTask(TEST_PKG, "")
+	if err != nil {
+		t.Error("unable to create install task. inner: " + err.Error())
+		return
+	}
 	handler, err := rpc.NewRPCHandlerDefault()
 	global.RPC = handler
 	if err != nil {
@@ -81,5 +86,37 @@ func Test_DownloadPackage(t *testing.T) {
 	if err := task.Start(); err != nil {
 		t.Error("unable to download package. inner: " + err.Error())
 		return
+	}
+}
+
+// use to test installation for dependencies
+func Test_InstallWithDependencies(t *testing.T) {
+	logger.Init("ela.store.test")
+	link, err := store_lister.RetrieveDownloadLink("ela.mainchain")
+	if err != nil {
+		t.Error("unable to retrieve link ", err)
+		return
+	}
+	handler, err := rpc.NewRPCHandlerDefault()
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	global.RPC = handler
+	if err := broadcast.Init(); err != nil {
+		t.Error("failed to init broadcast", err)
+		return
+	}
+	ids := []string{"trinity.pasar", "ipfs"}
+	task := installer.CreateTask("ela.mainchain", link, ids)
+	task.Start()
+	for {
+		if task.Status == global.Installed {
+			break
+		}
+		if task.ErrorCode != 0 {
+			t.Error("Failed installing with dependencies with error code", task.ErrorCode)
+			break
+		}
 	}
 }

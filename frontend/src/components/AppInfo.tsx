@@ -13,6 +13,7 @@ import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSet
 import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../data/packageInfo'
 import { MessagePrompt } from '../data/messagePrompt'
+import { AppStatusToCaption } from '../utils/appStatus'
 
 
 
@@ -24,10 +25,11 @@ export interface AppInfoProps {
     onInstall?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
-    onLaunch?: (pkg:PackageInfo) => void
     onOff?: (pkg:PackageInfo) => Promise<string>    
     onOn?: (pkg:PackageInfo) => Promise<string>  
     onCheckStatus?: (pkg:PackageInfo) => void
+    onLaunch?: (pkg:PackageInfo) => void,
+    onAppStateChanged ?: (pkg:PackageInfo) => void,
     onResync?: () => void
     onDisable?: () => void
     onRestart?: () => void
@@ -164,8 +166,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         <Notifications data={info.notificationContents}/> 
                     }
                     {
-                        updatable && !sysCompatible && 
-                            <p style={{color:'gray'}}>Requires latest system to update this package.</p>
+                    (updatable || info.status === "uninstalled") && !sysCompatible && 
+                        <p style={{color:'gray'}}>Requires latest system to install this package.</p>
                     }
                     <div
                         style={{
@@ -174,7 +176,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             gap: 5,
                         }}
                     >
-                        { updatable && (
+                        { sysCompatible && updatable && (
                             <AppButton
                                 color="primary"
                                 size="sm"
@@ -195,7 +197,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             </AppButton>
                         )}
                     </div>
-                    { info.status === "uninstalled" && (
+                    { sysCompatible && info.status === "uninstalled" && (
                         <AppButton 
                             color="primary" 
                             size="sm" outline 
@@ -211,7 +213,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             }}
                         >
                             <p>
-                                {UppercaseFirstLetter(info.status)}
+                                {AppStatusToCaption(info.status)}
                             </p>
                             <Progress
                                 style={{ width: '30%' }}
@@ -221,7 +223,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             />
                         </div>
                     )}
-                    { info.status === "uninstalling" && (
+                    { (info.status === "uninstalling" || info.status === "wait_depends") && (
                         <div
                             className="d-flex flex-column align-items-center align-items-lg-start"
                             style={{
@@ -229,7 +231,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             }}
                         >
                             <p>
-                                {UppercaseFirstLetter(info.status)}
+                                {AppStatusToCaption(info.status)}
                             </p>
                     </div>
                     )}

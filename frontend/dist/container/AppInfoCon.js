@@ -29,6 +29,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppInfoCon = void 0;
 var react_1 = __importStar(require("react"));
@@ -40,11 +56,13 @@ var currentInfo = null;
 var AppInfoCon = function (props) {
     if (currentInfo === null || currentInfo.id !== props.info.id)
         currentInfo = props.info;
-    var _a = (0, react_2.useState)(currentInfo), info = _a[0], setInfo = _a[1];
-    var _b = (0, react_2.useState)(props.info.progress), progress = _b[0], setProgress = _b[1];
+    var _a = __read((0, react_2.useState)(currentInfo), 2), info = _a[0], setInfo = _a[1];
+    var _b = __read((0, react_2.useState)(props.info.progress), 2), progress = _b[0], setProgress = _b[1];
     var updateInfo = function (pkg) {
         setInfo(pkg);
         currentInfo = pkg;
+        if (props.onAppStateChanged)
+            props.onAppStateChanged(pkg);
         //console.log("*******", pkg)
     };
     var handleLaunch = function (pkg) {
@@ -95,7 +113,8 @@ var AppInfoCon = function (props) {
     (0, react_1.useEffect)(function () {
         console.log("init");
         (0, appLib_1.retrieveListing)(props.info.id).then(function (pkg) {
-            updateInfo(__assign(__assign({}, info), pkg));
+            var updatedInfo = __assign(__assign({}, info), pkg);
+            updateInfo(updatedInfo);
         });
         Listener.onPackage(props.info.id, "install_progress", handleProgress);
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged);

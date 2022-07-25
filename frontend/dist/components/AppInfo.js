@@ -38,6 +38,7 @@ var AppButton_1 = require("./AppButton");
 var AppInfoSetting_1 = require("./AppInfoSetting");
 var colors_1 = require("../utils/colors");
 var packageInfo_1 = require("../data/packageInfo");
+var appStatus_1 = require("../utils/appStatus");
 var Notifications = function (props) {
     return (react_1.default.createElement(react_1.default.Fragment, null, props.data.map(function (val) {
         return (react_1.default.createElement(react_1.default.Fragment, null,
@@ -110,25 +111,25 @@ var AppInfo = function (props) {
                 info.notificationContents &&
                     info.notificationContents.length > 0 &&
                     react_1.default.createElement(Notifications, { data: info.notificationContents }),
-                updatable && !sysCompatible &&
-                    react_1.default.createElement("p", { style: { color: 'gray' } }, "Requires latest system to update this package."),
+                (updatable || info.status === "uninstalled") && !sysCompatible &&
+                    react_1.default.createElement("p", { style: { color: 'gray' } }, "Requires latest system to install this package."),
                 react_1.default.createElement("div", { style: {
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 5,
                     } },
-                    updatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", active: sysCompatible, outline: true, onClick: handleUpdate }, "Update")),
+                    sysCompatible && updatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", active: sysCompatible, outline: true, onClick: handleUpdate }, "Update")),
                     (0, packageInfo_1.isLaunchable)(info) && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
-                info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleInstall }, "Install")),
+                sysCompatible && info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleInstall }, "Install")),
                 info.status !== "uninstalling" && progress > 0 && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },
-                    react_1.default.createElement("p", null, (0, colors_1.UppercaseFirstLetter)(info.status)),
+                    react_1.default.createElement("p", null, (0, appStatus_1.AppStatusToCaption)(info.status)),
                     react_1.default.createElement(reactstrap_1.Progress, { style: { width: '30%' }, value: progress, color: progressColor, animated: false }))),
-                info.status === "uninstalling" && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
+                (info.status === "uninstalling" || info.status === "wait_depends") && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },
-                    react_1.default.createElement("p", null, (0, colors_1.UppercaseFirstLetter)(info.status)))))),
+                    react_1.default.createElement("p", null, (0, appStatus_1.AppStatusToCaption)(info.status)))))),
         react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
             react_1.default.createElement(reactstrap_1.Col, null,
                 react_1.default.createElement("p", null, props.info.description))),

@@ -29,6 +29,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RealData = exports.WithStats = exports.Syncing = exports.InstallationSuccess = exports.InstallationError = exports.Launchable = exports.Updatable = exports.UnInstalling = exports.Installing = exports.Downloading = exports.Installable = exports.Primary = void 0;
 var react_1 = __importStar(require("react"));
@@ -99,7 +115,7 @@ exports.WithStats.args = __assign(__assign({}, exports.Primary.args), { info: __
             react_1.default.createElement("h4", null, "Application Details"),
             react_1.default.createElement("p", null, "IP: 192.168.18.70"))), isService: true }) });
 var Template2 = function (props) {
-    var _a = (0, addons_1.useState)(null), currentPkg = _a[0], setPkg = _a[1];
+    var _a = __read((0, addons_1.useState)(null), 2), currentPkg = _a[0], setPkg = _a[1];
     (0, react_1.useEffect)(function () {
         if (currentPkg === null)
             (0, appLib_1.retrieveListing)("trinity.pasar")
