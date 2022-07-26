@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef,useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import * as Icon from 'react-feather'
 import {
@@ -10,10 +10,12 @@ import {
     PopoverBody,
 } from 'reactstrap'
 import { AppButton } from './AppButton'
+import { DependencyModal } from './partials/Modals/Dependency'
 import { AppInfoAction, AppInfoSetting, AppInfoSettingProps } from './AppInfoSetting'
-import { ProgressColor, UppercaseFirstLetter } from '../utils/colors'
+import { ProgressColor } from '../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../data/packageInfo'
 import { MessagePrompt } from '../data/messagePrompt'
+import { AppStatusToCaption } from '../utils/appStatus'
 
 
 
@@ -23,9 +25,14 @@ export interface AppInfoProps {
     footer?: JSX.Element
     customActions?: AppInfoAction[]             // custom secondary actions for app info
     onInstall?: (pkg:PackageInfo) => void
+    onCancel?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
-    onLaunch?: (pkg:PackageInfo) => void
+    onOff?: (pkg:PackageInfo) => Promise<string>    
+    onOn?: (pkg:PackageInfo) => Promise<string>  
+    onCheckStatus?: (pkg:PackageInfo) => void
+    onLaunch?: (pkg:PackageInfo) => void,
+    onAppStateChanged ?: (pkg:PackageInfo) => void,
     onResync?: () => void
     onDisable?: () => void
     onRestart?: () => void
@@ -64,13 +71,14 @@ const SettingPopover = (props: SettingPopOverRef) => {
     )
 }
 export const AppInfo = (props: AppInfoProps): JSX.Element => {
+    const [isOpenDependencyModal,setIsOpenDependencyModal] = useState(false)
     const settingPopoverRef = useRef(null)
     const progressColor = ProgressColor(props.info.status)
     const info = props.info;
     const progress = info.progress;
     const updatable = isUpdatable(props.info)
     const sysCompatible = isUpdateCompat(props.info)
-    const handleInstall = (evnt:any) => {
+    const handleInstall = () => {
         if (props.onInstall) props.onInstall(props.info)
     }
     const handleUninstall = (evnt:any) => {
@@ -79,9 +87,33 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const handleLaunch = (evnt:any) => {
         if (props.onUninstall) props.onLaunch(props.info)
     } 
+    const handleCancel = (evnt:any) => {
+        if(props.onCancel) props.onCancel(props.info)
+    }
     const handleUpdate = (evnt:any) => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
+    const handleOnOpenDependencyModal = () =>{
+        if(props.info.dependencies.length>0){
+            setIsOpenDependencyModal(true)
+            return
+        }
+        setIsOpenDependencyModal(false) 
+        handleInstall()
+    }
+    const handleOnCloseDependencyModal = () =>{
+        setIsOpenDependencyModal(false)
+    }
+    const handleOnConfirmInstall = () =>{
+        setIsOpenDependencyModal(false) 
+        handleInstall()
+    }    
+    const handleOff = () => {
+        return props.onOff(props.info)
+    }
+    const handleOn = () => {
+        return props.onOn(props.info)
+    }
     return (
         <Container style={props.style} fluid="md">
             <Toaster containerStyle={{top:30}}/>
@@ -93,6 +125,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     paddingBottom: 5,
                 }}
             >
+                <DependencyModal 
+                dependencies={props.info.dependencies}
+                isOpen={isOpenDependencyModal} 
+                onClose={handleOnCloseDependencyModal} 
+                onConfirm={handleOnConfirmInstall}/>         
+
                 <h3 style={{ cursor: 'pointer' }} onClick={props.onBack}>
                     <p style={{display:'flex', alignItems: 'center'}}>
                         <Icon.ArrowLeftCircle style={{ marginRight: 5, color:'#0d6efd' }} />
@@ -119,6 +157,9 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                     onResync: props.onResync,
                                     onDisable: props.onDisable,
                                     onRestart: props.onRestart,
+                                    onOff: handleOff,
+                                    onOn: handleOn,
+                                    
                                 }}
                             />
                         </>
@@ -189,29 +230,42 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         <AppButton 
                             color="primary" 
                             size="sm" outline 
-                            onClick={handleInstall}>
+                            onClick={handleOnOpenDependencyModal}>
                             Install
                         </AppButton>
-                    )}
+                    )}                  
                     { info.status !== "uninstalling" && progress > 0 && (
                         <div
-                            className="d-flex flex-column align-items-center align-items-lg-start"
-                            style={{
-                                width: '100%',
-                            }}
+                        className="d-flex flex-column align-items-center align-items-lg-start"
+                        style={{
+                            width: '100%',
+                        }}
+                    >
+                        <p>
+                            {AppStatusToCaption(info.status)}
+                        </p>
+                        <div 
+                            className="d-flex align-items-center justify-content-center align-items-lg-center" 
+                            style={{ width: '30%',gap:5 }}
                         >
-                            <p>
-                                {UppercaseFirstLetter(info.status)}
-                            </p>
                             <Progress
-                                style={{ width: '30%' }}
+                                style={{width:"100%"}}
                                 value={progress}
                                 color={progressColor}
                                 animated={false}
                             />
+                            <AppButton 
+                                color="danger" 
+                                size="sm" 
+                                disabled={info.status !== "downloading"}
+                                outline
+                                onClick={handleCancel}>
+                                <Icon.X  color="white" size={14}/>
+                            </AppButton>                                
                         </div>
+                    </div>  
                     )}
-                    { info.status === "uninstalling" && (
+                    { (info.status === "uninstalling" || info.status === "wait_depends") && (
                         <div
                             className="d-flex flex-column align-items-center align-items-lg-start"
                             style={{
@@ -219,7 +273,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             }}
                         >
                             <p>
-                                {UppercaseFirstLetter(info.status)}
+                                {AppStatusToCaption(info.status)}
                             </p>
                     </div>
                     )}

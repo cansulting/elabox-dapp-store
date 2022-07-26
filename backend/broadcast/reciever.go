@@ -13,19 +13,19 @@ import (
 // register broadcast recievers
 func registerRecievers() error {
 	// register for
-	if err := global.AppController.RPC.OnRecievedFromPackage(
+	if err := global.RPC.OnRecievedFromPackage(
 		global.InstallerId,
 		global.INSTALLER_PROGRESS,
 		onRecievedInstallerProgress); err != nil {
 		return err
 	}
-	if err := global.AppController.RPC.OnRecievedFromPackage(
+	if err := global.RPC.OnRecievedFromPackage(
 		global.InstallerId,
 		global.INSTALLER_STATE_CHANGE,
 		onRecievedInstallerStateChanged); err != nil {
 		return err
 	}
-	if err := global.AppController.RPC.OnRecievedFromPackage(
+	if err := global.RPC.OnRecievedFromPackage(
 		global.InstallerId,
 		global.INSTALLER_ERROR,
 		onRecievedInstallerError); err != nil {

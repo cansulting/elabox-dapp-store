@@ -10,7 +10,7 @@ import (
 	"github.com/cansulting/elabox-system-tools/foundation/perm"
 )
 
-// function that retreives all cached apps
+// function that retreives all cached apps from store server
 func retrieveCache() ([]*data.PackageListingCache, error) {
 	// is file exists
 	if _, err := os.Stat(global.StoreCache); err != nil {

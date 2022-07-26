@@ -6,9 +6,13 @@ import {
   AC_RETRIEVE_PKGS,
   AC_INSTALL_PKG,
   AC_UNINSTALL_PKG,
+  AC_CANCEL_PKG,
   AC_RETRIEVE_SYSTEM_VERSION,
   AC_RESYNC,
-  AC_RESTART
+  AC_RESTART,
+  AC_OFF,
+  AC_ON,
+  AC_CHECK_STATUS
  } from "./constants";
 
 export async function retrieveAllListings(beta = false) : Promise<PackageInfo[]>{
@@ -38,6 +42,9 @@ export async function installPackage(packageId: string) {
 export async function uninstallPackage(packageId: string) {
   await getEventHandler().sendRPC(PACKAGE_ID, AC_UNINSTALL_PKG, packageId)
 }
+export async function cancelPackage(packageId:string) {
+  await getEventHandler().sendRPC(PACKAGE_ID, AC_CANCEL_PKG, packageId)
+}
 
 export async function retrieveSystemVersion() : Promise<string> {
   const res = await getEventHandler().sendRPC(PACKAGE_ID, AC_RETRIEVE_SYSTEM_VERSION,)
@@ -59,6 +66,34 @@ export async function resync(packageId: string) : Promise<string> {
 export async function restart(packageId: string) : Promise<string> {
   console.log("restart...")
   const res = await getEventHandler().sendSystemRPC(AC_RESTART, packageId)
+  if (res.code !== 200)
+    throw new Error(res.message)
+  return res.message
+}
+
+// off specific service/node
+export async function disablePackage(packageId: string) : Promise<string> {
+  console.log("off...")
+  const res = await getEventHandler().sendSystemRPC(AC_OFF, packageId)
+  console.log(res)
+  if (res.code !== 200)
+    throw new Error(res.message)
+  return res.message
+}
+
+// on specific service/node
+export async function On(packageId: string) : Promise<string> {
+  console.log("On...")
+  const res = await getEventHandler().sendSystemRPC(AC_ON, packageId)
+  if (res.code !== 200)
+    throw new Error(res.message)
+  return res.message
+}
+// check specific service/node status
+
+export async function OnCheckStatus(packageId: string) : Promise<string> {
+  console.log("Checking Status...")
+  const res = await getEventHandler().sendSystemRPC(AC_CHECK_STATUS, packageId)
   if (res.code !== 200)
     throw new Error(res.message)
   return res.message

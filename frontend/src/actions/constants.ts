@@ -13,8 +13,12 @@ export const AC_RETRIEVE_PKGS = "ela.store.actions.RETRIEVE_PACKAGES";
 export const AC_RETRIEVE_PKG = "ela.store.actions.RETRIEVE_PACKAGE";
 export const AC_INSTALL_PKG = "ela.store.actions.INSTALL_PACKAGE";
 export const AC_UNINSTALL_PKG = "ela.store.actions.UNINSTALL_PACKAGE";
+export const AC_CANCEL_PKG = "ela.store.actions.CANCEL_INSTALL_PACKAGE";
 export const AC_RETRIEVE_SYSTEM_VERSION = "ela.store.actions.RETRIEVE_SYSTEM_VERSION";
 export const AC_RESTART = "ela.system.APP_RESTART";
+export const AC_OFF = "ela.system.APP_OFF"
+export const AC_ON = "ela.system.APP_ON"
+export const AC_CHECK_STATUS = "ela.system.APP_CHECK_STATUS";
 export const AC_RESYNC = "ela.system.APP_CLEAR_DATA";
 
 // installer broadcasts

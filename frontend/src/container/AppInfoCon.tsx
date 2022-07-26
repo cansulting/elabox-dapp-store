@@ -5,7 +5,12 @@ import * as Listener from "../actions/broadcastListener"
 import { 
     installPackage,
     retrieveListing, 
-    uninstallPackage } from '../actions/appLib'
+    cancelPackage, 
+    uninstallPackage ,
+    disablePackage,
+    On,
+    OnCheckStatus
+} from '../actions/appLib'
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
 
@@ -20,6 +25,8 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const updateInfo = (pkg: PackageInfo) => {
         setInfo(pkg)
         currentInfo = pkg
+        if (props.onAppStateChanged)
+            props.onAppStateChanged(pkg)
         //console.log("*******", pkg)
     }
     const handleLaunch = (pkg: PackageInfo) => {
@@ -34,12 +41,41 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleUninstall = (pkg:PackageInfo) => {
         uninstallPackage(pkg.id)
     }
+    const handleCancel = (pkg:PackageInfo) => {
+        cancelPackage(pkg.id)
+    }    
     const handleRefresh = (toastMessage: string) => {
         retrieveListing(info.id).then( listing => {
             updateInfo({...info,...listing})
             setProgress(0)
             toast.success(toastMessage)            
         })
+    }
+    const handleDisable = (pkg:PackageInfo) => {
+        return new Promise<string>((resolve,_) => {
+            disablePackage(pkg.id).then(_ => {
+                handleCheckStatus(pkg)
+            }).finally(()=>{
+                resolve("service changed")
+            })            
+        })
+
+    }
+    const handleEnable = (pkg:PackageInfo) => {
+        return new Promise<string>((resolve,_) => {
+            On(pkg.id).then(_ => {
+                handleCheckStatus(pkg)
+            }).finally(()=>{
+                resolve("service changed")
+            })
+        })
+
+    }    
+    const handleCheckStatus = (pkg: PackageInfo) =>{
+        OnCheckStatus(pkg.id).then(isRunning =>{
+            updateInfo({...info,isRunning: isRunning === "true"})
+        })
+
     }
     const handleStateChanged = (args:any) => {
         //props.info.status = args.status
@@ -77,8 +113,20 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     useEffect(() => {
         console.log("init")
-        retrieveListing(props.info.id).then( pkg => {
-            updateInfo({...info,...pkg})
+        retrieveListing(props.info.id).then(async pkg => {
+            const updatedInfo = {...info,...pkg}
+            const updatedDepedencies: PackageInfo[] = []
+            if(updatedInfo.dependencies?.length > 0){
+                for( const pkgId of updatedInfo.dependencies){
+                    const app =  await retrieveListing(pkgId)
+                    if(app.status !=="installed" && app.status !=="uninstalling"){
+                     updatedDepedencies.push(app)               
+                    }
+                 }
+            }
+            updatedInfo.dependencies = updatedDepedencies
+            updateInfo(updatedInfo)
+            handleCheckStatus(updatedInfo)
         })
         Listener.onPackage(props.info.id, "install_progress", handleProgress)
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged)
@@ -96,8 +144,12 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         info:{...info, progress: progress},
         onInstall: handleInstall,
         onUninstall: handleUninstall,
+        onCancel: handleCancel,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,
+        onOff: handleDisable,
+        onOn: handleEnable,
+        onCheckStatus: handleCheckStatus
     }
     return <AppInfo {...params}/>
 }

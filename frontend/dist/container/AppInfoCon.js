@@ -12,11 +12,7 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -65,6 +61,8 @@ var AppInfoCon = function (props) {
     var updateInfo = function (pkg) {
         setInfo(pkg);
         currentInfo = pkg;
+        if (props.onAppStateChanged)
+            props.onAppStateChanged(pkg);
         //console.log("*******", pkg)
     };
     var handleLaunch = function (pkg) {
@@ -115,7 +113,8 @@ var AppInfoCon = function (props) {
     (0, react_1.useEffect)(function () {
         console.log("init");
         (0, appLib_1.retrieveListing)(props.info.id).then(function (pkg) {
-            updateInfo(__assign(__assign({}, info), pkg));
+            var updatedInfo = __assign(__assign({}, info), pkg);
+            updateInfo(updatedInfo);
         });
         Listener.onPackage(props.info.id, "install_progress", handleProgress);
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged);

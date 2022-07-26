@@ -30,6 +30,7 @@ func (instance *StoreService) OnStart() error {
 	global.AppController.RPC.OnRecieved(global.RETRIEVE_PACKAGE, instance.rpc_retrievePackage)
 	global.AppController.RPC.OnRecieved(global.INSTALL_PACKAGE, instance.rpc_installPackage)
 	global.AppController.RPC.OnRecieved(global.UNINSTALL_PACKAGE, instance.rpc_onuninstall)
+	global.AppController.RPC.OnRecieved(global.CANCEL_INSTALL_PACKAGE, instance.rpc_oncancelinstall)
 	global.AppController.RPC.OnRecieved(global.RETRIEVE_SYS_VERSION, instance.rpc_onRetrieveSysVersion)
 	return nil
 }
@@ -70,6 +71,10 @@ func (instance *StoreService) rpc_onuninstall(client protocol.ClientInterface, a
 		return rpc.CreateResponse(rpc.INVALID_CODE, err.Error())
 	}
 	return rpc.CreateSuccessResponse("started")
+}
+func (instance *StoreService) rpc_oncancelinstall(client protocol.ClientInterface, action data.Action) string {
+	CancelInstall(action.PackageId)
+	return rpc.CreateSuccessResponse("cancelled")
 }
 
 func (instance *StoreService) rpc_onRetrieveSysVersion(client protocol.ClientInterface, action data.Action) string {

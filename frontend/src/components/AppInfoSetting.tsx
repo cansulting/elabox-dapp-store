@@ -1,6 +1,7 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
+import { Spinner } from 'reactstrap'
 import { PackageInfo } from '../data/packageInfo'
-import { ConfirmationModal,ConfirmationModalProps } from './partials/Modals/Confirmation'
+import { ConfirmationModal } from './partials/Modals/Confirmation'
 export interface AppInfoAction {
     label: string
     color?: string
@@ -15,9 +16,25 @@ export interface AppInfoSettingProps {
     onResync?: Function
     onDisable?: Function
     onRestart?: Function
+    onOn?: () => Promise<string>
+    onOff?: () => Promise<string>
 }
 
 export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
+    const [isServiceLoading,setIsServiceLoading] = useState(false)
+    const handleServiceStatusChange = (e:React.MouseEvent<HTMLInputElement>) =>{
+        e.preventDefault()
+        setIsServiceLoading(true)        
+        if(props.info.isRunning) {
+            props.onOff().then(()=>{
+                setIsServiceLoading(false)
+            })
+            return
+        }
+        props.onOn().then(()=>{
+            setIsServiceLoading(false)
+        })
+    }
     const [isOpenUninstallModal,setIsOpenUninstallModal] = useState(false)
     const handleOnOpenUninstallModal = (e:React.MouseEvent) =>{
         e.preventDefault()
@@ -67,15 +84,16 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                     >
                         Restart
                     </span>
+                    {props.info.status === "installed" &&
                     <span
-                        style={{ cursor: 'pointer' }}
-                        onClick={(e) => {
-                            e.preventDefault()
-                            props.onDisable()
-                        }}
-                    >
-                        Disable
+                    style={{ cursor: 'pointer',color: `${props.info.isRunning ? "green":"red"}` }}
+                    onClick={handleServiceStatusChange}
+                >
+                        {isServiceLoading && <Spinner children="" size="sm" color="secondary" />}
+                        {props.info.isRunning && !isServiceLoading && "Enabled"}
+                        {!props.info.isRunning && !isServiceLoading && "Disabled"}
                     </span>
+                }                        
                 </>
             }
             {props.info.category !== 'system' &&

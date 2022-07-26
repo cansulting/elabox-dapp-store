@@ -10,12 +10,15 @@ const (
 	UNINSTALLED PkInstallerState = "UNINSTALLED"
 )
 
-var OnInstallerProgress = func(string, int) {} // callback when theres progress update from installer
+// callback when theres progress update from installer
+var OnInstallerProgress = func(string, int) {}
 
+// callback when the package state changed
 // @param 1: package id
 // @param 2: the installer state
 var OnInstallerStateChanged = func(string, PkInstallerState) {}
 
+// callback when theres an error with package
 // @param 1: packageid
 // @param 2: error code
 // @param 3: error msg
