@@ -45,7 +45,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         cancelPackage(pkg.id)
     }    
     const handleRefresh = (toastMessage: string) => {
-        retrieveListing(info.id).then( listing => {
+        retrieveListing(info.id).then(listing => {
             updateInfo({...info,...listing})
             setProgress(0)
             toast.success(toastMessage)            
@@ -55,6 +55,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         return new Promise<string>((resolve,_) => {
             disablePackage(pkg.id).then(_ => {
                 handleCheckStatus(pkg)
+                toast.success(`${pkg.name} is disabled`)                            
             }).finally(()=>{
                 resolve("service changed")
             })            
@@ -65,6 +66,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         return new Promise<string>((resolve,_) => {
             On(pkg.id).then(_ => {
                 handleCheckStatus(pkg)
+                toast.success(`${pkg.name} is enabled`)                            
             }).finally(()=>{
                 resolve("service changed")
             })
