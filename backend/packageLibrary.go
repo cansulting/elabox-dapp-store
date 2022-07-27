@@ -24,9 +24,9 @@ func RetrieveAllApps(beta bool) ([]data.PackageInfo, error) {
 	// step: iterate on packages
 	for _, pkg := range storeItems {
 		// skip if ignore beta app
-		if !beta && pkg.Beta {
-			continue
-		}
+		// if !beta && pkg.Beta {
+		// 	continue
+		// }
 		installedInfo, err := app.RetrievePackage(pkg.Id)
 		if err != nil {
 			logger.GetInstance().Debug().Msg("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
