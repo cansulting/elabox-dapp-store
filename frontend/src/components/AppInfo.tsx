@@ -1,4 +1,5 @@
 import React, { useRef,useState } from 'react'
+import { Toaster } from 'react-hot-toast'
 import * as Icon from 'react-feather'
 import {
     Container,
@@ -29,7 +30,6 @@ export interface AppInfoProps {
     onUpdate?: (pkg:PackageInfo) => void
     onOff?: (pkg:PackageInfo) => Promise<string>    
     onOn?: (pkg:PackageInfo) => Promise<string>  
-    onCheckStatus?: (pkg:PackageInfo) => void
     onLaunch?: (pkg:PackageInfo) => void,
     onAppStateChanged ?: (pkg:PackageInfo) => void,
     onResync?: () => void
@@ -93,7 +93,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
     const handleOnOpenDependencyModal = () =>{
-        if(props.info.dependencies.length>0){
+        if(props.info.dependencies && props.info.dependencies.length>0){
             setIsOpenDependencyModal(true)
             return
         }
@@ -115,6 +115,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     }
     return (
         <Container style={props.style} fluid="md">
+            <Toaster containerStyle={{top:30}}/>
             <div
                 style={{
                     display: 'flex',
@@ -203,6 +204,18 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             gap: 5,
                         }}
                     >
+                        { props.info.status === "installed" && !props.info.isRunning &&
+                            <div
+                                className="d-flex flex-column align-items-center align-items-lg-start"
+                                style={{
+                                    width: '100%',
+                                }}
+                            >
+                                <p style={{color:'red'}}>
+                                    Disabled
+                                </p>
+                            </div>
+                        }
                         { sysCompatible && updatable && (
                             <AppButton
                                 color="primary"

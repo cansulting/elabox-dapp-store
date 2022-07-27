@@ -86,12 +86,12 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                     </span>
                     {props.info.status === "installed" &&
                     <span
-                    style={{ cursor: 'pointer',color: `${props.info.isRunning ? "green":"red"}` }}
+                    style={{ cursor: 'pointer',color: `${!props.info.isRunning ? "green":"red"}` }}
                     onClick={handleServiceStatusChange}
                 >
                         {isServiceLoading && <Spinner children="" size="sm" color="secondary" />}
-                        {props.info.isRunning && !isServiceLoading && "Enabled"}
-                        {!props.info.isRunning && !isServiceLoading && "Disabled"}
+                        {props.info.isRunning && !isServiceLoading && "Disable"}
+                        {!props.info.isRunning && !isServiceLoading && "Enable"}
                     </span>
                 }                        
                 </>

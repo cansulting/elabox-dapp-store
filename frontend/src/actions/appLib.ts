@@ -91,10 +91,13 @@ export async function On(packageId: string) : Promise<string> {
 }
 // check specific service/node status
 
-export async function OnCheckStatus(packageId: string) : Promise<string> {
+export async function OnCheckStatus(packageId: string) : Promise<boolean> {
   console.log("Checking Status...")
   const res = await getEventHandler().sendSystemRPC(AC_CHECK_STATUS, packageId)
   if (res.code !== 200)
     throw new Error(res.message)
-  return res.message
+  let enabled = true
+  if ( res.message === "false" || !res.message)
+    enabled = false
+  return enabled
 }
