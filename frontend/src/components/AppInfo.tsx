@@ -204,7 +204,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             gap: 5,
                         }}
                     >
-                        { !props.info.isRunning &&
+                        { props.info.status === "installed" && !props.info.isRunning &&
                             <div
                                 className="d-flex flex-column align-items-center align-items-lg-start"
                                 style={{

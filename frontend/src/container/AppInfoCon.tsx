@@ -80,7 +80,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
 
     }
     const handleStateChanged = (args:any) => {
-        //props.info.status = args.status
+        const newInfo : any = {status:args.status}
         switch (args.status) {
             case "downloading":
             case "downloaded":
@@ -88,6 +88,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             case "installing":
                 break;
             case "installed":
+                newInfo.isRunning = true
             case "uninstalled":
             case "updated":
                 handleRefresh(`${info.name} was ${args.status}`)
@@ -96,8 +97,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
                 setProgress(0)
                 break;
         }
-        updateInfo( {status:args.status}) 
-        //console.log(currentInfo)
+        updateInfo( newInfo) 
     }
     const handleProgress = (args:any) => {
         setProgress( args.progress)
