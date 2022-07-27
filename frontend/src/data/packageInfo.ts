@@ -17,6 +17,7 @@ export interface PackageInfo {
     updates? : string
 	isRunning?: boolean
     isService?: boolean
+	isDependency?: boolean
 	launchUrl?: string
 	notificationContents?: MessagePrompt[]
 	category?: 'system' | undefined | ''

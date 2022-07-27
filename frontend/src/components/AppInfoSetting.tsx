@@ -48,6 +48,9 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
         props.onUnInstall()        
         setIsOpenUninstallModal(false)
     }
+    const confirmationMessage = props.info.isDependency ? 
+    "You are about to uninstall a package that is required by other packages. Uninstalling might affects its functionality":
+    `Are you sure you want to permanently remove ${props.info.name} including its data?`
     return (
         <div
             style={{
@@ -60,7 +63,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
         >
             <ConfirmationModal 
             title={`Uninstall ${props.info.name}`}
-            body={`Are you sure you want to permanently remove ${props.info.name} including its data?`}
+            body={confirmationMessage}
             isOpen={isOpenUninstallModal} 
             onClose={handleOnCloseUninstallModal} 
             onConfirm={handleOnConfirmUninstall} />            
