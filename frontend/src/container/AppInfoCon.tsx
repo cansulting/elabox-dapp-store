@@ -17,17 +17,17 @@ import { PackageInfo } from "../data/packageInfo"
 let currentInfo : any = null
 
 export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
-    if (currentInfo === null || currentInfo.id !== props.info.id)
+    if (currentInfo === null || currentInfo.id !== props.info.id) {
         currentInfo = props.info
+    }
 
     const [info, setInfo] = useState(currentInfo)
     const [progress, setProgress] = useState(props.info.progress)
-    const updateInfo = (pkg: PackageInfo) => {
-        setInfo(pkg)
-        currentInfo = pkg
+    function updateInfo(pkg: any) {
+        currentInfo = {...currentInfo, ...pkg}
+        setInfo(currentInfo)
         if (props.onAppStateChanged)
-            props.onAppStateChanged(pkg)
-        //console.log("*******", pkg)
+            props.onAppStateChanged(currentInfo)
     }
     const handleLaunch = (pkg: PackageInfo) => {
         // open the package on new tab
@@ -46,7 +46,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }    
     const handleRefresh = (toastMessage: string) => {
         retrieveListing(info.id).then(listing => {
-            updateInfo({...info,...listing})
+            updateInfo(listing)
             setProgress(0)
             toast.success(toastMessage)            
         })
@@ -54,8 +54,8 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleDisable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             disablePackage(pkg.id).then(_ => {
-                handleCheckStatus(pkg)
-                toast.success(`${pkg.name} is disabled`)                            
+                updateInfo({isRunning:false})
+                toast.success(`${pkg.name} was disabled`)                            
             }).finally(()=>{
                 resolve("service changed")
             })            
@@ -65,23 +65,22 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleEnable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             On(pkg.id).then(_ => {
-                handleCheckStatus(pkg)
-                toast.success(`${pkg.name} is enabled`)                            
+                updateInfo({isRunning:true})
+                toast.success(`${pkg.name} was enabled`)                            
             }).finally(()=>{
                 resolve("service changed")
             })
         })
 
     }    
-    const handleCheckStatus = (pkg: PackageInfo) =>{
-        OnCheckStatus(pkg.id).then(isRunning =>{
-            updateInfo({...info,isRunning: isRunning === "true"})
+    const handleCheckStatus = () =>{
+        OnCheckStatus(info.id).then(isRunning =>{
+            updateInfo({isRunning: isRunning})
         })
 
     }
     const handleStateChanged = (args:any) => {
         //props.info.status = args.status
-        //console.log(info, args.status)
         switch (args.status) {
             case "downloading":
             case "downloaded":
@@ -91,15 +90,13 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             case "installed":
             case "uninstalled":
             case "updated":
-            case "enabled":
-            case "disabled":
-                handleRefresh(`${info.name} is ${args.status}`)
+                handleRefresh(`${info.name} was ${args.status}`)
                 break
             default:
                 setProgress(0)
                 break;
         }
-        updateInfo( {...currentInfo, status:args.status}) 
+        updateInfo( {status:args.status}) 
         //console.log(currentInfo)
     }
     const handleProgress = (args:any) => {
@@ -107,7 +104,6 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     const handleError = (args:any) => {
         updateInfo( {
-            ...info,
             notificationContents:[{
                 type:"error",content: "CODE" + args.code + ": " + args.error
             }]
@@ -128,7 +124,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             }
             updatedInfo.dependencies = updatedDepedencies
             updateInfo(updatedInfo)
-            handleCheckStatus(updatedInfo)
+            handleCheckStatus()
         })
         Listener.onPackage(props.info.id, "install_progress", handleProgress)
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged)
@@ -150,8 +146,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         onUpdate: handleInstall,
         onLaunch: handleLaunch,
         onOff: handleDisable,
-        onOn: handleEnable,
-        onCheckStatus: handleCheckStatus
+        onOn: handleEnable
     }
     return <AppInfo {...params}/>
 }
