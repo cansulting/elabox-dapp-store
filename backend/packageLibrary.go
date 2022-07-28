@@ -106,6 +106,7 @@ func StopApp(pkgId string) {
 
 }
 func RetrieveAllDependencies() ([]string, error) {
+	var dependenciesSet = make(map[string]bool)
 	var dependencies []string
 	storeItems, err := store_lister.GetItems()
 	if err != nil {
@@ -113,7 +114,11 @@ func RetrieveAllDependencies() ([]string, error) {
 	}
 	for _, pkg := range storeItems {
 		for _, dependency := range pkg.Dependencies {
-			dependencies = append(dependencies, dependency)
+			if !dependenciesSet[dependency] {
+				dependenciesSet[dependency] = true
+				dependencies = append(dependencies, dependency)
+			}
+
 		}
 	}
 	return dependencies, nil
