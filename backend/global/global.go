@@ -31,6 +31,7 @@ const INSTALL_PROGRESS = "ela.store.broadcast.INSTALL_PROGRESS"
 const BROADCAST_ERROR = "ela.store.broadcast.ERROR"
 const INSTALL_STATE = "ela.store.broadcast.INSTALL_STATE"
 const RETRIEVE_SYS_VERSION = "ela.store.actions.RETRIEVE_SYSTEM_VERSION"
+const CHECK_IF_PACKAGE_IS_DEPENDENCY = "ela.store.actions.CHECK_IF_PACKAGE_IS_DEPENDENCY"
 
 // endpoints
 const PACKAGES_ENDPOINT = STORE_HOST + "/api/v1/items"

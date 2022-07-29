@@ -66,17 +66,6 @@ func RetrieveApp(pkgId string) (*data.PackageInfo, error) {
 	if task := installer.GetTask(pkgInfo.Id); task != nil {
 		pkgInfo.Status = task.Status
 	}
-	//check if it is a dependency
-	dependencies, err := RetrieveAllDependencies()
-	if err != nil {
-		return nil, err
-	}
-	for _, dependency := range dependencies {
-		if dependency == pkgInfo.Id {
-			pkgInfo.IsDependency = true
-			break
-		}
-	}
 	return &pkgInfo, nil
 }
 
@@ -122,4 +111,18 @@ func RetrieveAllDependencies() ([]string, error) {
 		}
 	}
 	return dependencies, nil
+}
+func CheckIfDependency(pkgId string) (bool, error) {
+	isDependency := false
+	dependencies, err := RetrieveAllDependencies()
+	if err != nil {
+		return isDependency, err
+	}
+	for _, dependency := range dependencies {
+		if dependency == pkgId {
+			isDependency = true
+			break
+		}
+	}
+	return isDependency, nil
 }
