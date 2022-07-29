@@ -132,7 +132,8 @@
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
         "updates": "First Release on Elabox",
         "build": 1,
-        "beta": false,
+        "beta": true,
+        "betaUsers":["10000000992e4e2f"], 
         "version": "2.22.4",
         "projectRepo": "",
         "projectWebsite": ""

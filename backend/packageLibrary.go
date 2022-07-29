@@ -1,12 +1,15 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"sort"
 	"store/backend/data"
+	"store/backend/global"
 	"store/backend/services/installer"
 	"store/backend/services/store_lister"
 
+	sdata "github.com/cansulting/elabox-system-tools/foundation/event/data"
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
 	"github.com/cansulting/elabox-system-tools/registry/app"
 )
@@ -23,10 +26,18 @@ func RetrieveAllApps(beta bool) ([]data.PackageInfo, error) {
 	var tmpPreview data.PackageInfo
 	// step: iterate on packages
 	for _, pkg := range storeItems {
-		// skip if ignore beta app
-		// if !beta && pkg.Beta {
-		// 	continue
-		// }
+		if beta && pkg.Beta {
+			if pkg.Id == "filebrowser" {
+				isValid, err := isValidUser(pkg.BetaUsers)
+				if err != nil {
+					logger.GetInstance().Debug().Msg("unable to validate user: " + err.Error())
+					continue
+				}
+				if !isValid {
+					continue
+				}
+			}
+		}
 		installedInfo, err := app.RetrievePackage(pkg.Id)
 		if err != nil {
 			logger.GetInstance().Debug().Msg("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
@@ -94,4 +105,27 @@ func CancelInstall(pkgId string) {
 
 func StopApp(pkgId string) {
 
+}
+func isValidUser(users []string) (bool, error) {
+	isValid := false
+	action := sdata.NewAction(global.AC_DEVICE_SERIAL, "", nil)
+	response, err := global.RPC.CallRPC(global.ACCOUNT_PACKAGE_ID, action)
+	if err != nil {
+		return isValid, err
+	}
+	resp, err := response.ToSimpleResponse()
+	if err != nil {
+		return isValid, err
+	}
+	var data map[string]interface{}
+	if err := json.Unmarshal([]byte(resp.Message), &data); err != nil {
+		return isValid, err
+	}
+	for _, user := range users {
+		if user == data["Serial"] {
+			isValid = true
+			break
+		}
+	}
+	return isValid, nil
 }
