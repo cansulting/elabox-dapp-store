@@ -27,7 +27,7 @@ export interface AppInfoProps {
     onInstall?: (pkg:PackageInfo) => void
     onCancel?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
-    onCheckIfDependency?: (pkg:PackageInfo) => void
+    onCheckIfDependent?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
     onOff?: (pkg:PackageInfo) => Promise<string>    
     onOn?: (pkg:PackageInfo) => Promise<string>  
@@ -94,7 +94,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
     const handleCheckIfDependency = (evnt:any) => {
-        props.onCheckIfDependency(props.info)
+        props.onCheckIfDependent(props.info)
     }
     const handleOnOpenDependencyModal = () =>{
         if(props.info.dependencies && props.info.dependencies.length>0){
@@ -157,7 +157,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                     customActions: props.customActions,
                                     isService: props.info.isService,
                                     onUnInstall: handleUninstall,
-                                    onCheckIfDependency: handleCheckIfDependency,
+                                    onCheckIfDependent: handleCheckIfDependency,
                                     onResync: props.onResync,
                                     onDisable: props.onDisable,
                                     onRestart: props.onRestart,

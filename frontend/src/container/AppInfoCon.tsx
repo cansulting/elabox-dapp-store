@@ -10,7 +10,7 @@ import {
     disablePackage,
     On,
     OnCheckStatus,
-    OnCheckIfDependency
+    OnCheckIfDependent
 } from '../actions/appLib'
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
@@ -40,7 +40,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         installPackage(pkg.id)
     }
     const handleCheckIfDpendency = (pkg:PackageInfo) =>{
-        OnCheckIfDependency(pkg.id).then(isDependency => {
+        OnCheckIfDependent(pkg.id).then(isDependency => {
             setInfo({...info,isDependency})
         })
     }
@@ -148,7 +148,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         info:{...info, progress: progress},
         onInstall: handleInstall,
         onUninstall: handleUninstall,
-        onCheckIfDependency: handleCheckIfDpendency,
+        onCheckIfDependent: handleCheckIfDpendency,
         onCancel: handleCancel,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,

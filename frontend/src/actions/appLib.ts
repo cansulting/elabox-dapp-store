@@ -103,7 +103,7 @@ export async function OnCheckStatus(packageId: string) : Promise<boolean> {
   return enabled
 }
 
-export async function OnCheckIfDependency(packageId:string): Promise<boolean> {
+export async function OnCheckIfDependent(packageId:string): Promise<boolean> {
   console.log("Checking If dependency...")
   const res = await getEventHandler().sendRPC(PACKAGE_ID,AC_CHECK_IF_PACKAGE_IS_DEPENDENCY, packageId)
   if (res.code !== 200)

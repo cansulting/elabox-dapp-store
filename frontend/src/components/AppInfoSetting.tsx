@@ -13,7 +13,7 @@ export interface AppInfoSettingProps {
     isService: boolean
     customActions?: AppInfoAction[]                 // custom actions that will be added as menu
     onUnInstall?: Function
-    onCheckIfDependency: Function
+    onCheckIfDependent: Function
     onResync?: Function
     onDisable?: Function
     onRestart?: Function
@@ -39,7 +39,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
     const [isOpenUninstallModal,setIsOpenUninstallModal] = useState(false)
     const handleOnOpenUninstallModal = (e:React.MouseEvent) =>{
         e.preventDefault()
-        props.onCheckIfDependency()
+        props.onCheckIfDependent()
         setIsOpenUninstallModal(true)
     }
     const handleOnCloseUninstallModal = () =>{
