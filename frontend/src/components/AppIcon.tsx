@@ -116,7 +116,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 />
             )}
             </div>
-            {(!props.package.progress || props.package.progress <= 0) && <h4>{props.package.name}</h4>}
+            {(!props.package.progress || props.package.progress <= 0) && <h4 style={{fontSize:"clamp(1rem, 1vw, 2rem)",fontWeight:"500"}}>{props.package.name}</h4>}
         </div>
     )
 }
