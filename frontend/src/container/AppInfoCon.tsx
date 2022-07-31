@@ -24,6 +24,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
 
     const [info, setInfo] = useState(currentInfo)
     const [progress, setProgress] = useState(props.info.progress)
+    const [dependent, setDependent] = useState(false)
     function updateInfo(pkg: any) {
         currentInfo = {...currentInfo, ...pkg}
         setInfo(currentInfo)
@@ -40,8 +41,10 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         installPackage(pkg.id)
     }
     const handleCheckIfDpendency = (pkg:PackageInfo) =>{
-        OnCheckIfDependent(pkg.id).then(isDependency => {
-            setInfo({...info,isDependency})
+        console.log("START CHECK0")
+        OnCheckIfDependent(pkg.id).then(isDependent => {
+            setDependent(isDependent)
+            console.log("Checked " , isDependent)
         })
     }
     const handleUninstall = (pkg:PackageInfo) => {
@@ -149,6 +152,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         onInstall: handleInstall,
         onUninstall: handleUninstall,
         onCheckIfDependent: handleCheckIfDpendency,
+        isDependent: dependent,
         onCancel: handleCancel,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,

@@ -24,6 +24,7 @@ export interface AppInfoProps {
     style?: object
     footer?: JSX.Element
     customActions?: AppInfoAction[]             // custom secondary actions for app info
+    isDependent?: boolean
     onInstall?: (pkg:PackageInfo) => void
     onCancel?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
@@ -163,7 +164,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                     onRestart: props.onRestart,
                                     onOff: handleOff,
                                     onOn: handleOn,
-                                    
+                                    isDependent: props.isDependent,
                                 }}
                             />
                         </>

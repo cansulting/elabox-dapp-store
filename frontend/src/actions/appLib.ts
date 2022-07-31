@@ -108,8 +108,8 @@ export async function OnCheckIfDependent(packageId:string): Promise<boolean> {
   const res = await getEventHandler().sendRPC(PACKAGE_ID,AC_CHECK_IF_PACKAGE_IS_DEPENDENCY, packageId)
   if (res.code !== 200)
     throw new Error(res.message)
-  let isDependency = true
+  let isDependent = true
   if ( res.message === "false" || !res.message)
-  isDependency = false
-  return isDependency
+  isDependent = false
+  return isDependent
 }

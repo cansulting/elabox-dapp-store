@@ -78,11 +78,11 @@ func (instance *StoreService) rpc_oncancelinstall(client protocol.ClientInterfac
 	return rpc.CreateSuccessResponse("cancelled")
 }
 func (insstance *StoreService) rpc_oncheckifdependency(client protocol.ClientInterface, action data.Action) string {
-	isDependency, err := CheckIfDependency(action.PackageId)
+	isDependent, err := CheckIfDependency(action.PackageId)
 	if err != nil {
 		return rpc.CreateResponse(rpc.INVALID_CODE, err.Error())
 	}
-	return rpc.CreateJsonResponse(rpc.SUCCESS_CODE, isDependency)
+	return rpc.CreateJsonResponse(rpc.SUCCESS_CODE, isDependent)
 }
 
 func (instance *StoreService) rpc_onRetrieveSysVersion(client protocol.ClientInterface, action data.Action) string {

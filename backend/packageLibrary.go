@@ -113,16 +113,16 @@ func RetrieveAllDependencies() ([]string, error) {
 	return dependencies, nil
 }
 func CheckIfDependency(pkgId string) (bool, error) {
-	isDependency := false
+	isDependent := false
 	dependencies, err := RetrieveAllDependencies()
 	if err != nil {
-		return isDependency, err
+		return isDependent, err
 	}
 	for _, dependency := range dependencies {
 		if dependency == pkgId {
-			isDependency = true
+			isDependent = true
 			break
 		}
 	}
-	return isDependency, nil
+	return isDependent, nil
 }
