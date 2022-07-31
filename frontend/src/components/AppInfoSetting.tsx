@@ -51,7 +51,6 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
         props.onUnInstall()        
         setIsOpenUninstallModal(false)
     }
-    console.log("!!!", props.isDependent)
     const confirmationMessage = props.isDependent ? 
     "You are about to uninstall a package that is required by other packages. Uninstalling might affects its functionality.":
     `Are you sure you want to permanently remove ${props.info.name} including its data?`

@@ -41,10 +41,8 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         installPackage(pkg.id)
     }
     const handleCheckIfDpendency = (pkg:PackageInfo) =>{
-        console.log("START CHECK0")
         OnCheckIfDependent(pkg.id).then(isDependent => {
             setDependent(isDependent)
-            console.log("Checked " , isDependent)
         })
     }
     const handleUninstall = (pkg:PackageInfo) => {
@@ -119,7 +117,6 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         })
     }
     useEffect(() => {
-        console.log("init")
         retrieveListing(props.info.id).then(async pkg => {
             const updatedInfo = {...info,...pkg}
             const updatedDepedencies: PackageInfo[] = []
