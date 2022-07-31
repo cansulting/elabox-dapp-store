@@ -13,6 +13,8 @@ export interface AppInfoSettingProps {
     isService: boolean
     customActions?: AppInfoAction[]                 // custom actions that will be added as menu
     onUnInstall?: Function
+    onCheckIfDependent: Function
+    isDependent: boolean,
     onResync?: Function
     onDisable?: Function
     onRestart?: Function
@@ -38,6 +40,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
     const [isOpenUninstallModal,setIsOpenUninstallModal] = useState(false)
     const handleOnOpenUninstallModal = (e:React.MouseEvent) =>{
         e.preventDefault()
+        props.onCheckIfDependent()
         setIsOpenUninstallModal(true)
     }
     const handleOnCloseUninstallModal = () =>{
@@ -48,6 +51,10 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
         props.onUnInstall()        
         setIsOpenUninstallModal(false)
     }
+    console.log("!!!", props.isDependent)
+    const confirmationMessage = props.isDependent ? 
+    "You are about to uninstall a package that is required by other packages. Uninstalling might affects its functionality.":
+    `Are you sure you want to permanently remove ${props.info.name} including its data?`
     return (
         <div
             style={{
@@ -60,7 +67,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
         >
             <ConfirmationModal 
             title={`Uninstall ${props.info.name}`}
-            body={`Are you sure you want to permanently remove ${props.info.name} including its data?`}
+            body={confirmationMessage}
             isOpen={isOpenUninstallModal} 
             onClose={handleOnCloseUninstallModal} 
             onConfirm={handleOnConfirmUninstall} />            

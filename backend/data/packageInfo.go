@@ -24,6 +24,7 @@ type PackageInfo struct {
 	IsService        bool             `json:"isService"`
 	LatestMinRuntime string           `json:"latestMinRuntime,omitempty"` // the minimum runtime required to install this package
 	Dependencies     []string         `json:"dependencies,omitempty"`     // list of package ids where this package is dependent to
+	IsDependency     bool             `json:"isDependent,omitempty"`
 }
 
 func NewPackageInfo() PackageInfo {
@@ -66,6 +67,7 @@ func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheIt
 			instance.Updates = storeCacheItem.Updates
 			instance.Version = storeCacheItem.Version
 			instance.Dependencies = storeCacheItem.Dependencies
+			instance.IsDependency = false
 			// if loaded, _ := storeCacheItem.LoadDetails(); loaded {
 
 			// }

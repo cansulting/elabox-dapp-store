@@ -66,7 +66,6 @@ func RetrieveApp(pkgId string) (*data.PackageInfo, error) {
 	if task := installer.GetTask(pkgInfo.Id); task != nil {
 		pkgInfo.Status = task.Status
 	}
-
 	return &pkgInfo, nil
 }
 
@@ -94,4 +93,36 @@ func CancelInstall(pkgId string) {
 
 func StopApp(pkgId string) {
 
+}
+func RetrieveAllDependencies() ([]string, error) {
+	var dependenciesSet = make(map[string]bool)
+	var dependencies []string
+	storeItems, err := store_lister.GetItems()
+	if err != nil {
+		return nil, errors.New("unable to retrieve all installed packages. inner: " + err.Error())
+	}
+	for _, pkg := range storeItems {
+		for _, dependency := range pkg.Dependencies {
+			if !dependenciesSet[dependency] {
+				dependenciesSet[dependency] = true
+				dependencies = append(dependencies, dependency)
+			}
+
+		}
+	}
+	return dependencies, nil
+}
+func CheckIfDependency(pkgId string) (bool, error) {
+	isDependent := false
+	dependencies, err := RetrieveAllDependencies()
+	if err != nil {
+		return isDependent, err
+	}
+	for _, dependency := range dependencies {
+		if dependency == pkgId {
+			isDependent = true
+			break
+		}
+	}
+	return isDependent, nil
 }

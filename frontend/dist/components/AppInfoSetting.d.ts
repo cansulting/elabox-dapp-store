@@ -12,5 +12,7 @@ export interface AppInfoSettingProps {
     onResync?: Function;
     onDisable?: Function;
     onRestart?: Function;
+    onOn?: () => Promise<string>;
+    onOff?: () => Promise<string>;
 }
 export declare const AppInfoSetting: (props: AppInfoSettingProps) => JSX.Element;

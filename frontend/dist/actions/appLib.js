@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.restart = exports.resync = exports.retrieveSystemVersion = exports.uninstallPackage = exports.installPackage = exports.retrieveListing = exports.retrieveAllListings = void 0;
+exports.OnCheckStatus = exports.On = exports.disablePackage = exports.restart = exports.resync = exports.retrieveSystemVersion = exports.cancelPackage = exports.uninstallPackage = exports.installPackage = exports.retrieveListing = exports.retrieveAllListings = void 0;
 var constants_1 = require("./constants");
 function retrieveAllListings(beta) {
     if (beta === void 0) { beta = false; }
@@ -104,6 +104,19 @@ function uninstallPackage(packageId) {
     });
 }
 exports.uninstallPackage = uninstallPackage;
+function cancelPackage(packageId) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_CANCEL_PKG, packageId)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.cancelPackage = cancelPackage;
 function retrieveSystemVersion() {
     return __awaiter(this, void 0, void 0, function () {
         var res;
@@ -158,3 +171,64 @@ function restart(packageId) {
     });
 }
 exports.restart = restart;
+// off specific service/node
+function disablePackage(packageId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log("off...");
+                    return [4 /*yield*/, (0, constants_1.getEventHandler)().sendSystemRPC(constants_1.AC_OFF, packageId)];
+                case 1:
+                    res = _a.sent();
+                    console.log(res);
+                    if (res.code !== 200)
+                        throw new Error(res.message);
+                    return [2 /*return*/, res.message];
+            }
+        });
+    });
+}
+exports.disablePackage = disablePackage;
+// on specific service/node
+function On(packageId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log("On...");
+                    return [4 /*yield*/, (0, constants_1.getEventHandler)().sendSystemRPC(constants_1.AC_ON, packageId)];
+                case 1:
+                    res = _a.sent();
+                    if (res.code !== 200)
+                        throw new Error(res.message);
+                    return [2 /*return*/, res.message];
+            }
+        });
+    });
+}
+exports.On = On;
+// check specific service/node status
+function OnCheckStatus(packageId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var res, enabled;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log("Checking Status...");
+                    return [4 /*yield*/, (0, constants_1.getEventHandler)().sendSystemRPC(constants_1.AC_CHECK_STATUS, packageId)];
+                case 1:
+                    res = _a.sent();
+                    if (res.code !== 200)
+                        throw new Error(res.message);
+                    enabled = true;
+                    if (res.message === "false" || !res.message)
+                        enabled = false;
+                    return [2 /*return*/, enabled];
+            }
+        });
+    });
+}
+exports.OnCheckStatus = OnCheckStatus;

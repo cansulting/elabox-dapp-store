@@ -12,7 +12,8 @@ import {
   AC_RESTART,
   AC_OFF,
   AC_ON,
-  AC_CHECK_STATUS
+  AC_CHECK_STATUS,
+  AC_CHECK_IF_PACKAGE_IS_DEPENDENCY
  } from "./constants";
 
 export async function retrieveAllListings(beta = false) : Promise<PackageInfo[]>{
@@ -100,4 +101,15 @@ export async function OnCheckStatus(packageId: string) : Promise<boolean> {
   if ( res.message === "false" || !res.message)
     enabled = false
   return enabled
+}
+
+export async function OnCheckIfDependent(packageId:string): Promise<boolean> {
+  console.log("Checking If dependency...")
+  const res = await getEventHandler().sendRPC(PACKAGE_ID,AC_CHECK_IF_PACKAGE_IS_DEPENDENCY, packageId)
+  if (res.code !== 200)
+    throw new Error(res.message)
+  let isDependent = true
+  if ( res.message === "false" || !res.message)
+  isDependent = false
+  return isDependent
 }
