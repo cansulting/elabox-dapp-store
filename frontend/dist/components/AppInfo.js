@@ -98,6 +98,9 @@ var AppInfo = function (props) {
         if (props.onUninstall && sysCompatible)
             props.onUpdate(props.info);
     };
+    var handleCheckIfDependency = function (evnt) {
+        props.onCheckIfDependent(props.info);
+    };
     var handleOnOpenDependencyModal = function () {
         if (props.info.dependencies && props.info.dependencies.length > 0) {
             setIsOpenDependencyModal(true);
@@ -141,11 +144,13 @@ var AppInfo = function (props) {
                         customActions: props.customActions,
                         isService: props.info.isService,
                         onUnInstall: handleUninstall,
+                        onCheckIfDependent: handleCheckIfDependency,
                         onResync: props.onResync,
                         onDisable: props.onDisable,
                         onRestart: props.onRestart,
                         onOff: handleOff,
                         onOn: handleOn,
+                        isDependent: props.isDependent,
                     } })))),
         react_1.default.createElement(reactstrap_1.Row, { lg: "2" },
             react_1.default.createElement(reactstrap_1.Col, { className: "text-center text-lg-start d-flex flex-column align-items-center", xs: "12", lg: "2" },
@@ -161,16 +166,16 @@ var AppInfo = function (props) {
                     react_1.default.createElement(Notifications, { data: info.notificationContents }),
                 (updatable || info.status === "uninstalled") && !sysCompatible &&
                     react_1.default.createElement("p", { style: { color: 'gray' } }, "Requires latest system to install this package."),
+                props.info.isService && props.info.status === "installed" && !props.info.enabled &&
+                    react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
+                            width: '100%',
+                        } },
+                        react_1.default.createElement("p", { style: { color: 'red' } }, "Disabled")),
                 react_1.default.createElement("div", { style: {
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 5,
                     } },
-                    props.info.status === "installed" && !props.info.isRunning &&
-                        react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
-                                width: '100%',
-                            } },
-                            react_1.default.createElement("p", { style: { color: 'red' } }, "Disabled")),
                     sysCompatible && updatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", active: sysCompatible, outline: true, onClick: handleUpdate }, "Update")),
                     (0, packageInfo_1.isLaunchable)(info) && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
                 sysCompatible && info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleOnOpenDependencyModal }, "Install")),

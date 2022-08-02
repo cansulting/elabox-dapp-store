@@ -110,6 +110,7 @@ var AppInfoCon = function (props) {
     }
     var _a = __read((0, react_2.useState)(currentInfo), 2), info = _a[0], setInfo = _a[1];
     var _b = __read((0, react_2.useState)(props.info.progress), 2), progress = _b[0], setProgress = _b[1];
+    var _c = __read((0, react_2.useState)(false), 2), dependent = _c[0], setDependent = _c[1];
     function updateInfo(pkg) {
         currentInfo = __assign(__assign({}, currentInfo), pkg);
         setInfo(currentInfo);
@@ -124,6 +125,11 @@ var AppInfoCon = function (props) {
     };
     var handleInstall = function (pkg) {
         (0, appLib_1.installPackage)(pkg.id);
+    };
+    var handleCheckIfDpendency = function (pkg) {
+        (0, appLib_1.OnCheckIfDependent)(pkg.id).then(function (isDependent) {
+            setDependent(isDependent);
+        });
     };
     var handleUninstall = function (pkg) {
         (0, appLib_1.uninstallPackage)(pkg.id);
@@ -141,7 +147,7 @@ var AppInfoCon = function (props) {
     var handleDisable = function (pkg) {
         return new Promise(function (resolve, _) {
             (0, appLib_1.disablePackage)(pkg.id).then(function (_) {
-                updateInfo({ isRunning: false });
+                updateInfo({ isRunning: false, enabled: false });
                 react_hot_toast_1.default.success("".concat(pkg.name, " was disabled"));
             }).finally(function () {
                 resolve("service changed");
@@ -151,7 +157,7 @@ var AppInfoCon = function (props) {
     var handleEnable = function (pkg) {
         return new Promise(function (resolve, _) {
             (0, appLib_1.On)(pkg.id).then(function (_) {
-                updateInfo({ isRunning: true });
+                updateInfo({ isRunning: true, enabled: true });
                 react_hot_toast_1.default.success("".concat(pkg.name, " was enabled"));
             }).finally(function () {
                 resolve("service changed");
@@ -194,7 +200,6 @@ var AppInfoCon = function (props) {
         });
     };
     (0, react_1.useEffect)(function () {
-        console.log("init");
         (0, appLib_1.retrieveListing)(props.info.id).then(function (pkg) { return __awaiter(void 0, void 0, void 0, function () {
             var updatedInfo, updatedDepedencies, _a, _b, pkgId, app, e_1_1;
             var e_1, _c;
@@ -253,7 +258,7 @@ var AppInfoCon = function (props) {
             Listener.offPackage(props.info.id, "install_error", handleError);
         };
     }, [props.info.id]);
-    var params = __assign(__assign({}, props), { info: __assign(__assign({}, info), { progress: progress }), onInstall: handleInstall, onUninstall: handleUninstall, onCancel: handleCancel, onUpdate: handleInstall, onLaunch: handleLaunch, onOff: handleDisable, onOn: handleEnable });
+    var params = __assign(__assign({}, props), { info: __assign(__assign({}, info), { progress: progress }), onInstall: handleInstall, onUninstall: handleUninstall, onCheckIfDependent: handleCheckIfDpendency, isDependent: dependent, onCancel: handleCancel, onUpdate: handleInstall, onLaunch: handleLaunch, onOff: handleDisable, onOn: handleEnable });
     return react_1.default.createElement(AppInfo_1.AppInfo, __assign({}, params));
 };
 exports.AppInfoCon = AppInfoCon;

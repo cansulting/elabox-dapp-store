@@ -19,7 +19,9 @@ function isUpdateCompat(pkg) {
 }
 exports.isUpdateCompat = isUpdateCompat;
 function isLaunchable(pkg) {
-    if (pkg.status !== "installed" || !pkg.isRunning)
+    if (pkg.status !== "installed")
+        return false;
+    if (pkg.isService && !pkg.enabled)
         return false;
     if (pkg.launchUrl && pkg.launchUrl !== "")
         return true;

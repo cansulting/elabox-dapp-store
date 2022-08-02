@@ -203,6 +203,18 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     (updatable || info.status === "uninstalled") && !sysCompatible && 
                         <p style={{color:'gray'}}>Requires latest system to install this package.</p>
                     }
+                    { props.info.isService && props.info.status === "installed" && !props.info.enabled &&
+                        <div
+                            className="d-flex flex-column align-items-center align-items-lg-start"
+                            style={{
+                                width: '100%',
+                            }}
+                        >
+                            <p style={{color:'red'}}>
+                                Disabled
+                            </p>
+                        </div>
+                    }
                     <div
                         style={{
                             display: 'flex',
@@ -210,18 +222,6 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             gap: 5,
                         }}
                     >
-                        { props.info.status === "installed" && !props.info.isRunning &&
-                            <div
-                                className="d-flex flex-column align-items-center align-items-lg-start"
-                                style={{
-                                    width: '100%',
-                                }}
-                            >
-                                <p style={{color:'red'}}>
-                                    Disabled
-                                </p>
-                            </div>
-                        }
                         { sysCompatible && updatable && (
                             <AppButton
                                 color="primary"

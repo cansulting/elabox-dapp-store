@@ -63,6 +63,11 @@ func RetrieveApp(pkgId string) (*data.PackageInfo, error) {
 	}
 	var pkgInfo = data.PackageInfo{}
 	pkgInfo.AddInfo(pkg, storeCacheItem, true)
+	enabled, err := app.GetServiceStatus(pkgId)
+	if err != nil {
+		return nil, errors.New("failed to check if package is enable " + pkgId)
+	}
+	pkgInfo.Enabled = enabled
 	if task := installer.GetTask(pkgInfo.Id); task != nil {
 		pkgInfo.Status = task.Status
 	}

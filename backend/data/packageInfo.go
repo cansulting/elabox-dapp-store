@@ -25,6 +25,7 @@ type PackageInfo struct {
 	LatestMinRuntime string           `json:"latestMinRuntime,omitempty"` // the minimum runtime required to install this package
 	Dependencies     []string         `json:"dependencies,omitempty"`     // list of package ids where this package is dependent to
 	IsDependency     bool             `json:"isDependent,omitempty"`
+	Enabled          bool             `json:"enabled,omitempty"`
 }
 
 func NewPackageInfo() PackageInfo {

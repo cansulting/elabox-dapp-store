@@ -9,6 +9,8 @@ export interface AppInfoSettingProps {
     isService: boolean;
     customActions?: AppInfoAction[];
     onUnInstall?: Function;
+    onCheckIfDependent: Function;
+    isDependent: boolean;
     onResync?: Function;
     onDisable?: Function;
     onRestart?: Function;

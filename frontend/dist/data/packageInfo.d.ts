@@ -14,7 +14,9 @@ export interface PackageInfo {
     dependencies?: Array<any>;
     updates?: string;
     isRunning?: boolean;
+    enabled?: boolean;
     isService?: boolean;
+    isDependency?: boolean;
     launchUrl?: string;
     notificationContents?: MessagePrompt[];
     category?: 'system' | undefined | '';

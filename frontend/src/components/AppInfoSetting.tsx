@@ -27,7 +27,7 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
     const handleServiceStatusChange = (e:React.MouseEvent<HTMLInputElement>) =>{
         e.preventDefault()
         setIsServiceLoading(true)        
-        if(props.info.isRunning) {
+        if(props.info.enabled) {
             props.onOff().then(()=>{
                 setIsServiceLoading(false)
             })
@@ -92,12 +92,12 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                     </span>
                     {props.info.status === "installed" &&
                     <span
-                    style={{ cursor: 'pointer',color: `${!props.info.isRunning ? "green":"red"}` }}
+                    style={{ cursor: 'pointer',color: `${!props.info.enabled ? "green":"red"}` }}
                     onClick={handleServiceStatusChange}
                 >
                         {isServiceLoading && <Spinner children="" size="sm" color="secondary" />}
-                        {props.info.isRunning && !isServiceLoading && "Disable"}
-                        {!props.info.isRunning && !isServiceLoading && "Enable"}
+                        {props.info.enabled && !isServiceLoading && "Disable"}
+                        {!props.info.enabled && !isServiceLoading && "Enable"}
                     </span>
                 }                        
                 </>

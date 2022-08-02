@@ -45,7 +45,7 @@ var AppInfoSetting = function (props) {
     var handleServiceStatusChange = function (e) {
         e.preventDefault();
         setIsServiceLoading(true);
-        if (props.info.isRunning) {
+        if (props.info.enabled) {
             props.onOff().then(function () {
                 setIsServiceLoading(false);
             });
@@ -58,6 +58,7 @@ var AppInfoSetting = function (props) {
     var _c = __read((0, react_1.useState)(false), 2), isOpenUninstallModal = _c[0], setIsOpenUninstallModal = _c[1];
     var handleOnOpenUninstallModal = function (e) {
         e.preventDefault();
+        props.onCheckIfDependent();
         setIsOpenUninstallModal(true);
     };
     var handleOnCloseUninstallModal = function () {
@@ -68,6 +69,9 @@ var AppInfoSetting = function (props) {
         props.onUnInstall();
         setIsOpenUninstallModal(false);
     };
+    var confirmationMessage = props.isDependent ?
+        "You are about to uninstall a package that is required by other packages. Uninstalling might affects its functionality." :
+        "Are you sure you want to permanently remove ".concat(props.info.name, " including its data?");
     return (react_1.default.createElement("div", { style: {
             display: 'flex',
             flexDirection: 'column',
@@ -75,7 +79,7 @@ var AppInfoSetting = function (props) {
             width: '100%',
             gap: 5,
         } },
-        react_1.default.createElement(Confirmation_1.ConfirmationModal, { title: "Uninstall ".concat(props.info.name), body: "Are you sure you want to permanently remove ".concat(props.info.name, " including its data?"), isOpen: isOpenUninstallModal, onClose: handleOnCloseUninstallModal, onConfirm: handleOnConfirmUninstall }),
+        react_1.default.createElement(Confirmation_1.ConfirmationModal, { title: "Uninstall ".concat(props.info.name), body: confirmationMessage, isOpen: isOpenUninstallModal, onClose: handleOnCloseUninstallModal, onConfirm: handleOnConfirmUninstall }),
         props.isService &&
             react_1.default.createElement(react_1.default.Fragment, null,
                 react_1.default.createElement("span", { style: { color: 'red', cursor: 'pointer' }, onClick: function (e) {
@@ -87,10 +91,10 @@ var AppInfoSetting = function (props) {
                         props.onRestart();
                     } }, "Restart"),
                 props.info.status === "installed" &&
-                    react_1.default.createElement("span", { style: { cursor: 'pointer', color: "".concat(!props.info.isRunning ? "green" : "red") }, onClick: handleServiceStatusChange },
+                    react_1.default.createElement("span", { style: { cursor: 'pointer', color: "".concat(!props.info.enabled ? "green" : "red") }, onClick: handleServiceStatusChange },
                         isServiceLoading && react_1.default.createElement(reactstrap_1.Spinner, { children: "", size: "sm", color: "secondary" }),
-                        props.info.isRunning && !isServiceLoading && "Disable",
-                        !props.info.isRunning && !isServiceLoading && "Enable")),
+                        props.info.enabled && !isServiceLoading && "Disable",
+                        !props.info.enabled && !isServiceLoading && "Enable")),
         props.info.category !== 'system' &&
             react_1.default.createElement("span", { style: { color: 'red', cursor: 'pointer' }, onClick: handleOnOpenUninstallModal }, "Uninstall"), // render custom actions
     (_a = props.customActions) === null || _a === void 0 ? void 0 :

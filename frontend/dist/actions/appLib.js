@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OnCheckStatus = exports.On = exports.disablePackage = exports.restart = exports.resync = exports.retrieveSystemVersion = exports.cancelPackage = exports.uninstallPackage = exports.installPackage = exports.retrieveListing = exports.retrieveAllListings = void 0;
+exports.OnCheckIfDependent = exports.OnCheckStatus = exports.On = exports.disablePackage = exports.restart = exports.resync = exports.retrieveSystemVersion = exports.cancelPackage = exports.uninstallPackage = exports.installPackage = exports.retrieveListing = exports.retrieveAllListings = void 0;
 var constants_1 = require("./constants");
 function retrieveAllListings(beta) {
     if (beta === void 0) { beta = false; }
@@ -232,3 +232,24 @@ function OnCheckStatus(packageId) {
     });
 }
 exports.OnCheckStatus = OnCheckStatus;
+function OnCheckIfDependent(packageId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var res, isDependent;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log("Checking If dependency...");
+                    return [4 /*yield*/, (0, constants_1.getEventHandler)().sendRPC(constants_1.PACKAGE_ID, constants_1.AC_CHECK_IF_PACKAGE_IS_DEPENDENCY, packageId)];
+                case 1:
+                    res = _a.sent();
+                    if (res.code !== 200)
+                        throw new Error(res.message);
+                    isDependent = true;
+                    if (res.message === "false" || !res.message)
+                        isDependent = false;
+                    return [2 /*return*/, isDependent];
+            }
+        });
+    });
+}
+exports.OnCheckIfDependent = OnCheckIfDependent;

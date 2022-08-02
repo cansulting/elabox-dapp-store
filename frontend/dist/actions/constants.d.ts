@@ -6,6 +6,7 @@ export declare const AC_RETRIEVE_PKG = "ela.store.actions.RETRIEVE_PACKAGE";
 export declare const AC_INSTALL_PKG = "ela.store.actions.INSTALL_PACKAGE";
 export declare const AC_UNINSTALL_PKG = "ela.store.actions.UNINSTALL_PACKAGE";
 export declare const AC_CANCEL_PKG = "ela.store.actions.CANCEL_INSTALL_PACKAGE";
+export declare const AC_CHECK_IF_PACKAGE_IS_DEPENDENCY = "ela.store.actions.CHECK_IF_PACKAGE_IS_DEPENDENCY";
 export declare const AC_RETRIEVE_SYSTEM_VERSION = "ela.store.actions.RETRIEVE_SYSTEM_VERSION";
 export declare const AC_RESTART = "ela.system.APP_RESTART";
 export declare const AC_OFF = "ela.system.APP_OFF";

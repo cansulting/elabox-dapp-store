@@ -61,7 +61,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleDisable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             disablePackage(pkg.id).then(_ => {
-                updateInfo({isRunning:false})
+                updateInfo({isRunning:false,enabled:false})
                 toast.success(`${pkg.name} was disabled`)                            
             }).finally(()=>{
                 resolve("service changed")
@@ -72,7 +72,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleEnable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             On(pkg.id).then(_ => {
-                updateInfo({isRunning:true})
+                updateInfo({isRunning:true,enabled:true})
                 toast.success(`${pkg.name} was enabled`)                            
             }).finally(()=>{
                 resolve("service changed")

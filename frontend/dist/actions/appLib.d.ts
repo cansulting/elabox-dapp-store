@@ -10,3 +10,4 @@ export declare function restart(packageId: string): Promise<string>;
 export declare function disablePackage(packageId: string): Promise<string>;
 export declare function On(packageId: string): Promise<string>;
 export declare function OnCheckStatus(packageId: string): Promise<boolean>;
+export declare function OnCheckIfDependent(packageId: string): Promise<boolean>;
