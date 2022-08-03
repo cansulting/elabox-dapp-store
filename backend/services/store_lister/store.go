@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"reflect"
 	"store/backend/broadcast"
 	"store/backend/data"
 	"store/backend/global"
@@ -100,7 +101,11 @@ func CheckUpdates() error {
 		// compare to olditem
 		localData, _ := GetItem(latestData.Id)
 		if localData != nil {
-			if localData.Build == latestData.Build {
+			shouldUseLocalData := localData.Build == latestData.Build
+			if latestData.Beta {
+				shouldUseLocalData = localData.Build == latestData.Build && localData.Beta == latestData.Beta && reflect.DeepEqual(localData.BetaUsers, latestData.BetaUsers)
+			}
+			if shouldUseLocalData {
 				tmp[i] = localData
 				continue
 			}
