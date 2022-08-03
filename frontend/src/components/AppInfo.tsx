@@ -251,7 +251,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             Install
                         </AppButton>
                     )}                  
-                    { info.status !== "uninstalling" && progress > 0 && (
+                    { info.status !== "uninstalling" && info.status !== "installed" && info.status !== "uninstalled"  && (
                         <div
                         className="d-flex flex-column align-items-center align-items-lg-start"
                         style={{
@@ -261,7 +261,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         <p>
                             {AppStatusToCaption(info.status)}
                         </p>
-                        <div 
+
+                        { progress > 0 && <div 
                             className="d-flex align-items-center justify-content-center align-items-lg-center" 
                             style={{ width: '30%',gap:5 }}
                         >
@@ -279,9 +280,9 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                 onClick={handleCancel}>
                                 <Icon.X  color="white" size={14}/>
                             </AppButton>                                
-                        </div>
+                        </div> }
                     </div>  
-                    )}
+                    ) }
                     { (info.status === "uninstalling" || info.status === "wait_depends") && (
                         <div
                             className="d-flex flex-column align-items-center align-items-lg-start"
@@ -293,7 +294,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                 {AppStatusToCaption(info.status)}
                             </p>
                     </div>
-                    )}
+                    ) }
                 </Col>
             </Row>
             <Row className="mt-4">
