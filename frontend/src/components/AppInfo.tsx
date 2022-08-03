@@ -301,6 +301,18 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     <p>{props.info.description}</p>
                 </Col>
             </Row>
+            {props.info.dependencies?.length > 0 && <Row className="mt-4">
+                <Col>
+                    <h4 className='mb-4'>Depedencies</h4>
+                    {props.info.dependencies?.map(dependecy => {
+                        return <div className='mt-2 mb-2'>
+                            <h5>{dependecy.name}</h5>
+                            <p>{dependecy.description}</p>
+                        </div>
+                    })}
+
+                </Col>
+            </Row>}
             <Row className="mt-4">
                 <Col>
                     <h4>What's New</h4>
