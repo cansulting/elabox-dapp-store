@@ -76,9 +76,11 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const settingPopoverRef = useRef(null)
     const progressColor = ProgressColor(props.info.status)
     const info = props.info;
-    const progress = info.progress;
+    let progress = info.progress;
     const updatable = isUpdatable(props.info)
     const sysCompatible = isUpdateCompat(props.info)
+    if (!(progress > 0) && props.info.status === "installing") 
+        progress = 95
     const handleInstall = () => {
         if (props.onInstall) props.onInstall(props.info)
     }
@@ -203,7 +205,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     (updatable || info.status === "uninstalled") && !sysCompatible && 
                         <p style={{color:'gray'}}>Requires latest system to install this package.</p>
                     }
-                    { props.info.isService && props.info.status === "installed" && props.info.hasOwnProperty("isRunning") && !props.info.enabled &&
+                    { props.info.isService && props.info.status === "installed" && !props.info.enabled &&
                         <div
                             className="d-flex flex-column align-items-center align-items-lg-start"
                             style={{
