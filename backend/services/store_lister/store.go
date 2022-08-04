@@ -102,7 +102,8 @@ func CheckUpdates() error {
 		localData, _ := GetItem(latestData.Id)
 		if localData != nil {
 			shouldUseLocalData := localData.Build == latestData.Build
-			if latestData.Beta {
+			// test if beta users were changed
+			if shouldUseLocalData && latestData.Beta {
 				shouldUseLocalData = localData.Build == latestData.Build && localData.Beta == latestData.Beta && reflect.DeepEqual(localData.BetaUsers, latestData.BetaUsers)
 			}
 			if shouldUseLocalData {

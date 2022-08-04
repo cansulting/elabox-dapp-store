@@ -12,6 +12,8 @@ import (
 	"github.com/cansulting/elabox-system-tools/registry/app"
 )
 
+var deviceSerial = ""
+
 // retrieve all apps
 // @beta is true if include all apps for testing and demo apps
 func RetrieveAllApps(beta bool) ([]data.PackageInfo, error) {
@@ -24,19 +26,20 @@ func RetrieveAllApps(beta bool) ([]data.PackageInfo, error) {
 	var tmpPreview data.PackageInfo
 	// step: iterate on packages
 	for _, pkg := range storeItems {
+		installedInfo, err := app.RetrievePackage(pkg.Id)
+		if err != nil {
+			logger.GetInstance().Debug().Msg("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
+		}
 		if beta && pkg.Beta {
-			isValid, err := isValidUser(pkg.BetaUsers)
+			tester, err := isTester(pkg.BetaUsers)
 			if err != nil {
 				logger.GetInstance().Debug().Msg("unable to validate user: " + err.Error())
 				continue
 			}
-			if !isValid {
+			// not tester and not installed, skip the package
+			if !tester && installedInfo == nil {
 				continue
 			}
-		}
-		installedInfo, err := app.RetrievePackage(pkg.Id)
-		if err != nil {
-			logger.GetInstance().Debug().Msg("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
 		}
 		tmpPreview = data.PackageInfo{}
 		tmpPreview.AddInfo(installedInfo, pkg, false)
@@ -102,9 +105,11 @@ func CancelInstall(pkgId string) {
 func StopApp(pkgId string) {
 
 }
-func isValidUser(users []string) (bool, error) {
+func isTester(users []string) (bool, error) {
 	isValid := false
-	deviceSerial := system.GetDeviceInfo().Serial
+	if deviceSerial == "" {
+		deviceSerial = system.GetDeviceInfo().Serial
+	}
 	for _, user := range users {
 		if user == deviceSerial {
 			isValid = true
