@@ -27,9 +27,9 @@
         "id": "ela.esc",
         "description": "The Smart Contract Chain (ESC) allows developers to code, deploy, and run their smart contracts on Ethereum Virtual Machines (EVMs). The sidechain also supports the execution of smart contracts written in Solidity.By utilizing DPoS Consensus, the Smart Contract Chain (ESC) acts as a high-performance, scalable smart contract execution solution.",
         "icon" : "https://storage.googleapis.com/elabox/store/apps/ela.esc/listing/icon.png",
-        "updates": "First release on Elabox",
-        "build": 2,
-        "version": "0.1.4.3",
+        "updates": "fixed fork error, add --pbft.miner.address flag, small amount transfer optimization",
+        "build": 3,
+        "version": "0.2.0",
         "projectRepo": "",
         "projectWebsite": ""
     },
@@ -69,10 +69,11 @@
     "elacity": {
         "name": "Elacity",
         "id": "elacity",
-        "description": "A flexible, decentralized storage solution with swappable storage constructs that allow for private storage and public decentralized storage behind robust Swift/Java SDKs for mobile and JS SDKs for the web.",
-        "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.pasar/listing/red_ios%404x.png",
+        "description": "Web5 Marketplace powered by Elastos.",
+        "icon" : "https://storage.googleapis.com/elabox/store/apps/elacity/listing/1.png",
         "updates": "First Release on Elabox",
         "build": 1,
+        "beta": false,
         "version": "0.1.0",
         "projectRepo": "",
         "projectWebsite": ""

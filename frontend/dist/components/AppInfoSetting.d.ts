@@ -9,8 +9,12 @@ export interface AppInfoSettingProps {
     isService: boolean;
     customActions?: AppInfoAction[];
     onUnInstall?: Function;
+    onCheckIfDependent: Function;
+    isDependent: boolean;
     onResync?: Function;
     onDisable?: Function;
     onRestart?: Function;
+    onOn?: () => Promise<string>;
+    onOff?: () => Promise<string>;
 }
 export declare const AppInfoSetting: (props: AppInfoSettingProps) => JSX.Element;

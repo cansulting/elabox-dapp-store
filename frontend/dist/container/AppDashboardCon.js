@@ -35,19 +35,19 @@ var react_1 = __importDefault(require("react"));
 var react_2 = require("react");
 var actions_1 = require("../actions");
 var components_1 = require("../components");
-var react_router_dom_1 = require("react-router-dom");
+//import { useLocation } from "react-router-dom"
 var AppDashboardCon = function (props) {
     var _a = __read((0, react_2.useState)([]), 2), pkgs = _a[0], setPkgs = _a[1];
-    var search = (0, react_router_dom_1.useLocation)().search;
+    //const { search } = useLocation()
     (0, react_2.useEffect)(function () {
         if (!pkgs || pkgs.length === 0) {
-            var urlS = new URLSearchParams(search);
-            var beta = urlS.get("beta");
-            var showBeta = false;
-            if (beta) {
-                showBeta = beta === 'true' || beta === '1';
-            }
-            (0, actions_1.retrieveAllListings)(showBeta)
+            //const urlS = new URLSearchParams(search)
+            //const beta  = urlS.get("beta")
+            // let showBeta = false
+            // if (beta) {
+            //     showBeta = beta === 'true' || beta === '1'
+            // }
+            (0, actions_1.retrieveAllListings)(true)
                 .then(function (res) {
                 setPkgs(res);
             })

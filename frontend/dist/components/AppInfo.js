@@ -29,12 +29,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppInfo = void 0;
 var react_1 = __importStar(require("react"));
+var react_hot_toast_1 = require("react-hot-toast");
 var Icon = __importStar(require("react-feather"));
 var reactstrap_1 = require("reactstrap");
 var AppButton_1 = require("./AppButton");
+var Dependency_1 = require("./partials/Modals/Dependency");
 var AppInfoSetting_1 = require("./AppInfoSetting");
 var colors_1 = require("../utils/colors");
 var packageInfo_1 = require("../data/packageInfo");
@@ -53,13 +71,14 @@ var SettingPopover = function (props) {
             react_1.default.createElement(AppInfoSetting_1.AppInfoSetting, __assign({}, props.setting)))));
 };
 var AppInfo = function (props) {
+    var _a = __read((0, react_1.useState)(false), 2), isOpenDependencyModal = _a[0], setIsOpenDependencyModal = _a[1];
     var settingPopoverRef = (0, react_1.useRef)(null);
     var progressColor = (0, colors_1.ProgressColor)(props.info.status);
     var info = props.info;
     var progress = info.progress;
     var updatable = (0, packageInfo_1.isUpdatable)(props.info);
     var sysCompatible = (0, packageInfo_1.isUpdateCompat)(props.info);
-    var handleInstall = function (evnt) {
+    var handleInstall = function () {
         if (props.onInstall)
             props.onInstall(props.info);
     };
@@ -71,17 +90,47 @@ var AppInfo = function (props) {
         if (props.onUninstall)
             props.onLaunch(props.info);
     };
+    var handleCancel = function (evnt) {
+        if (props.onCancel)
+            props.onCancel(props.info);
+    };
     var handleUpdate = function (evnt) {
         if (props.onUninstall && sysCompatible)
             props.onUpdate(props.info);
     };
+    var handleCheckIfDependency = function (evnt) {
+        props.onCheckIfDependent(props.info);
+    };
+    var handleOnOpenDependencyModal = function () {
+        if (props.info.dependencies && props.info.dependencies.length > 0) {
+            setIsOpenDependencyModal(true);
+            return;
+        }
+        setIsOpenDependencyModal(false);
+        handleInstall();
+    };
+    var handleOnCloseDependencyModal = function () {
+        setIsOpenDependencyModal(false);
+    };
+    var handleOnConfirmInstall = function () {
+        setIsOpenDependencyModal(false);
+        handleInstall();
+    };
+    var handleOff = function () {
+        return props.onOff(props.info);
+    };
+    var handleOn = function () {
+        return props.onOn(props.info);
+    };
     return (react_1.default.createElement(reactstrap_1.Container, { style: props.style, fluid: "md" },
+        react_1.default.createElement(react_hot_toast_1.Toaster, { containerStyle: { top: 30 } }),
         react_1.default.createElement("div", { style: {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 paddingBottom: 5,
             } },
+            react_1.default.createElement(Dependency_1.DependencyModal, { dependencies: props.info.dependencies, isOpen: isOpenDependencyModal, onClose: handleOnCloseDependencyModal, onConfirm: handleOnConfirmInstall }),
             react_1.default.createElement("h3", { style: { cursor: 'pointer' }, onClick: props.onBack },
                 react_1.default.createElement("p", { style: { display: 'flex', alignItems: 'center' } },
                     react_1.default.createElement(Icon.ArrowLeftCircle, { style: { marginRight: 5, color: '#0d6efd' } }),
@@ -95,9 +144,13 @@ var AppInfo = function (props) {
                         customActions: props.customActions,
                         isService: props.info.isService,
                         onUnInstall: handleUninstall,
+                        onCheckIfDependent: handleCheckIfDependency,
                         onResync: props.onResync,
                         onDisable: props.onDisable,
                         onRestart: props.onRestart,
+                        onOff: handleOff,
+                        onOn: handleOn,
+                        isDependent: props.isDependent,
                     } })))),
         react_1.default.createElement(reactstrap_1.Row, { lg: "2" },
             react_1.default.createElement(reactstrap_1.Col, { className: "text-center text-lg-start d-flex flex-column align-items-center", xs: "12", lg: "2" },
@@ -113,6 +166,11 @@ var AppInfo = function (props) {
                     react_1.default.createElement(Notifications, { data: info.notificationContents }),
                 (updatable || info.status === "uninstalled") && !sysCompatible &&
                     react_1.default.createElement("p", { style: { color: 'gray' } }, "Requires latest system to install this package."),
+                props.info.isService && props.info.status === "installed" && !props.info.enabled &&
+                    react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
+                            width: '100%',
+                        } },
+                        react_1.default.createElement("p", { style: { color: 'red' } }, "Disabled")),
                 react_1.default.createElement("div", { style: {
                         display: 'flex',
                         flexDirection: 'row',
@@ -120,12 +178,15 @@ var AppInfo = function (props) {
                     } },
                     sysCompatible && updatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", active: sysCompatible, outline: true, onClick: handleUpdate }, "Update")),
                     (0, packageInfo_1.isLaunchable)(info) && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
-                sysCompatible && info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleInstall }, "Install")),
+                sysCompatible && info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleOnOpenDependencyModal }, "Install")),
                 info.status !== "uninstalling" && progress > 0 && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },
                     react_1.default.createElement("p", null, (0, appStatus_1.AppStatusToCaption)(info.status)),
-                    react_1.default.createElement(reactstrap_1.Progress, { style: { width: '30%' }, value: progress, color: progressColor, animated: false }))),
+                    react_1.default.createElement("div", { className: "d-flex align-items-center justify-content-center align-items-lg-center", style: { width: '30%', gap: 5 } },
+                        react_1.default.createElement(reactstrap_1.Progress, { style: { width: "100%" }, value: progress, color: progressColor, animated: false }),
+                        react_1.default.createElement(AppButton_1.AppButton, { color: "danger", size: "sm", disabled: info.status !== "downloading", outline: true, onClick: handleCancel },
+                            react_1.default.createElement(Icon.X, { color: "white", size: 14 }))))),
                 (info.status === "uninstalling" || info.status === "wait_depends") && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },

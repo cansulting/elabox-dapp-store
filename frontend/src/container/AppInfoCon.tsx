@@ -9,7 +9,8 @@ import {
     uninstallPackage ,
     disablePackage,
     On,
-    OnCheckStatus
+    OnCheckStatus,
+    OnCheckIfDependent
 } from '../actions/appLib'
 import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
@@ -23,6 +24,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
 
     const [info, setInfo] = useState(currentInfo)
     const [progress, setProgress] = useState(props.info.progress)
+    const [dependent, setDependent] = useState(false)
     function updateInfo(pkg: any) {
         currentInfo = {...currentInfo, ...pkg}
         setInfo(currentInfo)
@@ -37,6 +39,11 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }
     const handleInstall = (pkg:PackageInfo) => {
         installPackage(pkg.id)
+    }
+    const handleCheckIfDpendency = (pkg:PackageInfo) =>{
+        OnCheckIfDependent(pkg.id).then(isDependent => {
+            setDependent(isDependent)
+        })
     }
     const handleUninstall = (pkg:PackageInfo) => {
         uninstallPackage(pkg.id)
@@ -54,7 +61,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleDisable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             disablePackage(pkg.id).then(_ => {
-                updateInfo({isRunning:false})
+                updateInfo({isRunning:false,enabled:false})
                 toast.success(`${pkg.name} was disabled`)                            
             }).finally(()=>{
                 resolve("service changed")
@@ -65,7 +72,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     const handleEnable = (pkg:PackageInfo) => {
         return new Promise<string>((resolve,_) => {
             On(pkg.id).then(_ => {
-                updateInfo({isRunning:true})
+                updateInfo({isRunning:true,enabled:true})
                 toast.success(`${pkg.name} was enabled`)                            
             }).finally(()=>{
                 resolve("service changed")
@@ -110,7 +117,6 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         })
     }
     useEffect(() => {
-        console.log("init")
         retrieveListing(props.info.id).then(async pkg => {
             const updatedInfo = {...info,...pkg}
             const updatedDepedencies: PackageInfo[] = []
@@ -142,6 +148,8 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         info:{...info, progress: progress},
         onInstall: handleInstall,
         onUninstall: handleUninstall,
+        onCheckIfDependent: handleCheckIfDpendency,
+        isDependent: dependent,
         onCancel: handleCancel,
         onUpdate: handleInstall,
         onLaunch: handleLaunch,

@@ -50,7 +50,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.isCompatibleToSystem = exports.systemVersion = void 0;
 var actions_1 = require("../actions");
 var constants_1 = require("../actions/constants");
-var currentVersion;
+var currentVersion = [];
 (0, constants_1.getEventHandler)().waitUntilConnected(5000)
     .then(function (_) { return __awaiter(void 0, void 0, void 0, function () {
     var ver;

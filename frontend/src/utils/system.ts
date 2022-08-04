@@ -1,7 +1,7 @@
 import { retrieveSystemVersion } from "../actions"
 import { getEventHandler } from "../actions/constants"
 
-let currentVersion : number[]
+let currentVersion : number[] = []
 
 getEventHandler().waitUntilConnected(5000)
     .then( async _ => {

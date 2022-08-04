@@ -73,10 +73,14 @@ func RetrieveApp(pkgId string) (*data.PackageInfo, error) {
 	}
 	var pkgInfo = data.PackageInfo{}
 	pkgInfo.AddInfo(pkg, storeCacheItem, true)
+	enabled, err := app.GetServiceStatus(pkgId)
+	if err != nil {
+		return nil, errors.New("failed to check if package is enable " + pkgId)
+	}
+	pkgInfo.Enabled = enabled
 	if task := installer.GetTask(pkgInfo.Id); task != nil {
 		pkgInfo.Status = task.Status
 	}
-
 	return &pkgInfo, nil
 }
 
@@ -102,9 +106,6 @@ func CancelInstall(pkgId string) {
 	installer.Cancel(pkgId)
 }
 
-func StopApp(pkgId string) {
-
-}
 func isTester(users []string) (bool, error) {
 	isValid := false
 	if deviceSerial == "" {
@@ -117,4 +118,39 @@ func isTester(users []string) (bool, error) {
 		}
 	}
 	return isValid, nil
+}
+
+func retrieveAllDependencies() ([]string, error) {
+	var dependenciesSet = make(map[string]bool)
+	var dependencies []string
+	storeItems, err := store_lister.GetItems()
+	if err != nil {
+		return nil, errors.New("unable to retrieve all installed packages. inner: " + err.Error())
+	}
+	for _, pkg := range storeItems {
+		for _, dependency := range pkg.Dependencies {
+			if !dependenciesSet[dependency] {
+				dependenciesSet[dependency] = true
+				dependencies = append(dependencies, dependency)
+			}
+
+		}
+	}
+	return dependencies, nil
+}
+
+// use to check if package is dependent to any package
+func CheckIfDependency(pkgId string) (bool, error) {
+	isDependent := false
+	dependencies, err := retrieveAllDependencies()
+	if err != nil {
+		return isDependent, err
+	}
+	for _, dependency := range dependencies {
+		if dependency == pkgId {
+			isDependent = true
+			break
+		}
+	}
+	return isDependent, nil
 }

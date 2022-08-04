@@ -27,17 +27,20 @@ var react_1 = __importStar(require("react"));
 var reactstrap_1 = require("reactstrap");
 var AppIconCon_1 = require("../container/AppIconCon");
 var useResize_1 = __importDefault(require("../hooks/useResize"));
+var currentWidth = 0;
 var AppDashboard = function (props) {
     var parentDiv = (0, react_1.useRef)(null);
     var parentWidth = (0, useResize_1.default)(parentDiv).width;
-    var iconWidthWithPadding = props.iconWidth + 40;
-    var columnPerRow = Math.floor(parentWidth / iconWidthWithPadding);
-    var columnWidth = Math.floor(parentWidth / columnPerRow);
-    if (props.apps === null)
+    var iconWidthWithPadding = props.iconWidth + 20;
+    var columnPerRow = Math.round(parentWidth / iconWidthWithPadding);
+    var columnWidth = Math.round(parentWidth / columnPerRow);
+    currentWidth = !isNaN(columnWidth) ? columnWidth : 0;
+    if (props.apps === null) {
         return react_1.default.createElement(react_1.default.Fragment, null);
+    }
     return (react_1.default.createElement("div", { style: props.style, ref: parentDiv },
         react_1.default.createElement(reactstrap_1.Row, { className: "gx-2", xs: columnPerRow }, props.apps.map(function (appInfo) {
-            return (react_1.default.createElement(reactstrap_1.Col, { style: { width: columnWidth, maxWidth: columnWidth }, key: appInfo.id + "-dash" },
+            return (react_1.default.createElement(reactstrap_1.Col, { style: { minWidth: currentWidth, width: currentWidth, maxWidth: currentWidth }, key: appInfo.id + "-dash" },
                 react_1.default.createElement(AppIconCon_1.AppIconCon, { package: appInfo, onClick: props.onClick, width: props.iconWidth, height: props.iconHeight })));
         }))));
 };

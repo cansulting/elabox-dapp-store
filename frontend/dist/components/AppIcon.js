@@ -105,6 +105,6 @@ var AppIcon = function (props) {
                         padding: '3%',
                     }, color: "white", height: "20%", width: "20%" })),
             props.package.progress > 0 && (react_1.default.createElement(reactstrap_1.Progress, { style: { height: "6px", width: "100%", margin: "10px 0" }, value: props.package.progress, color: progressColor }))),
-        (!props.package.progress || props.package.progress <= 0) && react_1.default.createElement("h4", null, props.package.name)));
+        (!props.package.progress || props.package.progress <= 0) && react_1.default.createElement("h4", { style: { fontSize: "clamp(1rem, 1vw, 2rem)", fontWeight: "500" } }, props.package.name)));
 };
 exports.AppIcon = AppIcon;

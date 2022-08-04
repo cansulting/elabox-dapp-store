@@ -16,7 +16,9 @@ export interface PackageInfo {
 	dependencies?: Array<any>
     updates? : string
 	isRunning?: boolean
+	enabled?: boolean
     isService?: boolean
+	isDependency?: boolean
 	launchUrl?: string
 	notificationContents?: MessagePrompt[]
 	category?: 'system' | undefined | ''
@@ -37,7 +39,8 @@ export function isUpdateCompat(pkg:PackageInfo): boolean {
 }
 
 export function isLaunchable(pkg:PackageInfo) : boolean {
-	if (pkg.status !== "installed" || !pkg.isRunning) return false
+	if (pkg.status !== "installed") return false
+	if (pkg.isService && !pkg.enabled) return false
 	if (pkg.launchUrl && pkg.launchUrl !== "") return true
     return !pkg.isService
 }

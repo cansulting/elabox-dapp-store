@@ -24,14 +24,16 @@ export interface AppInfoProps {
     style?: object
     footer?: JSX.Element
     customActions?: AppInfoAction[]             // custom secondary actions for app info
+    isDependent?: boolean
     onInstall?: (pkg:PackageInfo) => void
     onCancel?: (pkg:PackageInfo) => void
     onUninstall?: (pkg:PackageInfo) => void
+    onCheckIfDependent?: (pkg:PackageInfo) => void
     onUpdate?: (pkg:PackageInfo) => void
     onOff?: (pkg:PackageInfo) => Promise<string>    
     onOn?: (pkg:PackageInfo) => Promise<string>  
     onLaunch?: (pkg:PackageInfo) => void,
-    onAppStateChanged ?: (pkg:PackageInfo) => void,
+    onAppStateChanged ?: (pkg:PackageInfo) => void
     onResync?: () => void
     onDisable?: () => void
     onRestart?: () => void
@@ -92,6 +94,9 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const handleUpdate = (evnt:any) => {
         if (props.onUninstall && sysCompatible) props.onUpdate(props.info)
     } 
+    const handleCheckIfDependency = (evnt:any) => {
+        props.onCheckIfDependent(props.info)
+    }
     const handleOnOpenDependencyModal = () =>{
         if(props.info.dependencies && props.info.dependencies.length>0){
             setIsOpenDependencyModal(true)
@@ -153,12 +158,13 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                     customActions: props.customActions,
                                     isService: props.info.isService,
                                     onUnInstall: handleUninstall,
+                                    onCheckIfDependent: handleCheckIfDependency,
                                     onResync: props.onResync,
                                     onDisable: props.onDisable,
                                     onRestart: props.onRestart,
                                     onOff: handleOff,
                                     onOn: handleOn,
-                                    
+                                    isDependent: props.isDependent,
                                 }}
                             />
                         </>
@@ -197,6 +203,18 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     (updatable || info.status === "uninstalled") && !sysCompatible && 
                         <p style={{color:'gray'}}>Requires latest system to install this package.</p>
                     }
+                    { props.info.isService && props.info.status === "installed" && !props.info.enabled &&
+                        <div
+                            className="d-flex flex-column align-items-center align-items-lg-start"
+                            style={{
+                                width: '100%',
+                            }}
+                        >
+                            <p style={{color:'red'}}>
+                                Disabled
+                            </p>
+                        </div>
+                    }
                     <div
                         style={{
                             display: 'flex',
@@ -204,18 +222,6 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             gap: 5,
                         }}
                     >
-                        { props.info.status === "installed" && !props.info.isRunning &&
-                            <div
-                                className="d-flex flex-column align-items-center align-items-lg-start"
-                                style={{
-                                    width: '100%',
-                                }}
-                            >
-                                <p style={{color:'red'}}>
-                                    Disabled
-                                </p>
-                            </div>
-                        }
                         { sysCompatible && updatable && (
                             <AppButton
                                 color="primary"
