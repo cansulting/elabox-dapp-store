@@ -21,6 +21,9 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
     const pkg = props.package
     const status = pkg.status
     const progressColor = ProgressColor(status)
+    let progress = pkg.progress
+    if (!(progress > 0) && pkg.status === "installing") 
+        progress = 95
     //console.log("icon", pkg)
     return (
         <div
@@ -108,15 +111,15 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                         width={"20%"}
                     />
                 )}
-                {props.package.progress > 0 && (
+                {progress > 0 && (
                 <Progress
                     style={{height: "6px", width: "100%", margin: "10px 0"}}
-                    value={props.package.progress}
+                    value={progress}
                     color={progressColor}
                 />
             )}
             </div>
-            {(!props.package.progress || props.package.progress <= 0) && <h4 style={{fontSize:"clamp(1rem, 1vw, 2rem)",fontWeight:"500"}}>{props.package.name}</h4>}
+            {(!progress || progress <= 0) && <h4 style={{fontSize:"clamp(1rem, 1vw, 2rem)",fontWeight:"500"}}>{pkg.name}</h4>}
         </div>
     )
 }
