@@ -33,6 +33,10 @@ const INSTALL_STATE = "ela.store.broadcast.INSTALL_STATE"
 const RETRIEVE_SYS_VERSION = "ela.store.actions.RETRIEVE_SYSTEM_VERSION"
 const CHECK_IF_PACKAGE_IS_DEPENDENCY = "ela.store.actions.CHECK_IF_PACKAGE_IS_DEPENDENCY"
 
+// account actions
+const ACCOUNT_PACKAGE_ID = "ela.account"
+const AC_DEVICE_SERIAL = "account.actions.DEVICE_SERIAL" //use to get device serial
+
 // endpoints
 const PACKAGES_ENDPOINT = STORE_HOST + "/api/v1/items"
 const DOWNLOAD_ENDPOINT = STORE_HOST + "/api/v1/dl"

@@ -13,5 +13,6 @@ type PackageInfo struct {
 	Category       string   `json:"category"`   // If system then it is a system package and cannot be uninstalled
 	MinRuntime     string   `json:"minRuntime"` // minimum runtime required to run this package, val <= 0 means it can run on any runtime
 	Beta           bool     `json:"beta"`
-	Dependencies   []string `json:"dependencies"` // list of package ids where this package is dependent to
+	BetaUsers      []string `json:"betaUsers,omitempty"` //list of beta users
+	Dependencies   []string `json:"dependencies"`        // list of package ids where this package is dependent to
 }

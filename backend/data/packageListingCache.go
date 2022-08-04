@@ -15,5 +15,6 @@ type PackageListingCache struct {
 	Category       string   `json:"category"`
 	MinRuntime     string   `json:"minRuntime"`             // minimum runtime required to run this package, val <= 0 means it can run on any runtime
 	Beta           bool     `json:"beta"`                   // true if this is a beta package
+	BetaUsers      []string `json:"betaUsers,omitempty"`    //list of beta users
 	Dependencies   []string `json:"dependencies,omitempty"` // list of package ids where this package is dependent to
 }

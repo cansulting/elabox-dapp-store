@@ -8,8 +8,11 @@ import (
 	"store/backend/services/store_lister"
 
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
+	"github.com/cansulting/elabox-system-tools/foundation/system"
 	"github.com/cansulting/elabox-system-tools/registry/app"
 )
+
+var deviceSerial = ""
 
 // retrieve all apps
 // @beta is true if include all apps for testing and demo apps
@@ -23,13 +26,20 @@ func RetrieveAllApps(beta bool) ([]data.PackageInfo, error) {
 	var tmpPreview data.PackageInfo
 	// step: iterate on packages
 	for _, pkg := range storeItems {
-		// skip if ignore beta app
-		// if !beta && pkg.Beta {
-		// 	continue
-		// }
 		installedInfo, err := app.RetrievePackage(pkg.Id)
 		if err != nil {
 			logger.GetInstance().Debug().Msg("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
+		}
+		if beta && pkg.Beta {
+			tester, err := isTester(pkg.BetaUsers)
+			if err != nil {
+				logger.GetInstance().Debug().Msg("unable to validate user: " + err.Error())
+				continue
+			}
+			// not tester and not installed, skip the package
+			if !tester && installedInfo == nil {
+				continue
+			}
 		}
 		tmpPreview = data.PackageInfo{}
 		tmpPreview.AddInfo(installedInfo, pkg, false)
@@ -96,10 +106,21 @@ func CancelInstall(pkgId string) {
 	installer.Cancel(pkgId)
 }
 
-func StopApp(pkgId string) {
-
+func isTester(users []string) (bool, error) {
+	isValid := false
+	if deviceSerial == "" {
+		deviceSerial = system.GetDeviceInfo().Serial
+	}
+	for _, user := range users {
+		if user == deviceSerial {
+			isValid = true
+			break
+		}
+	}
+	return isValid, nil
 }
-func RetrieveAllDependencies() ([]string, error) {
+
+func retrieveAllDependencies() ([]string, error) {
 	var dependenciesSet = make(map[string]bool)
 	var dependencies []string
 	storeItems, err := store_lister.GetItems()
@@ -117,9 +138,11 @@ func RetrieveAllDependencies() ([]string, error) {
 	}
 	return dependencies, nil
 }
+
+// use to check if package is dependent to any package
 func CheckIfDependency(pkgId string) (bool, error) {
 	isDependent := false
-	dependencies, err := RetrieveAllDependencies()
+	dependencies, err := retrieveAllDependencies()
 	if err != nil {
 		return isDependent, err
 	}
