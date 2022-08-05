@@ -323,7 +323,20 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     </p>
                 </Col>
             </Row>
-            {props.children}
+            {props.children}            
+            {props.info.dependencies?.length > 0 && <Row className="mt-4">
+                <Col>
+                    <h4 className='mb-4'>Depedencies</h4>
+                    <div className="d-flex text-center mt-2">
+                        {props.info.dependencies?.map(dependency => {
+                            return <div style={{width:"15%"}}>
+                                <img src={dependency.icon} width="50%"/>
+                                <p>{dependency.name}</p>                                
+                            </div>
+                        })}
+                    </div>
+                </Col>
+            </Row>}           
         </Container>
     )
 }

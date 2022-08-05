@@ -123,12 +123,11 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
             if(updatedInfo.dependencies?.length > 0){
                 for( const pkgId of updatedInfo.dependencies){
                     const app =  await retrieveListing(pkgId)
-                    if(app.status !=="installed" && app.status !=="uninstalling"){
-                     updatedDepedencies.push(app)               
-                    }
+                    updatedDepedencies.push(app)               
                  }
             }
             updatedInfo.dependencies = updatedDepedencies
+            console.log(updatedInfo)
             updateInfo(updatedInfo)
             handleCheckStatus()
         })
