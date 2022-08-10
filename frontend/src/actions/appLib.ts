@@ -8,7 +8,7 @@ import {
   AC_UNINSTALL_PKG,
   AC_CANCEL_PKG,
   AC_RETRIEVE_SYSTEM_VERSION,
-  AC_RESYNC,
+  AC_CLEAR_DATA,
   AC_RESTART,
   AC_OFF,
   AC_ON,
@@ -57,7 +57,7 @@ export async function retrieveSystemVersion() : Promise<string> {
 // resync specific service/node
 export async function resync(packageId: string) : Promise<string> {
   console.log("resync...")
-  const res = await getEventHandler().sendSystemRPC(AC_RESYNC, packageId)
+  const res = await getEventHandler().sendSystemRPC(AC_CLEAR_DATA, packageId)
   if (res.code !== 200)
     throw new Error(res.message)
   return res.message

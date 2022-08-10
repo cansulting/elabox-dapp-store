@@ -20,7 +20,7 @@ export const AC_RESTART = "ela.system.APP_RESTART";
 export const AC_OFF = "ela.system.APP_OFF"
 export const AC_ON = "ela.system.APP_ON"
 export const AC_CHECK_STATUS = "ela.system.APP_CHECK_STATUS";
-export const AC_RESYNC = "ela.system.APP_CLEAR_DATA";
+export const AC_CLEAR_DATA = "ela.system.APP_CLEAR_DATA";
 
 // installer broadcasts
 export const INSTALLER_PROGRESS = PACKAGE_ID + ".broadcast.INSTALL_PROGRESS"

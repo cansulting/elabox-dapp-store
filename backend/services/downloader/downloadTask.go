@@ -76,10 +76,10 @@ func (task *Task) Start() error {
 	if err != nil {
 		if !errors.Is(err, context.Canceled) {
 			task._onStateChanged(Error)
+			return err
 		} else {
 			task._onStateChanged(Stopped)
 		}
-		return err
 	}
 	return nil
 }

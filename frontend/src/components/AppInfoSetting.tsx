@@ -79,13 +79,14 @@ export const AppInfoSetting = (props: AppInfoSettingProps): JSX.Element => {
                             props.onResync()
                         }}
                     >
-                        Resync
+                        Clear Data
                     </span>
                     <span
                         style={{ cursor: 'pointer' }}
                         onClick={(e) => {
                             e.preventDefault()
-                            props.onRestart()
+                            if (props.onRestart)    
+                                props.onRestart()
                         }}
                     >
                         Restart
