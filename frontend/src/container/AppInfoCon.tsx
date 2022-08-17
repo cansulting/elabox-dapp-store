@@ -133,7 +133,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
                  }
             }
             updatedInfo.dependencies = updatedDepedencies
-            console.log(updatedInfo)
+            // console.log(updatedInfo)
             updateInfo(updatedInfo)
             handleCheckStatus()
         })
