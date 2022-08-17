@@ -53,8 +53,14 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
     }    
     const handleRefresh = (toastMessage: string) => {
         retrieveListing(info.id).then(listing => {
+            const lastStatus = currentInfo.status
             updateInfo(listing)
             setProgress(0)
+            console.log(listing.status, lastStatus)
+            // only display toast
+            if (listing.status === "uninstalled" &&
+                lastStatus !== "installed")
+                return
             toast.success(toastMessage)            
         })
     }

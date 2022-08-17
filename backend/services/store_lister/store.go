@@ -101,12 +101,15 @@ func CheckUpdates() error {
 		// compare to olditem
 		localData, _ := GetItem(latestData.Id)
 		if localData != nil {
-			shouldUseLocalData := localData.Build == latestData.Build
-			// test if beta users were changed
-			if shouldUseLocalData && latestData.Beta {
-				shouldUseLocalData = localData.Build == latestData.Build && localData.Beta == latestData.Beta && reflect.DeepEqual(localData.BetaUsers, latestData.BetaUsers)
+			retainData := localData.Build == latestData.Build
+			if retainData && localData.Beta != latestData.Beta {
+				retainData = false
 			}
-			if shouldUseLocalData {
+			// test if beta users were changed
+			if retainData && latestData.Beta {
+				retainData = localData.Build == latestData.Build && localData.Beta == latestData.Beta && reflect.DeepEqual(localData.BetaUsers, latestData.BetaUsers)
+			}
+			if retainData {
 				tmp[i] = localData
 				continue
 			}
