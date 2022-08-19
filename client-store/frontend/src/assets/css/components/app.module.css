@@ -1,14 +1,14 @@
-.app-store {
+.app {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background-color: #707070;
-  height: 100%;
+  align-items: center;
+  text-align: center;
   width: 100%;
+  background-color: #707070;
   border-radius: 1em;
-  cursor: pointer;
 }
-.app-store-body {
+.app > .app-body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,33 +16,33 @@
   padding: 1em;
   height: 100%;
 }
-.app-store-body > img {
-  max-width: 5em;
-  max-height: 5em;
+.app > .app-body > img {
+  max-width: 8em;
+  max-height: 8em;
 }
-.app-store-footer {
+.app-footer {
   background-color: white;
   padding: 0;
   margin: 0;
   border-radius: 0 0 1em 1em;
+  width: 100%;
 }
-.app-store-footer > h3 {
+.app-footer > h3 {
   margin: 0;
   padding: 0.1em;
   color: black;
   margin: 0.5em;
 }
-
 /* media query for laptop screen */
 @media (min-width: 768px) {
-  .app-store {
-    height: 40vh;
+  .app {
+    height: 30vh;
   }
-  .app-store > .app-store-body {
+  .app > .app-body {
     padding: 0;
   }
-  .app-store > .app-store-body > img {
-    width: 50%;
-    height: 50%;
+  .app > .app-body > img {
+    max-width: 5em;
+    max-height: 5em;
   }
 }

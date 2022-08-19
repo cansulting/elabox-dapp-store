@@ -3,9 +3,9 @@ import DashboardStyle from "../assets/css/pages/dashboard.module.css"
 import Stores from "../components/Stores"
 function DashboardPage(): JSX.Element {
   const storesData = [
-    { title: "test", icon: "test" },
-    { title: "test", icon: "test" },
-    { title: "test", icon: "test" },
+    { id: "1", title: "test", icon: "test" },
+    { id: "2", title: "test", icon: "test" },
+    { id: "3", title: "test", icon: "test" },
   ]
   return (
     <div className={DashboardStyle["app-dashboard"]}>

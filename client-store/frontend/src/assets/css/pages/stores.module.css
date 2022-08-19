@@ -7,6 +7,8 @@
   width: 100vw;
   color: white;
   height: 100%;
+  background-color: #d9d9d9;
+  padding: 1em;
 }
 
 /* media query for laptop screen */

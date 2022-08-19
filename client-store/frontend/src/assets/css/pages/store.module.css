@@ -1,0 +1,78 @@
+.app-store {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  width: 100vw;
+  color: black;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: white;
+  padding: 1em;
+}
+.app-store > .app-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.app-store > .app-store-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.app-store > .app-store-header > .app-image-container {
+  padding: 1em;
+  background-color: #707070;
+  border-radius: 1em;
+}
+
+.app-store > .app-store-header > .app-image-container > img {
+  height: 30vh;
+}
+.app-store > .app-store-header > .app-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-store > .app-store-header > .app-body > .app-body-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* media query for laptop screen */
+@media (min-width: 768px) {
+  .app-store {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2em;
+  }
+  .app-store > .app-list {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2em;
+    width: 70vw;
+  }
+  .app-store > .app-list > div {
+    flex: 0 0 calc(25% - 2em);
+  }
+  .app-store > .app-store-header {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1em;
+  }
+  .app-store > .app-store-header > .app-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .app-store > .app-store-header > .app-body > .app-body-control {
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+  }
+}
