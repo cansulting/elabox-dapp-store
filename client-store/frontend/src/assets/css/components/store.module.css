@@ -1,0 +1,47 @@
+.app-store {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: gray;
+  height: 100%;
+  width: 100%;
+  border-radius: 1em;
+}
+.app-store-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  height: 100%;
+}
+.app-store-body > img {
+  max-width: 5em;
+  max-height: 5em;
+}
+.app-store-footer {
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 0 1em 1em;
+}
+.app-store-footer > h3 {
+  margin: 0;
+  padding: 0.1em;
+  color: black;
+  margin: 0.5em;
+}
+
+/* media query for laptop screen */
+@media (min-width: 768px) {
+  .app-store {
+    height: 40vh;
+  }
+  .app-store > .app-store-body {
+    padding: 0;
+  }
+  .app-store > .app-store-body > img {
+    width: 50%;
+    height: 50%;
+  }
+}

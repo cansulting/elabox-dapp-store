@@ -1,0 +1,18 @@
+.app-stores {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  width: 100vw;
+  color: white;
+  height: 100%;
+}
+
+/* media query for laptop screen */
+@media (min-width: 768px) {
+  .app-stores {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
