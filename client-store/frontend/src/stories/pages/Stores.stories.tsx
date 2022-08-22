@@ -47,6 +47,9 @@ export default {
       icon: "https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-placeholder-hunting-kiranshastry-lineal-color-kiranshastry.png",
     },
   ]
+  const handleStoreClick = (id:string) =>{
+    
+  }
 const Template:ComponentStory<typeof StoresPage> = (props:StoresProps):JSX.Element => {
     return <StoresPage {...props}/>
 }
@@ -54,5 +57,6 @@ const Template:ComponentStory<typeof StoresPage> = (props:StoresProps):JSX.Eleme
 export const StoresDummyData = Template.bind({})
 
 StoresDummyData.args={
-    stores : storesData
+    stores : storesData,
+    onStoreClick: handleStoreClick
 }

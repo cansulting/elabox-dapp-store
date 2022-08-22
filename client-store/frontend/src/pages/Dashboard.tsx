@@ -9,9 +9,9 @@ function DashboardPage(props: DashboardProps): JSX.Element {
         <Link to="/stores">Explore Stores</Link>
       </div>
       <h1>Popular</h1>
-      <Stores stores={props.stores} />
+      <Stores stores={props.stores} onStoreClick={props.onStoreClick} />
       <h1>Latest</h1>
-      <Stores stores={props.stores} />
+      <Stores stores={props.stores} onStoreClick={props.onStoreClick} />
     </div>
   )
 }

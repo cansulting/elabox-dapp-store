@@ -10,6 +10,7 @@ function Stores(props: StoresProps): JSX.Element {
           id={details.id}
           icon="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-placeholder-hunting-kiranshastry-lineal-color-kiranshastry.png"
           title="Test"
+          onClick={props.onStoreClick}
         />
       ))}
     </div>

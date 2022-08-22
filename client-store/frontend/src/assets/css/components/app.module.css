@@ -35,9 +35,6 @@
 }
 /* media query for laptop screen */
 @media (min-width: 768px) {
-  .app {
-    height: 30vh;
-  }
   .app > .app-body {
     padding: 0;
   }

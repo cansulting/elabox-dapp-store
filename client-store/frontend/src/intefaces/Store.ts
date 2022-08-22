@@ -5,5 +5,6 @@ export interface StoreProps {
   icon: string
   title: string
   description?: string
-  apps?: AppProps[]
+  apps?: AppProps[],
+  onClick? : (id: string) => void
 }
