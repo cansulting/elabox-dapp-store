@@ -41,14 +41,6 @@
   flex-direction: column;
   align-items: center;
 }
-.app-store > .app-list {
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2em;
-  width: 70vw;
-}
 .app-store > .app-list > div {
   flex: 0 0 calc(25% - 2em);
 }
@@ -59,9 +51,6 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 2em;
-  }
-  .app-store > .app-list {
-    justify-content: flex-start;
   }
   .app-store > .app-store-header {
     flex-direction: row;

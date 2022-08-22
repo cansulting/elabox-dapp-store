@@ -1,4 +1,6 @@
+import {useRef} from "react"
 import { Link } from "react-router-dom"
+import useResize from "../hooks/useResize"
 import DashboardStyle from "../assets/css/pages/dashboard.module.css"
 import { DashboardProps } from "../intefaces/Dashboard"
 import Stores from "../components/Stores"

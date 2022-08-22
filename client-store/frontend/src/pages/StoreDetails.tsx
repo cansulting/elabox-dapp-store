@@ -1,9 +1,8 @@
+import Apps from "../components/Apps"
 import { StoreProps } from "../intefaces/Store"
 import StoreStyle from "../assets/css/pages/store.module.css"
 import ButtonStyle from "../assets/css/button.module.css"
-import App from "../components/App"
 function StoreDetailsPage(props:StoreProps): JSX.Element {
-  console.log(props)
   return (
     <div className={StoreStyle["app-store"]}>
       <div className={StoreStyle["app-store-header"]}>
@@ -18,12 +17,7 @@ function StoreDetailsPage(props:StoreProps): JSX.Element {
           <p>{props?.description}</p>
         </div>
       </div>
-      <h1>Apps</h1>
-      <div className={StoreStyle["app-list"]}>
-        {props?.apps?.map((app) => (
-          <App key={app.id} id={app.id} title={app.title} icon={app.icon} />
-        ))}
-      </div>
+      <Apps apps={props?.apps}/>      
     </div>
   )
 }

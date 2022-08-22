@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: flex-end;
   background-color: #707070;
-  height: 100%;
-  width: 100%;
+  height: 150px;
+  width: 150px;
   border-radius: 1em;
   cursor: pointer;
 }
@@ -31,18 +31,4 @@
   padding: 0.1em;
   color: black;
   margin: 0.5em;
-}
-
-/* media query for laptop screen */
-@media (min-width: 768px) {
-  .app-store {
-    height: 40vh;
-  }
-  .app-store > .app-store-body {
-    padding: 0;
-  }
-  .app-store > .app-store-body > img {
-    width: 50%;
-    height: 50%;
-  }
 }
