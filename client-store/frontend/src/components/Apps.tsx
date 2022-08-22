@@ -3,7 +3,7 @@ import useResize from "../hooks/useResize"
 import App from "./App"
 import { AppsProps } from "../intefaces/Apps"
 import AppsStyle from "../assets/css/components/apps.module.css"
-export default function(props:AppsProps){
+function Apps(props:AppsProps) : JSX.Element{
     const parentDiv = useRef<HTMLDivElement>(null);    
     const {width : parentWidth} = useResize(parentDiv)
     const columnPerRow = Math.round((parentWidth - 100) / 150) 
@@ -23,3 +23,4 @@ export default function(props:AppsProps){
       </div>        
     </div>
 }
+export default Apps

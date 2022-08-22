@@ -17,7 +17,7 @@ function StoreDetailsPage(props:StoreProps): JSX.Element {
           <p>{props?.description}</p>
         </div>
       </div>
-      <Apps apps={props?.apps}/>      
+      <Apps apps={props?.apps!}/>      
     </div>
   )
 }
