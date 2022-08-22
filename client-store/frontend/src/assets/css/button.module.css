@@ -4,3 +4,8 @@
   border: none;
   border-radius: 0.2em;
 }
+.ghost {
+  background-color: transparent;
+  border:none;
+  color: #00a5ec
+}

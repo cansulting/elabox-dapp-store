@@ -1,14 +1,10 @@
-import { withRouter } from 'storybook-addon-react-router-v6'
+
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { StoreProps } from '../../intefaces/Store'
 import StoreDetailsPage from '../../pages/StoreDetails'
 export default {
     title:"ClientStore/Pages/StoreDetails",
     component: StoreDetailsPage,
-    decorators: [withRouter],    
-    parameters: {
-        routerPath:"/store"
-    }
 } as ComponentMeta<typeof StoreDetailsPage>
 const StoreDetails = {
     id: "1",

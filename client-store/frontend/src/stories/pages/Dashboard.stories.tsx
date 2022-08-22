@@ -1,14 +1,9 @@
-import { withRouter } from 'storybook-addon-react-router-v6'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { DashboardProps } from '../../intefaces/Dashboard'
 import DashboardPage from '../../pages/Dashboard'
 export default {
     title:"ClientStore/Pages/Dashboard",
     component: DashboardPage,
-    decorators: [withRouter],    
-    parameters: {
-        routerPath:"/"
-    }
 } as ComponentMeta<typeof DashboardPage>
 const storesData = [
     { id: "1", title: "test", 
@@ -23,6 +18,9 @@ const storesData = [
 const handleStoreClick = (id:string) => {
 
 }
+const handleOnExploreClick = () => {
+    console.log("shown redirect to /store")
+}
 const Template:ComponentStory<typeof DashboardPage> = (props:DashboardProps):JSX.Element => {
     return <DashboardPage {...props}/>
 }
@@ -31,5 +29,6 @@ export const DashboardDummyData = Template.bind({})
 
 DashboardDummyData.args={
     stores : storesData,
-    onStoreClick: handleStoreClick
+    onStoreClick: handleStoreClick,
+    onExploreClick: handleOnExploreClick
 }

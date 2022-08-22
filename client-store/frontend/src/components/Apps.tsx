@@ -6,7 +6,7 @@ import AppsStyle from "../assets/css/components/apps.module.css"
 function Apps(props:AppsProps) : JSX.Element{
     const parentDiv = useRef<HTMLDivElement>(null);    
     const {width : parentWidth} = useResize(parentDiv)
-    const columnPerRow = Math.round((parentWidth - 100) / 150) 
+    const columnPerRow = Math.round((parentWidth - 100) / 160) 
     const isCenteredColumns = columnPerRow < 4      
     return <div className={AppsStyle['apps']}>
       <h1>Apps</h1>
