@@ -9,6 +9,9 @@
   background-color: #d9d9d9;
   padding: 1em;
 }
+.app-stores h1{
+  color: grey;
+}
 
 /* media query for laptop screen */
 @media (min-width: 768px) {
