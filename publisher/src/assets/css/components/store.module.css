@@ -1,0 +1,14 @@
+.app-store {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+}
+
+.app-store:hover {
+  background-color: #00a5ec;
+  cursor: pointer;
+}
+.app-store > img {
+  width: 100px;
+  height: 100px;
+}
