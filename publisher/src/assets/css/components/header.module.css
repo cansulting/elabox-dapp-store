@@ -1,0 +1,24 @@
+.app-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d9d9d9;
+  padding: 1em;
+}
+
+.app-header > form > input[name="input-search"] {
+  border: none;
+  padding: 1em;
+  width: 20em;
+}
+/* media query for laptop screen */
+@media (min-width: 768px) {
+  .app-header {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .app-header > h1 {
+    width: 40%;
+  }
+}
