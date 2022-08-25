@@ -10,6 +10,9 @@ export default {
 const Template: ComponentStory<typeof Header> = (props: HeaderProps) => {
   return <Header {...props} />
 }
-export const HeaderWithDummyData = Template.bind({})
+const handleOnSearch = (query: string) => {}
+export const HeaderWithDummyData = Template.bind({
+  onSearch: handleOnSearch,
+})
 
 HeaderWithDummyData.args = {}
