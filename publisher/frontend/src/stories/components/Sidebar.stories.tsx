@@ -19,6 +19,7 @@ const storesData = [
     name: "Store 2",
   },
 ]
+const handleAddApp = () => {}
 const Template: ComponentStory<typeof SideBar> = (props: SideBarProps) => {
   return <SideBar {...props} />
 }
@@ -27,4 +28,5 @@ export const SideBarWithDummyData = Template.bind({})
 
 SideBarWithDummyData.args = {
   stores: storesData,
+  onAddApp: handleAddApp,
 }

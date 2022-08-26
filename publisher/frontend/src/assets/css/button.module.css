@@ -1,0 +1,11 @@
+.primary {
+  background-color: #00a5ec;
+  color: white;
+  border: none;
+  border-radius: 0.2em;
+}
+.ghost {
+  background-color: transparent;
+  border: none;
+  color: #00a5ec;
+}
