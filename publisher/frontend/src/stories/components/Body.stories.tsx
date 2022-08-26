@@ -7,7 +7,7 @@ export default {
 } as ComponentMeta<typeof Body>
 
 const handleProfileSave = () => {}
-const handleAddUser = () => {}
+const handleAddUser = (username: string) => {}
 const App = {
   profile: {
     name: "test app",

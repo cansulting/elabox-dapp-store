@@ -19,6 +19,9 @@
   width: 100%;
   margin-left: 3em;
 }
+.form-body-no-gap {
+  gap: 0;
+}
 .form-body-column {
   justify-content: flex-start;
   flex-direction: column;

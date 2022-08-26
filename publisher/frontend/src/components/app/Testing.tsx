@@ -1,17 +1,40 @@
+import { useState } from "react"
 import { TestingProps } from "../../interfaces/testing"
 import TestingStyle from "../../assets/css/components/app/testing.module.css"
 import FormStyle from "../../assets/css/form.module.css"
 import ButtonStyle from "../../assets/css/button.module.css"
 function Testing(props: TestingProps): JSX.Element {
+  const [userName, setUserName] = useState("")
+  const handleUserSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+  }
+  const handleUserNameInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    event.preventDefault()
+    setUserName(event.target.value)
+  }
+  const handleUserNameKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === "Enter") {
+      props.onAddUser(userName)
+      setUserName("")
+    }
+  }
   return (
     <div className={TestingStyle["app-testing"]}>
       <h1>Testing</h1>
-      <form className={FormStyle["form"]}>
+      <form className={FormStyle["form"]} onSubmit={handleUserSubmit}>
         <div
           className={`${FormStyle["form-body"]} ${FormStyle["form-body-column"]}`}
         >
           <div
-            className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}
+            className={`
+            ${FormStyle["form-body"]} 
+            ${FormStyle["form-body-full"]} 
+            ${FormStyle["form-body-no-gap"]}
+            `}
           >
             <label>Enable</label>
             <input type="checkbox" name="enable" checked={props.enabled} />
@@ -20,7 +43,14 @@ function Testing(props: TestingProps): JSX.Element {
             className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}
           >
             <label>Users</label>
-            <input type="text" name="user" placeholder="Hit enter to add" />
+            <input
+              type="text"
+              name="user"
+              placeholder="Hit enter to add"
+              value={userName}
+              onChange={handleUserNameInputChange}
+              onKeyDown={handleUserNameKeyDown}
+            />
           </div>
           <div
             className={`${FormStyle["form-body"]} ${TestingStyle["app-users"]}`}
