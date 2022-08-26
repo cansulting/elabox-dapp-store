@@ -24,7 +24,6 @@ function Testing(props: TestingProps): JSX.Element {
   }
   return (
     <div className={TestingStyle["app-testing"]}>
-      <h1>Testing</h1>
       <form className={FormStyle["form"]} onSubmit={handleUserSubmit}>
         <div
           className={`${FormStyle["form-body"]} ${FormStyle["form-body-column"]}`}
@@ -33,11 +32,12 @@ function Testing(props: TestingProps): JSX.Element {
             className={`
             ${FormStyle["form-body"]} 
             ${FormStyle["form-body-full"]} 
-            ${FormStyle["form-body-no-gap"]}
             `}
           >
             <label>Enable</label>
-            <input type="checkbox" name="enable" checked={props.enabled} />
+            <div>
+              <input type="checkbox" name="enable" checked={props.enabled} />
+            </div>
           </div>
           <div
             className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}

@@ -8,6 +8,7 @@ export default {
 
 const handleProfileSave = () => {}
 const handleAddUser = (username: string) => {}
+const handleReleaseSave = () => {}
 const App = {
   profile: {
     name: "test app",
@@ -29,6 +30,12 @@ const App = {
       },
     ],
     onAddUser: handleAddUser,
+  },
+  release: {
+    build: "1",
+    updates:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, delectus laborum dolorem beatae quo rem cum veritatis iusto labore, maiores hic, provident veniam perspiciatis laboriosam inventore ipsum voluptates nesciunt reprehenderit.",
+    onReleaseSave: handleReleaseSave,
   },
 }
 const Template: ComponentStory<typeof Body> = (props: BodyProps) => {

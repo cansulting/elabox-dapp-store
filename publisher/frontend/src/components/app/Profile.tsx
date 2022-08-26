@@ -11,7 +11,7 @@ function Profile(props: ProfileProps): JSX.Element {
         <label>Package Id</label>
         <input type="text" name="name" placeholder="packageId" />
         <label>Description</label>
-        <textarea name="name" placeholder="Description" />
+        <textarea name="description" placeholder="Description" />
         <div className={`${ButtonStyle["group-flex-end"]}`}>
           <button className={ButtonStyle["ghost"]}>Cancel</button>
           <button className={ButtonStyle["primary"]}>Apply</button>

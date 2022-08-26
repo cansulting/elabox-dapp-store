@@ -3,6 +3,7 @@ import { BodyProps } from "../interfaces/body"
 import BodyStyle from "../assets/css/components/body.module.css"
 import Profile from "./app/Profile"
 import Testing from "./app/Testing"
+import Release from "./app/Release"
 function Body(props: BodyProps): JSX.Element {
   return (
     <div className={BodyStyle["app-body"]}>
@@ -23,7 +24,7 @@ function Body(props: BodyProps): JSX.Element {
           <Testing {...props.app.testing} />
         </TabPanel>
         <TabPanel>
-          <h2>Any content 1</h2>
+          <Release {...props.app.release} />
         </TabPanel>
       </Tabs>
     </div>

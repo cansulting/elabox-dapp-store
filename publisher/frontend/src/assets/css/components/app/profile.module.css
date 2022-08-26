@@ -1,7 +1,6 @@
 .app-profile {
   display: flex;
   flex: 1;
-  padding: 1em;
   align-items: center;
   justify-content: center;
 }
