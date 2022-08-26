@@ -1,7 +1,7 @@
 export interface HeaderProps {
-  tab: {
+  tab?: {
     index: number
-    selectTab: (index: number) => void
+    onSelectTab: (index: number) => void
   }
   onSearch: (query: string) => void
 }

@@ -9,12 +9,6 @@ export default {
 let tabIndex = 1
 const DashboardData = {
   header: {
-    tab: {
-      index: tabIndex,
-      selectTab: (index: number) => {
-        tabIndex = index
-      },
-    },
     onSearch: (query: string) => {},
   },
   sidebar: {
@@ -33,6 +27,7 @@ const DashboardData = {
     onAddApp: () => {},
   },
   body: {
+    tabIndex: tabIndex,
     app: {
       profile: {
         name: "test app",

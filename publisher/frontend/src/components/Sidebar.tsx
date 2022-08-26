@@ -16,7 +16,7 @@ function SideBar(props: SideBarProps): JSX.Element {
         })}
       </div>
       <button className={ButtonStyle["ghost"]} onClick={handleAddAppClick}>
-        Add NEW APP
+        Add New App
       </button>
     </div>
   )

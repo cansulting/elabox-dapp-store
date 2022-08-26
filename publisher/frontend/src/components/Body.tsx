@@ -1,4 +1,3 @@
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import { BodyProps } from "../interfaces/body"
 import BodyStyle from "../assets/css/components/body.module.css"
 import Profile from "./app/Profile"
@@ -7,26 +6,10 @@ import Release from "./app/Release"
 function Body(props: BodyProps): JSX.Element {
   return (
     <div className={BodyStyle["app-body"]}>
-      <Tabs>
-        <TabList>
-          <Tab>App Profile</Tab>
-          <Tab>Builds</Tab>
-          <Tab>Testing</Tab>
-          <Tab>Release</Tab>
-        </TabList>
-        <TabPanel>
-          <Profile {...props.app.profile} />
-        </TabPanel>
-        <TabPanel>
-          <h2>Builds</h2>
-        </TabPanel>
-        <TabPanel>
-          <Testing {...props.app.testing} />
-        </TabPanel>
-        <TabPanel>
-          <Release {...props.app.release} />
-        </TabPanel>
-      </Tabs>
+      {props.tabIndex === 0 && <Profile {...props.app.profile} />}
+      {props.tabIndex === 1 && <Profile {...props.app.profile} />}
+      {props.tabIndex === 2 && <Testing {...props.app.testing} />}
+      {props.tabIndex === 3 && <Release {...props.app.release} />}
     </div>
   )
 }

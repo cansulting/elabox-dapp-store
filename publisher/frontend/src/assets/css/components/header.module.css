@@ -1,27 +1,26 @@
 .app-header {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: #d9d9d9;
   padding-left: 1em;
   padding-right: 1em;
   width: 100%;
-  height: 100px;
+  height: 20vh;
+  position: relative;
 }
-
-.app-header > form > input[name="input-search"] {
+.app-header-search {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.app-header-search > h1 {
+  margin-right: 23vw;
+}
+.app-header-search > form > input[name="input-search"] {
   border: none;
   padding: 1em;
   width: 20em;
-}
-/* media query for laptop screen */
-@media (min-width: 768px) {
-  .app-header {
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-  .app-header > h1 {
-    width: 40%;
-  }
 }
