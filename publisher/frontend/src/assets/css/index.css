@@ -15,3 +15,12 @@ code {
 button {
   cursor: pointer;
 }
+.react-tabs {
+  width: 100%;
+}
+.react-tabs__tab {
+  background-color: #ededed !important;
+}
+.react-tabs__tab--selected {
+  background-color: white !important;
+}
