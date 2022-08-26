@@ -24,9 +24,9 @@ const Template: ComponentStory<typeof SideBar> = (props: SideBarProps) => {
   return <SideBar {...props} />
 }
 
-export const SideBarWithDummyData = Template.bind({})
-
-SideBarWithDummyData.args = {
+export const SideBarWithDummyData = Template.bind({
   stores: storesData,
   onAddApp: handleAddApp,
-}
+})
+
+SideBarWithDummyData.args = {}
