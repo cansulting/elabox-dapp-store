@@ -8,10 +8,13 @@
 }
 .app-testing > form {
   width: 50%;
+  align-items: center;
 }
 .app-users {
   flex-direction: column;
   gap: 0.1em;
+  flex: 1;
+  margin-left: 4em;
 }
 .app-user {
   background-color: #adadad;

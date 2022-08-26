@@ -11,8 +11,9 @@
 }
 .group-flex-end {
   display: flex;
-  flex: 1;
-  justify-content: flex-end;
+  width: 100%;
+  justify-content: flex-end !important;
+  padding: 1em 0 1em 0 !important;
 }
 .ghost {
   background-color: transparent;
