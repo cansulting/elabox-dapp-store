@@ -42,8 +42,8 @@ const Template: ComponentStory<typeof Body> = (props: BodyProps) => {
   return <Body {...props} />
 }
 
-export const BodyWithDummyData = Template.bind({})
-
-BodyWithDummyData.args = {
+export const BodyWithDummyData = Template.bind({
   app: App,
-}
+})
+
+BodyWithDummyData.args = {}

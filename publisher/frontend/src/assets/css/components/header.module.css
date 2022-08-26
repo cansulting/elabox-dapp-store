@@ -4,7 +4,10 @@
   justify-content: center;
   align-items: center;
   background-color: #d9d9d9;
-  padding: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+  height: 100px;
 }
 
 .app-header > form > input[name="input-search"] {

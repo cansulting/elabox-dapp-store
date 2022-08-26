@@ -10,8 +10,15 @@ export default {
 const Template: ComponentStory<typeof Header> = (props: HeaderProps) => {
   return <Header {...props} />
 }
+let tabIndex = 1
 const handleOnSearch = (query: string) => {}
 export const HeaderWithDummyData = Template.bind({
+  tab: {
+    index: tabIndex,
+    selectTab: (index: number) => {
+      tabIndex = index
+    },
+  },
   onSearch: handleOnSearch,
 })
 
