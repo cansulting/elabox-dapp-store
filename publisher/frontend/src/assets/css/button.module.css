@@ -3,9 +3,20 @@
   color: white;
   border: none;
   border-radius: 0.2em;
+  padding: 1em;
+}
+.group {
+  display: flex;
+  flex: 1;
+}
+.group-flex-end {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
 }
 .ghost {
   background-color: transparent;
   border: none;
   color: #00a5ec;
+  padding: 1em;
 }

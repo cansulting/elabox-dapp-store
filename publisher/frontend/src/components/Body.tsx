@@ -1,6 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import { BodyProps } from "../interfaces/body"
 import BodyStyle from "../assets/css/components/body.module.css"
+import Profile from "./app/Profile"
 function Body(props: BodyProps): JSX.Element {
   return (
     <div className={BodyStyle["app-body"]}>
@@ -12,10 +13,10 @@ function Body(props: BodyProps): JSX.Element {
           <Tab>Release</Tab>
         </TabList>
         <TabPanel>
-          <h2>Any content 1</h2>
+          <Profile {...props.app.profile} />
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          <h2>Builds</h2>
         </TabPanel>
         <TabPanel>
           <h2>Any content 1</h2>

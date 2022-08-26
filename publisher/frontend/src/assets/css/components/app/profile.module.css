@@ -1,0 +1,29 @@
+.app-profile {
+  display: flex;
+  flex: 1;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-profile > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+  gap: 1em;
+}
+.app-profile > form > label {
+  font-size: 1em;
+  font-weight: bold;
+}
+.app-profile > form > *:not(button):not(label) {
+  flex-grow: 1;
+  padding: 1em;
+  font-size: 1em;
+}
+
+.app-profile > form > textarea {
+  resize: none;
+  height: 5em;
+}
