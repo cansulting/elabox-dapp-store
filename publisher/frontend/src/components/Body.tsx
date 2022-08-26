@@ -2,6 +2,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import { BodyProps } from "../interfaces/body"
 import BodyStyle from "../assets/css/components/body.module.css"
 import Profile from "./app/Profile"
+import Testing from "./app/Testing"
 function Body(props: BodyProps): JSX.Element {
   return (
     <div className={BodyStyle["app-body"]}>
@@ -19,7 +20,7 @@ function Body(props: BodyProps): JSX.Element {
           <h2>Builds</h2>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 1</h2>
+          <Testing {...props.app.testing} />
         </TabPanel>
         <TabPanel>
           <h2>Any content 1</h2>

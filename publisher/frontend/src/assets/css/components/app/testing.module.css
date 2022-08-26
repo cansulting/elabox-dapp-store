@@ -1,0 +1,22 @@
+.app-testing {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
+}
+.app-testing > form {
+  width: 50%;
+}
+.app-users {
+  flex-direction: column;
+  gap: 0.1em;
+}
+.app-user {
+  background-color: #adadad;
+  padding: 1em;
+  border-radius: 1em;
+  margin-top: 1em;
+  width: 100%;
+}

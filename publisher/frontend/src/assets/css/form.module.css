@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1em;
+}
+.form-inline {
+  flex-direction: row;
+}
+.form-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+}
+.form-body > label {
+  flex: 0;
+  margin-right: 5em;
+}
+.form label {
+  font-size: 1em;
+  font-weight: bold;
+}
+.form *:not(button):not(label) {
+  padding: 1em;
+  font-size: 1em;
+}
+
+.form textarea {
+  resize: none;
+  height: 5em;
+}

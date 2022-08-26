@@ -3,4 +3,5 @@ export interface ProfileProps {
   packageId: string
   description: string
   icon: string
+  onProfileSave: () => void
 }
