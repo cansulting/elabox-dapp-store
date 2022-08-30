@@ -100,6 +100,8 @@ func CreateTask(pkg string, downloadLink string, dependencies []string) *Task {
 				addToSchedule(task)
 			case global.Installed:
 				RemoveTask(task.Id)
+			case global.UnInstalled:
+				RemoveTask(task.Id)
 			}
 		}
 		// step: if this task got an error, then call error handler
