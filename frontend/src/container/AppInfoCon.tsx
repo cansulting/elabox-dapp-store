@@ -116,11 +116,18 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         setProgress( args.progress)
     }
     const handleError = (args:any) => {
-        updateInfo( {
-            notificationContents:[{
+        if(currentInfo.notificationContents?.length > 0){
+            updateInfo( {
+                notificationContents:currentInfo.notificationContents
+            })
+        }
+        else{
+            updateInfo( {
+                notificationContents:[{
                 type:"error",content: "CODE" + args.code + ": " + args.error
-            }]
-        })
+                }]
+            })
+        }
     }
     useEffect(() => {
         retrieveListing(props.info.id).then(async pkg => {
@@ -139,7 +146,7 @@ export const AppInfoCon = (props: AppInfoProps): JSX.Element => {
         })
         Listener.onPackage(props.info.id, "install_progress", handleProgress)
         Listener.onPackage(props.info.id, "install_state_changed", handleStateChanged)
-        Listener.onPackage(props.info.id,"install_error", handleError)        
+        Listener.onPackage(props.info.id,"install_error", handleError)   
         // clean up listener
         return function cleanup() {
             //console.log("cleanup")
