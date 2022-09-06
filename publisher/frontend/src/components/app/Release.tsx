@@ -45,7 +45,7 @@ function Release(props: ReleaseProps): JSX.Element {
           </div>
         </div>
         <div className={`${ButtonStyle["group-flex-end"]}`}>
-          <button className={ButtonStyle["ghost"]}>Cancel</button>
+          <button className={ButtonStyle["ghost-with-border"]}>Cancel</button>
           <button
             className={ButtonStyle["primary"]}
             onClick={handleReleaseClick}
