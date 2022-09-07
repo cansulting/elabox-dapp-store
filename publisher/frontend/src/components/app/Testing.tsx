@@ -58,6 +58,7 @@ function Testing(props: TestingProps): JSX.Element {
             {props.users.map((user) => (
               <div className={TestingStyle["app-user"]} key={user.id}>
                 {user.name}
+                <button className={`${ButtonStyle["ghost"]}`}>X</button>
               </div>
             ))}
           </div>
