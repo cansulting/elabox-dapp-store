@@ -16,11 +16,14 @@
   gap: 0.1em;
   flex: 1;
   margin-left: 4em;
+  align-items: flex-end;
 }
 .app-user {
   background-color: #adadad;
-  padding: 1em;
+  padding: 0.5em;
   border-radius: 1em;
   margin-top: 1em;
-  width: 100%;
+  width: 95%;
+  border-radius: 0.5em;
+  color: white;
 }

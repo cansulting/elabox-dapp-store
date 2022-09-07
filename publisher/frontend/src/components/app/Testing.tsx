@@ -62,7 +62,10 @@ function Testing(props: TestingProps): JSX.Element {
             ))}
           </div>
         </div>
-        <div className={`${ButtonStyle["group-flex-end"]}`}>
+        <div
+          className={`${ButtonStyle["group-flex-end"]}`}
+          style={{ width: "56%" }}
+        >
           <button className={ButtonStyle["ghost-with-border"]}>Cancel</button>
           <button className={ButtonStyle["primary"]}>Apply</button>
         </div>
