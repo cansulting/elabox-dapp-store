@@ -4,14 +4,14 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"store/client-store/backend/global"
+	"store/client-store/backend/config"
 	"store/client-store/backend/listing"
 )
 
 func initRequests() {
 	http.HandleFunc("/api/v1/store-client/items", retrieveItems)
-	log.Println("Store server at PORT: " + global.PORT)
-	if err := http.ListenAndServe(":"+global.PORT, nil); err != nil {
+	log.Println("Store server at PORT: " + config.PORT)
+	if err := http.ListenAndServe(":"+config.PORT, nil); err != nil {
 		log.Println("Error while listening to port ", err)
 	}
 }

@@ -1,7 +1,4 @@
-//go:build !RELEASE && !STAGING
-// +build !RELEASE,!STAGING
-
-package global
+package config
 
 import "time"
 
