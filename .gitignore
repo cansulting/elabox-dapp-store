@@ -1,3 +1,5 @@
 frontend/node_modules/*
 frontend_test/node_modules/*
 frontend/yarn-error.log
+client-store/frontend/node_modules/*
+publisher/frontend/node_modules/*
