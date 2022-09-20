@@ -21,6 +21,15 @@
             "cwd": "${workspaceFolder}/build/server/debug",
             "program": "${workspaceFolder}/server",
             "buildFlags": "-tags=IDE"
-        }
+        },
+        {
+            "name": "Storehub",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "cwd": "${workspaceFolder}/build/storehub",
+            "program": "${workspaceFolder}/storehub",
+            "buildFlags": "-tags=IDE"
+        }        
     ]
 }

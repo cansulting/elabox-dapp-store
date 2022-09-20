@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -49,6 +53,9 @@ var AppIcon = function (props) {
     var pkg = props.package;
     var status = pkg.status;
     var progressColor = (0, colors_1.ProgressColor)(status);
+    var progress = pkg.progress;
+    if (!(progress > 0) && pkg.status === "installing")
+        progress = 95;
     //console.log("icon", pkg)
     return (react_1.default.createElement("div", { className: props.className, style: {
             // width: props.width,
@@ -104,7 +111,7 @@ var AppIcon = function (props) {
                         background: '#0081ff',
                         padding: '3%',
                     }, color: "white", height: "20%", width: "20%" })),
-            props.package.progress > 0 && (react_1.default.createElement(reactstrap_1.Progress, { style: { height: "6px", width: "100%", margin: "10px 0" }, value: props.package.progress, color: progressColor }))),
-        (!props.package.progress || props.package.progress <= 0) && react_1.default.createElement("h4", { style: { fontSize: "clamp(1rem, 1vw, 2rem)", fontWeight: "500" } }, props.package.name)));
+            progress > 0 && (react_1.default.createElement(reactstrap_1.Progress, { style: { height: "6px", width: "100%", margin: "10px 0" }, value: progress, color: progressColor }))),
+        (!progress || progress <= 0) && react_1.default.createElement("h4", { style: { fontSize: "clamp(1rem, 1vw, 2rem)", fontWeight: "500" } }, pkg.name)));
 };
 exports.AppIcon = AppIcon;
