@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"os"
-	"store/client-store/backend/global"
+	"store/client-store/backend/config"
 	"time"
 )
 var instance *StoresInfo
@@ -13,7 +13,7 @@ var lastUpdated int64 = 0
 func GetInstance() *StoresInfo {
 	// step: reload file for every X seconds
 	diff := time.Now().Unix() - lastUpdated
-	reload := diff > int64(global.RELOAD_TIME.Seconds())
+	reload := diff > int64(config.RELOAD_TIME.Seconds())
 	if reload || instance == nil {
 		lastUpdated = time.Now().Unix()
 		loadInstance()
@@ -34,7 +34,7 @@ func getStoreInfo(storeId string) *StoreInfo {
 }
 func loadInstance() {
 	// step: load file
-	bytes, err := os.ReadFile(global.LISTING_PATH)
+	bytes, err := os.ReadFile(config.LISTING_PATH)
 	if err != nil {
 		log.Println("unable to load listing. inner: " + err.Error())
 		return
