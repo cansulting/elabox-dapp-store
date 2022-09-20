@@ -141,7 +141,7 @@ function resync(packageId) {
             switch (_a.label) {
                 case 0:
                     console.log("resync...");
-                    return [4 /*yield*/, (0, constants_1.getEventHandler)().sendSystemRPC(constants_1.AC_RESYNC, packageId)];
+                    return [4 /*yield*/, (0, constants_1.getEventHandler)().sendSystemRPC(constants_1.AC_CLEAR_DATA, packageId)];
                 case 1:
                     res = _a.sent();
                     if (res.code !== 200)

@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -85,10 +89,11 @@ var AppInfoSetting = function (props) {
                 react_1.default.createElement("span", { style: { color: 'red', cursor: 'pointer' }, onClick: function (e) {
                         e.preventDefault();
                         props.onResync();
-                    } }, "Resync"),
+                    } }, "Clear Data"),
                 react_1.default.createElement("span", { style: { cursor: 'pointer' }, onClick: function (e) {
                         e.preventDefault();
-                        props.onRestart();
+                        if (props.onRestart)
+                            props.onRestart();
                     } }, "Restart"),
                 props.info.status === "installed" &&
                     react_1.default.createElement("span", { style: { cursor: 'pointer', color: "".concat(!props.info.enabled ? "green" : "red") }, onClick: handleServiceStatusChange },
