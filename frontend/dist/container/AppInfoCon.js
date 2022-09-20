@@ -12,7 +12,11 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -139,8 +143,14 @@ var AppInfoCon = function (props) {
     };
     var handleRefresh = function (toastMessage) {
         (0, appLib_1.retrieveListing)(info.id).then(function (listing) {
+            var lastStatus = currentInfo.status;
             updateInfo(listing);
             setProgress(0);
+            console.log(listing.status, lastStatus);
+            // only display toast
+            if (listing.status === "uninstalled" &&
+                lastStatus !== "installed")
+                return;
             react_hot_toast_1.default.success(toastMessage);
         });
     };
@@ -221,9 +231,7 @@ var AppInfoCon = function (props) {
                         return [4 /*yield*/, (0, appLib_1.retrieveListing)(pkgId)];
                     case 3:
                         app = _e.sent();
-                        if (app.status !== "installed" && app.status !== "uninstalling") {
-                            updatedDepedencies.push(app);
-                        }
+                        updatedDepedencies.push(app);
                         _e.label = 4;
                     case 4:
                         _b = _a.next();
@@ -241,6 +249,7 @@ var AppInfoCon = function (props) {
                         return [7 /*endfinally*/];
                     case 8:
                         updatedInfo.dependencies = updatedDepedencies;
+                        // console.log(updatedInfo)
                         updateInfo(updatedInfo);
                         handleCheckStatus();
                         return [2 /*return*/];

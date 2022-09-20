@@ -12,7 +12,11 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -71,13 +75,16 @@ var SettingPopover = function (props) {
             react_1.default.createElement(AppInfoSetting_1.AppInfoSetting, __assign({}, props.setting)))));
 };
 var AppInfo = function (props) {
-    var _a = __read((0, react_1.useState)(false), 2), isOpenDependencyModal = _a[0], setIsOpenDependencyModal = _a[1];
+    var _a, _b;
+    var _c = __read((0, react_1.useState)(false), 2), isOpenDependencyModal = _c[0], setIsOpenDependencyModal = _c[1];
     var settingPopoverRef = (0, react_1.useRef)(null);
     var progressColor = (0, colors_1.ProgressColor)(props.info.status);
     var info = props.info;
     var progress = info.progress;
     var updatable = (0, packageInfo_1.isUpdatable)(props.info);
     var sysCompatible = (0, packageInfo_1.isUpdateCompat)(props.info);
+    if (!(progress > 0) && props.info.status === "installing")
+        progress = 95;
     var handleInstall = function () {
         if (props.onInstall)
             props.onInstall(props.info);
@@ -179,14 +186,14 @@ var AppInfo = function (props) {
                     sysCompatible && updatable && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", active: sysCompatible, outline: true, onClick: handleUpdate }, "Update")),
                     (0, packageInfo_1.isLaunchable)(info) && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", onClick: handleLaunch }, "Launch"))),
                 sysCompatible && info.status === "uninstalled" && (react_1.default.createElement(AppButton_1.AppButton, { color: "primary", size: "sm", outline: true, onClick: handleOnOpenDependencyModal }, "Install")),
-                info.status !== "uninstalling" && progress > 0 && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
+                info.status !== "uninstalling" && info.status !== "installed" && info.status !== "uninstalled" && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },
                     react_1.default.createElement("p", null, (0, appStatus_1.AppStatusToCaption)(info.status)),
-                    react_1.default.createElement("div", { className: "d-flex align-items-center justify-content-center align-items-lg-center", style: { width: '30%', gap: 5 } },
+                    progress > 0 && react_1.default.createElement("div", { className: "d-flex align-items-center justify-content-center align-items-lg-center", style: { width: '30%', gap: 5 } },
                         react_1.default.createElement(reactstrap_1.Progress, { style: { width: "100%" }, value: progress, color: progressColor, animated: false }),
                         react_1.default.createElement(AppButton_1.AppButton, { color: "danger", size: "sm", disabled: info.status !== "downloading", outline: true, onClick: handleCancel },
-                            react_1.default.createElement(Icon.X, { color: "white", size: 14 }))))),
+                            react_1.default.createElement(Icon.X, { className: "pb-1", color: "white", size: 14 }))))),
                 (info.status === "uninstalling" || info.status === "wait_depends") && (react_1.default.createElement("div", { className: "d-flex flex-column align-items-center align-items-lg-start", style: {
                         width: '100%',
                     } },
@@ -214,6 +221,14 @@ var AppInfo = function (props) {
                         "Build: ",
                         info.currentBuild),
                     react_1.default.createElement("br", null)))),
-        props.children));
+        props.children,
+        ((_a = props.info.dependencies) === null || _a === void 0 ? void 0 : _a.length) > 0 && react_1.default.createElement(reactstrap_1.Row, { className: "mt-4" },
+            react_1.default.createElement(reactstrap_1.Col, null,
+                react_1.default.createElement("h4", { className: 'mb-4' }, "Depedencies"),
+                react_1.default.createElement("div", { className: "d-flex text-center mt-2" }, (_b = props.info.dependencies) === null || _b === void 0 ? void 0 : _b.map(function (dependency) {
+                    return react_1.default.createElement("div", { style: { width: "15%" } },
+                        react_1.default.createElement("img", { src: dependency.icon, width: "50%" }),
+                        react_1.default.createElement("p", null, dependency.name));
+                }))))));
 };
 exports.AppInfo = AppInfo;

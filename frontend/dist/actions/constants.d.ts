@@ -12,7 +12,7 @@ export declare const AC_RESTART = "ela.system.APP_RESTART";
 export declare const AC_OFF = "ela.system.APP_OFF";
 export declare const AC_ON = "ela.system.APP_ON";
 export declare const AC_CHECK_STATUS = "ela.system.APP_CHECK_STATUS";
-export declare const AC_RESYNC = "ela.system.APP_CLEAR_DATA";
+export declare const AC_CLEAR_DATA = "ela.system.APP_CLEAR_DATA";
 export declare const INSTALLER_PROGRESS: string;
 export declare const INSTALLER_STATE_CHANGED: string;
 export declare const INSTALLER_ERROR: string;
