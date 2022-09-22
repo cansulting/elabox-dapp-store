@@ -106,8 +106,8 @@
         "description": "A flexible, decentralized storage solution with swappable storage constructs that allow for private storage and public decentralized storage behind robust Swift/Java SDKs for mobile and JS SDKs for the web.",
         "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/trinity.hive/listing/icon.png",
         "updates": "First Release on Elabox",
-        "build": 1,
-        "version": "2.3.6",
+        "build": 2,
+        "version": "2.9.1",
         "minRuntime": "0.6.8",
         "projectRepo": "",
         "projectWebsite": "", 
@@ -135,6 +135,18 @@
         "beta": true,
         "betaUsers":["10000000992e4e2f","10000000538baa75"], 
         "version": "2.22.4",
+        "projectRepo": "",
+        "projectWebsite": ""
+    },
+    "filda.io": {
+        "name": "Filda",
+        "id": "filda.io",
+        "description": "FilDA is a highly secure decentralized digital asset banking platform. Huobi ECO Chain (HECO) and IoTeX provide a safe and secure environment with fast transactions and low fees.",
+        "icon" : "https://storage.googleapis.com/elabox-debug/store/apps/filda.io/listing/icon.svg",
+        "updates": "First Release on Elabox",
+        "build": 1,
+        "beta": false,
+        "version": "0.1.0",
         "projectRepo": "",
         "projectWebsite": ""
     }
