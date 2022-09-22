@@ -1,5 +1,5 @@
 import DashboardStyle from "../assets/css/pages/dashboard.module.css"
-import { DashboardProps } from "../intefaces/Dashboard"
+import { DashboardProps } from "../interfaces/Dashboard"
 import Stores from "../components/Stores"
 import ButtonStyle from "../assets/css/button.module.css"
 function DashboardPage(props: DashboardProps): JSX.Element {

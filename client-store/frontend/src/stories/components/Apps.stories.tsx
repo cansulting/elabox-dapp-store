@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { AppsProps } from '../../intefaces/Apps'
+import { AppsProps } from '../../interfaces/Apps'
 import Apps from '../../components/Apps'
 
 export default {

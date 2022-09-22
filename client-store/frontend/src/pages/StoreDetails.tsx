@@ -1,5 +1,5 @@
 import Apps from "../components/Apps"
-import { StoreProps } from "../intefaces/Store"
+import { StoreProps } from "../interfaces/Store"
 import StoreStyle from "../assets/css/pages/store.module.css"
 import ButtonStyle from "../assets/css/button.module.css"
 function StoreDetailsPage(props:StoreProps): JSX.Element {

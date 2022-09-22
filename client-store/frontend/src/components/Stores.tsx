@@ -1,7 +1,7 @@
 import {useRef} from "react"
 import useResize from "../hooks/useResize"
 import Store from "./Store"
-import { StoresProps } from "../intefaces/Stores"
+import { StoresProps } from "../interfaces/Stores"
 import StoresStyle from "../assets/css/components/stores.module.css"
 function Stores(props: StoresProps): JSX.Element {
   const parentDiv = useRef<HTMLDivElement>(null);    

@@ -1,7 +1,7 @@
 import {useRef} from "react"
 import useResize from "../hooks/useResize"
 import App from "./App"
-import { AppsProps } from "../intefaces/Apps"
+import { AppsProps } from "../interfaces/Apps"
 import AppsStyle from "../assets/css/components/apps.module.css"
 function Apps(props:AppsProps) : JSX.Element{
     const parentDiv = useRef<HTMLDivElement>(null);    

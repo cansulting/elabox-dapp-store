@@ -1,4 +1,4 @@
-import { StoreProps } from "../intefaces/Store"
+import { StoreProps } from "../interfaces/Store"
 import StoreStyle from "../assets/css/components/store.module.css"
 import React from "react"
 function Store(props: StoreProps): JSX.Element {

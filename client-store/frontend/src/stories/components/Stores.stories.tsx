@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import Stories from "../../components/Stores"
-import { StoresProps } from '../../intefaces/Stores'
+import { StoresProps } from '../../interfaces/Stores'
 export default {
     title:"ClientStore/Components/Stories",
     component: Stories

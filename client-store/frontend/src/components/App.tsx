@@ -1,5 +1,5 @@
 import AppStyle from "../assets/css/components/app.module.css"
-import { AppProps } from "../intefaces/App"
+import { AppProps } from "../interfaces/App"
 function App(props: AppProps): JSX.Element {
   return (
     <div className={AppStyle["app"]}>

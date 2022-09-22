@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { SettingsProps } from '../../intefaces/Settings'
+import { SettingsProps } from '../../interfaces/Settings'
 import SettingsPage from "../../pages/Settings"
 
 export default {

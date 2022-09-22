@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { DashboardProps } from '../../intefaces/Dashboard'
+import { DashboardProps } from '../../interfaces/Dashboard'
 import DashboardPage from '../../pages/Dashboard'
 export default {
     title:"ClientStore/Pages/Dashboard",
