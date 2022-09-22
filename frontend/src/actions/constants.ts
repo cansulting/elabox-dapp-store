@@ -25,8 +25,7 @@ export const AC_CLEAR_DATA = "ela.system.APP_CLEAR_DATA";
 // installer broadcasts
 export const INSTALLER_PROGRESS = PACKAGE_ID + ".broadcast.INSTALL_PROGRESS"
 export const INSTALLER_STATE_CHANGED = PACKAGE_ID + ".broadcast.INSTALL_STATE"
-export const INSTALLER_ERROR = PACKAGE_ID + ".broadcast.ERROR"
-
+export const INSTALLER_ERROR = (pgkId:string) => pgkId + ".broadcast.ERROR"
 export const setEventHandler = (eh: EboxEvent) => { 
     _eventHandler = eh;
 }
