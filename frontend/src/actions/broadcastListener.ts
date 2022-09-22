@@ -5,7 +5,7 @@ import {
     PACKAGE_ID,
     INSTALLER_ERROR,
     INSTALLER_PROGRESS,
-    INSTALLER_STATE_CHANGED
+    INSTALLER_STATE_CHANGED,
  } from "./constants"
 import EventEmitter from "events"
 
@@ -20,9 +20,9 @@ export type BroadcastType =
 export const init = () => {
     if (isInit) return;
     isInit = true
-    // eventHandler.subscribe(INSTALLER_ID, (res) => {
-    //     console.log(INSTALLER_ID, res)
-    // })
+    getEventHandler().subscribe(INSTALLER_ID, (res) => {
+        console.log(INSTALLER_ID, res)
+    })
     getEventHandler().subscribe(PACKAGE_ID, res => {
         console.log(PACKAGE_ID, res)
     })
@@ -36,8 +36,11 @@ export const init = () => {
         const data = JSON.parse(args.data)
         emitForPackage(data.packageId,"install_progress", data)
     })
-    getEventHandler().on(INSTALLER_ERROR, args => {
-        console.log(INSTALLER_ERROR, args)
+    getEventHandler().on(INSTALLER_ERROR(INSTALLER_ID),args => {
+        const data = JSON.parse(args.data)
+        emitForPackage(data.packageId,"install_error", data)
+    })
+    getEventHandler().on(INSTALLER_ERROR(PACKAGE_ID), args => {
         const data = JSON.parse(args.data)
         emitForPackage(data.packageId,"install_error", data)
     })
