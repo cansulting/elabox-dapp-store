@@ -6,6 +6,8 @@ import (
 	"os"
 	"store/storehub/config"
 	"time"
+
+	"github.com/cansulting/elabox-system-tools/foundation/perm"
 )
 
 var instance *StoresInfo
@@ -17,10 +19,17 @@ func GetInstance() *StoresInfo {
 	reload := diff > int64(config.RELOAD_TIME.Seconds())
 	if reload || instance == nil {
 		lastUpdated = time.Now().Unix()
-		loadInstance()
+		res, err := loadInstance()
+		if err != nil {
+			log.Println("found issue listing", err)
+			return nil
+		}
+		instance = res
+		log.Println("loaded listing")
 	}
 	return instance
 }
+
 func getStoresInfo() *StoresInfo {
 	return instance
 }
@@ -33,21 +42,27 @@ func getStoreInfo(storeId string) *StoreInfo {
 	}
 	return nil
 }
-func loadInstance() {
+func loadInstance() (*StoresInfo, error) {
 	// step: load file
 	bytes, err := os.ReadFile(config.LISTING_PATH)
 	if err != nil {
-		log.Println("unable to load listing. inner: " + err.Error())
-		return
+		return nil, err
 	}
 	//create tmp variable based ons storesInfo struct
 	tmp := &StoresInfo{}
 	// step: decode the loaded file
 	err = json.Unmarshal(bytes, &tmp)
+	return tmp, err
+}
+
+func saveInstance(storeList *StoresInfo) error {
+	content, err := json.Marshal(storeList)
 	if err != nil {
-		log.Println("unable to unmarshal listing. inner: " + err.Error())
-		return
+		return err
 	}
-	instance = tmp
-	log.Println("loaded listing")
+	if err := os.WriteFile(config.LISTING_PATH, content, perm.PUBLIC_VIEW); err != nil {
+		return err
+	}
+	instance = storeList
+	return nil
 }
