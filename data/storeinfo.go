@@ -1,4 +1,4 @@
-package listing
+package data
 
 type StoreInfo struct {
 	Id          string `json:"id"`          // Store ID
@@ -25,17 +25,4 @@ func ReplaceStoreInfo(original *StoreInfo, new StoreInfo) {
 	if new.StoreCID != "" {
 		original.StoreCID = new.StoreCID
 	}
-}
-
-func UpdateStoreInfo(info StoreInfo) {
-	stores := GetInstance()
-	index := stores.findIndexById(info.Id)
-	if index < 0 {
-		stores.Stores = append(stores.Stores, info)
-	} else {
-		oldInfo := stores.Stores[index]
-		ReplaceStoreInfo(&oldInfo, info)
-		stores.Stores[index] = oldInfo
-	}
-	saveInstance(stores)
 }
