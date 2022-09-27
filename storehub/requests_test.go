@@ -11,7 +11,7 @@ func Test_UpdateStoreInfo(t *testing.T) {
 	jsonData := []byte(`{
 		"id": "sampleid",
 		"name": "sample store",
-		"description": "this is a sample store"
+		"desc": "this is a sample store"
 	}`)
 	req, err := http.NewRequest("post", "http://localhost:4005/api/v1/update", bytes.NewBuffer(jsonData))
 	if err != nil {

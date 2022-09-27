@@ -4,15 +4,20 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"store/data"
 	"store/storehub/config"
 	"store/storehub/listing"
+	"store/utils"
+
+	"github.com/gorilla/mux"
 )
 
 func initRequests() {
-	http.HandleFunc("/api/v1/items", retrieveItems)
-	http.HandleFunc("/api/v1/update", updateStoreInfo)
+	handler := mux.NewRouter().StrictSlash(true)
+	handler.HandleFunc("/api/v1/items", retrieveItems).Methods("GET")
+	handler.HandleFunc("/api/v1/update", updateStoreInfo).Methods("POST")
 	log.Println("Store server at PORT: " + config.PORT)
-	if err := http.ListenAndServe(":"+config.PORT, nil); err != nil {
+	if err := http.ListenAndServe(":"+config.PORT, handler); err != nil {
 		log.Println("Error while listening to port ", err)
 	}
 }
@@ -37,11 +42,12 @@ func retrieveItems(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// step: write the data
-	WriteSuccess(w, data)
+	utils.WriteSuccess(w, data)
 }
 
+// request for updating store info
 func updateStoreInfo(w http.ResponseWriter, r *http.Request) {
-	data, err := ParseHttpBody(r.Body)
+	res, err := utils.ParseHttpBody(r.Body)
 	if err != nil {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusInternalServerError)
@@ -49,33 +55,37 @@ func updateStoreInfo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// check for id
-	if data["id"] == nil {
-		WriteFailed(w, []byte(`{"error":"id property should be defined", "code": 100}`))
+	if res["id"] == nil {
+		utils.WriteFailed(w, []byte(`{"error":"id property should be defined", "code": 100}`))
+		return
+	}
+	if res["name"] == nil {
+		utils.WriteFailed(w, []byte(`{"error":"name property should be defined", "code": 100}`))
 		return
 	}
 	name := ""
 	desc := ""
 	icon := ""
 	store := ""
-	if data["name"] != nil {
-		name = data["name"].(string)
+	if res["name"] != nil {
+		name = res["name"].(string)
 	}
-	if data["description"] != nil {
-		desc = data["description"].(string)
+	if res["desc"] != nil {
+		desc = res["desc"].(string)
 	}
-	if data["iconcid"] != nil {
-		icon = data["iconcid"].(string)
+	if res["iconcid"] != nil {
+		icon = res["iconcid"].(string)
 	}
-	if data["storecid"] != nil {
-		store = data["storecid"].(string)
+	if res["storecid"] != nil {
+		store = res["storecid"].(string)
 	}
-	storeInfo := listing.StoreInfo{
-		Id:          data["id"].(string),
+	storeInfo := data.StoreInfo{
+		Id:          res["id"].(string),
 		Name:        name,
 		Description: desc,
 		IconCID:     icon,
 		StoreCID:    store,
 	}
 	listing.UpdateStoreInfo(storeInfo)
-	WriteSuccess(w, []byte("success"))
+	utils.WriteSuccess(w, []byte(`{"result":"success"}`))
 }

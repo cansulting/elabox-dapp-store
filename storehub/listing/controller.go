@@ -4,16 +4,17 @@ import (
 	"encoding/json"
 	"log"
 	"os"
+	"store/data"
 	"store/storehub/config"
 	"time"
 
 	"github.com/cansulting/elabox-system-tools/foundation/perm"
 )
 
-var instance *StoresInfo
+var instance *data.StoresInfo
 var lastUpdated int64 = 0
 
-func GetInstance() *StoresInfo {
+func GetInstance() *data.StoresInfo {
 	// step: reload file for every X seconds
 	diff := time.Now().Unix() - lastUpdated
 	reload := diff > int64(config.RELOAD_TIME.Seconds())
@@ -30,10 +31,10 @@ func GetInstance() *StoresInfo {
 	return instance
 }
 
-func getStoresInfo() *StoresInfo {
+func getStoresInfo() *data.StoresInfo {
 	return instance
 }
-func getStoreInfo(storeId string) *StoreInfo {
+func getStoreInfo(storeId string) *data.StoreInfo {
 	// search array
 	for _, store := range instance.Stores {
 		if store.Id == storeId {
@@ -42,20 +43,20 @@ func getStoreInfo(storeId string) *StoreInfo {
 	}
 	return nil
 }
-func loadInstance() (*StoresInfo, error) {
+func loadInstance() (*data.StoresInfo, error) {
 	// step: load file
 	bytes, err := os.ReadFile(config.LISTING_PATH)
 	if err != nil {
 		return nil, err
 	}
 	//create tmp variable based ons storesInfo struct
-	tmp := &StoresInfo{}
+	tmp := &data.StoresInfo{}
 	// step: decode the loaded file
 	err = json.Unmarshal(bytes, &tmp)
 	return tmp, err
 }
 
-func saveInstance(storeList *StoresInfo) error {
+func saveInstance(storeList *data.StoresInfo) error {
 	content, err := json.Marshal(storeList)
 	if err != nil {
 		return err
@@ -65,4 +66,17 @@ func saveInstance(storeList *StoresInfo) error {
 	}
 	instance = storeList
 	return nil
+}
+
+func UpdateStoreInfo(info data.StoreInfo) {
+	stores := GetInstance()
+	index := stores.FindIndexById(info.Id)
+	if index < 0 {
+		stores.Stores = append(stores.Stores, info)
+	} else {
+		oldInfo := stores.Stores[index]
+		data.ReplaceStoreInfo(&oldInfo, info)
+		stores.Stores[index] = oldInfo
+	}
+	saveInstance(stores)
 }
