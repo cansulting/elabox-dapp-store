@@ -56,11 +56,11 @@ func updateStoreInfo(w http.ResponseWriter, r *http.Request) {
 	}
 	// check for id
 	if res["id"] == nil {
-		utils.WriteFailed(w, []byte(`{"error":"id property should be defined", "code": 100}`))
+		utils.WriteFailed(w, "100", "id property should be defined")
 		return
 	}
 	if res["name"] == nil {
-		utils.WriteFailed(w, []byte(`{"error":"name property should be defined", "code": 100}`))
+		utils.WriteFailed(w, "100", "name property should be defined")
 		return
 	}
 	name := ""

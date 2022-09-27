@@ -24,15 +24,17 @@ func ParseHttpBody(body io.Reader) (map[string]interface{}, error) {
 }
 
 func WriteSuccess(writer http.ResponseWriter, data []byte) error {
+	writer.Header().Set("Access-Control-Allow-Origin", "*")
 	writer.Header().Set("Content-Type", "application/json")
 	writer.WriteHeader(http.StatusOK)
 	_, err := writer.Write(data)
 	return err
 }
 
-func WriteFailed(writer http.ResponseWriter, data []byte) error {
-	//writer.Header().Set("Content-Type", "application/json")
-	writer.WriteHeader(http.StatusBadRequest)
-	_, err := writer.Write(data)
+func WriteFailed(writer http.ResponseWriter, code string, msg string) error {
+	writer.Header().Set("Access-Control-Allow-Origin", "*")
+	writer.Header().Set("Content-Type", "application/json")
+	writer.WriteHeader(http.StatusOK)
+	_, err := writer.Write([]byte(`{"error":"` + msg + `", "code": ` + code + `}`))
 	return err
 }
