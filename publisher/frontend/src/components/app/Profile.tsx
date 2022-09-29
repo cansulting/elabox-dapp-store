@@ -6,12 +6,22 @@ function Profile(props: ProfileProps): JSX.Element {
   return (
     <div className={ProfileStyle["app-profile"]}>
       <form className={FormStyle["form"]}>
-        <label>Name</label>
-        <input type="text" name="name" placeholder="Name" />
-        <label>Package Id</label>
-        <input type="text" name="name" placeholder="packageId" />
-        <label>Description</label>
-        <textarea name="description" placeholder="Description" />
+        <div className={`${FormStyle["form-body"]} ${FormStyle["form-body-column"]}`}>
+          <div
+            className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}
+          >
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Name" />            
+          </div>          
+          <div className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}>
+            <label>Package Id</label>
+            <input type="text" name="name" placeholder="packageId" />
+          </div>          
+          <div className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}>
+            <label>Description</label>
+            <textarea name="description" placeholder="Description" />          
+          </div>          
+        </div>
         <div className={`${ButtonStyle["group-flex-end"]}`}>
           <button className={ButtonStyle["ghost-with-border"]}>Cancel</button>
           <button className={ButtonStyle["primary"]}>Apply</button>

@@ -22,14 +22,15 @@
   flex-direction: column;
 }
 .form-body > label {
-  flex: 1;
+  flex: 2;
 }
 .form-body > :not(label) {
-  flex: 5;
+  flex: 9;
 }
 .form label {
   font-size: 1em;
   font-weight: bold;
+  white-space: pre-wrap;
 }
 .form *:not(button):not(label):not(div):not(p) {
   padding: 1em;
@@ -38,4 +39,5 @@
 .form textarea {
   resize: none;
   height: 5em;
+  width:100%;
 }
