@@ -7,8 +7,8 @@ export default function DasbhoardController(props:DashboardControllerProps){
     const onExploreClick= () =>{
         navigate("/stores")
     }
-    const onStoreClick= () =>{
-
+    const onStoreClick= (id:string) =>{
+        navigate(`/store/${id}`)
     }
     return <DashboardPage stores={props.stores} onExploreClick={onExploreClick} onStoreClick={onStoreClick}/>
 }

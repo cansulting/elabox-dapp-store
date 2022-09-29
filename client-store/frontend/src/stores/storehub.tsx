@@ -5,8 +5,8 @@ export const useStoreHubStore=create<StoreHubState>((set) =>({
     list: [],
     fetchStores: async () => {
         try {
-            const list = await getStoreList()
-            set((state:StoreHubState) => ({...state, list}))            
+            const { stores } = await getStoreList()
+            set((state:StoreHubState) => ({...state, list:stores}))            
         } catch (error) {
             
         }

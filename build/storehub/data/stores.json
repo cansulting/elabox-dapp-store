@@ -1,6 +1,6 @@
 {
     "stores":[
-        {"id":"1","name":"Store 1","icon":"test_icon","description":"asiojdaoijdoiasd"},
-        {"id":"2","name":"Store 2","icon":"test_icon","description":"asiojdaoijdoiasd"}
+        {"id":"1","name":"Store 1","icon":"https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-placeholder-hunting-kiranshastry-lineal-color-kiranshastry.png","description":"asiojdaoijdoiasd"},
+        {"id":"2","name":"Store 2","icon":"https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-placeholder-hunting-kiranshastry-lineal-color-kiranshastry.png","description":"asiojdaoijdoiasd"}
     ]
 }

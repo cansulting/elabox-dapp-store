@@ -4,7 +4,7 @@ import React from "react"
 function Store(props: StoreProps): JSX.Element {
   const handleStoreClick = (event: React.MouseEvent<HTMLElement>): void => {
     if(props.onClick !== undefined){
-      props.onClick(`/${props.id}`)
+      props.onClick(props.id)
     }
   }
   return (

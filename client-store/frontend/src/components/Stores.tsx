@@ -16,12 +16,12 @@ function Stores(props: StoresProps): JSX.Element {
         gridTemplateColumns:`repeat(${columnPerRow},150px)`,
         justifyContent: isCenteredColumns ? 'center':'flex-start'
       }}>
-      {props.stores.map((details) => (
+      {props.stores?.map((details) => (
         <Store
           key={details.id}
           id={details.id}
-          icon="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-placeholder-hunting-kiranshastry-lineal-color-kiranshastry.png"
-          title="Test"
+          icon={details.icon}
+          title={details.title}
           onClick={props.onStoreClick}
         />
       ))}
