@@ -4,15 +4,20 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"store/data"
 	"store/storehub/config"
 	"store/storehub/listing"
+	"store/utils"
+
+	"github.com/gorilla/mux"
 )
 
 func initRequests() {
-	// allow cors
-	http.HandleFunc("/api/v1/store-client/items", retrieveItems)
+	handler := mux.NewRouter().StrictSlash(true)
+	handler.HandleFunc("/api/v1/items", retrieveItems).Methods("GET")
+	handler.HandleFunc("/api/v1/update", updateStoreInfo).Methods("POST")
 	log.Println("Store server at PORT: " + config.PORT)
-	if err := http.ListenAndServe(":"+config.PORT, nil); err != nil {
+	if err := http.ListenAndServe(":"+config.PORT, handler); err != nil {
 		log.Println("Error while listening to port ", err)
 	}
 }
@@ -37,7 +42,50 @@ func retrieveItems(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// step: write the data
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(data)
+	utils.WriteSuccess(w, data)
+}
+
+// request for updating store info
+func updateStoreInfo(w http.ResponseWriter, r *http.Request) {
+	res, err := utils.ParseHttpBody(r.Body)
+	if err != nil {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte("{\"status\": \"error\", \"message\": \"couldnt parse body\"}"))
+		return
+	}
+	// check for id
+	if res["id"] == nil {
+		utils.WriteFailed(w, "100", "id property should be defined")
+		return
+	}
+	if res["name"] == nil {
+		utils.WriteFailed(w, "100", "name property should be defined")
+		return
+	}
+	name := ""
+	desc := ""
+	icon := ""
+	store := ""
+	if res["name"] != nil {
+		name = res["name"].(string)
+	}
+	if res["desc"] != nil {
+		desc = res["desc"].(string)
+	}
+	if res["iconcid"] != nil {
+		icon = res["iconcid"].(string)
+	}
+	if res["storecid"] != nil {
+		store = res["storecid"].(string)
+	}
+	storeInfo := data.StorePreview{
+		Id:          res["id"].(string),
+		Name:        name,
+		Description: desc,
+		IconCID:     icon,
+		StoreCID:    store,
+	}
+	listing.UpdateStoreInfo(storeInfo)
+	utils.WriteSuccess(w, []byte(`{"result":"success"}`))
 }
