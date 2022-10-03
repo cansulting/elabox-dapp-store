@@ -1,0 +1,7 @@
+.app-body {
+  display: flex;
+  justify-content: center;
+  flex: 5;
+  overflow: auto;
+  height: 75vh;
+}

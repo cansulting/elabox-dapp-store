@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1em;
+}
+.form-inline {
+  flex-direction: row;
+}
+.form-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1em;
+  padding: 0;
+}
+.form-body-full {
+  width: 100%;
+}
+.form-body-column {
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.form-body > label {
+  flex: 2;
+}
+.form-body > :not(label) {
+  flex: 9;
+}
+.form label {
+  font-size: 1em;
+  font-weight: bold;
+  white-space: pre-wrap;
+}
+.form *:not(button):not(label):not(div):not(p) {
+  padding: 1em;
+  font-size: 1em;
+}
+.form textarea {
+  resize: none;
+  height: 5em;
+  width:100%;
+}

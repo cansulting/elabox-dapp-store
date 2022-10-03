@@ -1,0 +1,32 @@
+.app-release {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.app-release h2 {
+  margin-bottom: 0.5em;
+}
+.build {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex: 1;
+}
+.build-info > label {
+  font-size: 1em;
+  font-weight: bold;
+  flex: 1;
+}
+.build-info > p {
+  flex: 5;
+}
+.app-release > form {
+  width: 50%;
+  justify-content: center;
+}

@@ -1,0 +1,10 @@
+.app-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
+  padding: 1em;
+  background-color: #ededed;
+  flex: 1;
+  height: 76vh;
+}

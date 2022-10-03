@@ -1,0 +1,33 @@
+.primary {
+  background-color: #00a5ec;
+  color: white;
+  border: none;
+  border-radius: 0.2em;
+  padding: 0.3em;
+  width: 10em;
+}
+.group {
+  display: flex;
+  flex: 1;
+}
+.group-flex-end {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end !important;
+  padding: 1em 0 1em 0 !important;
+  gap: 1em;
+}
+.ghost {
+  background-color: transparent;
+  border: none;
+  color: #00a5ec;
+  padding: 1em;
+}
+.ghost-with-border {
+  background-color: transparent;
+  border: none;
+  color: #00a5ec;
+  padding: 1em;
+  border: 1px solid #00a5ec;
+  width: 10em;
+}
