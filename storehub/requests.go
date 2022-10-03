@@ -24,10 +24,11 @@ func initRequests() {
 
 //get items
 func retrieveItems(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")	
 	// step: retrieve the data
 	items := listing.GetInstance()
 	if len(items.Stores) == 0 {
-		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("{\"status\": \"error\", \"message\": \"items not found\"}"))
 		return
@@ -35,7 +36,6 @@ func retrieveItems(w http.ResponseWriter, r *http.Request) {
 	// step: marshal the data
 	data, err := json.Marshal(items)
 	if err != nil {
-		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("{\"status\": \"error\", \"message\": \"" + err.Error() + "\"}"))
 		return

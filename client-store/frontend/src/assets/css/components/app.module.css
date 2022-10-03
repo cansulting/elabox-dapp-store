@@ -1,0 +1,36 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  height: 150px;
+  width: 150px;
+  background-color: #707070;
+  border-radius: 1em;
+}
+.app > .app-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  height: 100%;
+}
+.app > .app-body > img {
+  max-width: 5em;
+  max-height: 5em;
+}
+.app-footer {
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 0 1em 1em;
+  width: 100%;
+}
+.app-footer > h3 {
+  margin: 0;
+  padding: 0.1em;
+  color: black;
+  margin: 0.5em;
+}
