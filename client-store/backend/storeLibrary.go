@@ -26,10 +26,6 @@ func RetrieveStore(storeId string) (*data2.StoreInfo, error) {
 	return storehub.RetrieveStore(storeId)
 }
 
-func RetrieveAllApps2(storehubId string) ([]data2.PackagePreview, error) {
-	return storehub.RetrieveAllApps(storehubId)
-}
-
 // retrieve all apps
 // @beta is true if include all apps for testing and demo apps
 func RetrieveAllApps(beta bool) ([]data.PackageInfo, error) {
