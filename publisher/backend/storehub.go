@@ -8,7 +8,7 @@ import (
 	"store/data"
 )
 
-func UpdateStore(storeinfo data.StoreInfo) error {
+func UpdateStore(storeinfo data.StorePreview) error {
 	content, err := json.Marshal(storeinfo)
 	if err != nil {
 		return err

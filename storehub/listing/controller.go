@@ -11,10 +11,10 @@ import (
 	"github.com/cansulting/elabox-system-tools/foundation/perm"
 )
 
-var instance *data.StoresInfo
+var instance *data.StoreList
 var lastUpdated int64 = 0
 
-func GetInstance() *data.StoresInfo {
+func GetInstance() *data.StoreList {
 	// step: reload file for every X seconds
 	diff := time.Now().Unix() - lastUpdated
 	reload := diff > int64(config.RELOAD_TIME.Seconds())
@@ -31,10 +31,10 @@ func GetInstance() *data.StoresInfo {
 	return instance
 }
 
-func getStoresInfo() *data.StoresInfo {
+func getStoresInfo() *data.StoreList {
 	return instance
 }
-func getStoreInfo(storeId string) *data.StoreInfo {
+func getStoreInfo(storeId string) *data.StorePreview {
 	// search array
 	for _, store := range instance.Stores {
 		if store.Id == storeId {
@@ -43,20 +43,20 @@ func getStoreInfo(storeId string) *data.StoreInfo {
 	}
 	return nil
 }
-func loadInstance() (*data.StoresInfo, error) {
+func loadInstance() (*data.StoreList, error) {
 	// step: load file
 	bytes, err := os.ReadFile(config.LISTING_PATH)
 	if err != nil {
 		return nil, err
 	}
 	//create tmp variable based ons storesInfo struct
-	tmp := &data.StoresInfo{}
+	tmp := &data.StoreList{}
 	// step: decode the loaded file
 	err = json.Unmarshal(bytes, &tmp)
 	return tmp, err
 }
 
-func saveInstance(storeList *data.StoresInfo) error {
+func saveInstance(storeList *data.StoreList) error {
 	content, err := json.Marshal(storeList)
 	if err != nil {
 		return err
@@ -68,7 +68,7 @@ func saveInstance(storeList *data.StoresInfo) error {
 	return nil
 }
 
-func UpdateStoreInfo(info data.StoreInfo) {
+func UpdateStoreInfo(info data.StorePreview) {
 	stores := GetInstance()
 	index := stores.FindIndexById(info.Id)
 	if index < 0 {

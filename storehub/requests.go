@@ -79,7 +79,7 @@ func updateStoreInfo(w http.ResponseWriter, r *http.Request) {
 	if res["storecid"] != nil {
 		store = res["storecid"].(string)
 	}
-	storeInfo := data.StoreInfo{
+	storeInfo := data.StorePreview{
 		Id:          res["id"].(string),
 		Name:        name,
 		Description: desc,
