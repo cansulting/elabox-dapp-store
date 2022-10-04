@@ -14,15 +14,21 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.7.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@elastosfoundation/did-js-sdk": "2.2.11",
+    "@elastosfoundation/elastos-connectivity-sdk-js": "1.1.4",
+    "@elastosfoundation/essentials-connector-client-browser": "1.0.40",
+    "@elastosfoundation/hive-js-sdk": "2.8.2",
+    "@walletconnect/web3-provider": "^1.7.8",
+    "axios": "^0.27.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "serve": "webpack serve --mode development",
+    "build": "webpack --mode production"
   },
   "eslintConfig": {
     "extends": [
@@ -63,8 +69,18 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/preset-typescript": "^7.13.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
-    "webpack": "^5.74.0"
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0",
+    "babel-loader": "^8.2.2",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "ts-loader": "^9.3.1",
+    "ts-node": "^10.9.1"
   }
 }
