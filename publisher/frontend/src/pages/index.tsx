@@ -11,8 +11,7 @@ const SIGNEDOUT = "signedout"
 const SIGNING = "signing"
 
 function Home(props: any) {
-    const status = useStoreState((state) => state.authStatus)
-    const updateStatus = useStoreState( state => state.setAuthStatus)
+    const [status, updateStatus] = useState(SIGNEDOUT)
     const onPressSign = () => {
         updateStatus(SIGNING)
         Auth.signin(HIVE_CONFIG.appId).then( (presentation) => {
