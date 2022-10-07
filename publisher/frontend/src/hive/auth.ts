@@ -1,30 +1,35 @@
 //import { VerifiableCredential } from '@elaboxfoundation/did-js-sdk';
+import { VerifiablePresentation } from '@elastosfoundation/did-js-sdk';
 import { connectivity, DID } from '@elastosfoundation/elastos-connectivity-sdk-js';
 import { EssentialsConnector } from '@elastosfoundation/essentials-connector-client-browser';
+import { HIVE_CONFIG } from '../constants';
 import wait from "./wait"  
 
 let instance : Auth;
 console.log(connectivity)
 export default class Auth {
-    connector: any;
+    connector: EssentialsConnector;
     static waiting = false
 
     _initConnector(appDid : string) {
         return new Promise( async (resolve, rej) => {
-            console.log("initConnector")
+            console.log("initConnector", appDid)
             connectivity.setApplicationDID(appDid)
-            let connectors = connectivity.getAvailableConnectors()
-            if (connectors !== null && connectors.length > 0) 
-                this.connector = connectors[0] as EssentialsConnector 
+            let connector = connectivity.getActiveConnector()
+            //console.log("CONNECTORS", connectors)
+            if (connector !== null ) 
+                this.connector = connector as EssentialsConnector
             else { 
+                //console.log("register connector")
                 this.connector = new EssentialsConnector()
                 await connectivity.registerConnector(this.connector).then(async () => {
+                    //console.log(" connector registered")
                     const walletConnectProvider = this.connector.getWalletConnectProvider();
                     if (!walletConnectProvider.connected)
                         await walletConnectProvider.enable();
+
                 });
             }
-            console.log("Done")
             resolve(null)
         })
         
@@ -45,14 +50,17 @@ export default class Auth {
         return instance 
     }
 
-    static async isConnected(appDid : string) : Promise<boolean> {
+    static async isConnected(appDid? : string) : Promise<boolean> {
+        if (!appDid) 
+            appDid = HIVE_CONFIG.appId
         const inst = await this.getInstance(appDid)
         return inst.connector.hasWalletConnectSession()
     }
 
-    async signin() {
-        if (this.connector.hasWalletConnectSession())
-            await this.connector.disconnectWalletConnect()
+    static async signin(appId: string) : Promise<VerifiablePresentation> {
+        const inst = await this.getInstance(appId)
+        if (inst.connector.hasWalletConnectSession())
+            await inst.connector.disconnectWalletConnect()
         const didAccess = new DID.DIDAccess()
         
         try {
@@ -61,6 +69,7 @@ export default class Auth {
             );
             return presentation
         } catch (error) {
+            await inst.connector.disconnectWalletConnect()
             console.log(error);
             return null
         }
@@ -70,6 +79,19 @@ export default class Auth {
         if (!this.connector)
             return false
         return this.connector.hasWalletConnectSession()
+    }
+    static async onConnected(callback : () => void) {
+        // let timer : NodeJS.Timer
+        // timer = setInterval(async () => {
+ 
+            const connected = await Auth.isConnected(HIVE_CONFIG.appId)
+            if (connected) {
+                //clearInterval(timer)
+                callback()
+                return 
+            }
+        // }, 1000)
+        // return timer
     }
 
     disconnectConnector() {

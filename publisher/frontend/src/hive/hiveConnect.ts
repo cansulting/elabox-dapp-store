@@ -8,9 +8,9 @@ import { DID as ConnDID } from "@elastosfoundation/elastos-connectivity-sdk-js";
 import { HiveConfig } from "./hiveConfig"
 import dayjs from "dayjs"
 import { Claims, DefaultDIDAdapter, DIDBackend, VerifiableCredential } from "@elastosfoundation/did-js-sdk";
-import DEBUG_CONFIG from "./config";
+import { HIVE_CONFIG } from "../constants";
 //var hv = require("@elabox/hive-js-sdk")
-const DID_CACHE_DIR = "/anyfakedir/browserside/for/didstores"
+const DID_CACHE_DIR = "/didstores"
 
 
 export default class HiveConnect {
@@ -24,86 +24,19 @@ export default class HiveConnect {
         if (HiveConnect._config)
             return
         if (!config)
-            config = DEBUG_CONFIG
+            config = HIVE_CONFIG
         this._config = config
-        this._didAccess = new ConnDID.DIDAccess()
         await this._initAppContext()
         this._initVault()
         this._initBackup()
     }
 
     static async _initAppContext() {
+        console.log("initializing App Context")
+        DIDBackend.initialize(new DefaultDIDAdapter(this._config.resolverUrl));
         try {
-            DIDBackend.initialize(new DefaultDIDAdapter(this._config.resolverUrl));
+            
             hive.AppContext.setupResolver(this._config.resolverUrl, DID_CACHE_DIR)
-            console.log("initializing App Context")
-            let didInfo = await this._didAccess.getExistingAppInstanceDIDInfo()
-            let appIdCredentials : any = await this._didAccess.getExistingAppIdentityCredential()
-            if (!appIdCredentials) {
-                appIdCredentials = await this._generateAppIdCredential()
-                if (!appIdCredentials) {
-                    throw new Error("Unable to generate App ID Credentials")
-                }
-            }
-            console.log("APP ID CREDENTIALS", appIdCredentials)
-            let appInstanceDid =  await this._didAccess.getOrCreateAppInstanceDID()
-            let didDocument = await appInstanceDid.didStore.loadDid(appInstanceDid.did.toString())
-            console.log("Generate DID Document", didDocument)
-            let appContextProvider : hive.AppContextProvider = {
-                getLocalDataDir: function (): string {
-                    return "/"
-                },
-                getAppInstanceDocument: function (): Promise<did.DIDDocument> {
-                    return Promise.resolve(didDocument)
-                },
-                getAuthorization: function (authenticationChallengeJWtCode: string): Promise<string> {
-                    /**
-                     * Generates/Sign a JWT token needed by hive vaults to authenticate users and app.
-                     * That JWT contains a verifiable presentation that contains server challenge info, and the app id credential
-                     * issued by the end user earlier.
-                     */
-                    return new Promise( async(resolve, reject) => {
-                        try {
-                            console.log("!!!!!!!!!!!!!!parse auth challenge", authenticationChallengeJWtCode)
-                            let claims: did.Claims = (await new did.JWTParserBuilder()
-                                .setAllowedClockSkewSeconds(300)
-                                .build()
-                                .parse(authenticationChallengeJWtCode))
-                                .getBody();
-                            let realm = claims.getIssuer() as string
-                            let nonce = claims.get("nonce") as string
-                            let builder = await did.VerifiablePresentation.createFor(appInstanceDid.did.toString(), null, appInstanceDid.didStore)
-                            // generate presentation for jwtoken
-                            console.log("!!!!!!!!!!!!!!building credentials", didInfo.storePassword)
-                            let presentation = await builder.credentials(appIdCredentials)
-                                .realm(realm)
-                                .nonce(nonce)
-                                .seal(didInfo.storePassword)
-                            
-                            if (!presentation) {     
-                                reject("no presentation generated")
-                                return
-                            }  
-                            // generate/sign jwttoken             
-                            let jwtoken = await didDocument.jwtBuilder()
-                                .addHeader(did.JWTHeader.TYPE, did.JWTHeader.JWT_TYPE)
-                                .addHeader("version", "1.0")
-                                .setSubject("DIDAuthResponse")
-                                .setAudience(claims.getIssuer())
-                                .setIssuedAt(dayjs().unix())
-                                .setExpiration(dayjs().add(3, 'month').unix())
-                                .setNotBefore(dayjs().unix())
-                                .claimsWithJson("presentation", presentation.toString(true))
-                                .sign(appInstanceDid.storePassword);
-                            resolve(jwtoken)
-                        }catch (e) {
-                            reject(new Error("failed generating jwt token with error " + new String(e)))
-                        }
-                    })
-                }
-            }
-            console.log("building App context", this._config)
-            this._appContext = await hive.AppContext.build(appContextProvider, this.getLastUserDID(), this._config.appId)
         } catch(e) {
            
             if (e instanceof hive.DIDResolverAlreadySetupException) {
@@ -113,6 +46,75 @@ export default class HiveConnect {
                 console.error("AppContext.setupResolver() exception:", e);
             }
         }
+        this._didAccess = new ConnDID.DIDAccess()
+        let didInfo = await this._didAccess.getExistingAppInstanceDIDInfo()
+        let appIdCredentials : any = await this._didAccess.getExistingAppIdentityCredential()
+        if (!appIdCredentials) {
+            appIdCredentials = await this._generateAppIdCredential()
+            if (!appIdCredentials) {
+                throw new Error("Unable to generate App ID Credentials")
+            }
+        }
+        console.log("APP ID CREDENTIALS", appIdCredentials)
+        let appInstanceDid =  await this._didAccess.getOrCreateAppInstanceDID()
+        let didDocument = await appInstanceDid.didStore.loadDid(appInstanceDid.did.toString())
+        console.log("Generate DID Document", didDocument)
+        let appContextProvider : hive.AppContextProvider = {
+            getLocalDataDir: function (): string {
+                return "/"
+            },
+            getAppInstanceDocument: function (): Promise<did.DIDDocument> {
+                return Promise.resolve(didDocument)
+            },
+            getAuthorization: function (authenticationChallengeJWtCode: string): Promise<string> {
+                /**
+                 * Generates/Sign a JWT token needed by hive vaults to authenticate users and app.
+                 * That JWT contains a verifiable presentation that contains server challenge info, and the app id credential
+                 * issued by the end user earlier.
+                 */
+                return new Promise( async(resolve, reject) => {
+                    try {
+                        console.log("!!!!!!!!!!!!!!parse auth challenge", authenticationChallengeJWtCode)
+                        let claims: did.Claims = (await new did.JWTParserBuilder()
+                            .setAllowedClockSkewSeconds(300)
+                            .build()
+                            .parse(authenticationChallengeJWtCode))
+                            .getBody();
+                        let realm = claims.getIssuer() as string
+                        let nonce = claims.get("nonce") as string
+                        let builder = await did.VerifiablePresentation.createFor(appInstanceDid.did.toString(), null, appInstanceDid.didStore)
+                        // generate presentation for jwtoken
+                        console.log("!!!!!!!!!!!!!!building credentials", didInfo.storePassword)
+                        let presentation = await builder.credentials(appIdCredentials)
+                            .realm(realm)
+                            .nonce(nonce)
+                            .seal(didInfo.storePassword)
+                        
+                        if (!presentation) {     
+                            reject("no presentation generated")
+                            return
+                        }  
+                        // generate/sign jwttoken             
+                        let jwtoken = await didDocument.jwtBuilder()
+                            .addHeader(did.JWTHeader.TYPE, did.JWTHeader.JWT_TYPE)
+                            .addHeader("version", "1.0")
+                            .setSubject("DIDAuthResponse")
+                            .setAudience(claims.getIssuer())
+                            .setIssuedAt(dayjs().unix())
+                            .setExpiration(dayjs().add(3, 'month').unix())
+                            .setNotBefore(dayjs().unix())
+                            .claimsWithJson("presentation", presentation.toString(true))
+                            .sign(appInstanceDid.storePassword);
+                        resolve(jwtoken)
+                    }catch (e) {
+                        reject(new Error("failed generating jwt token with error " + new String(e)))
+                    }
+                })
+            }
+        }
+        console.log("building App context", this._config)
+        this._appContext = await hive.AppContext.build(appContextProvider, this.getLastUserDID(), this._config.appId)
+       
     }
 
     static _initVault() {

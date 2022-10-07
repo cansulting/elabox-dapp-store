@@ -1,5 +1,5 @@
 import axios from "axios";
-import { STORE_HUB_URL } from "../hive/config";
+import { STORE_HUB_URL } from "../constants";
 import { StoreDefinition } from "../data/storeDefinition";
 
 export async function updateStoreDefinition(def: StoreDefinition) {
