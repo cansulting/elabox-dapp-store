@@ -1,10 +1,10 @@
+import { StoreInfo } from "../data/storeInfo"
 import StoreStyle from "../assets/css/components/store.module.css"
-import { StoreProps } from "../interfaces/Store"
 
-function Store(props: StoreProps) {
+function Store(props: StoreInfo) {
   return (
     <div className={StoreStyle["app-store"]}>
-      <img src={props.icon} alt={`${props.name} Icon`} />
+      <img src={props.iconcid} alt={`${props.name} Icon`} />
       <h3>{props.name}</h3>
     </div>
   )

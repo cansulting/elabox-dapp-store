@@ -1,7 +1,6 @@
+import { PackageInfo } from "../data/packageInfo"
+
 export interface ProfileProps {
-  name: string
-  packageId: string
-  description: string
-  icon: string
-  onProfileSave: () => void
+  info: PackageInfo
+  onProfileSave?: (newPkg:PackageInfo) => void
 }

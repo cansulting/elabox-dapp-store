@@ -1,5 +1,10 @@
+import { BuildInfo } from "../data/buildInfo"
+import { ReleaseInfo } from "../data/releaseInfo"
+
 export interface ReleaseProps {
-  build: string
-  updates: string
-  onReleaseSave: () => void
+  info: ReleaseInfo
+  builds: {
+    [key:number]: BuildInfo
+  }
+  onReleaseSave?: () => void
 }

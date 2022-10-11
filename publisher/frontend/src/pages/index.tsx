@@ -4,44 +4,43 @@ import HiveConnect from "../hive/hiveConnect"
 import { HIVE_CONFIG } from "../constants"
 import Auth from "../hive/auth"
 import Dashboard from "../pages/Dashboard"
-import { useStoreState } from "../states/store"
+import { SIGNEDIN, SIGNEDOUT, SIGNING, useStoreState } from "../states/store"
 
-const SIGNEDIN = "signedin"
-const SIGNEDOUT = "signedout"
-const SIGNING = "signing"
+// const SIGNEDIN = "signedin"
+// const SIGNEDOUT = "signedout"
+// const SIGNING = "signing"
 
 function Home(props: any) {
-    const [status, updateStatus] = useState(SIGNEDOUT)
+    const { initialize, info, authStatus, setAuthStatus} = useStoreState()
     const onPressSign = () => {
-        updateStatus(SIGNING)
+        setAuthStatus(SIGNING)
         Auth.signin(HIVE_CONFIG.appId).then( (presentation) => {
-            if (presentation) {
-                HiveConnect.initialize(HIVE_CONFIG)
-                updateStatus( SIGNEDIN)
-            } else {
-                updateStatus(SIGNEDOUT)
-            }
+            // if (presentation) {
+            //     HiveConnect.initialize(HIVE_CONFIG)
+            //     updateStatus( SIGNEDIN)
+            // } else {
+            //     updateStatus(SIGNEDOUT)
+            // }
+            initialize()
+            // .then( _con => {
+            //     let _status = _con ? SIGNEDIN : SIGNEDOUT
+            //     setAuthStatus(_status)
+            //     console.log("DDDDD", _con)
+            // })
         }).catch( err => {
             console.error(err)
-            updateStatus(SIGNEDOUT)
+            setAuthStatus(SIGNEDOUT)
         })
     }
+    
     useEffect(() => {
-        console.log("checking")
-        updateStatus(SIGNING)
-        Auth.isConnected(HIVE_CONFIG.appId).then( async _con => {
-            let _status = _con ? SIGNEDIN : SIGNEDOUT
-            if (status !== _status) {
-                if (_con)
-                    await HiveConnect.initialize(HIVE_CONFIG)
-                updateStatus(_status)
-            }
-        })
+        setAuthStatus(SIGNING)
+        initialize()
     }, [])
-    console.log(status)
+    console.log(authStatus, info)
     return (<div>
-        { status === SIGNEDIN && <Dashboard header={undefined} sidebar={undefined} body={undefined} />}
-        { status === SIGNEDOUT && <button onClick={_ => onPressSign() }>Sign-in</button>}
+        { authStatus === SIGNEDIN && <Dashboard storeData={info}  />}
+        { authStatus === SIGNEDOUT && <button onClick={_ => onPressSign() }>Sign-in</button>}
     </div>)
 }
 

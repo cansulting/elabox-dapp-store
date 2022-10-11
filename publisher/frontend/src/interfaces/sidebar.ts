@@ -1,6 +1,6 @@
-import { StoreProps } from "./Store"
+import { PackageInfo } from "../data/packageInfo"
 
 export interface SideBarProps {
-  stores: StoreProps[]
+  stores?: PackageInfo[]
   onAddApp: () => void
 }

@@ -36,7 +36,7 @@ function Header(props: HeaderProps): JSX.Element {
           />
         </form>
       </div>
-      <div className={TabsStyle["tabs-control"]}>
+      {props.app && <div className={TabsStyle["tabs-control"]}>
         <div
           className={`${
             props.tab?.index === 0 ? TabsStyle["tab-selected"] : ""
@@ -69,7 +69,7 @@ function Header(props: HeaderProps): JSX.Element {
         >
           Release
         </div>
-      </div>
+      </div>}
     </div>
   )
 }

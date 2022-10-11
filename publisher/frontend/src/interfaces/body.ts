@@ -1,12 +1,12 @@
-import { ProfileProps } from "./profile"
-import { ReleaseProps } from "./release"
-import { TestingProps } from "./testing"
+import { BuildInfo } from "../data/buildInfo"
+import { PackageInfo } from "../data/packageInfo"
 
 export interface BodyProps {
   tabIndex: number
-  app: {
-    profile: ProfileProps
-    testing: TestingProps
-    release: ReleaseProps
+  app?: PackageInfo
+  builds: {
+    [key:number]: BuildInfo
   }
+  onApply?: (newpkg: PackageInfo) => void
+  onUpload?: (buf: Buffer) => void
 }

@@ -1,7 +1,9 @@
-import { STORE_INFO_PATH } from "../constants";
+import { HIVE_CONFIG, STORE_INFO_PATH } from "../constants";
 import HiveConnect from "../hive/hiveConnect";
 import { StoreInfo } from "../data/storeInfo";
 import { updateStoreDefinition } from "./storehubActions";
+import Auth from "../hive/auth";
+import { SIGNEDIN, SIGNEDOUT, useStoreState } from "../states/store";
 
 const DEFAULT_STORE: any = {
     id: "web3.store",

@@ -2,10 +2,16 @@ import ReleaseStyle from "../../assets/css/components/app/release.module.css"
 import FormStyle from "../../assets/css/form.module.css"
 import ButtonStyle from "../../assets/css/button.module.css"
 import { ReleaseProps } from "../../interfaces/release"
+import { Dropdown } from "react-bootstrap"
+import { useState } from "react"
 function Release(props: ReleaseProps): JSX.Element {
+  const [selectedBuild, setSelectedBuild] = useState(null)
   const handleReleaseClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     props.onReleaseSave()
+  }
+  const handleOnSelect = (evntkey: any, evnt: Object) => {
+    setSelectedBuild(evntkey)
   }
   return (
     <div className={ReleaseStyle["app-release"]}>
@@ -35,7 +41,17 @@ function Release(props: ReleaseProps): JSX.Element {
             className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}
           >
             <label>Build</label>
-            <input type="text" name="build" placeholder="Build" />
+            <Dropdown onSelect={handleOnSelect}>
+              <Dropdown.Toggle>
+                { !selectedBuild && <>Select Build</>}
+                { selectedBuild && <>{"Selected Build " + selectedBuild}</>}
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                { props.builds && Object.values(props.builds).map( (item, index) => (
+                  <Dropdown.Item eventKey={item.number}>{item.number}</Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
           <div
             className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}

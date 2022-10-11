@@ -4,6 +4,7 @@ export interface StoreInfo {
     id: string;
     desc: string;
     name: string;
+    iconcid: string;
     packages?: { [key:string]: PackageInfo };
 }
 
