@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import Header from "../../components/Header"
-import { HeaderProps } from "../../interfaces/header"
+import Header, { HeaderProps } from "../../components/Header"
 
 export default {
   title: "Publisher/Components/Header",
@@ -20,6 +19,7 @@ export const HeaderWithDummyData = Template.bind({
     },
   },
   onSearch: handleOnSearch,
+  onSignout: () => {}
 })
 
 HeaderWithDummyData.args = {}
