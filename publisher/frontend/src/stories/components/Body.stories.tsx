@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import Body from "../../components/Body"
-import { BodyProps } from "../../interfaces/body"
+import Body, { BodyProps } from "../../components/Body"
 export default {
   title: "Publisher/Components/Body",
   component: Body,
