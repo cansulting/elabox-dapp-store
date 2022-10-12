@@ -1,7 +1,18 @@
 import React, { useState, useRef } from "react"
+import { Button } from "react-bootstrap"
+import { PackageInfo } from "../data/packageInfo"
 import HeaderStyle from "../assets/css/components/header.module.css"
 import TabsStyle from "../assets/css/tabs.module.css"
-import { HeaderProps } from "../interfaces/header"
+
+export interface HeaderProps {
+  tab?: {
+    index: number
+    onSelectTab: (index: number) => void
+  }
+  app: PackageInfo
+  onSearch: (query: string) => void
+  onSignout: () => void
+}
 
 function Tab(props:any) {
   return (
@@ -49,6 +60,7 @@ function Header(props: HeaderProps): JSX.Element {
             value={query}
           />
         </form>
+        <Button onClick={props.onSignout}>Sign-out</Button>
       </div>
       {props.app && <div className={TabsStyle["tabs-control"]}>
         <Tab caption="App Profile" 

@@ -2,7 +2,7 @@ import { BuildInfo, BuildList } from "../data/buildInfo";
 import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import HiveConnect from "../hive/hiveConnect";
-import { BUILDS_PATH, BUILD_INFO_PATH, EBOX_PACKAGE_EXT } from "../constants";
+import { BUILDS_PATH, BUILD_INFO_PATH, EBOX_PACKAGE_EXT, STORE_PATH } from "../constants";
 
 const DEFAULT_BUILDS = {
     1: {
@@ -36,7 +36,7 @@ export const useBuildState = create<BuildState>() (
                 let builds = get().builds
                 // upload build
                 console.log("uploading build")
-                const cid = await HiveConnect.uploadBuffer(BUILDS_PATH + "/" + packageId + "/builds/"+ num + "." + EBOX_PACKAGE_EXT, buf, progress)
+                const cid = await HiveConnect.uploadBuffer(STORE_PATH + "/" + packageId + "/builds/"+ num + "." + EBOX_PACKAGE_EXT, buf, progress)
                 // update build list definitions
                 const buildinfo = { 
                     id: packageId + cid,
@@ -51,7 +51,8 @@ export const useBuildState = create<BuildState>() (
                 return buildinfo
             },
             deleteBuilds: async (pkid: string) => {
-                await HiveConnect.deletePath(pkid)
+                // delete whole directory
+                await HiveConnect.deletePath(STORE_PATH + "/" + pkid + "/builds")
                 const builds = {...get().builds}
                 delete builds[pkid] 
                 set( states => ({...states, builds: builds}))

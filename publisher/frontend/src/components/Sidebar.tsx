@@ -1,13 +1,14 @@
 import SideBarStyle from "../assets/css/components/sidebar.module.css"
 import ButtonStyle from "../assets/css/button.module.css"
-import Store from "./Store"
+import PackageListItem from "./PackageListItem"
 import React, { useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
 import { PackageInfo } from "../data/packageInfo"
 
 export interface SideBarProps {
-  stores?: PackageInfo[]
+  packages?: PackageInfo[]
   onAddApp: (pkid: string, pkname: string) => void
+  onAppSelected: (pkg: PackageInfo) => void
 }
 
 function AddPackageModal(props:SideBarProps) {
@@ -61,8 +62,8 @@ function SideBar(props: SideBarProps): JSX.Element {
   return (
     <div className={SideBarStyle["app-sidebar"]}>
       <div>
-        {props.stores.map((store) => {
-          return <Store {...store} />
+        {props.packages.map((pkg) => {
+          return <PackageListItem info={pkg} onClick={props.onAppSelected}/>
         })}
       </div>
       <AddPackageModal {...props}/>

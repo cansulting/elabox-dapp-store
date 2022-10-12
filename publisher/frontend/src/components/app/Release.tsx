@@ -46,7 +46,8 @@ function Release(props: ReleaseProps): JSX.Element {
   }, [])
   return (
     <div className={ReleaseStyle["app-release"]}>
-      {props.info.prod && <><h2>Latest Release</h2>
+      <h2>Latest Release</h2>
+      {props.info?.prod && <>
         <div className={ReleaseStyle["build"]}>
           <div className={ReleaseStyle["build-info"]}>
             <label>Build</label>
@@ -59,6 +60,7 @@ function Release(props: ReleaseProps): JSX.Element {
         </div>
         </>
       }
+      {(!props.info || !props.info.prod) && <p>No Active Release</p>}
 
       <h2>Add New Release</h2>
       <form className={FormStyle["form"]}>

@@ -11,7 +11,7 @@ import Config from "./app/Config"
 
 export interface BodyProps {
   tabIndex: number
-  app?: PackageInfo
+  app: PackageInfo
   retrieveBuilds: () => Promise<BuildList>
   onUpdateProfile?: (newpkg: PackageInfo) => void
   // called when build was uploaded

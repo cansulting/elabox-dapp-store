@@ -7,6 +7,7 @@ import SideBar from "../components/Sidebar"
 import { useBuildState } from "../states/builds"
 import { StoreInfo } from "../data/storeInfo"
 import { ReleaseInfo } from "../data/releaseInfo"
+import Auth from "../hive/auth"
 
 export interface DashbordProps {
   storeData: StoreInfo
@@ -14,6 +15,7 @@ export interface DashbordProps {
 
 function Dashboard(props: DashbordProps): JSX.Element {
   const { 
+    addPackage,
     selectedTab, 
     selectedPkg, 
     setSelectedTab,
@@ -22,20 +24,28 @@ function Dashboard(props: DashbordProps): JSX.Element {
     updatePackageRelease,
     deletePackage,
     hiveUpdate,
+    disconnect,
   } = useStoreState()
   const {
     builds,
     uploadBuild,
     deleteBuilds,
   } = useBuildState()
+  const onSignout = async () => {
+    const inst = await Auth.getInstance("")
+    inst.disconnectConnector()
+    disconnect()
+  }
   const handleSelectTab = (index: number) => {
     setSelectedTab(index)
   }
   const onSearch = (qeury: string) => {
 
   }
-  const onAddAppPressed = (pkid:string, pkname:string) => {
-
+  const onAddApp = async (pkid:string, pkname:string) => {
+    const pkg = addPackage(pkid, pkname)
+    await hiveUpdate()
+    setSelectedPackage(pkg.id)
   }
   const onSelectedPkg = (pkg: PackageInfo) => {
     setSelectedPackage(pkg.id)
@@ -77,10 +87,13 @@ function Dashboard(props: DashbordProps): JSX.Element {
             index: selectedTab,
             onSelectTab: handleSelectTab,
           }}
+          onSignout={onSignout}
         />
       </div>
       <div className={DashboardStyle["app-dashboard-body"]}>
-        <SideBar onAddApp={onAddAppPressed} stores={pkgs}/>
+        <SideBar onAddApp={onAddApp} 
+          onAppSelected={onSelectedPkg}
+          packages={pkgs}/>
         <Body tabIndex={selectedTab} 
           retrieveBuilds={retrieveBuilds}
           app={selectedPkg} 

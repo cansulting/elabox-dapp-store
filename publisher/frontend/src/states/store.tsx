@@ -1,4 +1,4 @@
-import { HIVE_CONFIG, STORE_INFO_PATH } from "../constants";
+import { HIVE_CONFIG, STORE_INFO_PATH, STORE_PATH } from "../constants";
 import Auth from "../hive/auth";
 import HiveConnect from "../hive/hiveConnect";
 import create from "zustand";
@@ -35,11 +35,13 @@ interface StoreState {
     setSelectedTab: (index: number) => void
     setStoreInfo: (info: StoreInfo) => void
     setAuthStatus: (status: string) => void
+    addPackage: (pkidSuffix:string, pkname: string) => PackageInfo
     updatePackage: (pkg: PackageInfo) => void       // update package info
-    deletePackage: (pkgid: string) => void          // delete package
+    deletePackage: (pkgid: string) => Promise<void>          // delete package
     updatePackageRelease: (pkid: string, releaseType: string, release: ReleaseUnit) => void
     initialize: () => Promise<boolean>              // initialize copy of store info
     hiveUpdate: () => Promise<void>                 // save changes to hive
+    disconnect: () => void
 }
 
 export const useStoreState = create<StoreState>()(
@@ -65,8 +67,8 @@ export const useStoreState = create<StoreState>()(
                 setSelectedTab: (index) => _set((_) => ({selectedTab: index})),
                 setSelectedPackage: (pkg) => _set( (states) => { 
                     if (pkg && pkg.length > 0)
-                        return ({selectedPkg:states.info.packages[pkg]})
-                    return {selectedPkg: null}
+                        return ({...states, selectedPkg:states.info.packages[pkg]})
+                    return {...states, selectedPkg: null}
                 }),
                 // use to update specific package data
                 updatePackage: (pkg : PackageInfo) => {
@@ -80,6 +82,17 @@ export const useStoreState = create<StoreState>()(
                             selectedPackage: pkg,
                         }
                     })
+                },
+                addPackage: (pkidSuffix:string, pkname: string) => {
+                    const pkid = get().info.id + pkidSuffix
+                    const pkg = {
+                        id: pkid,
+                        name: pkname,
+                        desc: "",
+                        iconcid: ""
+                    }
+                    get().updatePackage(pkg)
+                    return pkg
                 },
                 // update current package release
                 updatePackageRelease: (pkid: string, releaseType: string, release: ReleaseUnit) => {
@@ -112,12 +125,15 @@ export const useStoreState = create<StoreState>()(
                         }
                     }) as Promise<boolean>
                 },
-                deletePackage: (pkid: string) => {
+                deletePackage: async (pkid: string) => {
+                    // delete dir
+                    await HiveConnect.deletePath(STORE_PATH + "/" + pkid)
                     // delete package
                     const store = {...get().info}
                     delete store.packages[pkid]
                     _set( states => ({...states, info: store}))
                 },
+                
                 // update store info and store definition on hive and store hub
                 hiveUpdate : async () => {
                     const store = get().info
@@ -128,6 +144,9 @@ export const useStoreState = create<StoreState>()(
                         name: store.name,
                         storecid: cid
                     })
+                }, 
+                disconnect: () => {
+                    get().setAuthStatus(SIGNEDOUT)
                 }
             }), {
                 name: "store-storage"
