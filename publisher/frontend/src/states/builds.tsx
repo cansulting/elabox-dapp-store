@@ -18,9 +18,9 @@ export interface BuildState {
         [key:string]: BuildList
     }
     initialize: () => Promise<void>
-    getBuilds: (pkid: string) => Promise<void>
+    getBuilds: (pkid: string) => BuildList
+    deleteBuilds: (pkid: string) => Promise<void>
     uploadBuild?: (packageId: string, num: number, buf: Buffer, progress?: (percent:number) => void) => Promise<BuildInfo>
-    hiveUpdate: () => void
 }
 
 export const useBuildState = create<BuildState>() (
@@ -29,9 +29,7 @@ export const useBuildState = create<BuildState>() (
             status: "unknown",
             builds: null,
             getBuilds: (pkid) => {
-                return new Promise<void>( (res, rej) => {
-                    
-                })
+                return get().builds[pkid]
             },
             uploadBuild: async (packageId: string, num: number, buf: Buffer, progress?: (percent:number) => void) => {
                 await get().initialize()
@@ -52,15 +50,19 @@ export const useBuildState = create<BuildState>() (
                 set( states => ({...states, builds: builds }))
                 return buildinfo
             },
+            deleteBuilds: async (pkid: string) => {
+                await HiveConnect.deletePath(pkid)
+                const builds = {...get().builds}
+                delete builds[pkid] 
+                set( states => ({...states, builds: builds}))
+                await HiveConnect.uploadJson(BUILD_INFO_PATH, builds)
+            },
             initialize: async () => {
                 if (get().builds)
                     return
                 console.log("initializing builds")
                 const builds = await HiveConnect.downloadJson(BUILD_INFO_PATH, DEFAULT_BUILDS)
                 set( _ => ({builds: builds}))
-            },
-            hiveUpdate: () => {
-                
             }
         }))
     )

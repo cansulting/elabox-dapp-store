@@ -7,6 +7,7 @@ import Build from "./app/Build"
 
 import { BuildList } from "../data/buildInfo"
 import { ReleaseInfo } from "../data/releaseInfo"
+import Config from "./app/Config"
 
 export interface BodyProps {
   tabIndex: number
@@ -16,6 +17,7 @@ export interface BodyProps {
   // called when build was uploaded
   onUpload?: (buf: Buffer, packageInfo: any) => void
   onReleaseProd?: (release: ReleaseInfo) => void
+  onDeletePackage: (pkg: PackageInfo) => void
 }
 
 function EmptyPackage(props: any) {
@@ -40,6 +42,8 @@ function Body(props: BodyProps): JSX.Element {
           retrieveBuilds={props.retrieveBuilds} 
           info={props.app.release} 
           onReleaseSave={props.onReleaseProd}/>}
+      {props.app && props.tabIndex === 4 && 
+        <Config pkg={props.app} onDeletePackage={props.onDeletePackage}/>}
       {!props.app && <EmptyPackage />}
     </div>
   )

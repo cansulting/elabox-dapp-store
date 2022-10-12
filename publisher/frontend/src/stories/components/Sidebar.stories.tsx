@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import SideBar from "../../components/Sidebar"
-import { SideBarProps } from "../../interfaces/sidebar"
+import SideBar, { SideBarProps } from "../../components/Sidebar"
 
 export default {
   title: "Publisher/Components/SideBar",

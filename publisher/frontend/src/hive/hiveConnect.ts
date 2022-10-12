@@ -248,6 +248,10 @@ export default class HiveConnect {
         return HiveConnect.uploadBuffer(path, Buffer.from(JSON.stringify(data)))
     }
 
+    static deletePath(path: string) {
+        return HiveConnect._vault.getFilesService().delete(path)
+    }
+
     static downloadJson(path: string, defaultValue?: any ): Promise<any> {
         return new Promise(async (resolve, reject) => {
             try {

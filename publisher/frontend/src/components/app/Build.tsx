@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { FormLabel, ListGroup, Modal } from "react-bootstrap"
-import { BuildInfo, BuildList } from "src/data/buildInfo"
+import { BuildInfo, BuildList } from "../../data/buildInfo"
 import { PackageInfo } from "../../data/packageInfo"
 import { useUtilState } from "../../states/utils"
 import { LoadPkgInfo, LoadZip } from "../../utils/zip"

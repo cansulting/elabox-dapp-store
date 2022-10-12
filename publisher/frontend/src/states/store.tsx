@@ -35,10 +35,11 @@ interface StoreState {
     setSelectedTab: (index: number) => void
     setStoreInfo: (info: StoreInfo) => void
     setAuthStatus: (status: string) => void
-    updatePackage: (pkg: PackageInfo) => void
+    updatePackage: (pkg: PackageInfo) => void       // update package info
+    deletePackage: (pkgid: string) => void          // delete package
     updatePackageRelease: (pkid: string, releaseType: string, release: ReleaseUnit) => void
     initialize: () => Promise<boolean>              // initialize copy of store info
-    hiveUpdate: () => Promise<void>               // save changes to hive
+    hiveUpdate: () => Promise<void>                 // save changes to hive
 }
 
 export const useStoreState = create<StoreState>()(
@@ -65,7 +66,7 @@ export const useStoreState = create<StoreState>()(
                 setSelectedPackage: (pkg) => _set( (states) => { 
                     if (pkg && pkg.length > 0)
                         return ({selectedPkg:states.info.packages[pkg]})
-                    return {}
+                    return {selectedPkg: null}
                 }),
                 // use to update specific package data
                 updatePackage: (pkg : PackageInfo) => {
@@ -74,6 +75,7 @@ export const useStoreState = create<StoreState>()(
                         const packages = {...info.packages}
                         packages[pkg.id] = pkg
                         return { 
+                            ...states,
                             info: {...info, packages : packages}, 
                             selectedPackage: pkg,
                         }
@@ -87,7 +89,8 @@ export const useStoreState = create<StoreState>()(
                     release.dateEpoch = Math.floor(Date.now() / 1000)
                     const pkgs = store.packages
                     pkgs[pkid].release = { ...pkgs[pkid].release, [releaseType]: release}
-                    _set( _ => ({
+                    _set( states => ({
+                        ...states,
                         info: {...store, packages: pkgs}
                     }))
                 },
@@ -108,6 +111,12 @@ export const useStoreState = create<StoreState>()(
                             get().setAuthStatus(_status)
                         }
                     }) as Promise<boolean>
+                },
+                deletePackage: (pkid: string) => {
+                    // delete package
+                    const store = {...get().info}
+                    delete store.packages[pkid]
+                    _set( states => ({...states, info: store}))
                 },
                 // update store info and store definition on hive and store hub
                 hiveUpdate : async () => {

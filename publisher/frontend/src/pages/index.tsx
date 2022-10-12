@@ -20,18 +20,7 @@ function Home(props: any) {
     const onPressSign = () => {
         setAuthStatus(SIGNING)
         Auth.signin(HIVE_CONFIG.appId).then( (presentation) => {
-            // if (presentation) {
-            //     HiveConnect.initialize(HIVE_CONFIG)
-            //     updateStatus( SIGNEDIN)
-            // } else {
-            //     updateStatus(SIGNEDOUT)
-            // }
             initialize()
-            // .then( _con => {
-            //     let _status = _con ? SIGNEDIN : SIGNEDOUT
-            //     setAuthStatus(_status)
-            //     console.log("DDDDD", _con)
-            // })
         }).catch( err => {
             console.error(err)
             setAuthStatus(SIGNEDOUT)

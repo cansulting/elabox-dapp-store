@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { PackageInfo } from "../data/packageInfo"
 import { useStoreState } from "../states/store"
 import DashboardStyle from "../assets/css/pages/dashboard.module.css"
@@ -21,11 +20,13 @@ function Dashboard(props: DashbordProps): JSX.Element {
     setSelectedPackage,
     updatePackage,
     updatePackageRelease,
+    deletePackage,
     hiveUpdate,
   } = useStoreState()
   const {
     builds,
-    uploadBuild
+    uploadBuild,
+    deleteBuilds,
   } = useBuildState()
   const handleSelectTab = (index: number) => {
     setSelectedTab(index)
@@ -33,7 +34,7 @@ function Dashboard(props: DashbordProps): JSX.Element {
   const onSearch = (qeury: string) => {
 
   }
-  const onAddAppPressed = () => {
+  const onAddAppPressed = (pkid:string, pkname:string) => {
 
   }
   const onSelectedPkg = (pkg: PackageInfo) => {
@@ -53,6 +54,13 @@ function Dashboard(props: DashbordProps): JSX.Element {
   const onReleaseProd = (release: ReleaseInfo) => {
     console.log(release)
     updatePackageRelease(selectedPkg.id, "prod", release.prod)
+    hiveUpdate()
+  }
+  // called when package confirmed to be deleted
+  const onPackageDelete = (pkg: PackageInfo) => {
+    deleteBuilds(pkg.id)
+    deletePackage(pkg.id)
+    setSelectedPackage("")
     hiveUpdate()
   }
   const retrieveBuilds = async () => {
@@ -79,7 +87,8 @@ function Dashboard(props: DashbordProps): JSX.Element {
           onUpload={onUploadBuild}
           onUpdateProfile={onApplyProfileChanges}
           onReleaseProd={onReleaseProd}
-          />
+          onDeletePackage={onPackageDelete}
+        />
       </div>
     </div>
   )

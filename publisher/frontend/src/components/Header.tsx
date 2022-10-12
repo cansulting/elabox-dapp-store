@@ -2,6 +2,20 @@ import React, { useState, useRef } from "react"
 import HeaderStyle from "../assets/css/components/header.module.css"
 import TabsStyle from "../assets/css/tabs.module.css"
 import { HeaderProps } from "../interfaces/header"
+
+function Tab(props:any) {
+  return (
+    <div
+          className={
+            `${ props.selected ? TabsStyle["tab-selected"] : ""}`
+          }
+          onClick={() => props.tab?.onSelectTab(props.index)}
+        >
+          {props.caption}
+    </div>
+  )
+}
+
 function Header(props: HeaderProps): JSX.Element {
   const [query, setQuery] = useState("")
   const queryFormRef = useRef<HTMLFormElement | null>(null)
@@ -37,38 +51,26 @@ function Header(props: HeaderProps): JSX.Element {
         </form>
       </div>
       {props.app && <div className={TabsStyle["tabs-control"]}>
-        <div
-          className={`${
-            props.tab?.index === 0 ? TabsStyle["tab-selected"] : ""
-          }`}
-          onClick={() => props.tab?.onSelectTab(0)}
-        >
-          App Profile
-        </div>
-        <div
-          className={`${
-            props.tab?.index === 1 ? TabsStyle["tab-selected"] : ""
-          }`}
-          onClick={() => props.tab?.onSelectTab(1)}
-        >
-          Build
-        </div>
-        <div
-          className={`${
-            props.tab?.index === 2 ? TabsStyle["tab-selected"] : ""
-          }`}
-          onClick={() => props.tab?.onSelectTab(2)}
-        >
-          Testing
-        </div>
-        <div
-          className={`${
-            props.tab?.index === 3 ? TabsStyle["tab-selected"] : ""
-          }`}
-          onClick={() => props.tab?.onSelectTab(3)}
-        >
-          Release
-        </div>
+        <Tab caption="App Profile" 
+          index={0} 
+          selected={props.tab?.index === 0} 
+          tab={props.tab}/>
+        <Tab caption="Build" 
+          index={1} 
+          selected={props.tab?.index === 1} 
+          tab={props.tab}/>
+        <Tab caption="Testing" 
+          index={2} 
+          selected={props.tab?.index === 2} 
+          tab={props.tab}/>
+        <Tab caption="Release" 
+          index={3} 
+          selected={props.tab?.index === 3} 
+          tab={props.tab}/>
+        <Tab caption="Config" 
+          index={4} 
+          selected={props.tab?.index === 4} 
+          tab={props.tab}/>
       </div>}
     </div>
   )
