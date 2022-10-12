@@ -1,4 +1,4 @@
-import { BuildInfo } from "../data/buildInfo";
+import { BuildInfo, BuildList } from "../data/buildInfo";
 import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import HiveConnect from "../hive/hiveConnect";
@@ -15,9 +15,7 @@ const DEFAULT_BUILDS = {
 export interface BuildState {
     status: string
     builds: {
-        [key:string]: {
-            [key:number]: BuildInfo
-        }
+        [key:string]: BuildList
     }
     initialize: () => Promise<void>
     getBuilds: (pkid: string) => Promise<void>

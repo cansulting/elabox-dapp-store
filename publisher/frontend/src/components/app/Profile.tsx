@@ -1,8 +1,16 @@
-import { ProfileProps } from "../../interfaces/profile"
+
 import ProfileStyle from "../../assets/css/components/app/profile.module.css"
 import ButtonStyle from "../../assets/css/button.module.css"
 import FormStyle from "../../assets/css/form.module.css"
 import { useState } from "react"
+import { PackageInfo } from "../../data/packageInfo"
+
+export interface ProfileProps {
+  info: PackageInfo
+  onProfileSave?: (newPkg:PackageInfo) => void
+}
+
+
 function Profile(props: ProfileProps): JSX.Element {
   const [updatedProfile, updateProfile] = useState(props.info)
   const [dirty, setDirty] = useState(false)

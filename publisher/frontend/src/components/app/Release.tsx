@@ -1,36 +1,64 @@
 import ReleaseStyle from "../../assets/css/components/app/release.module.css"
 import FormStyle from "../../assets/css/form.module.css"
 import ButtonStyle from "../../assets/css/button.module.css"
-import { ReleaseProps } from "../../interfaces/release"
-import { Dropdown } from "react-bootstrap"
-import { useState } from "react"
+import { Dropdown, Form } from "react-bootstrap"
+import { useEffect, useState } from "react"
+import { BuildInfo, BuildList } from "../../data/buildInfo"
+import { ReleaseInfo } from "../../data/releaseInfo"
+import { useUtilState } from "../../states/utils"
+
+
+export interface ReleaseProps {
+  packageId: string
+  info: ReleaseInfo
+  retrieveBuilds: () => Promise<BuildList>
+  onReleaseSave?: (release: ReleaseInfo) => void
+}
+
+
 function Release(props: ReleaseProps): JSX.Element {
   const [selectedBuild, setSelectedBuild] = useState(null)
+  const [releaseDesc, setReleaseDesc] = useState("")
+  const [builds, setBuilds] = useState(null as BuildList)
+  const { addToast } = useUtilState()
   const handleReleaseClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    props.onReleaseSave()
+    const newRelease : ReleaseInfo = {prod:{
+      desc: releaseDesc,
+      build: selectedBuild as BuildInfo,
+      version: "0.0.1"
+    }}
+    setSelectedBuild(null)
+    setReleaseDesc("")
+    props.onReleaseSave(newRelease)
+    addToast("Wait for few minutes before it will become available.", "Released " + props.packageId)
   }
   const handleOnSelect = (evntkey: any, evnt: Object) => {
-    setSelectedBuild(evntkey)
+    setSelectedBuild(builds[evntkey])
   }
+  const handleDescChanged = (evnt:any) => {
+    setReleaseDesc(evnt.target.value)
+  }
+  useEffect( () => {
+      if (!builds) {
+          props.retrieveBuilds().then( _builds => setBuilds(_builds))
+      }
+  }, [])
   return (
     <div className={ReleaseStyle["app-release"]}>
-      <h2>Latest Release</h2>
-      <div className={ReleaseStyle["build"]}>
-        <div className={ReleaseStyle["build-info"]}>
-          <label>Build</label>
-          <p>1</p>
+      {props.info.prod && <><h2>Latest Release</h2>
+        <div className={ReleaseStyle["build"]}>
+          <div className={ReleaseStyle["build-info"]}>
+            <label>Build</label>
+            <p>{props.info.prod.build.number}</p>
+          </div>
+          <div className={ReleaseStyle["build-info"]}>
+            <label>Updates</label>
+            <p>{props.info.prod.desc}</p>
+          </div>
         </div>
-        <div className={ReleaseStyle["build-info"]}>
-          <label>Updates</label>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
-            delectus laborum dolorem beatae quo rem cum veritatis iusto labore,
-            maiores hic, provident veniam perspiciatis laboriosam inventore
-            ipsum voluptates nesciunt reprehenderit.
-          </p>
-        </div>
-      </div>
+        </>
+      }
 
       <h2>Add New Release</h2>
       <form className={FormStyle["form"]}>
@@ -44,10 +72,10 @@ function Release(props: ReleaseProps): JSX.Element {
             <Dropdown onSelect={handleOnSelect}>
               <Dropdown.Toggle>
                 { !selectedBuild && <>Select Build</>}
-                { selectedBuild && <>{"Selected Build " + selectedBuild}</>}
+                { selectedBuild && <>{"Build " + selectedBuild.number + " selected"}</>}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                { props.builds && Object.values(props.builds).map( (item, index) => (
+                { builds && Object.values(builds).map( (item, index) => (
                   <Dropdown.Item eventKey={item.number}>{item.number}</Dropdown.Item>
                 ))}
               </Dropdown.Menu>
@@ -57,7 +85,7 @@ function Release(props: ReleaseProps): JSX.Element {
             className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}
           >
             <label>Updates</label>
-            <textarea name="updates" placeholder="updates" />
+            <Form.Control as="textarea" onChange={handleDescChanged} value={releaseDesc} placeholder="Updates"/>
           </div>
         </div>
         <div className={`${ButtonStyle["group-flex-end"]}`}>
@@ -65,6 +93,7 @@ function Release(props: ReleaseProps): JSX.Element {
           <button
             className={ButtonStyle["primary"]}
             onClick={handleReleaseClick}
+            disabled={!selectedBuild || releaseDesc === ""}
           >
             Apply
           </button>

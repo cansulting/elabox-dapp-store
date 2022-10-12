@@ -5,8 +5,8 @@ import create from "zustand";
 import { devtools, persist } from 'zustand/middleware'
 import { StoreInfo } from "../data/storeInfo";
 import { PackageInfo } from "../data/packageInfo";
-import { updateStoreDefinition } from "../actions/storehubActions";
-import { ReleaseUnit } from "../data/releaseInfo";
+import { updateStoreDefinition } from "../api/storehubActions";
+import { ReleaseUnit } from "../data/releaseInfo"; 
 
 export const SIGNEDIN = "signedin"
 export const SIGNEDOUT = "signedout"
@@ -36,6 +36,7 @@ interface StoreState {
     setStoreInfo: (info: StoreInfo) => void
     setAuthStatus: (status: string) => void
     updatePackage: (pkg: PackageInfo) => void
+    updatePackageRelease: (pkid: string, releaseType: string, release: ReleaseUnit) => void
     initialize: () => Promise<boolean>              // initialize copy of store info
     hiveUpdate: () => Promise<void>               // save changes to hive
 }
@@ -99,9 +100,9 @@ export const useStoreState = create<StoreState>()(
                         // after being connected, initilize hive
                         //if (_con && !get().info) {
                             await HiveConnect.initialize(HIVE_CONFIG)
-                            get().setStoreInfo( 
-                                await HiveConnect.downloadJson(STORE_INFO_PATH, DEFAULT_STORE)
-                            )
+                            const store = await HiveConnect.downloadJson(STORE_INFO_PATH, DEFAULT_STORE)
+                            console.log("STORE DEFINITION LOADED", store)
+                            get().setStoreInfo( store)
                         //}
                         if (status !== _status) {
                             get().setAuthStatus(_status)

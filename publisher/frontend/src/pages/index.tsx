@@ -5,13 +5,18 @@ import { HIVE_CONFIG } from "../constants"
 import Auth from "../hive/auth"
 import Dashboard from "../pages/Dashboard"
 import { SIGNEDIN, SIGNEDOUT, SIGNING, useStoreState } from "../states/store"
+import { useUtilState } from "../states/utils"
+import ToastCon from "../components/ToastContainer"
 
 // const SIGNEDIN = "signedin"
 // const SIGNEDOUT = "signedout"
 // const SIGNING = "signing"
 
+
+
 function Home(props: any) {
     const { initialize, info, authStatus, setAuthStatus} = useStoreState()
+    const { toasts } = useUtilState()
     const onPressSign = () => {
         setAuthStatus(SIGNING)
         Auth.signin(HIVE_CONFIG.appId).then( (presentation) => {
@@ -37,8 +42,9 @@ function Home(props: any) {
         setAuthStatus(SIGNING)
         initialize()
     }, [])
-    console.log(authStatus, info)
+    //console.log(authStatus, info)
     return (<div>
+        <ToastCon toasts={toasts}/>
         { authStatus === SIGNEDIN && <Dashboard storeData={info}  />}
         { authStatus === SIGNEDOUT && <button onClick={_ => onPressSign() }>Sign-in</button>}
     </div>)

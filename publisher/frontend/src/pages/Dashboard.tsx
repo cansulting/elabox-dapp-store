@@ -5,8 +5,13 @@ import DashboardStyle from "../assets/css/pages/dashboard.module.css"
 import Body from "../components/Body"
 import Header from "../components/Header"
 import SideBar from "../components/Sidebar"
-import { DashbordProps } from "../interfaces/dashboard"
 import { useBuildState } from "../states/builds"
+import { StoreInfo } from "../data/storeInfo"
+import { ReleaseInfo } from "../data/releaseInfo"
+
+export interface DashbordProps {
+  storeData: StoreInfo
+}
 
 function Dashboard(props: DashbordProps): JSX.Element {
   const { 
@@ -15,6 +20,7 @@ function Dashboard(props: DashbordProps): JSX.Element {
     setSelectedTab,
     setSelectedPackage,
     updatePackage,
+    updatePackageRelease,
     hiveUpdate,
   } = useStoreState()
   const {
@@ -33,8 +39,8 @@ function Dashboard(props: DashbordProps): JSX.Element {
   const onSelectedPkg = (pkg: PackageInfo) => {
     setSelectedPackage(pkg.id)
   }
-  const onUploadBuild = (buf: Buffer) => {
-    uploadBuild(selectedPkg.id, 1, buf, (progress) => {
+  const onUploadBuild = (buf: Buffer, packageInfo:any) => {
+    uploadBuild(selectedPkg.id, packageInfo.build, buf, (progress) => {
       console.log("progress", progress)
     })
   }
@@ -42,6 +48,15 @@ function Dashboard(props: DashbordProps): JSX.Element {
   const onApplyProfileChanges = (newpkg: PackageInfo) => {
     updatePackage(newpkg)
     hiveUpdate()
+  }
+  // release for production
+  const onReleaseProd = (release: ReleaseInfo) => {
+    console.log(release)
+    updatePackageRelease(selectedPkg.id, "prod", release.prod)
+    hiveUpdate()
+  }
+  const retrieveBuilds = async () => {
+    return builds[selectedPkg.id]
   }
   const pkgs = Object.values( props.storeData.packages)
   return (
@@ -59,10 +74,12 @@ function Dashboard(props: DashbordProps): JSX.Element {
       <div className={DashboardStyle["app-dashboard-body"]}>
         <SideBar onAddApp={onAddAppPressed} stores={pkgs}/>
         <Body tabIndex={selectedTab} 
-          builds={builds[selectedPkg.id]}
+          retrieveBuilds={retrieveBuilds}
           app={selectedPkg} 
           onUpload={onUploadBuild}
-          onApply={onApplyProfileChanges}/>
+          onUpdateProfile={onApplyProfileChanges}
+          onReleaseProd={onReleaseProd}
+          />
       </div>
     </div>
   )

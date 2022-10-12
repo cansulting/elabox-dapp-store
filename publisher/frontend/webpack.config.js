@@ -21,7 +21,8 @@ module.exports = {
    fallback: {
     "https": false,
     "http": false,
-    "fs": false
+    "fs": false,
+    "original-fs": false
    }
  },
   // Rules of how webpack will take our files, complie & bundle them for the browser 

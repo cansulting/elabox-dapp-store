@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { DashbordProps } from "../interfaces/dashboard"
-import Dashboard from "../pages/Dashboard"
+import Dashboard, { DashbordProps } from "../pages/Dashboard"
 
 export default {
   title: "Publisher/Pages/Dashboard",
