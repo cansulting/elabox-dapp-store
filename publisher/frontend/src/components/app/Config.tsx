@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Button, Modal } from "react-bootstrap"
+import { useUtilState } from "../../states/utils"
 import { PackageInfo } from "../../data/packageInfo"
 
 export interface ConfigProps {
@@ -10,12 +11,14 @@ export interface ConfigProps {
 // component thats display ux for package deletion
 function DeletePackage(props:ConfigProps) {
     const [show, setShow] = useState(false)
+    const { addToast } = useUtilState()
     const onDeletePackage = (evnt:any) => {
         setShow(true)
     }
     const onConfirmDelete = (evnt:any) => {
         props.onDeletePackage(props.pkg)
         setShow(false)
+        addToast("Deleting Package " + props.pkg.id)
     }
     return (
         <>

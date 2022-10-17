@@ -10,6 +10,7 @@
     "checkJs": false,
     "allowJs": true,
     "skipLibCheck": true,
+    "downlevelIteration": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,

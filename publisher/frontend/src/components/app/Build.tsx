@@ -30,10 +30,10 @@ function BuildListView(props:BuildProps) {
     const [builds, setBuilds] = useState(null as BuildList)
     const [selectedBuild, setSelectedBuild] = useState(null as BuildInfo)
     useEffect( () => {
-        if (!builds) {
+        //if (!builds) {
             props.retrieveBuilds().then( _builds => setBuilds(_builds))
-        }
-    }, [])
+        //}
+    }, [props.info])
     const onView = (build: BuildInfo) => {
         setSelectedBuild(build)
     }

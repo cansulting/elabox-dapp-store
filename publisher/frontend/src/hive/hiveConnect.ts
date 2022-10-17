@@ -9,6 +9,7 @@ import { HiveConfig } from "./hiveConfig"
 import dayjs from "dayjs"
 import { Claims, DefaultDIDAdapter, DIDBackend, VerifiableCredential } from "@elastosfoundation/did-js-sdk";
 import { HIVE_CONFIG } from "../constants";
+import { getCache, putCache } from "./cache";
 //var hv = require("@elabox/hive-js-sdk")
 const DID_CACHE_DIR = "/didstores"
 
@@ -234,13 +235,36 @@ export default class HiveConnect {
         return this._vault.getFilesService().stat(path)
     }
 
-    static uploadBuffer(path: string, data: Buffer, callback?: (process: number) => void ) : Promise<string> {
+    static async pathExist(path: string) {
+        try {
+            await HiveConnect.fileStat(path)
+            return true
+        }catch (err: any) {
+            const errmsg = err.message
+            //console.log("$$$$$$$$$$$$$$$$$$", errmsg.match(STORE_INFO_PATH + " does not exist").index)
+            if (errmsg.match(path + " does not exist").index >= 0) {
+                return false
+            }
+            throw err
+        }
+    }
+
+    static async uploadBuffer(path: string, data: Buffer, callback?: (process: number) => void, useCache:boolean = false ) : Promise<string> {
+        if (useCache) await putCache(data, path)
         return this._vault.getFilesService()
             .upload(path, data, callback, true, "public")
     }
 
-    static downloadBuffer(path: string, callback?: (process:number) => void) : Promise<Buffer> {
-        return this._vault.getFilesService().download(path, callback)
+    static async downloadBuffer(path: string, callback?: (process:number) => void, useCache:boolean = false) : Promise<Buffer> {
+        if (useCache) {
+            const buf = await getCache(path)
+            if (buf !== null) return Buffer.from(buf)
+        }
+        if (!(await HiveConnect.pathExist(path)))
+            return null
+        const buf = await this._vault.getFilesService().download(path, callback)
+        if (useCache) await putCache(buf, path)
+        return buf
     }
 
     // return cid if successfull
@@ -248,7 +272,11 @@ export default class HiveConnect {
         return HiveConnect.uploadBuffer(path, Buffer.from(JSON.stringify(data)))
     }
 
-    static deletePath(path: string) {
+    // @path: path to delete
+    // @pathCheck: true check first before deleting to avoid issue
+    static async deletePath(path: string) {
+        if (!(await HiveConnect.pathExist(path)))
+            return 
         return HiveConnect._vault.getFilesService().delete(path)
     }
 

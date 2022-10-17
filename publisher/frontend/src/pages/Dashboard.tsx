@@ -67,9 +67,9 @@ function Dashboard(props: DashbordProps): JSX.Element {
     hiveUpdate()
   }
   // called when package confirmed to be deleted
-  const onPackageDelete = (pkg: PackageInfo) => {
+  const onPackageDelete = async (pkg: PackageInfo) => {
     deleteBuilds(pkg.id)
-    deletePackage(pkg.id)
+    await deletePackage(pkg.id)
     setSelectedPackage("")
     hiveUpdate()
   }
@@ -91,7 +91,7 @@ function Dashboard(props: DashbordProps): JSX.Element {
         />
       </div>
       <div className={DashboardStyle["app-dashboard-body"]}>
-        <SideBar onAddApp={onAddApp} 
+        <SideBar storeId={props.storeData.id} onAddApp={onAddApp} 
           onAppSelected={onSelectedPkg}
           packages={pkgs}/>
         <Body tabIndex={selectedTab} 

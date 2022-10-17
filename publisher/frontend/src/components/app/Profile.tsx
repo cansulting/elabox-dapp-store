@@ -3,13 +3,14 @@ import ProfileStyle from "../../assets/css/components/app/profile.module.css"
 import ButtonStyle from "../../assets/css/button.module.css"
 import FormStyle from "../../assets/css/form.module.css"
 import { useEffect, useState } from "react"
+import IpfsImage from '../IpfsImage'
 import { PackageInfo } from "../../data/packageInfo"
+import { retrieveIconPath, STORE_PATH } from "../../constants"
 
 export interface ProfileProps {
   info: PackageInfo
   onProfileSave?: (newPkg:PackageInfo) => void
 }
-
 
 function Profile(props: ProfileProps): JSX.Element {
   const [updatedProfile, updateProfile] = useState(props.info)
@@ -34,19 +35,27 @@ function Profile(props: ProfileProps): JSX.Element {
       props.onProfileSave(updatedProfile)
     setDirty(false)
   }
+  const onUploadedIcon = (ipfsCID:string) => {
+    updateProfile({...updatedProfile, iconcid:ipfsCID})
+    setDirty(true)
+  }
   return (
     <div className={ProfileStyle["app-profile"]}>
       <form className={FormStyle["form"]}>
         <div className={`${FormStyle["form-body"]} ${FormStyle["form-body-column"]}`}>
-          <div
-            className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}
-          >
+          <IpfsImage 
+            hivePath={retrieveIconPath(props.info.id)}
+            uploadEnable 
+            width={200} 
+            height={200} 
+            onUploaded={onUploadedIcon}/>
+          <div className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}>
             <label>Name</label>
             <input id="name" type="text" name="name" placeholder="Name" value={updatedProfile.name} onChange={onUpdatedInput}/>            
           </div>          
           <div className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}>
             <label>Package Id</label>
-            <input id="id" type="text" name="name" placeholder="packageId" value={updatedProfile.id} onChange={onUpdatedInput}/>
+            <p>{updatedProfile.id}</p>
           </div>          
           <div className={`${FormStyle["form-body"]} ${FormStyle["form-body-full"]}`}>
             <label>Description</label>

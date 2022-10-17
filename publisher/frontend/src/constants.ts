@@ -24,3 +24,7 @@ export const BUILDS_PATH = STORE_PATH + "/" + "builds"
 export const EBOX_PACKAGE_EXT = "box"
 export const STORE_INFO_PATH = STORE_PATH + "/info.json"
 export const BUILD_INFO_PATH = STORE_PATH + "/builds.json"
+
+export function retrieveIconPath(packageId:string): string {
+    return STORE_PATH + "/" + packageId + "/icon"
+}

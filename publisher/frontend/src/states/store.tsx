@@ -35,7 +35,7 @@ interface StoreState {
     setSelectedTab: (index: number) => void
     setStoreInfo: (info: StoreInfo) => void
     setAuthStatus: (status: string) => void
-    addPackage: (pkidSuffix:string, pkname: string) => PackageInfo
+    addPackage: (pkid:string, pkname: string) => PackageInfo
     updatePackage: (pkg: PackageInfo) => void       // update package info
     deletePackage: (pkgid: string) => Promise<void>          // delete package
     updatePackageRelease: (pkid: string, releaseType: string, release: ReleaseUnit) => void
@@ -83,10 +83,11 @@ export const useStoreState = create<StoreState>()(
                         }
                     })
                 },
-                addPackage: (pkidSuffix:string, pkname: string) => {
-                    const pkid = get().info.id + pkidSuffix
+                addPackage: (pkid:string, pkname: string) => {
+                    const storeid = get().info.id 
+                    const fpkid = storeid + "."+ pkid
                     const pkg = {
-                        id: pkid,
+                        id: fpkid,
                         name: pkname,
                         desc: "",
                         iconcid: ""
@@ -126,11 +127,13 @@ export const useStoreState = create<StoreState>()(
                     }) as Promise<boolean>
                 },
                 deletePackage: async (pkid: string) => {
+                    console.log("Deleting package", pkid)
                     // delete dir
                     await HiveConnect.deletePath(STORE_PATH + "/" + pkid)
                     // delete package
                     const store = {...get().info}
                     delete store.packages[pkid]
+                    //console.log(store)
                     _set( states => ({...states, info: store}))
                 },
                 

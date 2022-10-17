@@ -1,5 +1,7 @@
 import { PackageInfo } from "../data/packageInfo"
 import StoreStyle from "../assets/css/components/store.module.css"
+import IpfsImage from "./IpfsImage"
+import { retrieveIconPath } from "../constants"
 
 export interface StoreItemProps {
     info: PackageInfo
@@ -10,7 +12,7 @@ function PackageItem(props: StoreItemProps) {
 return (
     <div className={StoreStyle["app-store"]} 
         onClick={ _ => props.onClick(props.info)}>
-    <img src={props.info.iconcid} alt={`${props.info.name} Icon`} />
+    <IpfsImage hivePath={retrieveIconPath(props.info.id)}/>
     <h3>{props.info.name}</h3>
     </div>
 )
