@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import {StoreDetailsParams} from "../interfaces/controllers/store"
-import StoreDetailsPage from "../pages/StoreDetails";
-import {StoreHubState} from "../interfaces/stores/storeHub";
-import useStoreHubStore from "../stores/storehub";
+import StoreDetailsPage from "./pages/StoreDetails";
+import useStoreHubStore, { StoreHubState } from "../states/storehub";
+
 export default function StoreDetailsController(){
     const storeHub:StoreHubState= useStoreHubStore((state) => state)
     const {id:storeId}= useParams() as StoreDetailsParams

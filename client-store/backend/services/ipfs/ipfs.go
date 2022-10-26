@@ -26,7 +26,7 @@ var locker sync.Mutex = sync.Mutex{}
 
 func DownloadJson(cid string, val interface{}) error {
 	var buf bytes.Buffer
-	if err := DownloadFile(context.TODO(), cid, &buf, nil, nil); err != nil {
+	if err := DownloadFile(context.TODO(), cid, &buf, nil, nil, nil); err != nil {
 		return err
 	}
 	if err := json.Unmarshal(buf.Bytes(), &val); err != nil {
@@ -35,7 +35,7 @@ func DownloadJson(cid string, val interface{}) error {
 	return nil
 }
 
-func DownloadAndSaveFile(ctx context.Context, ipfsPath string, outputPath string, progressWriter io.Writer) error {
+func DownloadAndSaveFile(ctx context.Context, ipfsPath string, outputPath string, progressWriter io.Writer, fileNode func(files.Node)) error {
 	locker.Lock()
 	defer locker.Unlock()
 	file, err := os.Create(outputPath)
@@ -43,10 +43,10 @@ func DownloadAndSaveFile(ctx context.Context, ipfsPath string, outputPath string
 		return err
 	}
 	//writer := io.MultiWriter(file, progressWriter)
-	return DownloadFile(ctx, ipfsPath, file, progressWriter, nil)
+	return DownloadFile(ctx, ipfsPath, file, progressWriter, nil, fileNode)
 }
 
-func DownloadFile(ctx context.Context, ipfsPath string, writer io.Writer, progressWriter io.Writer, peers []string) error {
+func DownloadFile(ctx context.Context, ipfsPath string, writer io.Writer, progressWriter io.Writer, peers []string, file func(files.Node)) error {
 	cctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 	// initialize http api
@@ -68,6 +68,9 @@ func DownloadFile(ctx context.Context, ipfsPath string, writer io.Writer, progre
 			return nil
 		}
 		return err
+	}
+	if file != nil {
+		file(out)
 	}
 	// read buffer
 	switch nodeType := out.(type) {

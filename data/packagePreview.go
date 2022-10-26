@@ -3,9 +3,9 @@ package data
 type ReleaseType uint
 
 const (
-	Development = 0
-	Beta        = 1
-	Production  = 2
+	Development ReleaseType = 0
+	Beta        ReleaseType = 1
+	Production  ReleaseType = 2
 )
 
 type BuildInfo struct {
@@ -16,21 +16,25 @@ type BuildInfo struct {
 	Dependencies []string `json:"dependencies"`
 }
 
-type ReleaseInfo struct {
+type ReleaseUnit struct {
 	Description string      `json:"desc"`
 	Build       BuildInfo   `json:"build"`
 	ReleaseType ReleaseType `json:"type"`
 	Version     string      `json:"version"`
+	DateEpoch   int         `json:"dateEpoch"`
+	Users       []string    `json:"testers"`
 }
 
-type TesterInfo struct {
-	Users []string `json:"users"`
+type ReleaseInfo struct {
+	Alpha      ReleaseUnit `json:"alpha"`
+	Beta       ReleaseUnit `json:"beta"`
+	Production ReleaseUnit `json:"prod"`
 }
 
 type PackagePreview struct {
 	Id          string      `json:"id"`
 	Name        string      `json:"name"`
 	Description string      `json:"desc"`
+	IconCID     string      `json:"iconcid"`
 	Release     ReleaseInfo `json:"release"`
-	Tester      TesterInfo  `json:"tester"`
 }

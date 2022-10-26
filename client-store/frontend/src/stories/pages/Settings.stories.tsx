@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { SettingsProps } from '../../interfaces/Settings'
-import SettingsPage from "../../pages/Settings"
+import SettingsPage from "../../controllers/pages/Settings"
 
 export default {
     title:"ClientStore/Pages/Settings",

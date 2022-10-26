@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { SettingsProps } from "../interfaces/Settings"
+import { SettingsProps } from "../../interfaces/Settings"
 import SettingsStyle from "../assets/css/pages/settings.module.css"
 import ButtonStyle from "../assets/css/button.module.css"
 function SettingsPage(props: SettingsProps) : JSX.Element {

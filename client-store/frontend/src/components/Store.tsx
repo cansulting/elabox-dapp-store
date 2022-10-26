@@ -1,6 +1,16 @@
-import { StoreProps } from "../interfaces/Store"
 import StoreStyle from "../assets/css/components/store.module.css"
 import React from "react"
+import { PackageInfo } from "../data/packageInfo"
+
+export interface StoreProps {
+  id: string
+  icon: string
+  title: string
+  description?: string
+  apps?: PackageInfo[],
+  onClick? : (id: string) => void
+}
+
 function Store(props: StoreProps): JSX.Element {
   const handleStoreClick = (event: React.MouseEvent<HTMLElement>): void => {
     if(props.onClick !== undefined){

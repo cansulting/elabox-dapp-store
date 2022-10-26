@@ -23,7 +23,7 @@ func RetrieveAllStores(storeHubId string) (*data2.StoreList, error) {
 }
 
 func RetrieveStore(storeId string) (*data2.StoreInfo, error) {
-	return storehub.RetrieveStore(storeId)
+	return storehub.RetrieveStore(storeId, "")
 }
 
 // retrieve all apps
@@ -42,17 +42,17 @@ func RetrieveAllApps(beta bool) ([]data.PackageInfo, error) {
 		if err != nil {
 			logger.GetInstance().Debug().Msg("unable to retrieve cache item for package: " + pkg.Id + ". inner: " + err.Error())
 		}
-		if false && beta && pkg.Release.ReleaseType == data2.Beta && len(pkg.Tester.Users) > 0 {
-			tester, err := isTester(pkg.Tester.Users)
-			if err != nil {
-				logger.GetInstance().Debug().Msg("unable to validate user: " + err.Error())
-				continue
-			}
-			// not tester and not installed, skip the package
-			if !tester && installedInfo == nil {
-				continue
-			}
-		}
+		// if false && beta && pkg.Release.ReleaseType == data2.Beta && len(pkg.Tester.Users) > 0 {
+		// 	tester, err := isTester(pkg.Tester.Users)
+		// 	if err != nil {
+		// 		logger.GetInstance().Debug().Msg("unable to validate user: " + err.Error())
+		// 		continue
+		// 	}
+		// 	// not tester and not installed, skip the package
+		// 	if !tester && installedInfo == nil {
+		// 		continue
+		// 	}
+		// }
 		tmpPreview = data.PackageInfo{}
 		tmpPreview.AddInfo(installedInfo, &pkg, false)
 		if task := installer.GetTask(tmpPreview.Id); task != nil {
@@ -97,8 +97,8 @@ func RetrieveApp(pkgId string, storehubId string) (*data.PackageInfo, error) {
 }
 
 // use to download and install app
-func DownloadInstallApp(pkgId string) error {
-	task, err := installer.CreateInstallTask(pkgId)
+func DownloadInstallApp(pkgId string, releaseType data2.ReleaseType) error {
+	task, err := installer.CreateInstallTask(pkgId, releaseType)
 	if err != nil {
 		return err
 	}

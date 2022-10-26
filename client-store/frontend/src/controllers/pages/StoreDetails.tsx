@@ -1,7 +1,8 @@
-import Apps from "../components/Apps"
-import { StoreProps } from "../interfaces/Store"
-import StoreStyle from "../assets/css/pages/store.module.css"
-import ButtonStyle from "../assets/css/button.module.css"
+import Apps from "../../components/Apps"
+import StoreStyle from "../../assets/css/pages/store.module.css"
+import ButtonStyle from "../../assets/css/button.module.css"
+import { StoreProps } from "../../components/Store"
+
 function StoreDetailsPage(props:StoreProps): JSX.Element {
   return (
     <div className={StoreStyle["app-store"]}>

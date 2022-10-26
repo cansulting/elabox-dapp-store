@@ -7,6 +7,7 @@ import (
 	"store/client-store/backend/broadcast"
 	"store/client-store/backend/global"
 	"store/client-store/backend/services/storehub"
+	"store/data"
 
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
 )
@@ -60,13 +61,20 @@ func CreateUninstallTask(pkg string) *Task {
 // use to create install task
 // @pkg: install task for which package.
 // @downloadLink: where the package file will be downloaded
-func CreateInstallTask(pkg string) (*Task, error) {
+func CreateInstallTask(pkg string, releaseType data.ReleaseType) (*Task, error) {
 	details, err := storehub.RetrieveApp(pkg, "")
 	if err != nil {
 		logger.GetInstance().Error().Err(err).Msg("failed to retrieve item " + pkg)
 		return nil, err
 	}
-	return CreateTask(pkg, details.Release.Build.IpfsCID, details.Release.Build.Dependencies), nil
+	var releaseUnit = details.Release.Production
+	switch releaseType {
+	case data.Beta:
+		releaseUnit = details.Release.Beta
+	case data.Development:
+		releaseUnit = details.Release.Alpha
+	}
+	return CreateTask(pkg, releaseUnit.Build.IpfsCID, releaseUnit.Build.Dependencies), nil
 }
 
 // use to create install task

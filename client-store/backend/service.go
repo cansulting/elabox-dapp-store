@@ -6,6 +6,8 @@ import (
 	"store/client-store/backend/global"
 	"store/client-store/backend/services/store_lister"
 
+	storedata "store/data"
+
 	adata "github.com/cansulting/elabox-system-tools/foundation/app/data"
 	"github.com/cansulting/elabox-system-tools/foundation/app/rpc"
 	"github.com/cansulting/elabox-system-tools/foundation/event/data"
@@ -33,6 +35,7 @@ func (instance *StoreService) OnStart() error {
 	global.AppController.RPC.OnRecieved(global.CANCEL_INSTALL_PACKAGE, instance.rpc_oncancelinstall)
 	global.AppController.RPC.OnRecieved(global.RETRIEVE_SYS_VERSION, instance.rpc_onRetrieveSysVersion)
 	global.AppController.RPC.OnRecieved(global.CHECK_IF_PACKAGE_IS_DEPENDENCY, instance.rpc_oncheckifdependency)
+	//go RetrieveAllApps(false)
 	return nil
 }
 
@@ -59,7 +62,13 @@ func (instance *StoreService) rpc_retrievePackage(client protocol.ClientInterfac
 }
 
 func (instance *StoreService) rpc_installPackage(client protocol.ClientInterface, action data.Action) string {
-	err := DownloadInstallApp(action.PackageId)
+	installType := storedata.Production
+	if val, err := action.DataToMap(); err != nil {
+		if val["type"] != nil {
+			installType = storedata.ReleaseType(val["type"].(int))
+		}
+	}
+	err := DownloadInstallApp(action.PackageId, installType)
 	if err != nil {
 		return rpc.CreateResponse(rpc.INVALID_CODE, err.Error())
 	}

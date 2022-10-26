@@ -21,6 +21,7 @@ function convertStringVerToValue(version:string): number[] {
     return res
 }
 
+// current system version
 export const systemVersion = () : number[] => {
     return currentVersion
 }

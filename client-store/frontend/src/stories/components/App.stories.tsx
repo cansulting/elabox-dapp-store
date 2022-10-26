@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { AppProps } from '../../interfaces/App'
-import App from "../../components/App"
+import App, { AppProps } from "../../components/App"
 
 export default {
     title:"ClientStore/Components/App",

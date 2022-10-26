@@ -1,8 +1,14 @@
 import {useRef} from "react"
 import useResize from "../hooks/useResize"
-import App from "./App"
-import { AppsProps } from "../interfaces/Apps"
+import App, { AppProps } from "./App"
 import AppsStyle from "../assets/css/components/apps.module.css"
+import { PackageInfo } from "../data/packageInfo"
+
+export interface AppsProps {
+  apps: PackageInfo[]
+  onSelected?: (selected:PackageInfo) => void
+}
+
 function Apps(props:AppsProps) : JSX.Element{
     const parentDiv = useRef<HTMLDivElement>(null);    
     const {width : parentWidth} = useResize(parentDiv)
@@ -18,7 +24,7 @@ function Apps(props:AppsProps) : JSX.Element{
       }}      
       >
         {props?.apps?.map((app) => (
-          <App key={app.id} id={app.id} title={app.title} icon={app.icon} />
+          <App key={app.id} id={app.id} title={app.name} icon={app.icon} />
         ))}
       </div>        
     </div>

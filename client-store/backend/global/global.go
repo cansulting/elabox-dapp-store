@@ -37,11 +37,9 @@ const CHECK_IF_PACKAGE_IS_DEPENDENCY = "ela.store.actions.CHECK_IF_PACKAGE_IS_DE
 const ACCOUNT_PACKAGE_ID = "ela.account"
 const AC_DEVICE_SERIAL = "account.actions.DEVICE_SERIAL" //use to get device serial
 
-// endpoints
-const PACKAGES_ENDPOINT = STORE_HOST + "/api/v1/items"
-const DOWNLOAD_ENDPOINT = STORE_HOST + "/api/v1/dl"
-
 const SYS_INFO_PATH = "/usr/ela/system/ela.system/info.json"
 
-// cache path for all package images
-const IMAGES_CACHE_PATH = "/_images"
+// CACHES
+const IMAGES_CACHE_PATH = "/_images" // cache path for all package images
+const STORE_CACHE_PATH = CacheDir + "/stores.cache"
+const STOREHUB_CACHE_PATH = CacheDir + "/storehub.cache"

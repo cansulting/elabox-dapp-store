@@ -7,6 +7,7 @@ import (
 	"store/client-store/backend/broadcast"
 	"store/client-store/backend/global"
 	"store/client-store/backend/services/downloader"
+	data2 "store/data"
 	"strconv"
 	"time"
 
@@ -21,7 +22,7 @@ const RATIO_VS_DOWNLOAD = 0.25 // the progress ratio of install status vs downlo
 // struct the handles the lifecycle of the installation
 type Task struct {
 	Id              string
-	Url             string
+	Url             string // this can be an http link or ipfs cid
 	downloadTask    *downloader.Task
 	Status          global.AppStatus
 	ErrorCode       int16
@@ -207,7 +208,7 @@ func (instance *Task) waitForDependencies() error {
 			}
 			// install it now
 			if !isreg {
-				currentDep, err = CreateInstallTask(deps[0])
+				currentDep, err = CreateInstallTask(deps[0], data2.Production)
 				if err != nil {
 					return err
 				}

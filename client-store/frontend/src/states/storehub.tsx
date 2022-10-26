@@ -1,6 +1,12 @@
+import { StoreProps } from "src/components/Store"
 import create from "zustand"
 import {getStoreList} from "../api/storehub"
-import {StoreHubState} from "../interfaces/stores/storeHub"
+
+export interface StoreHubState {
+    list : StoreProps[]
+    fetchStores: () => Promise<any>
+}
+
 export const useStoreHubStore=create<StoreHubState>((set) =>({
     list: [],
     fetchStores: async () => {

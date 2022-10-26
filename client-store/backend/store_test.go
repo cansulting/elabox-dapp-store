@@ -6,7 +6,7 @@ import (
 	"store/client-store/backend/global"
 	"store/client-store/backend/services/downloader"
 	"store/client-store/backend/services/installer"
-	"store/client-store/backend/services/store_lister"
+	"store/data"
 	"strconv"
 	"testing"
 	"time"
@@ -21,9 +21,9 @@ const TEST_PKG = "ela.sample"
 func Test_RetrieveListing(t *testing.T) {
 	logger.Init("ela.store.test")
 	// step: retrieve store listing
-	if err := store_lister.CheckUpdates(); err != nil {
-		t.Error("unable to retrieve store listing. inner: " + err.Error())
-	}
+	// if err := store_lister.CheckUpdates(); err != nil {
+	// 	t.Error("unable to retrieve store listing. inner: " + err.Error())
+	// }
 }
 
 // test for retrieving apps information and states
@@ -57,7 +57,7 @@ func Test_RetrieveAppDetail(t *testing.T) {
 // install app test
 func Test_InstallPackage(t *testing.T) {
 	logger.Init("ela.store.test")
-	task, err := installer.CreateInstallTask(TEST_PKG)
+	task, err := installer.CreateInstallTask(TEST_PKG, data.Production)
 	if err != nil {
 		t.Error("unable to create install task. inner: " + err.Error())
 		return
@@ -91,7 +91,7 @@ func Test_DownloadPackageHttp(t *testing.T) {
 
 func Test_DownloadPackageIPFS(t *testing.T) {
 	logger.Init("ela.store.test")
-	url := "QmePfgfoB27qQyWEV2oJNQMQkeXit1dCEue3WJHU85fHUE"
+	url := TEST_CID
 	savePath := "./sample.box"
 	task := downloader.NewTask("web3._store", url, savePath, downloader.IPFS)
 	if err := task.Start(); err != nil {
@@ -103,11 +103,6 @@ func Test_DownloadPackageIPFS(t *testing.T) {
 // use to test installation for dependencies
 func Test_InstallWithDependencies(t *testing.T) {
 	logger.Init("ela.store.test")
-	link, err := store_lister.RetrieveDownloadLink("ela.mainchain")
-	if err != nil {
-		t.Error("unable to retrieve link ", err)
-		return
-	}
 	handler, err := rpc.NewRPCHandlerDefault()
 	if err != nil {
 		t.Error(err)
@@ -118,8 +113,8 @@ func Test_InstallWithDependencies(t *testing.T) {
 		t.Error("failed to init broadcast", err)
 		return
 	}
-	ids := []string{"trinity.pasar", "ipfs"}
-	task := installer.CreateTask("ela.mainchain", link, ids)
+	dependencies := []string{"trinity.pasar", "ipfs"}
+	task := installer.CreateTask("ela.mainchain", TEST_CID, dependencies)
 	task.Start()
 	for {
 		if task.Status == global.Installed {

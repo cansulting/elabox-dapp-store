@@ -57,18 +57,18 @@ func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheIt
 	if storeCacheItem != nil {
 		instance.Id = storeCacheItem.Id
 		instance.Name = storeCacheItem.Name
-		instance.LatestBuild = int(storeCacheItem.Release.Build.Number)
-		//instance.Icon = storeCacheItem.Icon
+		instance.LatestBuild = int(storeCacheItem.Release.Production.Build.Number)
+		instance.Icon = storeCacheItem.IconCID
 		if detailed {
 			// if instance.Details == nil {
 			// 	instance.Details = &PackageDetails{}
 			// }
-			instance.LatestMinRuntime = storeCacheItem.Release.Build.MinRuntime
+			instance.LatestMinRuntime = storeCacheItem.Release.Production.Build.MinRuntime
 			//instance.Category = storeCacheItem.Category
 			instance.Description = storeCacheItem.Description
-			instance.Updates = storeCacheItem.Release.Description
-			instance.Version = storeCacheItem.Release.Version
-			instance.Dependencies = storeCacheItem.Release.Build.Dependencies
+			instance.Updates = storeCacheItem.Release.Production.Description
+			instance.Version = storeCacheItem.Release.Production.Version
+			instance.Dependencies = storeCacheItem.Release.Production.Build.Dependencies
 			instance.IsDependency = false
 			// if loaded, _ := storeCacheItem.LoadDetails(); loaded {
 

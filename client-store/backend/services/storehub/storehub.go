@@ -8,24 +8,38 @@ import (
 	"store/client-store/backend/global"
 	"store/client-store/backend/services/ipfs"
 	"store/data"
+
+	"github.com/cansulting/elabox-system-tools/foundation/logger"
 )
 
 // retrieve store info from list
-func RetrieveStoreList(storehub_add string) (*data.StoreList, error) {
+func RetrieveStoreList(storehub_address string) (*data.StoreList, error) {
+	// do we need to refetch store list from store hub?
+	if !IsStoreHubExpired() {
+		return GetStoreHub()
+	}
+	// hence retrieve
 	res, err := http.Get(global.STOREHUB_SERVER + "/api/v1/items")
 	if err != nil {
-		return nil, err
+		logger.GetInstance().Warn().Err(err).Msg("Failed to connect to store hub")
+		return GetStoreHub()
 	}
 	body, _ := ioutil.ReadAll(res.Body)
 	var stores data.StoreList
 	if err := json.Unmarshal(body, &stores); err != nil {
 		return nil, err
 	}
-	return &stores, nil
+	err = CacheStoreHub(&stores)
+	return &stores, err
 }
 
-func RetrieveStore(storeId string) (*data.StoreInfo, error) {
-	stores, err := RetrieveStoreList("")
+func RetrieveStore(storeId string, storehub_add string) (*data.StoreInfo, error) {
+	// do we need to refetch store information?
+	if !IsStoreExpired(storeId) {
+		return GetStore(storeId)
+	}
+
+	stores, err := RetrieveStoreList(storehub_add)
 	if err != nil {
 		return nil, err
 	}
@@ -33,9 +47,11 @@ func RetrieveStore(storeId string) (*data.StoreInfo, error) {
 		if store.Id == storeId {
 			var storeinfo data.StoreInfo
 			if err := ipfs.DownloadJson(store.StoreCID, &storeinfo); err != nil {
-				return nil, err
+				logger.GetInstance().Warn().Err(err).Msg("failed to retrieve store definition, " + storeId)
+				return GetStore(storeId)
 			}
-			return &storeinfo, nil
+			err = CacheStore(storeinfo, storehub_add)
+			return &storeinfo, err
 		}
 	}
 	return nil, nil
@@ -47,14 +63,13 @@ func RetrieveAllApps(storehub string) ([]data.PackagePreview, error) {
 		return nil, err
 	}
 	var res []data.PackagePreview
-	var storeinfo data.StoreInfo
+	var storeinfo *data.StoreInfo
 	for _, store := range stores.Stores {
-		if err := ipfs.DownloadJson(store.StoreCID, &storeinfo); err != nil {
-			println("Error ondownloading store info", err)
-			continue
-		}
-		for _, v := range storeinfo.Packages {
-			res = append(res, v)
+		storeinfo, err = RetrieveStore(store.Id, storehub)
+		if err == nil && storeinfo != nil {
+			for _, v := range storeinfo.Packages {
+				res = append(res, v)
+			}
 		}
 	}
 	return res, nil

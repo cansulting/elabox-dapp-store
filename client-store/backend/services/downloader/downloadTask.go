@@ -12,6 +12,7 @@ import (
 	"strconv"
 
 	"github.com/cansulting/elabox-system-tools/foundation/logger"
+	files "github.com/ipfs/go-ipfs-files"
 )
 
 type DownloadMode uint
@@ -98,7 +99,12 @@ func (task *Task) Start() error {
 // save to file
 func (task *Task) Download(output string, url string, mode DownloadMode) (err error) {
 	if mode == IPFS {
-		return ipfs.DownloadAndSaveFile(context.Background(), url, output, task)
+		task.downloaded = 0
+		onFileReturned := func(file files.Node) {
+			total, _ := file.Size()
+			task.total = total
+		}
+		return ipfs.DownloadAndSaveFile(context.Background(), url, output, task, onFileReturned)
 	} else {
 		return task.httpDownload(output, url)
 	}
@@ -145,8 +151,6 @@ func (task *Task) httpDownload(path string, url string) (err error) {
 	if err != nil {
 		return err
 	}
-	//finish successfully
-	task._onStateChanged(Finished)
 	return nil
 }
 
@@ -177,5 +181,9 @@ func (task *Task) Write(p []byte) (n int, err error) {
 		println("progress:", task.progress)
 	}
 	task.OnProgressChanged(task)
+	//finish successfully?
+	if task.progress >= 100 {
+		task._onStateChanged(Finished)
+	}
 	return n, nil
 }
