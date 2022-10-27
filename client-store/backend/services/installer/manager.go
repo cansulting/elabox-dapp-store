@@ -29,10 +29,18 @@ func initialize() {
 	broadcast.OnInstallerStateChanged = func(pkid string, installStatus broadcast.PkInstallerState) {
 		if installStatus == broadcast.INSTALLED {
 			task := GetTask(pkid)
+			if task == nil {
+				logger.GetInstance().Error().Msg("installer task not found for " + pkid)
+				return
+			}
 			task.onInstalledFinished()
 			finishCurrentSchedule()
 		} else if installStatus == broadcast.UNINSTALLED {
 			task := GetTask(pkid)
+			if task == nil {
+				logger.GetInstance().Error().Msg("installer task not found for " + pkid)
+				return
+			}
 			task.setStatus(global.UnInstalled)
 			finishCurrentSchedule()
 		}

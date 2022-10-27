@@ -15,10 +15,10 @@ export default function DasbhoardController(props:DashboardControllerProps){
     const onStoreClick= (pkg: PackageInfo) =>{
         navigate(`/store/${pkg.id}`)
     }
-    const [pkgs, setPkgs] = useState([] as PackageInfo[])
+    const [pkgs, setPkgs] = useState(null as PackageInfo[])
     //const { search } = useLocation()
     useEffect( () => {
-        if (!pkgs || pkgs.length === 0){
+        if (!pkgs){
             retrieveAllListings(true)
             .then( res => {
                 setPkgs(res)
