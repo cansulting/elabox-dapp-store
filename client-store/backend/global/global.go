@@ -10,7 +10,7 @@ const PackageId = "ela.store"
 const InstallerId = "ela.installer"
 const CacheDir = path.PATH_SYSTEM_DATA + "/" + PackageId + "/cache"
 const StoreCache = CacheDir + "/packages.cache"
-const DownloadCache = CacheDir + "/downloads/" + PackageId
+const DownloadCache = CacheDir + "/downloads"
 
 var AppController *app.Controller
 var RPC *rpc.RPCHandler

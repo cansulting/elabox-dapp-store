@@ -30,7 +30,7 @@ func initialize() {
 		if installStatus == broadcast.INSTALLED {
 			task := GetTask(pkid)
 			if task == nil {
-				logger.GetInstance().Error().Msg("installer task not found for " + pkid)
+				logger.GetInstance().Error().Msg("installer task not found for " + pkid + "," + string(installStatus))
 				return
 			}
 			task.onInstalledFinished()
@@ -38,7 +38,7 @@ func initialize() {
 		} else if installStatus == broadcast.UNINSTALLED {
 			task := GetTask(pkid)
 			if task == nil {
-				logger.GetInstance().Error().Msg("installer task not found for " + pkid)
+				logger.GetInstance().Error().Msg("installer task not found for " + pkid + "," + string(installStatus))
 				return
 			}
 			task.setStatus(global.UnInstalled)

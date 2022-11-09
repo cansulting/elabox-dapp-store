@@ -97,17 +97,22 @@ func (task *Task) Start() error {
 
 // download file via http
 // save to file
-func (task *Task) Download(output string, url string, mode DownloadMode) (err error) {
+func (task *Task) Download(output string, url string, mode DownloadMode) error {
+	var err error
 	if mode == IPFS {
 		task.downloaded = 0
 		onFileReturned := func(file files.Node) {
 			total, _ := file.Size()
 			task.total = total
 		}
-		return ipfs.DownloadAndSaveFile(context.Background(), url, output, task, onFileReturned)
+		err = ipfs.DownloadAndSaveFile(context.Background(), url, output, task, onFileReturned)
 	} else {
-		return task.httpDownload(output, url)
+		err = task.httpDownload(output, url)
 	}
+	if err == nil {
+		task._onStateChanged(Finished)
+	}
+	return err
 }
 
 func (task *Task) httpDownload(path string, url string) (err error) {
@@ -181,9 +186,5 @@ func (task *Task) Write(p []byte) (n int, err error) {
 		println("progress:", task.progress)
 	}
 	task.OnProgressChanged(task)
-	//finish successfully?
-	if task.progress >= 100 {
-		task._onStateChanged(Finished)
-	}
 	return n, nil
 }
