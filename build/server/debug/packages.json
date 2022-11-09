@@ -135,6 +135,7 @@
         "beta": true,
         "betaUsers":["10000000992e4e2f","10000000538baa75"], 
         "version": "2.22.4",
+        "minRuntime": "0.6.10",
         "projectRepo": "",
         "projectWebsite": ""
     },
