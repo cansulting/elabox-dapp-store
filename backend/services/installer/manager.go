@@ -28,10 +28,16 @@ func initialize() {
 	broadcast.OnInstallerStateChanged = func(pkid string, installStatus broadcast.PkInstallerState) {
 		if installStatus == broadcast.INSTALLED {
 			task := GetTask(pkid)
+			if task == nil {
+				return
+			}
 			task.onInstalledFinished()
 			finishCurrentSchedule()
 		} else if installStatus == broadcast.UNINSTALLED {
 			task := GetTask(pkid)
+			if task == nil || task.Status == global.Installing {
+				return
+			}
 			task.setStatus(global.UnInstalled)
 			finishCurrentSchedule()
 		}

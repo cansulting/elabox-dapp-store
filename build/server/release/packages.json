@@ -111,7 +111,7 @@
         "description": "Filebrowser provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit your files. It allows the creation of multiple users and each user can have its own directory. It can be used as a standalone app. Default username and password is admin",
         "icon" : "https://storage.googleapis.com/elabox/store/apps/filebrowser/listing/icon.svg",
         "updates": "First Release on Elabox",
-        "build": 1,
+        "build": 2,
         "beta": false,
         "version": "2.22.4",
         "minRuntime": "0.6.10",
