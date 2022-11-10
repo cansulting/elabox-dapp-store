@@ -28,8 +28,8 @@
         "description": "The Smart Contract Chain (ESC) allows developers to code, deploy, and run their smart contracts on Ethereum Virtual Machines (EVMs). The sidechain also supports the execution of smart contracts written in Solidity.By utilizing DPoS Consensus, the Smart Contract Chain (ESC) acts as a high-performance, scalable smart contract execution solution.",
         "icon" : "https://storage.googleapis.com/elabox/store/apps/ela.esc/listing/icon.png",
         "updates": "fixed fork error, add --pbft.miner.address flag, small amount transfer optimization",
-        "build": 3,
-        "version": "0.2.0",
+        "build": 4,
+        "version": "0.2.2",
         "projectRepo": "",
         "projectWebsite": ""
     },
