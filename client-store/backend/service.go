@@ -3,10 +3,10 @@ package main
 import (
 	"os"
 	"store/client-store/backend/broadcast"
+	data2 "store/client-store/backend/data"
 	"store/client-store/backend/global"
 	"store/client-store/backend/services/store_lister"
-
-	storedata "store/data"
+	"store/client-store/backend/services/storehub"
 
 	adata "github.com/cansulting/elabox-system-tools/foundation/app/data"
 	"github.com/cansulting/elabox-system-tools/foundation/app/rpc"
@@ -61,31 +61,58 @@ func (instance *StoreService) rpc_retrievePackage(client protocol.ClientInterfac
 	return rpc.CreateJsonResponse(rpc.SUCCESS_CODE, app)
 }
 
+// recieved request that will install the package.
 func (instance *StoreService) rpc_installPackage(client protocol.ClientInterface, action data.Action) string {
-	installType := storedata.Production
-	if val, err := action.DataToMap(); err != nil {
-		if val["type"] != nil {
-			installType = storedata.ReleaseType(val["type"].(int))
-		}
-	}
-	err := DownloadInstallApp(action.PackageId, installType)
+	// installType := storedata.Production
+	// if val, err := action.DataToMap(); err != nil {
+	// 	if val["type"] != nil {
+	// 		installType = storedata.ReleaseType(val["type"].(int))
+	// 	}
+	// }
+	info, err := storehub.RetrieveApp(action.PackageId, "")
 	if err != nil {
 		return rpc.CreateResponse(rpc.INVALID_CODE, err.Error())
 	}
-	return rpc.CreateSuccessResponse("started")
+	// TODO: install dependencies
+
+	// send install request to package manager
+	rpcres, err := global.AppController.RPC.CallRPC(
+		global.PackageManagerId,
+		data.NewAction(
+			global.PKMG_INSTALL_PACKAGE,
+			"",
+			data2.InstallParam{
+				Definition: data2.InstallDef{
+					Id:   action.PackageId,
+					Icon: info.IconCID,
+					Name: info.Name,
+					Url:  info.Release.Production.Build.IpfsCID,
+				},
+			}))
+	if err != nil {
+		return rpc.CreateResponse(rpc.INVALID_CODE, "failed sending request to package manager, "+err.Error())
+	}
+	return rpcres.Value.(string)
+	//res, err := rpcres.ToSimpleResponse()
+	//println(res.Message)
+	//return rpc.CreateSuccessResponse("started")
 }
 
 func (instance *StoreService) rpc_onuninstall(client protocol.ClientInterface, action data.Action) string {
-	err := UninstallApp(action.PackageId)
+	_, err := global.AppController.RPC.CallRPC(global.PackageManagerId, action)
 	if err != nil {
 		return rpc.CreateResponse(rpc.INVALID_CODE, err.Error())
 	}
 	return rpc.CreateSuccessResponse("started")
 }
 func (instance *StoreService) rpc_oncancelinstall(client protocol.ClientInterface, action data.Action) string {
-	CancelInstall(action.PackageId)
+	_, err := global.AppController.RPC.CallRPC(global.PackageManagerId, action)
+	if err != nil {
+		return rpc.CreateResponse(rpc.INVALID_CODE, err.Error())
+	}
 	return rpc.CreateSuccessResponse("cancelled")
 }
+
 func (insstance *StoreService) rpc_oncheckifdependency(client protocol.ClientInterface, action data.Action) string {
 	isDependent, err := HasDependencies(action.PackageId)
 	if err != nil {

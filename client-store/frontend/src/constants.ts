@@ -7,6 +7,7 @@ export const IPFS_PEERS = ['http://192.168.118.25:5003','https://ipfs.infura.io:
 
 export const PACKAGE_ID = "ela.store";
 export const INSTALLER_ID = "ela.installer"
+export const PKGMGR_ID = "ela.pkgmgr" // package manager id
 
 // action id
 export const AC_RETRIEVE_PKGS = "ela.store.actions.RETRIEVE_PACKAGES";
@@ -23,9 +24,10 @@ export const AC_CHECK_STATUS = "ela.system.APP_CHECK_STATUS";
 export const AC_CLEAR_DATA = "ela.system.APP_CLEAR_DATA";
 
 // installer broadcasts
-export const INSTALLER_PROGRESS = PACKAGE_ID + ".broadcast.INSTALL_PROGRESS"
-export const INSTALLER_STATE_CHANGED = PACKAGE_ID + ".broadcast.INSTALL_STATE"
+export const INSTALLER_PROGRESS = PKGMGR_ID + ".broadcast.INSTALL_PROGRESS"
+export const INSTALLER_STATE_CHANGED = PKGMGR_ID + ".broadcast.INSTALL_STATE"
 export const INSTALLER_ERROR = (pgkId:string) => pgkId + ".broadcast.ERROR"
+
 export const setEventHandler = (eh: EboxEvent) => { 
     _eventHandler = eh;
 }

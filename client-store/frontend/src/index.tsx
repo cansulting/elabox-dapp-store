@@ -4,6 +4,10 @@ import App from "./App"
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import reportWebVitals from './reportWebVitals';
 
+// exports
+export * from "./constants"
+export * as StorePage from "./controllers/v2/AllViewDashboard"
+
 window.Buffer = window.Buffer || require("buffer").Buffer; 
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)

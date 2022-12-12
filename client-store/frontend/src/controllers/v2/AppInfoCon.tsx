@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { AppInfoProps, AppInfo } from "../../components/v2/AppInfo"
 import * as Listener from "../../api/store/broadcastListener"
-import { useUtilState } from "../../states/utils"
+import { useUtilState } from "../../states/toast"
 import { 
     installPackage,
     retrieveListing, 

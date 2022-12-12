@@ -4,7 +4,6 @@ import (
 	"errors"
 	"sort"
 	"store/client-store/backend/data"
-	"store/client-store/backend/services/installer"
 	"store/client-store/backend/services/store_lister"
 	"store/client-store/backend/services/storehub"
 	data2 "store/data"
@@ -55,9 +54,6 @@ func RetrieveAllApps(beta bool) ([]data.PackageInfo, error) {
 		// }
 		tmpPreview = data.PackageInfo{}
 		tmpPreview.AddInfo(installedInfo, &pkg, false)
-		if task := installer.GetTask(tmpPreview.Id); task != nil {
-			tmpPreview.Status = task.Status
-		}
 
 		// check if currently in download
 		previews = append(previews, tmpPreview)
@@ -90,28 +86,7 @@ func RetrieveApp(pkgId string, storehubId string) (*data.PackageInfo, error) {
 		return nil, errors.New("failed to check if package is enable " + pkgId)
 	}
 	pkgInfo.Enabled = enabled
-	if task := installer.GetTask(pkgInfo.Id); task != nil {
-		pkgInfo.Status = task.Status
-	}
 	return &pkgInfo, nil
-}
-
-// use to download and install app
-func DownloadInstallApp(pkgId string, releaseType data2.ReleaseType) error {
-	task, err := installer.CreateInstallTask(pkgId, releaseType)
-	if err != nil {
-		return err
-	}
-	task.Start()
-	return nil
-}
-
-func UninstallApp(pkgId string) error {
-	task := installer.CreateUninstallTask(pkgId)
-	return task.Uninstall()
-}
-func CancelInstall(pkgId string) {
-	installer.Cancel(pkgId)
 }
 
 // is current user a tester?

@@ -230,6 +230,13 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                 Update
                             </AppButton>
                         )}
+                        {info.status === "installed" && <AppButton 
+                            color="dark" 
+                            size="sm" 
+                            onClick={handleUninstall}
+                        >
+                            Uninstall
+                        </AppButton>}
                         { isLaunchable(info) && (
                             <AppButton
                                 color="primary"

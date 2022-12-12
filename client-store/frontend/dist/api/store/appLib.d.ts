@@ -1,0 +1,13 @@
+import { PackageInfo } from "../../data/packageInfo";
+export declare function retrieveAllListings(beta?: boolean): Promise<PackageInfo[]>;
+export declare function retrieveListing(packageId: string): Promise<PackageInfo>;
+export declare function installPackage(packageId: string): Promise<void>;
+export declare function uninstallPackage(packageId: string): Promise<void>;
+export declare function cancelPackage(packageId: string): Promise<void>;
+export declare function retrieveSystemVersion(): Promise<string>;
+export declare function resync(packageId: string): Promise<string>;
+export declare function restart(packageId: string): Promise<string>;
+export declare function disablePackage(packageId: string): Promise<string>;
+export declare function On(packageId: string): Promise<string>;
+export declare function OnCheckStatus(packageId: string): Promise<boolean>;
+export declare function OnCheckIfDependent(packageId: string): Promise<boolean>;

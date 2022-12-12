@@ -1,0 +1,18 @@
+.apps {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+.apps > .apps-list{
+  display: grid;
+  gap: 1em;
+  width:100%;
+}
+
+/* media query for laptop screen */
+@media (min-width: 768px) {
+  .apps {
+    align-items: flex-start;
+  }
+}

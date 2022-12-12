@@ -1,0 +1,27 @@
+.app-dashboard {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  color: white;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #d9d9d9;
+  padding: 1em;
+  width:100%;
+}
+.app-dashboard h1{
+  color: grey;
+}
+.app-dashboard > .app-dashboard-header {
+  display: flex;
+  justify-content: flex-end;
+}
+/* media query for laptop screen */
+@media (min-width: 768px) {
+  .app-dashboard {
+    align-items: initial;
+    justify-content: flex-start;
+  }
+}
