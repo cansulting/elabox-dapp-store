@@ -17,20 +17,21 @@ export default class Auth {
             connectivity.setApplicationDID(appDid)
             let connector = connectivity.getActiveConnector()
             //console.log("CONNECTORS", connectors)
-            if (connector !== null ) 
+            if (connector !== null ) {
                 this.connector = connector as EssentialsConnector
-            else { 
+                resolve(null)
+            } else { 
                 //console.log("register connector")
                 this.connector = new EssentialsConnector()
                 await connectivity.registerConnector(this.connector).then(async () => {
-                    //console.log(" connector registered")
+                    console.log("lllll"," connector registered", this.connector.name)
                     const walletConnectProvider = this.connector.getWalletConnectProvider();
                     if (!walletConnectProvider.connected)
                         await walletConnectProvider.enable();
-
+                    
+                    resolve(null)
                 });
             }
-            resolve(null)
         })
         
     }
