@@ -115,12 +115,17 @@ export const useStoreState = create<StoreState>()(
                         let _status = _con ? SIGNEDIN : SIGNEDOUT
                         const status = get().authStatus
                         // after being connected, initilize hive
-                        //if (_con && !get().info) {
-                            await HiveConnect.initialize(HIVE_CONFIG)
-                            const store = await HiveConnect.downloadJson(STORE_INFO_PATH, DEFAULT_STORE)
-                            console.log("STORE DEFINITION LOADED", store)
-                            get().setStoreInfo( store)
-                        //}
+                        try {
+                            if (_con && !get().info) {
+                                await HiveConnect.initialize(HIVE_CONFIG)
+                                const store = await HiveConnect.downloadJson(STORE_INFO_PATH, DEFAULT_STORE)
+                                console.log("STORE DEFINITION LOADED", store)
+                                get().setStoreInfo( store)
+                            }
+                        } catch (err) {
+                            console.log("Reauth due to signin issue", err)
+                            _status = SIGNEDOUT
+                        }
                         if (status !== _status) {
                             get().setAuthStatus(_status)
                         }
