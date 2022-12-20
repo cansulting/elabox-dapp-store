@@ -17,7 +17,6 @@ import { Notification } from '../../data/notification'
 import { AppStatusToCaption } from '../../utils/appStatus'
 import IpfsImage from '../ui/IpfsImage'
 
-
 export interface AppInfoProps {
     info: PackageInfo
     style?: object
@@ -132,12 +131,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                 onClose={handleOnCloseDependencyModal} 
                 onConfirm={handleOnConfirmInstall}/>         
 
-                <h3 style={{ cursor: 'pointer' }} onClick={props.onBack}>
+                {props.onBack && <h3 style={{ cursor: 'pointer' }} onClick={props.onBack}>
                     <p style={{display:'flex', alignItems: 'center'}}>
                         <Icon.ArrowLeftCircle style={{ marginRight: 5, color:'#0d6efd' }} />
                         <span><h5 style={{color:'#0d6efd', margin: 0}}>Apps</h5></span>
                     </p>
-                </h3>
+                </h3>}
                 {info.status === "installed" && (
                         <>
                             <p
