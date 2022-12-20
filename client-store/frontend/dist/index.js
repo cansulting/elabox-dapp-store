@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import reportWebVitals from './reportWebVitals';
 // exports
 export * from "./constants";
-export * as StorePage from "./controllers/v2/AllViewDashboard";
+export * from "./controllers/v2";
+export * from "./data";
 window.Buffer = window.Buffer || require("buffer").Buffer;
 var root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
