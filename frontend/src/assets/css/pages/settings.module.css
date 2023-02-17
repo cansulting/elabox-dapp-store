@@ -1,0 +1,74 @@
+.app-settings{
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  background-color: #d9d9d9;
+  padding: 2em;
+}
+.app-settings h1,.app-settings h2{
+  color: grey;
+}
+.app-settings > .app-store-hubs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    padding:1em;
+}
+.app-settings > .app-store-hubs > .app-store-hub {
+    width: 90%;
+    background-color: grey;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+    padding: 0.5em;
+    border-radius: 2em;
+}
+.app-settings > .app-store-hubs > .app-store-hub-form {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;  
+    width: 100%;
+    gap: 0.5em;
+    margin-top: 0.5em;
+}
+.app-settings > .app-store-hubs > .app-store-hub-form > input {
+    width: 86%;
+    height: 2em;
+    border-radius: 2em;
+    padding:1em;
+}
+/* media query for laptop screen */
+@media (min-width: 768px) {
+    .app-settings{
+        align-items: flex-start;
+    }
+    .app-settings > .app-store-hubs{
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 90%;
+        margin-left: 2em;
+    }    
+    .app-settings > .app-store-hubs > .app-store-hub {
+        width: 20em;
+        margin-left: 2em;        
+    }
+    .app-settings > .app-store-hubs > .app-store-hub-form {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        width: 23.5em;
+        margin-left: 2em;     
+        padding:0;
+    }    
+    .app-settings > .app-store-hubs > .app-store-hub-form > input {
+        width: 100%;
+    }
+    .app-settings > .app-store-hubs > .app-store-hub-form > button {
+        width: auto;
+    }
+}

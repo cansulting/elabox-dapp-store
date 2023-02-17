@@ -1,14 +1,14 @@
-import { retrieveSystemVersion } from "../actions"
-import { getEventHandler } from "../actions/constants"
+import { retrieveSystemVersion } from "../api/store/appLib"
+import { getEventHandler } from "../constants"
 
 let currentVersion : number[] = []
 
 getEventHandler().waitUntilConnected(5000)
-    .then( async _ => {
+    .then( async (_ :any) => {
         const ver = await retrieveSystemVersion()
         currentVersion = convertStringVerToValue( ver)
     })
-    .catch( err => {
+    .catch( (err : Error) => {
         console.log("Failed retrieving version", err)
     })
 
@@ -21,12 +21,13 @@ function convertStringVerToValue(version:string): number[] {
     return res
 }
 
+// current system version
 export const systemVersion = () : number[] => {
     return currentVersion
 }
 
 // use to check if the version is compatible to system version
-export const isCompatibleToSystem = (version: string) : boolean => {
+export const isCompatibleToSystem = (version: string | null) : boolean => {
     if (!version || version === "" ) return true
     const converted = convertStringVerToValue(version)
     const sysver = systemVersion()

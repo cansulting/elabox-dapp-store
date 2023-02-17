@@ -1,6 +1,6 @@
 import { AppStatus } from "../utils/appStatus"
 import { isCompatibleToSystem } from "../utils/system"
-import { MessagePrompt } from "./messagePrompt"
+import { Notification } from "./notification"
 
 export interface PackageInfo {
     id :           string
@@ -20,7 +20,7 @@ export interface PackageInfo {
     isService?: boolean
 	isDependency?: boolean
 	launchUrl?: string
-	notificationContents?: MessagePrompt[]
+	notificationContents?: Notification[]
 	category?: 'system' | undefined | ''
 	latestMinRuntime?: string // the required package to install this package
 } 
@@ -35,7 +35,7 @@ export function isUpdatable(pkg:PackageInfo) : boolean {
 // if theres an update - this can be use to check if the update is system compatible
 export function isUpdateCompat(pkg:PackageInfo): boolean {
 	if (pkg.latestMinRuntime === "") return true
-	return isCompatibleToSystem(pkg.latestMinRuntime)
+	return isCompatibleToSystem(pkg.latestMinRuntime as string)
 }
 
 export function isLaunchable(pkg:PackageInfo) : boolean {
