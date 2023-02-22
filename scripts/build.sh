@@ -41,7 +41,7 @@ echo "Start building $mode DStore binaries..."
 #############################
 # build backend 
 pkid=$(jq '.packageId' ../build/ela.store/info.json)
-eval "$gobuild" -o ../build/$pkid/bin/$pkid ../backend 
+eval "$gobuild" -o ../build/$pkid/bin/$pkid ../client-store/backend 
 
 
 packager ../build/ela.store/packager.json
