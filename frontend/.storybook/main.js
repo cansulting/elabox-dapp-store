@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path')
 
 module.exports = {
     stories: [
@@ -22,6 +23,11 @@ module.exports = {
                 Buffer: ['buffer', 'Buffer'],
             })
         )
+        config.module.rules.push({
+            test: /\.scss$/,
+            use: ['style-loader', 'css-loader', 'sass-loader'],
+            include: path.resolve(__dirname, '../'),
+        });
         return config;
     }
 }

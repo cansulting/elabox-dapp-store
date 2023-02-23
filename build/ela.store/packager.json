@@ -4,5 +4,7 @@
     "binDir": "./bin",
     "bin": "",
     "lib": "",
-    "continueOnMissing": true
+    "icons": {
+        "medium": "icon.png"
+    }
 }
