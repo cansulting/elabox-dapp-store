@@ -24,7 +24,7 @@ Primary.args = {
         "description": "This is sample app",
         "icon" : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/vvtuyg7ay25uziwmpeac",
         "updates": "This is updates",
-        "currentBuild": 2,
+        "currentBuild": 3,
         "latestBuild": 3,
         "version": "0.1.0",
         "status":"installed",
@@ -39,6 +39,7 @@ Installable.args = {
     ...Primary.args,
     info: {
         ...Primary.args.info,
+        status:"uninstalled",
         currentBuild: 0
     },
 }

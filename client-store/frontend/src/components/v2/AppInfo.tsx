@@ -16,6 +16,7 @@ import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../../da
 import { Notification } from '../../data/notification'
 import { AppStatusToCaption } from '../../utils/appStatus'
 import IpfsImage from '../ui/IpfsImage'
+import { AppInfoToolbar } from './AppInfoToolbar'
 
 export interface AppInfoProps {
     info: PackageInfo
@@ -117,7 +118,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     }
     return (
         <Container style={props.style} fluid="md">
-            <div
+            <DependencyModal 
+                dependencies={props.info.dependencies}
+                isOpen={isOpenDependencyModal} 
+                onClose={handleOnCloseDependencyModal} 
+                onConfirm={handleOnConfirmInstall}/>  
+            {/* <div
                 style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -125,11 +131,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     paddingBottom: 5,
                 }}
             >
-                <DependencyModal 
-                dependencies={props.info.dependencies}
-                isOpen={isOpenDependencyModal} 
-                onClose={handleOnCloseDependencyModal} 
-                onConfirm={handleOnConfirmInstall}/>         
+                       
 
                 {props.onBack && <h3 style={{ cursor: 'pointer' }} onClick={props.onBack}>
                     <p style={{display:'flex', alignItems: 'center'}}>
@@ -137,41 +139,12 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                         <span><h5 style={{color:'#0d6efd', margin: 0}}>Apps</h5></span>
                     </p>
                 </h3>}
-                {info.status === "installed" && (
-                        <>
-                            <p
-                                style={{ cursor: 'pointer' }}
-                                className="text-primary"
-                                id="settingPopover"
-                                ref={settingPopoverRef}
-                            >
-                                <Icon.Settings />
-                            </p>
-                            <SettingPopover
-                                popOverRef={settingPopoverRef}
-                                setting={{
-                                    info:info,
-                                    customActions: props.customActions,
-                                    isService: props.info.isService,
-                                    onUnInstall: handleUninstall,
-                                    onCheckIfDependent: handleCheckIfDependency,
-                                    onResync: props.onResync,
-                                    onDisable: props.onDisable,
-                                    onRestart: props.onRestart,
-                                    onOff: handleOff,
-                                    onOn: handleOn,
-                                    isDependent: props.isDependent,
-                                }}
-                            />
-                        </>
-                    )
-                }
-            </div>
-            <Row lg="2">
+            </div> */}
+            <Row>
                 <Col
                     className="text-center text-lg-start d-flex flex-column align-items-center"
                     xs="12"
-                    lg="2"
+                    lg="12"
                 >
                     <IpfsImage
                         src={props.info.icon}
@@ -184,10 +157,8 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     />
                 </Col>
                 <Col
-                    className="d-flex flex-column align-items-center align-items-lg-start align-self-end mt-3"
+                    className="d-flex flex-column align-items-center mt-3"
                     style={{ gap: 5 }}
-                    xs="12"
-                    lg="10"
                 >
                     <h4>{info.name}</h4>
                     { 
@@ -201,7 +172,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     }
                     { props.info.isService && props.info.status === "installed" && !props.info.enabled &&
                         <div
-                            className="d-flex flex-column align-items-center align-items-lg-start"
+                            className="d-flex flex-column align-items-center"
                             style={{
                                 width: '100%',
                             }}
@@ -211,49 +182,20 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                             </p>
                         </div>
                     }
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            gap: 5,
-                        }}
-                    >
-                        { sysCompatible && updatable && (
-                            <AppButton
-                                color="primary"
-                                size="sm"
-                                active={sysCompatible}
-                                outline
-                                onClick={ handleUpdate}
-                            >
-                                Update
-                            </AppButton>
-                        )}
-                        {info.status === "installed" && <AppButton 
-                            color="dark" 
-                            size="sm" 
-                            onClick={handleUninstall}
-                        >
-                            Uninstall
-                        </AppButton>}
-                        { isLaunchable(info) && (
-                            <AppButton
-                                color="primary"
-                                size="sm"
-                                onClick={handleLaunch}
-                            >
-                                Launch
-                            </AppButton>
-                        )}
-                    </div>
-                    { sysCompatible && info.status === "uninstalled" && (
-                        <AppButton 
-                            color="primary" 
-                            size="sm" outline 
-                            onClick={handleOnOpenDependencyModal}>
-                            Install
-                        </AppButton>
-                    )}                  
+                    <AppInfoToolbar
+                        info={info}
+                        onUnInstall={handleUninstall}
+                        onCheckIfDependent={handleCheckIfDependency}
+                        onResync={props.onResync}
+                        onDisable={props.onDisable}
+                        onRestart={props.onRestart}
+                        onOff={handleOff}
+                        onOn={handleOn}
+                        onUpdate={handleUpdate}
+                        onLaunch={handleLaunch}
+                        onInstall={handleOnOpenDependencyModal}
+                        isDependent={props.isDependent}
+                    />           
                     { info.status !== "uninstalling" && info.status !== "installed" && info.status !== "uninstalled"  && (
                         <div
                         className="d-flex flex-column align-items-center align-items-lg-start"
@@ -276,12 +218,13 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                                 animated={false}
                             />
                             <AppButton 
-                                color="danger" 
                                 size="sm" 
                                 disabled={info.status !== "downloading"}
+                                style={{width:"20px",height:"20px",padding:"0px"}}
                                 outline
+                                variant="light"
                                 onClick={handleCancel}>
-                                <Icon.X className="pb-1" color="gray" size={14}/>
+                                <Icon.X className="pb-1" color="gray" size={20}/>
                             </AppButton>                                
                         </div> }
                     </div>  

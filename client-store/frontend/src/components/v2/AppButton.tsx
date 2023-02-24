@@ -5,8 +5,8 @@ import { Button, Spinner } from 'react-bootstrap'
 export interface AppButtonProps {
     id?: string
     ref?: React.RefObject<any>
-    children: string | JSX.Element
-    color:
+    children: any
+    color?:
         | 'primary'
         | 'secondary'
         | 'success'
@@ -23,6 +23,7 @@ export interface AppButtonProps {
     disabled?: boolean
     isProcessing?: boolean
     onClick?: Function
+    [x:string]:unknown
 }
 export const AppButton = (props: AppButtonProps): JSX.Element => {
     if (props.isProcessing) {
@@ -40,6 +41,7 @@ export const AppButton = (props: AppButtonProps): JSX.Element => {
     } else {
         return (
             <Button
+                style={{width:'80px',height:'35px'}}
                 {...props}
                 onClick={(e:any) => {
                     e.preventDefault()
