@@ -10,6 +10,8 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/preset-create-react-app",
+    "@storybook/addon-postcss",
+    "storybook-css-modules-preset",
   ],
   "framework": "@storybook/react",
   "core": {
