@@ -36,10 +36,10 @@ func NewPackageInfo() PackageInfo {
 func (instance *PackageInfo) AddInfo(installed *data.PackageConfig, storeCacheItem *PackageListingCache, detailed bool) {
 	if installed != nil {
 		instance.CurrentBuild = int(installed.Build)
-		instance.IsService = installed.ExportServices
+		instance.IsService = installed.HasServices()
 		// resolve launch url
 		if detailed {
-			if !installed.ExportServices ||
+			if !installed.HasServices() ||
 				installed.ActivityGroup.CustomLink != "" ||
 				installed.ActivityGroup.CustomPort != 0 {
 				instance.LaunchUrl = "/" + installed.PackageId
