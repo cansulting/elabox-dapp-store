@@ -42,16 +42,14 @@ export const AppInfoToolbar = (props: AppInfoToolbarProps): JSX.Element => {
         })
     }
     const [isOpenUninstallModal,setIsOpenUninstallModal] = useState(false)
-    const handleOnOpenUninstallModal = (e:React.MouseEvent) =>{
-        e.preventDefault()
+    const handleOnOpenUninstallModal = () =>{
         props.onCheckIfDependent()
         setIsOpenUninstallModal(true)
     }
     const handleOnCloseUninstallModal = () =>{
         setIsOpenUninstallModal(false)
     }
-    const handleOnConfirmUninstall = (e:React.MouseEvent) =>{
-        e.preventDefault()
+    const handleOnConfirmUninstall = () =>{
         props.onUnInstall()        
         setIsOpenUninstallModal(false)
     }
