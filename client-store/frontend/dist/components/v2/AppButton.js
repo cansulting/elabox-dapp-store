@@ -19,7 +19,7 @@ export var AppButton = function (props) {
             } }, { children: _jsx(Spinner, { children: "", animation: 'border' }) })));
     }
     else {
-        return (_jsx(Button, __assign({}, props, { onClick: function (e) {
+        return (_jsx(Button, __assign({ style: { width: '80px', height: '35px' } }, props, { onClick: function (e) {
                 e.preventDefault();
                 props.onClick();
             } }, { children: props.children })));

@@ -49,16 +49,14 @@ export var AppInfoToolbar = function (props) {
         });
     };
     var _b = __read(useState(false), 2), isOpenUninstallModal = _b[0], setIsOpenUninstallModal = _b[1];
-    var handleOnOpenUninstallModal = function (e) {
-        e.preventDefault();
+    var handleOnOpenUninstallModal = function () {
         props.onCheckIfDependent();
         setIsOpenUninstallModal(true);
     };
     var handleOnCloseUninstallModal = function () {
         setIsOpenUninstallModal(false);
     };
-    var handleOnConfirmUninstall = function (e) {
-        e.preventDefault();
+    var handleOnConfirmUninstall = function () {
         props.onUnInstall();
         setIsOpenUninstallModal(false);
     };
@@ -70,7 +68,7 @@ export var AppInfoToolbar = function (props) {
             flexDirection: 'row',
             gap: 5,
         } }, { children: [_jsx(ConfirmationModal, { title: "Uninstall ".concat(props.info.name), body: confirmationMessage, isOpen: isOpenUninstallModal, onClose: handleOnCloseUninstallModal, onConfirm: handleOnConfirmUninstall }), sysCompatible && updatable && (_jsx(AppButton, __assign({ size: "sm", active: sysCompatible, outline: true, onClick: props.onUpdate }, { children: "Update" }))), sysCompatible && props.info.status === "uninstalled" && (_jsx(AppButton, __assign({ size: "sm", outline: true, onClick: props.onInstall }, { children: "Install" }))), props.info.isService &&
-                _jsxs(_Fragment, { children: [_jsx(AppButton, __assign({ color: "danger", size: "sm", outline: true, onClick: props.onResync }, { children: "Clear Data" })), _jsx(AppButton, __assign({ color: "danger", size: "sm", outline: true, onClick: props.onRestart }, { children: "Restart" })), props.info.status === "installed" &&
+                _jsxs(_Fragment, { children: [_jsx(AppButton, __assign({ color: "danger", size: "sm", outline: true, onClick: props.onResync }, { children: "Clear" })), _jsx(AppButton, __assign({ color: "danger", size: "sm", outline: true, onClick: props.onRestart }, { children: "Restart" })), props.info.status === "installed" &&
                             _jsxs(AppButton, __assign({ color: !props.info.enabled ? "primary" : "danger", size: "sm", outline: true, onClick: handleServiceStatusChange }, { children: [isServiceLoading && _jsx(Spinner, { children: "", size: "sm", color: "secondary", animation: 'border' }), props.info.enabled && !isServiceLoading && "Disable", !props.info.enabled && !isServiceLoading && "Enable"] }))] }), props.info.status === 'installed' && props.info.category !== 'system' &&
                 _jsx(AppButton, __assign({ color: "danger", size: "sm", outline: true, onClick: handleOnOpenUninstallModal }, { children: "Uninstall" })), isLaunchable(props.info) && (_jsx(AppButton, __assign({ size: "sm", onClick: props.onLaunch }, { children: "Launch" })))] })));
 };
