@@ -80,7 +80,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
     const handleInstall = () => {
         if (props.onInstall) props.onInstall(props.info)
     }
-    const handleUninstall = (evnt:any) => {
+    const handleUninstall = () => {
         if (props.onUninstall) props.onUninstall(props.info)
     } 
     const handleLaunch = (evnt:any) => {

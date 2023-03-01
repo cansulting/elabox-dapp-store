@@ -40,7 +40,7 @@ export const ConfirmationModal = (props:ConfirmationModalProps): JSX.Element =>{
     return  <Modal
     centered
     style={props.style.modal}
-    isOpen={props.isOpen}
+    show={props.isOpen}
     toggle={props.onClose}
 
   >
