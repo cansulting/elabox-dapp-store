@@ -60,7 +60,7 @@ export var AppInfo = function (props) {
         if (props.onInstall)
             props.onInstall(props.info);
     };
-    var handleUninstall = function (evnt) {
+    var handleUninstall = function () {
         if (props.onUninstall)
             props.onUninstall(props.info);
     };

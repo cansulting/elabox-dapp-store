@@ -33,6 +33,6 @@ var defaultProps = {
     }
 };
 export var ConfirmationModal = function (props) {
-    return _jsxs(Modal, __assign({ centered: true, style: props.style.modal, isOpen: props.isOpen, toggle: props.onClose }, { children: [_jsx(ModalHeader, __assign({ style: props.style.header }, { children: props.title })), _jsx(ModalBody, __assign({ style: props.style.body }, { children: props.body })), _jsxs(ModalFooter, __assign({ style: props.style.footer }, { children: [_jsx(Button, __assign({ color: "danger", onClick: props.onConfirm }, { children: "Yes" })), ' ', _jsx(Button, __assign({ onClick: props.onClose }, { children: "No" }))] }))] }));
+    return _jsxs(Modal, __assign({ centered: true, style: props.style.modal, show: props.isOpen, toggle: props.onClose }, { children: [_jsx(ModalHeader, __assign({ style: props.style.header }, { children: props.title })), _jsx(ModalBody, __assign({ style: props.style.body }, { children: props.body })), _jsxs(ModalFooter, __assign({ style: props.style.footer }, { children: [_jsx(Button, __assign({ color: "danger", onClick: props.onConfirm }, { children: "Yes" })), ' ', _jsx(Button, __assign({ onClick: props.onClose }, { children: "No" }))] }))] }));
 };
 ConfirmationModal.defaultProps = defaultProps;
