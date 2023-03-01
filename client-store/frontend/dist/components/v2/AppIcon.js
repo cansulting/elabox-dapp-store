@@ -31,7 +31,7 @@ import * as Icon from 'react-feather';
 import { ProgressColor } from '../../utils/colors';
 import { isUpdatable, isUpdateCompat } from "../../data/packageInfo";
 import { ProgressBar } from 'react-bootstrap';
-import IpfsImage from '../ui/IpfsImage';
+import { MyImage } from '../ui/MyImage';
 var DefaultStyle = function (props) {
     var hover = props.hover;
     return {
@@ -66,10 +66,7 @@ export var AppIcon = function (props) {
                     width: props.width,
                     height: props.height,
                     padding: 10
-                } }, { children: [_jsx(IpfsImage, { ipfsPath: props.package.icon, alt: props.package.name, style: {
-                            width: '100%', height: '100%',
-                            borderRadius: 10
-                        } }), props.package.notifications > 0 && (_jsx(Icon.Bell, { style: {
+                } }, { children: [_jsx(MyImage, __assign({}, props.package)), props.package.notifications > 0 && (_jsx(Icon.Bell, { style: {
                             position: 'absolute',
                             top: 10,
                             right: 10,

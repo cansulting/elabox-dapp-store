@@ -35,8 +35,8 @@ import { AppInfoSetting } from './AppInfoSetting';
 import { ProgressColor } from '../../utils/colors';
 import { isUpdatable, isUpdateCompat } from '../../data/packageInfo';
 import { AppStatusToCaption } from '../../utils/appStatus';
-import IpfsImage from '../ui/IpfsImage';
 import { AppInfoToolbar } from './AppInfoToolbar';
+import { MyImage } from '../ui/MyImage';
 var Notifications = function (props) {
     return (_jsx(_Fragment, { children: props.data.map(function (val) {
             return (_jsxs(_Fragment, { children: [val.type === "error" && _jsx("p", __assign({ style: { color: 'red' } }, { children: val.content })), val.type === 'info' && _jsx("p", __assign({ style: { color: 'green' } }, { children: val.content })), val.type === 'warning' && _jsx("p", __assign({ style: { color: 'gray' } }, { children: val.content }))] }));
@@ -100,11 +100,7 @@ export var AppInfo = function (props) {
     var handleOn = function () {
         return props.onOn(props.info);
     };
-    return (_jsxs(Container, __assign({ style: props.style, fluid: "md" }, { children: [_jsx(DependencyModal, { dependencies: props.info.dependencies, isOpen: isOpenDependencyModal, onClose: handleOnCloseDependencyModal, onConfirm: handleOnConfirmInstall }), _jsxs(Row, { children: [_jsx(Col, __assign({ className: "text-center text-lg-start d-flex flex-column align-items-center", xs: "12", lg: "12" }, { children: _jsx(IpfsImage, { src: props.info.icon, alt: props.info.name, style: {
-                                width: '130px',
-                                height: '130px',
-                                borderRadius: 10,
-                            } }) })), _jsxs(Col, __assign({ className: "d-flex flex-column align-items-center mt-3", style: { gap: 5 } }, { children: [_jsx("h4", { children: info.name }), info.notificationContents &&
+    return (_jsxs(Container, __assign({ style: props.style, fluid: "md" }, { children: [_jsx(DependencyModal, { dependencies: props.info.dependencies, isOpen: isOpenDependencyModal, onClose: handleOnCloseDependencyModal, onConfirm: handleOnConfirmInstall }), _jsxs(Row, { children: [_jsx(Col, __assign({ className: "text-center text-lg-start d-flex flex-column align-items-center", xs: "12", lg: "12" }, { children: _jsx(MyImage, __assign({}, info)) })), _jsxs(Col, __assign({ className: "d-flex flex-column align-items-center mt-3", style: { gap: 5 } }, { children: [_jsx("h4", { children: info.name }), info.notificationContents &&
                                 info.notificationContents.length > 0 &&
                                 _jsx(Notifications, { data: info.notificationContents }), (updatable || info.status === "uninstalled") && !sysCompatible &&
                                 _jsx("p", __assign({ style: { color: 'gray' } }, { children: "Requires latest system to install this package." })), props.info.isService && props.info.status === "installed" && !props.info.enabled &&

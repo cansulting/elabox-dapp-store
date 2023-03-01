@@ -17,6 +17,7 @@ import { Notification } from '../../data/notification'
 import { AppStatusToCaption } from '../../utils/appStatus'
 import IpfsImage from '../ui/IpfsImage'
 import { AppInfoToolbar } from './AppInfoToolbar'
+import { MyImage } from '../ui/MyImage'
 
 export interface AppInfoProps {
     info: PackageInfo
@@ -146,15 +147,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     xs="12"
                     lg="12"
                 >
-                    <IpfsImage
-                        src={props.info.icon}
-                        alt={props.info.name}
-                        style={{
-                            width: '130px',
-                            height: '130px',
-                            borderRadius: 10,
-                        }}
-                    />
+                    <MyImage {...info} />
                 </Col>
                 <Col
                     className="d-flex flex-column align-items-center mt-3"

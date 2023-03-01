@@ -3,7 +3,7 @@ import * as Icon from 'react-feather'
 import { ProgressColor } from '../../utils/colors'
 import { isUpdatable, isUpdateCompat, PackageInfo } from "../../data/packageInfo"
 import { ProgressBar } from 'react-bootstrap'
-import IpfsImage from '../ui/IpfsImage'
+import { MyImage } from '../ui/MyImage'
 
 const DefaultStyle = (props:any) => {
     const { hover } = props
@@ -64,14 +64,7 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                     padding: 10
                 }}
             >
-                <IpfsImage
-                    ipfsPath={props.package.icon}
-                    alt={props.package.name}
-                    style={{ 
-                        width: '100%', height: '100%', 
-                        borderRadius: 10
-                    }}
-                />
+                <MyImage {...props.package} />
                 {props.package.notifications > 0 && (
                     <Icon.Bell
                         style={{
