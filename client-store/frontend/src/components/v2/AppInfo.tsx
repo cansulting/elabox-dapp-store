@@ -15,7 +15,6 @@ import { ProgressColor } from '../../utils/colors'
 import { PackageInfo, isUpdatable, isLaunchable, isUpdateCompat } from '../../data/packageInfo'
 import { Notification } from '../../data/notification'
 import { AppStatusToCaption } from '../../utils/appStatus'
-import IpfsImage from '../ui/IpfsImage'
 import { AppInfoToolbar } from './AppInfoToolbar'
 import { MyImage } from '../ui/MyImage'
 
@@ -191,7 +190,7 @@ export const AppInfo = (props: AppInfoProps): JSX.Element => {
                     />           
                     { info.status !== "uninstalling" && info.status !== "installed" && info.status !== "uninstalled"  && (
                         <div
-                        className="d-flex flex-column align-items-center align-items-lg-start"
+                        className="d-flex flex-column align-items-center"
                         style={{
                             width: '100%',
                         }}

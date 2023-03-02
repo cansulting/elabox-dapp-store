@@ -10,7 +10,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { identifyURL, UrlType } from "src/utils/url";
+import { identifyURL, UrlType } from "../../utils/url";
 import IpfsImage from "./IpfsImage";
 export var MyImage = function (props) {
     var imageType = identifyURL(props.icon);
