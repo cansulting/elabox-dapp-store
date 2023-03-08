@@ -9,6 +9,13 @@ import (
 	sdata "github.com/cansulting/elabox-system-tools/foundation/event/data"
 )
 
+// broadcast that theres a new installation
+func PublishNewInstall(pkid string) error {
+	val := `{"packageId":"` + pkid + `"}`
+	_, err := global.RPC.CallBroadcast(sdata.NewAction(global.NEW_INSTALL, global.PackageId, val))
+	return err
+}
+
 func PublishInstallProgress(progress uint, itemId string) error {
 	val := `{"progress":` + strconv.Itoa(int(progress)) + `,"packageId":"` + itemId + `"}`
 	_, err := global.RPC.CallBroadcast(sdata.NewAction(global.INSTALL_PROGRESS, global.PackageId, val))

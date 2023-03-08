@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"sort"
+	"store/backend/broadcast"
 	"store/backend/data"
 	"store/backend/services/installer"
 	"store/backend/services/store_lister"
@@ -95,6 +96,7 @@ func DownloadInstallApp(pkgId string) error {
 		return err
 	}
 	task.Start()
+	broadcast.PublishNewInstall(pkgId)
 	return nil
 }
 
