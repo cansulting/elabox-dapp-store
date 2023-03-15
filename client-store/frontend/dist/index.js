@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export * from "./constants";
 export * from "./controllers/v2";
 export * from "./data";
+export * from "./api/store";
 window.Buffer = window.Buffer || require("buffer").Buffer;
 var root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

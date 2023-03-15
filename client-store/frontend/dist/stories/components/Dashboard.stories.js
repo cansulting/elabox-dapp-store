@@ -49,7 +49,7 @@ export var Primary = Template.bind({});
 Primary.args = {
     apps: [
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 3,
@@ -57,7 +57,7 @@ Primary.args = {
             status: "installed",
         },
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 3,
@@ -65,7 +65,7 @@ Primary.args = {
             status: "installed",
         },
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 3,
@@ -73,7 +73,7 @@ Primary.args = {
             status: "installed",
         },
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 3,
@@ -86,7 +86,7 @@ Primary.args = {
 export var DownloadableApp = Template.bind({});
 DownloadableApp.args = __assign(__assign({}, Primary.args), { apps: __spreadArray(__spreadArray([], __read(Primary.args.apps), false), [
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 0,
@@ -97,18 +97,19 @@ DownloadableApp.args = __assign(__assign({}, Primary.args), { apps: __spreadArra
 export var DownloadingApp = Template.bind({});
 DownloadingApp.args = __assign(__assign({}, Primary.args), { apps: __spreadArray(__spreadArray([], __read(Primary.args.apps), false), [
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 0,
             latestBuild: 3,
+            progress: 50,
             status: "downloading",
         }
     ], false) });
 export var InstallingApp = Template.bind({});
 InstallingApp.args = __assign(__assign({}, Primary.args), { apps: __spreadArray(__spreadArray([], __read(Primary.args.apps), false), [
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 0,
@@ -120,7 +121,7 @@ InstallingApp.args = __assign(__assign({}, Primary.args), { apps: __spreadArray(
 export var UninstallingApp = Template.bind({});
 UninstallingApp.args = __assign(__assign({}, Primary.args), { apps: __spreadArray(__spreadArray([], __read(Primary.args.apps), false), [
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 3,
@@ -131,7 +132,7 @@ UninstallingApp.args = __assign(__assign({}, Primary.args), { apps: __spreadArra
 export var ErrorDownloadingApp = Template.bind({});
 ErrorDownloadingApp.args = __assign(__assign({}, Primary.args), { apps: __spreadArray(__spreadArray([], __read(Primary.args.apps), false), [
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 3,
@@ -147,7 +148,7 @@ ErrorDownloadingApp.args = __assign(__assign({}, Primary.args), { apps: __spread
 export var CompleteDownloadingApp = Template.bind({});
 CompleteDownloadingApp.args = __assign(__assign({}, Primary.args), { apps: __spreadArray(__spreadArray([], __read(Primary.args.apps), false), [
         {
-            icon: 'https://i.picsum.photos/id/628/200/200.jpg?hmac=iI5Sx7kEQEboYw_QKjCo-GsB_EyIcdl7LYnW-EbgEqg',
+            icon: 'https://cdn-icons-png.flaticon.com/512/4436/4436481.png',
             name: 'Glide',
             id: 'glide',
             currentBuild: 3,

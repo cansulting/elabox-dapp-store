@@ -5,7 +5,7 @@ import IpfsImage from "./IpfsImage";
 export const MyImage = (props:PackageInfo) => {
     const imageType = identifyURL(props.icon)
     return (
-        <>
+        <div>
             {imageType === UrlType.IPFS && <IpfsImage
                 ipfsPath={props.icon}
                 alt={props.name}
@@ -18,10 +18,10 @@ export const MyImage = (props:PackageInfo) => {
                 src={props.icon}
                 alt={props.name}
                 style={{ 
-                    width: '100px', 
+                    width: '80px', 
                     borderRadius: 10
             }}
         />}
-        </>
+        </div>
     )
 }

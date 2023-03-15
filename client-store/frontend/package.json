@@ -1,6 +1,6 @@
 {
   "name": "elabox-dapp-store",
-  "version": "0.2.17",
+  "version": "0.2.22",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "Explore Elabox dApps.",

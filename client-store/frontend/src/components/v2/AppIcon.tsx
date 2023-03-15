@@ -59,8 +59,8 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                 style={{
                     position: 'relative',
                     marginBottom: 10,
-                    width: props.width,
-                    height: props.height,
+                    /*width: props.width,
+                    height: props.height,*/
                     padding: 10
                 }}
             >
@@ -112,18 +112,29 @@ export const AppIcon = (props: AppIconProps): JSX.Element => {
                         width={"20%"}
                     />
                 )}
-                {progress > 0 && (
-                <ProgressBar
-                    style={{height: "6px", width: "100%", margin: "10px 0"}}
-                    now={progress}
-                    color={progressColor}
-                />
-            )}
             </div>
-            {(!progress || progress <= 0) && 
-                <h4 style={{fontSize:"clamp(1rem, 1vw, 2rem)",fontWeight:"500"}}>
-                    {pkg.name}
-                </h4>}
+                
+            <div style={{
+                    position: 'relative',
+                    marginBottom: 10,
+                    width: "100%",
+                    /*width: props.width,
+                    height: props.height,*/
+                    height: "20px",
+                    padding: "0 10px"
+                }}>
+                {(!progress || progress <= 0) && 
+                    <h4 style={{fontSize:"clamp(1rem, 1vw, 2rem)",fontWeight:"500"}}>
+                        {pkg.name}
+                    </h4>}
+                {progress > 0 && (
+                    <ProgressBar
+                        style={{height: "6px", margin:"8px 20px"}}
+                        now={progress}
+                        color={progressColor}
+                    />
+                )}
+            </div>
         </div>
     )
 }

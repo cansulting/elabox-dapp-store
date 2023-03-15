@@ -7,7 +7,7 @@ import useResize from "../../hooks/useResize"
 const DefaultStyle = {
     width:"100%",
     backgroundColor:"transparent",
-    padding:20
+    //padding:20
 }
 
 export interface AppDashboardProps {
@@ -25,7 +25,7 @@ export const AppDashboard = (props: AppDashboardProps): JSX.Element => {
     const {iconWidth = 100, iconHeight = 100, style=DefaultStyle} = props
     const iconWidthWithPadding = iconWidth + 20
     const columnPerRow = Math.round(parentWidth  / iconWidthWithPadding)
-    const columnWidth = Math.round(parentWidth / columnPerRow)
+    const columnWidth = Math.round(parentWidth / columnPerRow) + 1
     currentWidth = !isNaN(columnWidth) ? columnWidth : 0
     if (props.apps === null){
         return <></>

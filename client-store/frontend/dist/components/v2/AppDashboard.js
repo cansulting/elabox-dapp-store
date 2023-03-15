@@ -17,7 +17,7 @@ import useResize from "../../hooks/useResize";
 var DefaultStyle = {
     width: "100%",
     backgroundColor: "transparent",
-    padding: 20
+    //padding:20
 };
 var currentWidth = 0;
 export var AppDashboard = function (props) {
@@ -26,7 +26,7 @@ export var AppDashboard = function (props) {
     var _a = props.iconWidth, iconWidth = _a === void 0 ? 100 : _a, _b = props.iconHeight, iconHeight = _b === void 0 ? 100 : _b, _c = props.style, style = _c === void 0 ? DefaultStyle : _c;
     var iconWidthWithPadding = iconWidth + 20;
     var columnPerRow = Math.round(parentWidth / iconWidthWithPadding);
-    var columnWidth = Math.round(parentWidth / columnPerRow);
+    var columnWidth = Math.round(parentWidth / columnPerRow) + 1;
     currentWidth = !isNaN(columnWidth) ? columnWidth : 0;
     if (props.apps === null) {
         return _jsx(_Fragment, {});

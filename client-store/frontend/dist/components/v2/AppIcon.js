@@ -63,8 +63,8 @@ export var AppIcon = function (props) {
     return (_jsxs("div", __assign({ className: props.className, style: _style, onClick: function (ev) { return props.onClick(props.package); }, onMouseEnter: function () { return handleOnHover(true); }, onMouseLeave: function () { return handleOnHover(false); } }, { children: [_jsxs("div", __assign({ style: {
                     position: 'relative',
                     marginBottom: 10,
-                    width: props.width,
-                    height: props.height,
+                    /*width: props.width,
+                    height: props.height,*/
                     padding: 10
                 } }, { children: [_jsx(MyImage, __assign({}, props.package)), props.package.notifications > 0 && (_jsx(Icon.Bell, { style: {
                             position: 'absolute',
@@ -91,6 +91,14 @@ export var AppIcon = function (props) {
                                 borderRadius: '50%',
                                 background: '#0081ff',
                                 padding: '3%',
-                            }, color: "white", height: "20%", width: "20%" })), progress > 0 && (_jsx(ProgressBar, { style: { height: "6px", width: "100%", margin: "10px 0" }, now: progress, color: progressColor }))] })), (!progress || progress <= 0) &&
-                _jsx("h4", __assign({ style: { fontSize: "clamp(1rem, 1vw, 2rem)", fontWeight: "500" } }, { children: pkg.name }))] })));
+                            }, color: "white", height: "20%", width: "20%" }))] })), _jsxs("div", __assign({ style: {
+                    position: 'relative',
+                    marginBottom: 10,
+                    width: "100%",
+                    /*width: props.width,
+                    height: props.height,*/
+                    height: "20px",
+                    padding: "0 10px"
+                } }, { children: [(!progress || progress <= 0) &&
+                        _jsx("h4", __assign({ style: { fontSize: "clamp(1rem, 1vw, 2rem)", fontWeight: "500" } }, { children: pkg.name })), progress > 0 && (_jsx(ProgressBar, { style: { height: "6px", margin: "8px 20px" }, now: progress, color: progressColor }))] }))] })));
 };
