@@ -9,6 +9,7 @@ import (
 	"net/url"
 	"os"
 	"reflect"
+	"runtime"
 	"store/backend/broadcast"
 	"store/backend/data"
 	"store/backend/global"
@@ -28,6 +29,10 @@ const PARENT_DIR = "ela.companion"
 func Init() error {
 	if err := os.MkdirAll(global.CacheDir, perm.PUBLIC_WRITE); err != nil {
 		return errors.New("unable to create cache directory " + global.CacheDir)
+	}
+	// clear the packages info cache to redownload and correct existing info
+	if _, err := os.Stat(global.StoreCache); err == nil {
+		os.Remove(global.StoreCache)
 	}
 	// will be called every hour
 	go func() {
@@ -77,7 +82,6 @@ func CheckUpdates() error {
 	if err != nil {
 		return errors.New("unable to retrieve store listing. inner: " + err.Error())
 	}
-
 	// step: read response
 	defer res.Body.Close()
 	body, err := ioutil.ReadAll(res.Body)
@@ -87,7 +91,6 @@ func CheckUpdates() error {
 		}
 		return errors.New("unable to read response body. inner: " + err.Error())
 	}
-
 	// step: parse json response
 	err = json.Unmarshal(body, &remoteData)
 	if err != nil {
@@ -96,7 +99,12 @@ func CheckUpdates() error {
 	tmp := make([]*data.PackageListingCache, len(remoteData))
 	i := -1
 	updates := make([]*data.PackageListingCache, 0)
+	cos := runtime.GOOS
 	for _, latestData := range remoteData {
+		// check is OS compatible
+		if latestData.OperatingSystem != "" && latestData.OperatingSystem != cos {
+			continue
+		}
 		i++
 		// compare to olditem
 		localData, _ := GetItem(latestData.Id)
@@ -146,7 +154,7 @@ func CheckUpdates() error {
 		if err := broadcast.PublishNewUpdateAvailable(updates); err != nil {
 			log.Println("unable to broadcast new update available")
 		}
-		pkgsCache = tmp
+		pkgsCache = tmp[:i+1]
 		// tmp: save the data to cache file
 		return saveCache(pkgsCache, global.StoreCache)
 	}
@@ -173,6 +181,5 @@ func RetrieveDownloadLink(pkgId string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-
 	return string(body), nil
 }

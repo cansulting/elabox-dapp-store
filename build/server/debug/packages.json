@@ -98,7 +98,8 @@
         "minRuntime": "0.6.8",
         "version": "0.1.0",
         "projectRepo": "",
-        "projectWebsite": ""
+        "projectWebsite": "",
+        "os": "linux"
     },
     "trinity.hive": {
         "name": "Hive Node",
@@ -111,7 +112,8 @@
         "minRuntime": "0.6.8",
         "projectRepo": "",
         "projectWebsite": "", 
-        "dependencies": ["ipfs"]
+        "dependencies": ["ipfs"],
+        "os": "linux"
     },
     "elacity": {
         "name": "Elacity",
@@ -138,7 +140,8 @@
         "version": "2.22.5",
         "minRuntime": "0.6.10",
         "projectRepo": "",
-        "projectWebsite": ""
+        "projectWebsite": "",
+        "os": "linux"
     },
     "filda.io": {
         "name": "Filda",
